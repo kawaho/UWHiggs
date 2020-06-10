@@ -1,4 +1,4 @@
-rm -rf /nfs_scratch/ndev/tmp*
-rm -rf /hdfs/store/user/ndev/Analyze*
-rm -rf /hdfs/store/user/ndev/MergeLayer*
-rm -rf /hdfs/store/user/ndev/Final*
+rm -rf /nfs_scratch/kaho/tmp*
+rm -rf /hdfs/store/user/kaho/Analyze*
+rm -rf /hdfs/store/user/kaho/MergeLayer*
+rm -rf /hdfs/store/user/kaho/Final*
