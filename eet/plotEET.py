@@ -20,7 +20,7 @@ ROOT.gStyle.SetOptStat(0)
 jobid = os.environ['jobid']
 print jobid
 
-mc_samples = ['DY*', 'WZ*', 'WW*', 'ZZ*', 'data*']#'DYJ*', 'DY1*', 'DY2*', 'DY3*', 'DY4*', 
+mc_samples = ['DYJ*', 'DY1*', 'DY2*', 'DY3*', 'DY4*', 'WZ*', 'WW*', 'ZZ*', 'data*'] 
 
 files = []
 lumifiles = []
@@ -28,9 +28,10 @@ channel = ['']
 
 for x in mc_samples:
     print x
-    files.extend(glob.glob('results/%s/AnalyzeEET/%s' % (jobid, x)))
+    files.extend(glob.glob('results/%s/AnalyzeEETDeep/%s' % (jobid, x)))
     lumifiles.extend(glob.glob('inputs/%s/%s.lumicalc.sum' % (jobid, x)))
-
+print(files)
+print(lumifiles)
 period = '13TeV'
 sqrts = 13
 
@@ -44,7 +45,7 @@ for d in dirs:
 
     plotter = Plotter(files, lumifiles, outputdir)
 
-    DYtotal = views.SumView( *[ plotter.get_view(regex) for regex in filter(lambda x :  x.startswith('DY'), mc_samples)])# or x.startswith('DY1') or x.startswith('DY2') or x.startswith('DY3') or x.startswith('DY4')
+    DYtotal = views.SumView( *[ plotter.get_view(regex) for regex in filter(lambda x :  x.startswith('DYJ') or x.startswith('DY1') or x.startswith('DY2') or x.startswith('DY3') or x.startswith('DY4'), mc_samples)])
     DYall = views.SubdirectoryView(DYtotal, d)
     DY = views.StyleView(DYall, **remove_name_entry(data_styles['DY*']))
     DY = views.TitleView(DY, "Z#rightarrow ee")
@@ -70,5 +71,5 @@ for d in dirs:
             os.makedirs(outputdir+'/'+fn)
 
         for n,h in enumerate(histoname):
-            plotter.plot_mc_vs_data(fn, [], h[0], 1, xaxis = h[1], leftside=False, xrange=None, preprocess=None, show_ratio=True, ratio_range=1.5, sort=True, blind_region=True, control=d, jets='', channel='eetauh')
+            plotter.plot_mc_vs_data(fn, [], h[0], 1, xaxis = h[1], leftside=False, xrange=None, preprocess=None, show_ratio=True, ratio_range=1.5, sort=True, blind_region=True, control=d, jets='', year='2018', channel='eetauh')
             plotter.save(h[0])

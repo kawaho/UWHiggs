@@ -242,8 +242,8 @@ class AnalyzeEET(MegaBase):
           weight = weight * 0.90
         if self.is_DY:
           # DY pT reweighting
-          #dyweight = self.DYreweight(row.genMass, row.genpT)
-          dyweight = self.DYreweightReco((myEle1+myEle2).M(), (myEle1+myEle2).Pt())
+          dyweight = self.DYreweight(row.genMass, row.genpT)
+          #dyweight = self.DYreweightReco((myEle1+myEle2).M(), (myEle1+myEle2).Pt())
           weight = weight * dyweight
           #if row.numGenJets < 5:
           #  weight = weight * self.DYweight[row.numGenJets]

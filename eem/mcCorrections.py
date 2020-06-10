@@ -213,6 +213,8 @@ muonID_tight = MuonPOGCorrections.make_muon_pog_PFTight_2018()
 muonIso_tight_tightid = MuonPOGCorrections.make_muon_pog_TightIso_2018('Tight')
 muonIso_loose_tightid = MuonPOGCorrections.make_muon_pog_LooseIso_2018('Tight')
 muonTracking = MuonPOGCorrections.mu_trackingEta_2018
+muon50 = MuonPOGCorrections.make_muon_pog_Mu50_2018()
+muonTrigger24 = MuonPOGCorrections.make_muon_pog_IsoMu24_2018()
 
 eID = EGammaPOGCorrections.make_egamma_pog_electronID_2018()
 Ele24 = EGammaPOGCorrections.el_Ele24_2018

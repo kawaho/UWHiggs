@@ -28,7 +28,7 @@ channel = ['']
 
 for x in mc_samples:
     print x
-    files.extend(glob.glob('results/%s/AnalyzeEEM/%s' % (jobid, x)))
+    files.extend(glob.glob('results/%s/AnalyzeEEM50/%s' % (jobid, x)))
     lumifiles.extend(glob.glob('inputs/%s/%s.lumicalc.sum' % (jobid, x)))
 
 period = '13TeV'
@@ -38,7 +38,7 @@ dirs = ['initial', 'muonloose', 'muontight']
 
 for d in dirs:
 
-    outputdir = 'plots/%s/AnalyzeEEM/InitialPlots/%s/' % (jobid, d)
+    outputdir = 'plots/%s/AnalyzeEEM50/InitialPlots/%s/' % (jobid, d)
     if not os.path.exists(outputdir):
         os.makedirs(outputdir)
 

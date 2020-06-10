@@ -35,11 +35,11 @@ class mcWeights:
         self.is_GluGluHWW = bool('GluGluHToWW' in target)
         self.is_recoilC = bool(self.is_DYlow or self.is_DY or self.is_GluGlu or self.is_VBF or self.is_EWK or self.is_VBFH or self.is_GluGluH or self.is_VBFHWW or self.is_GluGluHWW or self.is_W)
         self.DYweight = {
-            0 : 3.688765672,
-            1 : 0.710799023,
-            2 : 0.804309672,
-            3 : 0.996468073,
-            4 : 0.844905137
+            0 : 3.60210681,
+            1 : 0.694100474,
+            2 : 0.78541431,
+            3 : 0.973058402,
+            4 : 0.825056081
         } 
         self.Wweight = {
             0 : 0.0,

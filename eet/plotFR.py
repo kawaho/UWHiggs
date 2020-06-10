@@ -1,6 +1,6 @@
 import os
 from sys import argv, stdout, stderr
-from ROOT import TCanvas, TLegend, gROOT, TFile
+from ROOT import TCanvas, TLegend, gROOT, TFile, gPad
 import sys
 gROOT.SetStyle("Plain")
 gROOT.SetBatch(True)
@@ -12,7 +12,7 @@ canvas = TCanvas('canvas','canvas',800,800)
 legend = TLegend(0.7, 0.8, .9, .9)
 file = TFile(f)
 hdy = file.Get('dyfakerate')
-hdy.SetTitle('Tau Fake Rate')
+hdy.SetTitle('Tau Fake Rate; Tau Eta; Fake Rate')
 #hdy.GetXaxis().SetTitle("Tau Pt (GeV)")
 #hdy.GetXaxis().SetTitle("Tau Eta") 
 #hdy.GetXaxis().SetTitle("Tau Decay Mode") 
@@ -23,6 +23,11 @@ legend.AddEntry(hdy, 'Z+Jets', 'l')
 legend.AddEntry(hdata, 'Data', 'l')
 hdy.Draw()
 hdata.Draw('SAME')
+gPad.Update()
+graph = hdy.GetPaintedGraph()
+graph.SetMinimum(0)
+graph.SetMaximum(1)
+gPad.Update()
 legend.Draw()
 canvas.Draw()
 canvas.SaveAs(o)

@@ -28,7 +28,7 @@ channel = ['']
 
 for x in mc_samples:
     print x
-    files.extend(glob.glob('results/%s/AnalyzeMMM/%s' % (jobid, x)))
+    files.extend(glob.glob('results/%s/AnalyzeMMM_loose/%s' % (jobid, x)))
     lumifiles.extend(glob.glob('inputs/%s/%s.lumicalc.sum' % (jobid, x)))
 
 period = '13TeV'
@@ -38,7 +38,7 @@ dirs = ['initial', 'muonloose', 'muontight']
 
 for d in dirs:
 
-    outputdir = 'plots/%s/AnalyzeMMM/MediumID/%s/' % (jobid, d)
+    outputdir = 'plots/%s/AnalyzeMMM_loose/MediumID/%s/' % (jobid, d)
     if not os.path.exists(outputdir):
         os.makedirs(outputdir)
 
@@ -61,7 +61,7 @@ for d in dirs:
     new_mc_samples.extend(['DY', 'Diboson'])
     plotter.mc_samples = new_mc_samples
 
-    histoname = [("m3Pt", "Muon 3 p_{T} (GeV)", 1), ("m3Eta", "Muon 3 #eta", 1), ("m1_m2_Mass", "M_{vis}(#mu, #mu) (GeV)", 1), ("m1Pt", "Muon 1 p_{T} (GeV)", 1), ("m1Eta", "Muon 1 #eta", 1), ("m2Pt", "Muon 2 p_{T} (GeV)", 1), ("m2Eta", "Muon 2 #eta", 1)]
+    histoname = [("mPt", "Muon 3 p_{T} (GeV)", 1), ("mEta", "Muon 3 #eta", 1), ("m1_m2_Mass", "M_{vis}(#mu, #mu) (GeV)", 1), ("m1Pt", "Muon 1 p_{T} (GeV)", 1), ("m1Eta", "Muon 1 #eta", 1), ("m2Pt", "Muon 2 p_{T} (GeV)", 1), ("m2Eta", "Muon 2 #eta", 1)]
 
     foldername = channel
 
@@ -70,5 +70,5 @@ for d in dirs:
             os.makedirs(outputdir+'/'+fn)
 
         for n,h in enumerate(histoname):
-            plotter.plot_mc_vs_data(fn, [], h[0], 1, xaxis = h[1], leftside=False, xrange=None, preprocess=None, show_ratio=True, ratio_range=1.5, sort=True, blind_region=True, control=d, jets='', channel='mumumu')
+            plotter.plot_mc_vs_data(fn, [], h[0], 1, xaxis = h[1], leftside=False, xrange=None, preprocess=None, show_ratio=True, ratio_range=1.5, sort=True, blind_region=True, control=d, jets='', year='2018', channel='mumumu')
             plotter.save(h[0])

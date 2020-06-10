@@ -40,7 +40,7 @@ if __name__ == "__main__":
     files = []
     lumifiles = []
     for x in samples:
-        files.extend(glob.glob('results/FakeData2018/AnalyzeMMM/%s' % (x)))
+        files.extend(glob.glob('MergeResults_loose/%s' % (x)))
         lumifiles.extend(glob.glob('inputs/FakeData2018/%s.lumicalc.sum' % (x)))
 
     the_views = data_views(files, lumifiles)
@@ -61,7 +61,7 @@ if __name__ == "__main__":
 
     def round_to_ints(x):
         new = x.Clone()
-        new.Reset()
+        new.Reset()        #print x.GetName()
         #print x.GetName()
         for bin in range(x.GetNbinsX()+1):
             binsy = range(x.GetNbinsY()+1) if isinstance(x, ROOT.TH2) else [-1]
