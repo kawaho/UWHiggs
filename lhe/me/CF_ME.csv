@@ -1,0 +1,28 @@
+GluGlu_LFV,2016,2017,2018
+Filter Efficiency,0.999,0.995,1.0
+OppSign Efficiency,0.839,0.855,0.854
+Trigger Efficiency,0.381,0.407,0.413
+Kinematics Efficiency,1.0,1.0,1.0
+DeltaR Efficiency,1.0,1.0,1.0
+NJets Efficiency,0.95,0.957,0.956
+Vetoes Efficiency,0.987,0.991,0.99
+bjestVeto Efficiency,0.985,0.981,0.984
+Obj1 ID Efficiency,0.984,0.984,0.987
+Obj1 Iso Efficiency,0.955,0.956,0.955
+Obj2 ID Efficiency,0.636,0.706,0.675
+Obj2 Iso Efficiency,0.927,0.918,0.927
+Overall Cut Efficiency,0.163,0.197,0.194
+VBF_LFV,2016,2017,2018
+Filter Efficiency,0.999,0.992,1.0
+OppSign Efficiency,0.796,0.808,0.806
+Trigger Efficiency,0.34,0.352,0.356
+Kinematics Efficiency,1.0,1.0,1.0
+DeltaR Efficiency,1.0,1.0,1.0
+NJets Efficiency,0.853,0.866,0.858
+Vetoes Efficiency,0.949,0.968,0.963
+bjestVeto Efficiency,0.968,0.961,0.964
+Obj1 ID Efficiency,0.982,0.985,0.988
+Obj1 Iso Efficiency,0.96,0.96,0.96
+Obj2 ID Efficiency,0.61,0.696,0.669
+Obj2 Iso Efficiency,0.947,0.933,0.941
+Overall Cut Efficiency,0.115,0.139,0.137

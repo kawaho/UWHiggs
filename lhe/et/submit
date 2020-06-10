@@ -1,0 +1,28 @@
+mkdir -p `dirname results/MCLHE2018/AnalyzeETauCF/data_EGamma_Run2018A-17Sep2018.root`
+mkdir -p `dirname results/MCLHE2018/AnalyzeETauCF/data_EGamma_Run2018B-17Sep2018.root`
+#using farmout:1
+#dry run:1
+export megatarget=results/MCLHE2018/AnalyzeETauCF/data_EGamma_Run2018A-17Sep2018.root
+mkdir -p batch_logs
+mega-farmout AnalyzeETauCF.py inputs/MCLHE2018/data_EGamma_Run2018A-17Sep2018.txt results/MCLHE2018/AnalyzeETauCF/data_EGamma_Run2018A-17Sep2018.root --verbose >& batch_logs/results_MCLHE2018_AnalyzeETauCF_data_EGamma_Run2018A-17Sep2018.log &
+sleep 10s
+mkdir -p `dirname results/MCLHE2018/AnalyzeETauCF/data_EGamma_Run2018C-17Sep2018.root`
+#using farmout:1
+#dry run:1
+export megatarget=results/MCLHE2018/AnalyzeETauCF/data_EGamma_Run2018B-17Sep2018.root
+mkdir -p batch_logs
+mega-farmout AnalyzeETauCF.py inputs/MCLHE2018/data_EGamma_Run2018B-17Sep2018.txt results/MCLHE2018/AnalyzeETauCF/data_EGamma_Run2018B-17Sep2018.root --verbose >& batch_logs/results_MCLHE2018_AnalyzeETauCF_data_EGamma_Run2018B-17Sep2018.log &
+sleep 10s
+mkdir -p `dirname results/MCLHE2018/AnalyzeETauCF/data_EGamma_Run2018D-PromptReco.root`
+#using farmout:1
+#dry run:1
+export megatarget=results/MCLHE2018/AnalyzeETauCF/data_EGamma_Run2018C-17Sep2018.root
+mkdir -p batch_logs
+mega-farmout AnalyzeETauCF.py inputs/MCLHE2018/data_EGamma_Run2018C-17Sep2018.txt results/MCLHE2018/AnalyzeETauCF/data_EGamma_Run2018C-17Sep2018.root --verbose >& batch_logs/results_MCLHE2018_AnalyzeETauCF_data_EGamma_Run2018C-17Sep2018.log &
+sleep 10s
+#using farmout:1
+#dry run:1
+export megatarget=results/MCLHE2018/AnalyzeETauCF/data_EGamma_Run2018D-PromptReco.root
+mkdir -p batch_logs
+mega-farmout AnalyzeETauCF.py inputs/MCLHE2018/data_EGamma_Run2018D-PromptReco.txt results/MCLHE2018/AnalyzeETauCF/data_EGamma_Run2018D-PromptReco.root --verbose >& batch_logs/results_MCLHE2018_AnalyzeETauCF_data_EGamma_Run2018D-PromptReco.log &
+sleep 10s

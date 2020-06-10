@@ -1,0 +1,85 @@
+TotalBkg,2016,2017,2018
+Filter Efficiency,0.999,0.994,1.0
+OppSign Efficiency,0.792,0.845,0.801
+Trigger Efficiency,0.333,0.301,0.2
+Kinematics Efficiency,0.537,0.524,0.586
+DeltaR Efficiency,0.997,0.996,0.996
+NJets Efficiency,0.81,0.675,0.694
+Vetoes Efficiency,0.923,0.921,0.911
+bjestVeto Efficiency,0.799,0.752,0.656
+Obj1 ID Efficiency,0.653,0.707,0.76
+Obj2 ID Efficiency,0.437,0.543,0.304
+tDecayMode Efficiency,0.943,0.949,0.932
+dieleVeto Efficiency,0.997,0.998,0.997
+Obj1 tight Efficiency,0.974,0.969,0.983
+Obj2 tight Efficiency,0.54,0.609,0.535
+Overall Cut Efficiency,0.023,0.022,0.008
+
+Diboson,2016,2017,2018
+Filter Efficiency,0.999,0.991,1.0
+OppSign Efficiency,0.729,0.74,0.74
+Trigger Efficiency,0.376,0.476,0.442
+Kinematics Efficiency,0.645,0.602,0.622
+DeltaR Efficiency,0.997,0.997,0.998
+NJets Efficiency,0.905,0.925,0.915
+Vetoes Efficiency,0.856,0.864,0.862
+bjestVeto Efficiency,0.954,0.955,0.952
+Obj1 ID Efficiency,0.856,0.888,0.869
+Obj2 ID Efficiency,0.102,0.118,0.117
+tDecayMode Efficiency,0.83,0.833,0.827
+dieleVeto Efficiency,0.994,0.994,0.993
+Obj1 tight Efficiency,0.999,0.997,0.996
+Obj2 tight Efficiency,0.264,0.271,0.273
+Overall Cut Efficiency,0.009,0.014,0.013
+
+TTbar,2016,2017,2018
+Filter Efficiency,0.999,0.992,1.0
+OppSign Efficiency,0.84,0.832,0.834
+Trigger Efficiency,0.287,0.17,0.14
+Kinematics Efficiency,0.751,0.697,0.715
+DeltaR Efficiency,0.994,0.994,0.994
+NJets Efficiency,0.555,0.438,0.477
+Vetoes Efficiency,0.761,0.869,0.81
+bjestVeto Efficiency,0.355,0.379,0.346
+Obj1 ID Efficiency,0.84,0.87,0.855
+Obj2 ID Efficiency,0.087,0.091,0.094
+tDecayMode Efficiency,0.882,0.851,0.876
+dieleVeto Efficiency,0.992,0.994,0.993
+Obj1 tight Efficiency,0.998,0.99,0.991
+Obj2 tight Efficiency,0.356,0.17,0.276
+Overall Cut Efficiency,0.002,0.001,0.001
+
+SingleT,2016,2017,2018
+Filter Efficiency,0.999,0.992,1.0
+OppSign Efficiency,0.69,0.771,0.702
+Trigger Efficiency,0.216,0.369,0.25
+Kinematics Efficiency,0.578,0.661,0.579
+DeltaR Efficiency,0.997,0.995,0.996
+NJets Efficiency,0.793,0.713,0.772
+Vetoes Efficiency,0.969,0.904,0.957
+bjestVeto Efficiency,0.646,0.542,0.604
+Obj1 ID Efficiency,0.837,0.875,0.849
+Obj2 ID Efficiency,0.068,0.102,0.084
+tDecayMode Efficiency,0.837,0.855,0.842
+dieleVeto Efficiency,0.998,0.995,0.997
+Obj1 tight Efficiency,0.997,0.994,0.993
+Obj2 tight Efficiency,0.057,0.211,0.075
+Overall Cut Efficiency,0.002,0.005,0.003
+
+Embedded,2016,2017,2018
+Filter Efficiency,1.0,1.0,1.0
+OppSign Efficiency,0.907,0.907,0.908
+Trigger Efficiency,0.468,0.583,0.235
+Kinematics Efficiency,0.438,0.382,0.437
+DeltaR Efficiency,0.999,0.999,0.998
+NJets Efficiency,0.949,0.944,0.924
+Vetoes Efficiency,0.962,0.959,0.948
+bjestVeto Efficiency,0.973,0.971,0.956
+Obj1 ID Efficiency,0.548,0.643,0.623
+Obj2 ID Efficiency,0.741,0.771,0.74
+tDecayMode Efficiency,0.953,0.955,0.952
+dieleVeto Efficiency,0.997,0.998,0.998
+Obj1 tight Efficiency,0.972,0.967,0.981
+Obj2 tight Efficiency,0.57,0.634,0.62
+Overall Cut Efficiency,0.064,0.084,0.034
+

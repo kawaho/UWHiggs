@@ -1,0 +1,98 @@
+mkdir -p `dirname results/MCLHE2018/AnalyzeEMuCF/embedded_EmbeddingRun2018A_ElMuFinalState.root`
+mkdir -p `dirname results/MCLHE2018/AnalyzeEMuCF/embedded_EmbeddingRun2018B_ElMuFinalState.root`
+#using farmout:1
+#dry run:1
+export megatarget=results/MCLHE2018/AnalyzeEMuCF/embedded_EmbeddingRun2018A_ElMuFinalState.root
+mkdir -p batch_logs
+mega-farmout AnalyzeEMuCF.py inputs/MCLHE2018/embedded_EmbeddingRun2018A_ElMuFinalState.txt results/MCLHE2018/AnalyzeEMuCF/embedded_EmbeddingRun2018A_ElMuFinalState.root --verbose >& batch_logs/results_MCLHE2018_AnalyzeEMuCF_embedded_EmbeddingRun2018A_ElMuFinalState.log &
+sleep 10s
+mkdir -p `dirname results/MCLHE2018/AnalyzeEMuCF/embedded_EmbeddingRun2018C_ElMuFinalState.root`
+#using farmout:1
+#dry run:1
+export megatarget=results/MCLHE2018/AnalyzeEMuCF/embedded_EmbeddingRun2018B_ElMuFinalState.root
+mkdir -p batch_logs
+mega-farmout AnalyzeEMuCF.py inputs/MCLHE2018/embedded_EmbeddingRun2018B_ElMuFinalState.txt results/MCLHE2018/AnalyzeEMuCF/embedded_EmbeddingRun2018B_ElMuFinalState.root --verbose >& batch_logs/results_MCLHE2018_AnalyzeEMuCF_embedded_EmbeddingRun2018B_ElMuFinalState.log &
+sleep 10s
+mkdir -p `dirname results/MCLHE2018/AnalyzeEMuCF/embedded_EmbeddingRun2018D_ElMuFinalState.root`
+#using farmout:1
+#dry run:1
+export megatarget=results/MCLHE2018/AnalyzeEMuCF/embedded_EmbeddingRun2018C_ElMuFinalState.root
+mkdir -p batch_logs
+mega-farmout AnalyzeEMuCF.py inputs/MCLHE2018/embedded_EmbeddingRun2018C_ElMuFinalState.txt results/MCLHE2018/AnalyzeEMuCF/embedded_EmbeddingRun2018C_ElMuFinalState.root --verbose >& batch_logs/results_MCLHE2018_AnalyzeEMuCF_embedded_EmbeddingRun2018C_ElMuFinalState.log &
+sleep 10s
+mkdir -p `dirname results/MCLHE2018/AnalyzeEMuCF/ST_t-channel_antitop_4f_InclusiveDecays_TuneCP5_13TeV-powheg-madspin-pythia8_-102X_upgrade2018_realistic_v15-v1.root`
+#using farmout:1
+#dry run:1
+export megatarget=results/MCLHE2018/AnalyzeEMuCF/embedded_EmbeddingRun2018D_ElMuFinalState.root
+mkdir -p batch_logs
+mega-farmout AnalyzeEMuCF.py inputs/MCLHE2018/embedded_EmbeddingRun2018D_ElMuFinalState.txt results/MCLHE2018/AnalyzeEMuCF/embedded_EmbeddingRun2018D_ElMuFinalState.root --verbose >& batch_logs/results_MCLHE2018_AnalyzeEMuCF_embedded_EmbeddingRun2018D_ElMuFinalState.log &
+sleep 10s
+mkdir -p `dirname results/MCLHE2018/AnalyzeEMuCF/ST_t-channel_top_4f_InclusiveDecays_TuneCP5_13TeV-powheg-madspin-pythia8_-102X_upgrade2018_realistic_v15-v1.root`
+#using farmout:1
+#dry run:1
+export megatarget=results/MCLHE2018/AnalyzeEMuCF/ST_t-channel_antitop_4f_InclusiveDecays_TuneCP5_13TeV-powheg-madspin-pythia8_-102X_upgrade2018_realistic_v15-v1.root
+mkdir -p batch_logs
+mega-farmout AnalyzeEMuCF.py inputs/MCLHE2018/ST_t-channel_antitop_4f_InclusiveDecays_TuneCP5_13TeV-powheg-madspin-pythia8_-102X_upgrade2018_realistic_v15-v1.txt results/MCLHE2018/AnalyzeEMuCF/ST_t-channel_antitop_4f_InclusiveDecays_TuneCP5_13TeV-powheg-madspin-pythia8_-102X_upgrade2018_realistic_v15-v1.root --verbose >& batch_logs/results_MCLHE2018_AnalyzeEMuCF_ST_t-channel_antitop_4f_InclusiveDecays_TuneCP5_13TeV-powheg-madspin-pythia8_-102X_upgrade2018_realistic_v15-v1.log &
+sleep 10s
+mkdir -p `dirname results/MCLHE2018/AnalyzeEMuCF/ST_tW_antitop_5f_inclusiveDecays_TuneCP5_13TeV-powheg-pythia8_-102X_upgrade2018_realistic_v15_ext1-v1.root`
+#using farmout:1
+#dry run:1
+export megatarget=results/MCLHE2018/AnalyzeEMuCF/ST_t-channel_top_4f_InclusiveDecays_TuneCP5_13TeV-powheg-madspin-pythia8_-102X_upgrade2018_realistic_v15-v1.root
+mkdir -p batch_logs
+mega-farmout AnalyzeEMuCF.py inputs/MCLHE2018/ST_t-channel_top_4f_InclusiveDecays_TuneCP5_13TeV-powheg-madspin-pythia8_-102X_upgrade2018_realistic_v15-v1.txt results/MCLHE2018/AnalyzeEMuCF/ST_t-channel_top_4f_InclusiveDecays_TuneCP5_13TeV-powheg-madspin-pythia8_-102X_upgrade2018_realistic_v15-v1.root --verbose >& batch_logs/results_MCLHE2018_AnalyzeEMuCF_ST_t-channel_top_4f_InclusiveDecays_TuneCP5_13TeV-powheg-madspin-pythia8_-102X_upgrade2018_realistic_v15-v1.log &
+sleep 10s
+mkdir -p `dirname results/MCLHE2018/AnalyzeEMuCF/ST_tW_top_5f_inclusiveDecays_TuneCP5_13TeV-powheg-pythia8_-102X_upgrade2018_realistic_v15_ext1-v1.root`
+#using farmout:1
+#dry run:1
+export megatarget=results/MCLHE2018/AnalyzeEMuCF/ST_tW_antitop_5f_inclusiveDecays_TuneCP5_13TeV-powheg-pythia8_-102X_upgrade2018_realistic_v15_ext1-v1.root
+mkdir -p batch_logs
+mega-farmout AnalyzeEMuCF.py inputs/MCLHE2018/ST_tW_antitop_5f_inclusiveDecays_TuneCP5_13TeV-powheg-pythia8_-102X_upgrade2018_realistic_v15_ext1-v1.txt results/MCLHE2018/AnalyzeEMuCF/ST_tW_antitop_5f_inclusiveDecays_TuneCP5_13TeV-powheg-pythia8_-102X_upgrade2018_realistic_v15_ext1-v1.root --verbose >& batch_logs/results_MCLHE2018_AnalyzeEMuCF_ST_tW_antitop_5f_inclusiveDecays_TuneCP5_13TeV-powheg-pythia8_-102X_upgrade2018_realistic_v15_ext1-v1.log &
+sleep 10s
+mkdir -p `dirname results/MCLHE2018/AnalyzeEMuCF/TTTo2L2Nu_TuneCP5_13TeV-powheg-pythia8_-102X_upgrade2018_realistic_v15-v1.root`
+#using farmout:1
+#dry run:1
+export megatarget=results/MCLHE2018/AnalyzeEMuCF/ST_tW_top_5f_inclusiveDecays_TuneCP5_13TeV-powheg-pythia8_-102X_upgrade2018_realistic_v15_ext1-v1.root
+mkdir -p batch_logs
+mega-farmout AnalyzeEMuCF.py inputs/MCLHE2018/ST_tW_top_5f_inclusiveDecays_TuneCP5_13TeV-powheg-pythia8_-102X_upgrade2018_realistic_v15_ext1-v1.txt results/MCLHE2018/AnalyzeEMuCF/ST_tW_top_5f_inclusiveDecays_TuneCP5_13TeV-powheg-pythia8_-102X_upgrade2018_realistic_v15_ext1-v1.root --verbose >& batch_logs/results_MCLHE2018_AnalyzeEMuCF_ST_tW_top_5f_inclusiveDecays_TuneCP5_13TeV-powheg-pythia8_-102X_upgrade2018_realistic_v15_ext1-v1.log &
+sleep 10s
+mkdir -p `dirname results/MCLHE2018/AnalyzeEMuCF/TTToHadronic_TuneCP5_13TeV-powheg-pythia8_-102X_upgrade2018_realistic_v15_ext2-v2.root`
+#using farmout:1
+#dry run:1
+export megatarget=results/MCLHE2018/AnalyzeEMuCF/TTTo2L2Nu_TuneCP5_13TeV-powheg-pythia8_-102X_upgrade2018_realistic_v15-v1.root
+mkdir -p batch_logs
+mega-farmout AnalyzeEMuCF.py inputs/MCLHE2018/TTTo2L2Nu_TuneCP5_13TeV-powheg-pythia8_-102X_upgrade2018_realistic_v15-v1.txt results/MCLHE2018/AnalyzeEMuCF/TTTo2L2Nu_TuneCP5_13TeV-powheg-pythia8_-102X_upgrade2018_realistic_v15-v1.root --verbose >& batch_logs/results_MCLHE2018_AnalyzeEMuCF_TTTo2L2Nu_TuneCP5_13TeV-powheg-pythia8_-102X_upgrade2018_realistic_v15-v1.log &
+sleep 10s
+mkdir -p `dirname results/MCLHE2018/AnalyzeEMuCF/TTToSemiLeptonic_TuneCP5_13TeV-powheg-pythia8_-102X_upgrade2018_realistic_v15_ext3-v2.root`
+#using farmout:1
+#dry run:1
+export megatarget=results/MCLHE2018/AnalyzeEMuCF/TTToHadronic_TuneCP5_13TeV-powheg-pythia8_-102X_upgrade2018_realistic_v15_ext2-v2.root
+mkdir -p batch_logs
+mega-farmout AnalyzeEMuCF.py inputs/MCLHE2018/TTToHadronic_TuneCP5_13TeV-powheg-pythia8_-102X_upgrade2018_realistic_v15_ext2-v2.txt results/MCLHE2018/AnalyzeEMuCF/TTToHadronic_TuneCP5_13TeV-powheg-pythia8_-102X_upgrade2018_realistic_v15_ext2-v2.root --verbose >& batch_logs/results_MCLHE2018_AnalyzeEMuCF_TTToHadronic_TuneCP5_13TeV-powheg-pythia8_-102X_upgrade2018_realistic_v15_ext2-v2.log &
+sleep 10s
+mkdir -p `dirname results/MCLHE2018/AnalyzeEMuCF/WW_TuneCP5_13TeV-pythia8_-102X_upgrade2018_realistic_v15-v2.root`
+#using farmout:1
+#dry run:1
+export megatarget=results/MCLHE2018/AnalyzeEMuCF/TTToSemiLeptonic_TuneCP5_13TeV-powheg-pythia8_-102X_upgrade2018_realistic_v15_ext3-v2.root
+mkdir -p batch_logs
+mega-farmout AnalyzeEMuCF.py inputs/MCLHE2018/TTToSemiLeptonic_TuneCP5_13TeV-powheg-pythia8_-102X_upgrade2018_realistic_v15_ext3-v2.txt results/MCLHE2018/AnalyzeEMuCF/TTToSemiLeptonic_TuneCP5_13TeV-powheg-pythia8_-102X_upgrade2018_realistic_v15_ext3-v2.root --verbose >& batch_logs/results_MCLHE2018_AnalyzeEMuCF_TTToSemiLeptonic_TuneCP5_13TeV-powheg-pythia8_-102X_upgrade2018_realistic_v15_ext3-v2.log &
+sleep 10s
+mkdir -p `dirname results/MCLHE2018/AnalyzeEMuCF/WZ_TuneCP5_13TeV-pythia8_-102X_upgrade2018_realistic_v15-v3.root`
+#using farmout:1
+#dry run:1
+export megatarget=results/MCLHE2018/AnalyzeEMuCF/WW_TuneCP5_13TeV-pythia8_-102X_upgrade2018_realistic_v15-v2.root
+mkdir -p batch_logs
+mega-farmout AnalyzeEMuCF.py inputs/MCLHE2018/WW_TuneCP5_13TeV-pythia8_-102X_upgrade2018_realistic_v15-v2.txt results/MCLHE2018/AnalyzeEMuCF/WW_TuneCP5_13TeV-pythia8_-102X_upgrade2018_realistic_v15-v2.root --verbose >& batch_logs/results_MCLHE2018_AnalyzeEMuCF_WW_TuneCP5_13TeV-pythia8_-102X_upgrade2018_realistic_v15-v2.log &
+sleep 10s
+mkdir -p `dirname results/MCLHE2018/AnalyzeEMuCF/ZZ_TuneCP5_13TeV-pythia8_-102X_upgrade2018_realistic_v15-v2.root`
+#using farmout:1
+#dry run:1
+export megatarget=results/MCLHE2018/AnalyzeEMuCF/WZ_TuneCP5_13TeV-pythia8_-102X_upgrade2018_realistic_v15-v3.root
+mkdir -p batch_logs
+mega-farmout AnalyzeEMuCF.py inputs/MCLHE2018/WZ_TuneCP5_13TeV-pythia8_-102X_upgrade2018_realistic_v15-v3.txt results/MCLHE2018/AnalyzeEMuCF/WZ_TuneCP5_13TeV-pythia8_-102X_upgrade2018_realistic_v15-v3.root --verbose >& batch_logs/results_MCLHE2018_AnalyzeEMuCF_WZ_TuneCP5_13TeV-pythia8_-102X_upgrade2018_realistic_v15-v3.log &
+sleep 10s
+#using farmout:1
+#dry run:1
+export megatarget=results/MCLHE2018/AnalyzeEMuCF/ZZ_TuneCP5_13TeV-pythia8_-102X_upgrade2018_realistic_v15-v2.root
+mkdir -p batch_logs
+mega-farmout AnalyzeEMuCF.py inputs/MCLHE2018/ZZ_TuneCP5_13TeV-pythia8_-102X_upgrade2018_realistic_v15-v2.txt results/MCLHE2018/AnalyzeEMuCF/ZZ_TuneCP5_13TeV-pythia8_-102X_upgrade2018_realistic_v15-v2.root --verbose >& batch_logs/results_MCLHE2018_AnalyzeEMuCF_ZZ_TuneCP5_13TeV-pythia8_-102X_upgrade2018_realistic_v15-v2.log &
+sleep 10s

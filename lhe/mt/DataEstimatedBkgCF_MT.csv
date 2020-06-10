@@ -1,0 +1,16 @@
+DataEstimatedBkg,2016,2017,2018
+Filter Efficiency,0.999,0.997,1.0
+OppSign Efficiency,0.67,0.681,0.693
+Trigger Efficiency,0.438,0.615,0.648
+Kinematics Efficiency,0.576,0.564,0.566
+DeltaR Efficiency,0.996,0.997,0.997
+NJets Efficiency,0.941,0.94,0.938
+Vetoes Efficiency,0.926,0.929,0.927
+bjestVeto Efficiency,0.966,0.964,0.96
+Obj1 ID Efficiency,0.958,0.958,0.966
+Obj2 ID Efficiency,0.316,0.331,0.33
+tDecayMode Efficiency,0.861,0.863,0.864
+dimuonVeto Efficiency,1.0,1.0,1.0
+Obj2 loose + not tight Efficiency,0.06,0.06,0.06
+Overall Cut Efficiency,0.002,0.003,0.003
+
