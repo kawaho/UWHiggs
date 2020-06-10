@@ -1,0 +1,119 @@
+mkdir -p `dirname results/MCLHE2016_NEW/AnalyzeEMuCF/embedded_EmbeddingRun2016E_ElMuFinalState.root`
+mkdir -p `dirname results/MCLHE2016_NEW/AnalyzeEMuCF/embedded_EmbeddingRun2016F_ElMuFinalState.root`
+#using farmout:1
+#dry run:1
+export megatarget=results/MCLHE2016_NEW/AnalyzeEMuCF/embedded_EmbeddingRun2016E_ElMuFinalState.root
+mkdir -p batch_logs
+mega-farmout AnalyzeEMuCF.py inputs/MCLHE2016_NEW/embedded_EmbeddingRun2016E_ElMuFinalState.txt results/MCLHE2016_NEW/AnalyzeEMuCF/embedded_EmbeddingRun2016E_ElMuFinalState.root --verbose >& batch_logs/results_MCLHE2016_NEW_AnalyzeEMuCF_embedded_EmbeddingRun2016E_ElMuFinalState.log &
+sleep 10s
+mkdir -p `dirname results/MCLHE2016_NEW/AnalyzeEMuCF/embedded_EmbeddingRun2016G_ElMuFinalState.root`
+#using farmout:1
+#dry run:1
+export megatarget=results/MCLHE2016_NEW/AnalyzeEMuCF/embedded_EmbeddingRun2016F_ElMuFinalState.root
+mkdir -p batch_logs
+mega-farmout AnalyzeEMuCF.py inputs/MCLHE2016_NEW/embedded_EmbeddingRun2016F_ElMuFinalState.txt results/MCLHE2016_NEW/AnalyzeEMuCF/embedded_EmbeddingRun2016F_ElMuFinalState.root --verbose >& batch_logs/results_MCLHE2016_NEW_AnalyzeEMuCF_embedded_EmbeddingRun2016F_ElMuFinalState.log &
+sleep 10s
+mkdir -p `dirname results/MCLHE2016_NEW/AnalyzeEMuCF/embedded_EmbeddingRun2016H_ElMuFinalState.root`
+#using farmout:1
+#dry run:1
+export megatarget=results/MCLHE2016_NEW/AnalyzeEMuCF/embedded_EmbeddingRun2016G_ElMuFinalState.root
+mkdir -p batch_logs
+mega-farmout AnalyzeEMuCF.py inputs/MCLHE2016_NEW/embedded_EmbeddingRun2016G_ElMuFinalState.txt results/MCLHE2016_NEW/AnalyzeEMuCF/embedded_EmbeddingRun2016G_ElMuFinalState.root --verbose >& batch_logs/results_MCLHE2016_NEW_AnalyzeEMuCF_embedded_EmbeddingRun2016G_ElMuFinalState.log &
+sleep 10s
+mkdir -p `dirname results/MCLHE2016_NEW/AnalyzeEMuCF/embedded_EmbeddingRun2016B_ElMuFinalState.root`
+#using farmout:1
+#dry run:1
+export megatarget=results/MCLHE2016_NEW/AnalyzeEMuCF/embedded_EmbeddingRun2016H_ElMuFinalState.root
+mkdir -p batch_logs
+mega-farmout AnalyzeEMuCF.py inputs/MCLHE2016_NEW/embedded_EmbeddingRun2016H_ElMuFinalState.txt results/MCLHE2016_NEW/AnalyzeEMuCF/embedded_EmbeddingRun2016H_ElMuFinalState.root --verbose >& batch_logs/results_MCLHE2016_NEW_AnalyzeEMuCF_embedded_EmbeddingRun2016H_ElMuFinalState.log &
+sleep 10s
+mkdir -p `dirname results/MCLHE2016_NEW/AnalyzeEMuCF/embedded_EmbeddingRun2016C_ElMuFinalState.root`
+#using farmout:1
+#dry run:1
+export megatarget=results/MCLHE2016_NEW/AnalyzeEMuCF/embedded_EmbeddingRun2016B_ElMuFinalState.root
+mkdir -p batch_logs
+mega-farmout AnalyzeEMuCF.py inputs/MCLHE2016_NEW/embedded_EmbeddingRun2016B_ElMuFinalState.txt results/MCLHE2016_NEW/AnalyzeEMuCF/embedded_EmbeddingRun2016B_ElMuFinalState.root --verbose >& batch_logs/results_MCLHE2016_NEW_AnalyzeEMuCF_embedded_EmbeddingRun2016B_ElMuFinalState.log &
+sleep 10s
+mkdir -p `dirname results/MCLHE2016_NEW/AnalyzeEMuCF/embedded_EmbeddingRun2016D_ElMuFinalState.root`
+#using farmout:1
+#dry run:1
+export megatarget=results/MCLHE2016_NEW/AnalyzeEMuCF/embedded_EmbeddingRun2016C_ElMuFinalState.root
+mkdir -p batch_logs
+mega-farmout AnalyzeEMuCF.py inputs/MCLHE2016_NEW/embedded_EmbeddingRun2016C_ElMuFinalState.txt results/MCLHE2016_NEW/AnalyzeEMuCF/embedded_EmbeddingRun2016C_ElMuFinalState.root --verbose >& batch_logs/results_MCLHE2016_NEW_AnalyzeEMuCF_embedded_EmbeddingRun2016C_ElMuFinalState.log &
+sleep 10s
+mkdir -p `dirname results/MCLHE2016_NEW/AnalyzeEMuCF/ST_t-channel_antitop_4f_inclusiveDecays_13TeV-powhegV2-madspin-pythia8_TuneCUETP8M1_v3-PUMoriond17_94X_mcRun2_asymptotic_v3-v1.root`
+#using farmout:1
+#dry run:1
+export megatarget=results/MCLHE2016_NEW/AnalyzeEMuCF/embedded_EmbeddingRun2016D_ElMuFinalState.root
+mkdir -p batch_logs
+mega-farmout AnalyzeEMuCF.py inputs/MCLHE2016_NEW/embedded_EmbeddingRun2016D_ElMuFinalState.txt results/MCLHE2016_NEW/AnalyzeEMuCF/embedded_EmbeddingRun2016D_ElMuFinalState.root --verbose >& batch_logs/results_MCLHE2016_NEW_AnalyzeEMuCF_embedded_EmbeddingRun2016D_ElMuFinalState.log &
+sleep 10s
+mkdir -p `dirname results/MCLHE2016_NEW/AnalyzeEMuCF/ST_t-channel_top_4f_inclusiveDecays_13TeV-powhegV2-madspin-pythia8_TuneCUETP8M1_v3-PUMoriond17_94X_mcRun2_asymptotic_v3-v1.root`
+#using farmout:1
+#dry run:1
+export megatarget=results/MCLHE2016_NEW/AnalyzeEMuCF/ST_t-channel_antitop_4f_inclusiveDecays_13TeV-powhegV2-madspin-pythia8_TuneCUETP8M1_v3-PUMoriond17_94X_mcRun2_asymptotic_v3-v1.root
+mkdir -p batch_logs
+mega-farmout AnalyzeEMuCF.py inputs/MCLHE2016_NEW/ST_t-channel_antitop_4f_inclusiveDecays_13TeV-powhegV2-madspin-pythia8_TuneCUETP8M1_v3-PUMoriond17_94X_mcRun2_asymptotic_v3-v1.txt results/MCLHE2016_NEW/AnalyzeEMuCF/ST_t-channel_antitop_4f_inclusiveDecays_13TeV-powhegV2-madspin-pythia8_TuneCUETP8M1_v3-PUMoriond17_94X_mcRun2_asymptotic_v3-v1.root --verbose >& batch_logs/results_MCLHE2016_NEW_AnalyzeEMuCF_ST_t-channel_antitop_4f_inclusiveDecays_13TeV-powhegV2-madspin-pythia8_TuneCUETP8M1_v3-PUMoriond17_94X_mcRun2_asymptotic_v3-v1.log &
+sleep 10s
+mkdir -p `dirname results/MCLHE2016_NEW/AnalyzeEMuCF/ST_tW_antitop_5f_inclusiveDecays_13TeV-powheg-pythia8_TuneCUETP8M1_v3-PUMoriond17_94X_mcRun2_asymptotic_v3_ext1-v1.root`
+#using farmout:1
+#dry run:1
+export megatarget=results/MCLHE2016_NEW/AnalyzeEMuCF/ST_t-channel_top_4f_inclusiveDecays_13TeV-powhegV2-madspin-pythia8_TuneCUETP8M1_v3-PUMoriond17_94X_mcRun2_asymptotic_v3-v1.root
+mkdir -p batch_logs
+mega-farmout AnalyzeEMuCF.py inputs/MCLHE2016_NEW/ST_t-channel_top_4f_inclusiveDecays_13TeV-powhegV2-madspin-pythia8_TuneCUETP8M1_v3-PUMoriond17_94X_mcRun2_asymptotic_v3-v1.txt results/MCLHE2016_NEW/AnalyzeEMuCF/ST_t-channel_top_4f_inclusiveDecays_13TeV-powhegV2-madspin-pythia8_TuneCUETP8M1_v3-PUMoriond17_94X_mcRun2_asymptotic_v3-v1.root --verbose >& batch_logs/results_MCLHE2016_NEW_AnalyzeEMuCF_ST_t-channel_top_4f_inclusiveDecays_13TeV-powhegV2-madspin-pythia8_TuneCUETP8M1_v3-PUMoriond17_94X_mcRun2_asymptotic_v3-v1.log &
+sleep 10s
+mkdir -p `dirname results/MCLHE2016_NEW/AnalyzeEMuCF/ST_tW_top_5f_inclusiveDecays_13TeV-powheg-pythia8_TuneCUETP8M1_v3-PUMoriond17_94X_mcRun2_asymptotic_v3_ext1-v1.root`
+#using farmout:1
+#dry run:1
+export megatarget=results/MCLHE2016_NEW/AnalyzeEMuCF/ST_tW_antitop_5f_inclusiveDecays_13TeV-powheg-pythia8_TuneCUETP8M1_v3-PUMoriond17_94X_mcRun2_asymptotic_v3_ext1-v1.root
+mkdir -p batch_logs
+mega-farmout AnalyzeEMuCF.py inputs/MCLHE2016_NEW/ST_tW_antitop_5f_inclusiveDecays_13TeV-powheg-pythia8_TuneCUETP8M1_v3-PUMoriond17_94X_mcRun2_asymptotic_v3_ext1-v1.txt results/MCLHE2016_NEW/AnalyzeEMuCF/ST_tW_antitop_5f_inclusiveDecays_13TeV-powheg-pythia8_TuneCUETP8M1_v3-PUMoriond17_94X_mcRun2_asymptotic_v3_ext1-v1.root --verbose >& batch_logs/results_MCLHE2016_NEW_AnalyzeEMuCF_ST_tW_antitop_5f_inclusiveDecays_13TeV-powheg-pythia8_TuneCUETP8M1_v3-PUMoriond17_94X_mcRun2_asymptotic_v3_ext1-v1.log &
+sleep 10s
+mkdir -p `dirname results/MCLHE2016_NEW/AnalyzeEMuCF/TTTo2L2Nu_TuneCP5_PSweights_13TeV-powheg-pythia8_v3-PUMoriond17_94X_mcRun2_asymptotic_v3-v1.root`
+#using farmout:1
+#dry run:1
+export megatarget=results/MCLHE2016_NEW/AnalyzeEMuCF/ST_tW_top_5f_inclusiveDecays_13TeV-powheg-pythia8_TuneCUETP8M1_v3-PUMoriond17_94X_mcRun2_asymptotic_v3_ext1-v1.root
+mkdir -p batch_logs
+mega-farmout AnalyzeEMuCF.py inputs/MCLHE2016_NEW/ST_tW_top_5f_inclusiveDecays_13TeV-powheg-pythia8_TuneCUETP8M1_v3-PUMoriond17_94X_mcRun2_asymptotic_v3_ext1-v1.txt results/MCLHE2016_NEW/AnalyzeEMuCF/ST_tW_top_5f_inclusiveDecays_13TeV-powheg-pythia8_TuneCUETP8M1_v3-PUMoriond17_94X_mcRun2_asymptotic_v3_ext1-v1.root --verbose >& batch_logs/results_MCLHE2016_NEW_AnalyzeEMuCF_ST_tW_top_5f_inclusiveDecays_13TeV-powheg-pythia8_TuneCUETP8M1_v3-PUMoriond17_94X_mcRun2_asymptotic_v3_ext1-v1.log &
+sleep 10s
+mkdir -p `dirname results/MCLHE2016_NEW/AnalyzeEMuCF/TTToHadronic_TuneCP5_PSweights_13TeV-powheg-pythia8_v3-PUMoriond17_94X_mcRun2_asymptotic_v3-v1.root`
+#using farmout:1
+#dry run:1
+export megatarget=results/MCLHE2016_NEW/AnalyzeEMuCF/TTTo2L2Nu_TuneCP5_PSweights_13TeV-powheg-pythia8_v3-PUMoriond17_94X_mcRun2_asymptotic_v3-v1.root
+mkdir -p batch_logs
+mega-farmout AnalyzeEMuCF.py inputs/MCLHE2016_NEW/TTTo2L2Nu_TuneCP5_PSweights_13TeV-powheg-pythia8_v3-PUMoriond17_94X_mcRun2_asymptotic_v3-v1.txt results/MCLHE2016_NEW/AnalyzeEMuCF/TTTo2L2Nu_TuneCP5_PSweights_13TeV-powheg-pythia8_v3-PUMoriond17_94X_mcRun2_asymptotic_v3-v1.root --verbose >& batch_logs/results_MCLHE2016_NEW_AnalyzeEMuCF_TTTo2L2Nu_TuneCP5_PSweights_13TeV-powheg-pythia8_v3-PUMoriond17_94X_mcRun2_asymptotic_v3-v1.log &
+sleep 10s
+mkdir -p `dirname results/MCLHE2016_NEW/AnalyzeEMuCF/TTToSemiLeptonic_TuneCP5_PSweights_13TeV-powheg-pythia8_v3-PUMoriond17_94X_mcRun2_asymptotic_v3-v1.root`
+#using farmout:1
+#dry run:1
+export megatarget=results/MCLHE2016_NEW/AnalyzeEMuCF/TTToHadronic_TuneCP5_PSweights_13TeV-powheg-pythia8_v3-PUMoriond17_94X_mcRun2_asymptotic_v3-v1.root
+mkdir -p batch_logs
+mega-farmout AnalyzeEMuCF.py inputs/MCLHE2016_NEW/TTToHadronic_TuneCP5_PSweights_13TeV-powheg-pythia8_v3-PUMoriond17_94X_mcRun2_asymptotic_v3-v1.txt results/MCLHE2016_NEW/AnalyzeEMuCF/TTToHadronic_TuneCP5_PSweights_13TeV-powheg-pythia8_v3-PUMoriond17_94X_mcRun2_asymptotic_v3-v1.root --verbose >& batch_logs/results_MCLHE2016_NEW_AnalyzeEMuCF_TTToHadronic_TuneCP5_PSweights_13TeV-powheg-pythia8_v3-PUMoriond17_94X_mcRun2_asymptotic_v3-v1.log &
+sleep 10s
+mkdir -p `dirname results/MCLHE2016_NEW/AnalyzeEMuCF/WW_TuneCUETP8M1_13TeV-pythia8_v3-PUMoriond17_94X_mcRun2_asymptotic_v3-v2.root`
+#using farmout:1
+#dry run:1
+export megatarget=results/MCLHE2016_NEW/AnalyzeEMuCF/TTToSemiLeptonic_TuneCP5_PSweights_13TeV-powheg-pythia8_v3-PUMoriond17_94X_mcRun2_asymptotic_v3-v1.root
+mkdir -p batch_logs
+mega-farmout AnalyzeEMuCF.py inputs/MCLHE2016_NEW/TTToSemiLeptonic_TuneCP5_PSweights_13TeV-powheg-pythia8_v3-PUMoriond17_94X_mcRun2_asymptotic_v3-v1.txt results/MCLHE2016_NEW/AnalyzeEMuCF/TTToSemiLeptonic_TuneCP5_PSweights_13TeV-powheg-pythia8_v3-PUMoriond17_94X_mcRun2_asymptotic_v3-v1.root --verbose >& batch_logs/results_MCLHE2016_NEW_AnalyzeEMuCF_TTToSemiLeptonic_TuneCP5_PSweights_13TeV-powheg-pythia8_v3-PUMoriond17_94X_mcRun2_asymptotic_v3-v1.log &
+sleep 10s
+mkdir -p `dirname results/MCLHE2016_NEW/AnalyzeEMuCF/WZ_TuneCUETP8M1_13TeV-pythia8_v3-PUMoriond17_94X_mcRun2_asymptotic_v3-v2.root`
+#using farmout:1
+#dry run:1
+export megatarget=results/MCLHE2016_NEW/AnalyzeEMuCF/WW_TuneCUETP8M1_13TeV-pythia8_v3-PUMoriond17_94X_mcRun2_asymptotic_v3-v2.root
+mkdir -p batch_logs
+mega-farmout AnalyzeEMuCF.py inputs/MCLHE2016_NEW/WW_TuneCUETP8M1_13TeV-pythia8_v3-PUMoriond17_94X_mcRun2_asymptotic_v3-v2.txt results/MCLHE2016_NEW/AnalyzeEMuCF/WW_TuneCUETP8M1_13TeV-pythia8_v3-PUMoriond17_94X_mcRun2_asymptotic_v3-v2.root --verbose >& batch_logs/results_MCLHE2016_NEW_AnalyzeEMuCF_WW_TuneCUETP8M1_13TeV-pythia8_v3-PUMoriond17_94X_mcRun2_asymptotic_v3-v2.log &
+sleep 10s
+mkdir -p `dirname results/MCLHE2016_NEW/AnalyzeEMuCF/ZZ_TuneCUETP8M1_13TeV-pythia8_v3-PUMoriond17_94X_mcRun2_asymptotic_v3-v2.root`
+#using farmout:1
+#dry run:1
+export megatarget=results/MCLHE2016_NEW/AnalyzeEMuCF/WZ_TuneCUETP8M1_13TeV-pythia8_v3-PUMoriond17_94X_mcRun2_asymptotic_v3-v2.root
+mkdir -p batch_logs
+mega-farmout AnalyzeEMuCF.py inputs/MCLHE2016_NEW/WZ_TuneCUETP8M1_13TeV-pythia8_v3-PUMoriond17_94X_mcRun2_asymptotic_v3-v2.txt results/MCLHE2016_NEW/AnalyzeEMuCF/WZ_TuneCUETP8M1_13TeV-pythia8_v3-PUMoriond17_94X_mcRun2_asymptotic_v3-v2.root --verbose >& batch_logs/results_MCLHE2016_NEW_AnalyzeEMuCF_WZ_TuneCUETP8M1_13TeV-pythia8_v3-PUMoriond17_94X_mcRun2_asymptotic_v3-v2.log &
+sleep 10s
+#using farmout:1
+#dry run:1
+export megatarget=results/MCLHE2016_NEW/AnalyzeEMuCF/ZZ_TuneCUETP8M1_13TeV-pythia8_v3-PUMoriond17_94X_mcRun2_asymptotic_v3-v2.root
+mkdir -p batch_logs
+mega-farmout AnalyzeEMuCF.py inputs/MCLHE2016_NEW/ZZ_TuneCUETP8M1_13TeV-pythia8_v3-PUMoriond17_94X_mcRun2_asymptotic_v3-v2.txt results/MCLHE2016_NEW/AnalyzeEMuCF/ZZ_TuneCUETP8M1_13TeV-pythia8_v3-PUMoriond17_94X_mcRun2_asymptotic_v3-v2.root --verbose >& batch_logs/results_MCLHE2016_NEW_AnalyzeEMuCF_ZZ_TuneCUETP8M1_13TeV-pythia8_v3-PUMoriond17_94X_mcRun2_asymptotic_v3-v2.log &
+sleep 10s

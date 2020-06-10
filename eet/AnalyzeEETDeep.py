@@ -115,7 +115,7 @@ class AnalyzeEETDeep(MegaBase):
       self.book(n, "e1Eta", "Electron 1 Eta", 20, -3, 3)
       self.book(n, "e2Pt", "Electron 2 Pt", 20, 0, 200)
       self.book(n, "e2Eta", "Electron 2 Eta", 20, -3, 3)
-
+      self.book(n, 'numOfJets', 'Number of Jets', 5, 0, 5)
 
   def fill_histos(self, row, myEle1, myEle2, myTau, weight, name=''):
     histos = self.histograms
@@ -127,6 +127,7 @@ class AnalyzeEETDeep(MegaBase):
     histos[name+'/e1Eta'].Fill(myEle1.Eta(), weight)
     histos[name+'/e2Pt'].Fill(myEle2.Pt(), weight)
     histos[name+'/e2Eta'].Fill(myEle2.Eta(), weight)
+    histos[name+'/numOfJets'].Fill(row.jetVeto30, weight)
 
   # Tau energy scale correction
   def tauPtC(self, row, myTau):
