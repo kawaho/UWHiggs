@@ -33,6 +33,28 @@ samples = Hash[
                 "ggHTT" => get_sample_names('GluGluHToTauTau_M125_13TeV_powheg_pythia8_v2-PU2017_12Apr2018_new_pmx_94X_mc2017_realistic_v14-v2'),
 		"vbfHWW" => get_sample_names('VBFHToWWTo2L2Nu_M125_13TeV_powheg2_JHUGenV714_pythia8_v2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1'),
                 "ggHWW" => get_sample_names('GluGluHToWWTo2L2Nu_M125_13TeV_powheg2_JHUGenV714_pythia8_v2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1'),
+                "embedB" => get_sample_names('embedded_EmbeddingRun2017B_MuTauFinalState'),
+                "embedC" => get_sample_names('embedded_EmbeddingRun2017C_MuTauFinalState'),
+                "embedD" => get_sample_names('embedded_EmbeddingRun2017D_MuTauFinalState'),
+                "embedE" => get_sample_names('embedded_EmbeddingRun2017E_MuTauFinalState'),
+                "embedF" => get_sample_names('embedded_EmbeddingRun2017F_MuTauFinalState'),
+                "STtantitop" => get_sample_names('ST_t-channel_antitop_4f_inclusiveDecays_TuneCP5_13TeV-powhegV2-madspin-pythia8_v2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v2'),
+                "STttop" => get_sample_names('ST_t-channel_top_4f_inclusiveDecays_TuneCP5_13TeV-powhegV2-madspin-pythia8_v2-PU2017_12Apr2018_new_pmx_94X_mc2017_realistic_v14-v1'),
+                "STtWantitop" => get_sample_names('ST_tW_antitop_5f_inclusiveDecays_TuneCP5_13TeV-powheg-pythia8_v2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v2'),
+                "STtWtop" => get_sample_names('ST_tW_top_5f_inclusiveDecays_TuneCP5_13TeV-powheg-pythia8_v2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v2'),
+                "TTTo2L2Nu" => get_sample_names('TTTo2L2Nu_TuneCP5_13TeV-powheg-pythia8_v2-PU2017_12Apr2018_new_pmx_94X_mc2017_realistic_v14-v1'),
+                "TTToHadronic" => get_sample_names('TTToHadronic_TuneCP5_13TeV-powheg-pythia8_v2-PU2017_12Apr2018_new_pmx_94X_mc2017_realistic_v14-v2'),
+                "TTToSemiLeptonic" => get_sample_names('TTToSemiLeptonic_TuneCP5_13TeV-powheg-pythia8_v2-PU2017_12Apr2018_new_pmx_94X_mc2017_realistic_v14-v1'),
+                "WW" => get_sample_names('WW_TuneCP5_13TeV-pythia8_v2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v2'),
+                "WZ" => get_sample_names('WZ_TuneCP5_13TeV-pythia8_v2-PU2017_12Apr2018_PU2017_94X_mc2017_realistic_v14-v1'), 
+                "ZZ" => get_sample_names('ZZ_TuneCP5_13TeV-pythia8_v2-PU2017_12Apr2018_new_pmx_94X_mc2017_realistic_v14-v2'),
+                "dataB" => get_sample_names('data_SingleMuon_Run2017B-31Mar2018'),
+                "dataC" => get_sample_names('data_SingleMuon_Run2017C-31Mar2018'),
+                "dataD" => get_sample_names('data_SingleMuon_Run2017D-31Mar2018'),
+                "dataE" => get_sample_names('data_SingleMuon_Run2017E-31Mar2018'),
+                "dataF" => get_sample_names('data_SingleMuon_Run2017F-31Mar2018'),
+
+
 ]
 
 
@@ -50,7 +72,15 @@ def get_plotter_results(analyzer)
   analyzer_base = analyzer.sub('.py', '')
 end
 
-task :MT => get_analyzer_results("AnalyzeMuTau.py", samples['vbfHTT'] + samples['ggHTT'] + samples['vbfHWW'] + samples['ggHWW'] + samples['ggHMT'] + samples['vbfHMT'])
+#task :MT => get_analyzer_results("AnalyzeMuTauGen.py", samples['vbfHTT'] + samples['ggHTT'] + samples['vbfHWW'] + samples['ggHWW'] + samples['ggHMT'] + samples['vbfHMT'])
+
+#task :MT => get_analyzer_results("AnalyzeMuTauCF.py", samples['ggHMT'] + samples['vbfHMT'])
+
+#task :MT => get_analyzer_results("AnalyzeMuTauCF.py", samples['embedB'] + samples['embedC'] + samples['embedD'] + samples['STtantitop'] + samples['STttop'] + samples['STtWantitop'] + samples['STtWtop'] + samples['TTTo2L2Nu'] + samples['TTToHadronic'] + samples['TTToSemiLeptonic'] + samples['WW'] + samples['WZ'] + samples['ZZ'] + samples['embedF'] + samples['embedE'])
+
+task :MT => get_analyzer_results("AnalyzeMuTauCF.py", samples['dataB'] + samples['dataC'] + samples['dataD'] + samples['dataE'] + samples['dataF'])
+
+#task :MT => get_analyzer_results("AnalyzeMuTauCF.py", samples['embedB'] + samples['embedC'] + samples['embedD'] + samples['embedF'] + samples['embedE'])
 
 $etdir = "plots/#{$jobid}/AnalyzerMuTau/mt_now/"
 directory $etdir 

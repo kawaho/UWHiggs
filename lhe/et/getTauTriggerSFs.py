@@ -27,8 +27,8 @@ class getTauTriggerSFs :
 
         # Assume this is in CMSSW with the below path structure
         base = os.environ['CMSSW_BASE']
-        self.f_old = ROOT.TFile( '../../../FinalStateAnalysis/TagAndProbe/data/tauTriggerEfficiencies2017.root', 'r' )
-        self.f = ROOT.TFile( '../../../FinalStateAnalysis/TagAndProbe/data/tauTriggerEfficiencies2017_New.root', 'r' )
+        self.f_old = ROOT.TFile( '../../../FinalStateAnalysis/TagAndProbe/data/2017/tauTriggerEfficiencies2017.root', 'r' )
+        self.f = ROOT.TFile( '../../../FinalStateAnalysis/TagAndProbe/data/2017/tauTriggerEfficiencies2017_New.root', 'r' )
 
         # Load the TH1s containing the bin by bin values
         self.diTauData = self.f.Get('hist_diTauTriggerEfficiency_%sTau%s_DATA' % (self.tauWP, self.wpType) )

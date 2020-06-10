@@ -123,7 +123,7 @@ class AnalyzeMMT(MegaBase):
       self.book(n, "m1Eta", "Muon 1 Eta", 20, -3, 3)
       self.book(n, "m2Pt", "Muon 2 Pt", 20, 0, 200)
       self.book(n, "m2Eta", "Muon 2 Eta", 20, -3, 3)
-
+      self.book(n, 'numOfJets', 'Number of Jets', 5, 0, 5)
 
   def fill_histos(self, row, myMuon1, myMuon2, myTau, weight, name=''):
     histos = self.histograms
@@ -135,6 +135,7 @@ class AnalyzeMMT(MegaBase):
     histos[name+'/m1Eta'].Fill(myMuon1.Eta(), weight)
     histos[name+'/m2Pt'].Fill(myMuon2.Pt(), weight)
     histos[name+'/m2Eta'].Fill(myMuon2.Eta(), weight)
+    histos[name+'/numOfJets'].Fill(row.jetVeto30, weight) 
 
   # Tau pT correction
   def tauPtC(self, row, myTau):
