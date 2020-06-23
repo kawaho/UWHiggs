@@ -158,8 +158,8 @@ class AnalyzeEET(MegaBase):
       e2trigger27 = row.Ele27WPTightPass and row.e2MatchesEle27Filter and row.e2MatchesEle27Path and row.e2Pt > 28
       e2trigger32 = row.Ele32WPTightPass and row.e2MatchesEle32Filter and row.e2MatchesEle32Path and row.e2Pt > 33
       e2trigger35 = row.Ele35WPTightPass and row.e2MatchesEle35Filter and row.e2MatchesEle35Path and row.e2Pt > 36
-      e1tautrigger2430 = row.Ele24LooseTau30Pass and row.e1MatchesEle24Tau30Filter and row.e1MatchesEle24Tau30Path and row.tMatchesEle24Tau30Filter and row.tMatchesEle24Tau30Path and row.ePt > 25 and row.ePt < 28 and row.tPt > 36 and abs(row.tEta) < 2.1
-      e2tautrigger2430 = row.Ele24LooseTau30Pass and row.e2MatchesEle24Tau30Filter and row.e2MatchesEle24Tau30Path and row.tMatchesEle24Tau30Filter and row.tMatchesEle24Tau30Path and row.ePt > 25 and row.ePt < 28 and row.tPt > 36 and abs(row.tEta) < 2.1
+      e1tautrigger2430 = row.Ele24LooseTau30Pass and row.e1MatchesEle24Tau30Filter and row.e1MatchesEle24Tau30Path and row.tMatchesEle24Tau30Filter and row.tMatchesEle24Tau30Path and row.e1Pt > 25 and row.e1Pt < 28 and row.tPt > 36 and abs(row.tEta) < 2.1
+      e2tautrigger2430 = row.Ele24LooseTau30Pass and row.e2MatchesEle24Tau30Filter and row.e2MatchesEle24Tau30Path and row.tMatchesEle24Tau30Filter and row.tMatchesEle24Tau30Path and row.e2Pt > 25 and row.e2Pt < 28 and row.tPt > 36 and abs(row.tEta) < 2.1
       if self.filters(row):
         continue
 
