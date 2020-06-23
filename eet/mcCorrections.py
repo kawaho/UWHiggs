@@ -6,6 +6,7 @@ import FinalStateAnalysis.TagAndProbe.EGammaPOGCorrections as EGammaPOGCorrectio
 import FinalStateAnalysis.TagAndProbe.DYCorrection as DYCorrection
 import FinalStateAnalysis.TagAndProbe.DYCorrectionReco as DYCorrectionReco
 import ROOT
+from getTauTriggerSFs import getTauTriggerSFs
 
 dataset = 'singlee'
 year = '2018'
@@ -211,6 +212,7 @@ Ele24 = EGammaPOGCorrections.el_Ele24_2018
 Ele32or35 = EGammaPOGCorrections.el_Ele32orEle35_2018
 Ele35 = EGammaPOGCorrections.el_Ele35_2018
 EleIdIso = EGammaPOGCorrections.el_IdIso_2018
+tauSF = getTauTriggerSFs()
 
 f1 = ROOT.TFile("../../FinalStateAnalysis/TagAndProbe/data/2018/htt_scalefactors_legacy_2018.root")
 w1 = f1.Get("w")

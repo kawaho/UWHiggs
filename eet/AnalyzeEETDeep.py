@@ -42,7 +42,8 @@ class AnalyzeEETDeep(MegaBase):
     self.visibleMass = Kinematics.visibleMass
     self.collMass = Kinematics.collMass
     self.transverseMass = Kinematics.transverseMass
-
+    self.tauSF = mcCorrections.tauSF
+    self.w1 = mcCorrections.w1
     super(AnalyzeEETDeep, self).__init__(tree, outfile, **kwargs)
     self.tree = EETauTree.EETauTree(tree)
     self.out = outfile
