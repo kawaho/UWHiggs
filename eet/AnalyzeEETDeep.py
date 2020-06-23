@@ -237,7 +237,7 @@ class AnalyzeEETDeep(MegaBase):
         e1IdIso = self.EleIdIso(row.e1Pt, abs(row.e1Eta))[0]
         # ELectron 2 Scale Factors
         e2IdIso = self.EleIdIso(row.e2Pt, abs(row.e2Eta))[0]
-        weight = weight * row.GenWeight * pucorrector[''](row.nTruePU) * e1IdIso * e2IdIso
+        weight = weight * tEff * row.GenWeight * pucorrector[''](row.nTruePU) * e1IdIso * e2IdIso
         # Anti-Muon and Anti-Electron Discriminator Scale Factors
         if row.tZTTGenMatching==2 or row.tZTTGenMatching==4:
           if self.tau_tight(row):
