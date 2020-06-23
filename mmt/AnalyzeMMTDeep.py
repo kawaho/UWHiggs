@@ -92,7 +92,7 @@ class AnalyzeMMTDeep(MegaBase):
 
   # Tau decay mode finding along with discrimination against electron and muon, and primary vertex matching
   def tau_id(self, row):
-    return bool(row.tDecayModeFindingNewDMs > 0.5) and bool(row.tVLooseDeepTau2017v2p1VSe > 0.5) and bool(row.tTightDeepTau2017v2p1VSmu > 0.5) and bool(abs(row.tPVDZ) < 0.2)
+    return bool(row.tDecayModeFindingNewDMs > 0.5) and bool(row.tTightDeepTau2017v2p1VSe > 0.5) and bool(row.tLooseDeepTau2017v2p1VSmu > 0.5) and bool(abs(row.tPVDZ) < 0.2)
 
   # Tight Working Point(WP) for Isolation for tau
   def tau_tight(self, row):
