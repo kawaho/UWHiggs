@@ -159,11 +159,13 @@ class AnalyzeEETDeep(MegaBase):
       trigger35e1 = row.Ele35WPTightPass and row.e1MatchesEle35Filter and row.e1MatchesEle35Path and row.e1Pt > 36
       trigger32e2 = row.Ele32WPTightPass and row.e2MatchesEle32Filter and row.e2MatchesEle32Path and row.e2Pt > 33
       trigger35e2 = row.Ele35WPTightPass and row.e2MatchesEle35Filter and row.e2MatchesEle35Path and row.e2Pt > 36 
+      e1tautrigger2430 = row.Ele24LooseTau30Pass and row.e1MatchEmbeddedFilterEle24Tau30 and row.tMatchEmbeddedFilterEle24Tau30 and row.e1Pt > 25 and row.e1Pt < 33 and row.tPt > 32 and abs(row.tEta) < 2.1
+      e2tautrigger2430 = row.Ele24LooseTau30Pass and row.e2MatchEmbeddedFilterEle24Tau30 and row.tMatchEmbeddedFilterEle24Tau30 and row.e2Pt > 25 and row.e2Pt < 33 and row.tPt > 32 and abs(row.tEta) < 2.1
 
       if self.filters(row):
         continue
 
-      if not bool(trigger32e1 or trigger32e2 or trigger35e1 or trigger35e2):
+      if not bool(trigger32e1 or trigger32e2 or trigger35e1 or trigger35e2 or e1tautrigger2430 or e2tautrigger2430):
         continue
 
       if not self.kinematics(row):
@@ -208,11 +210,29 @@ class AnalyzeEETDeep(MegaBase):
       if self.is_mc:
         # Trigger Scale Factors
         if trigger32e1 or trigger35e1:
-          tEff = self.Ele32or35(row.e1Pt, abs(row.e1Eta))[0]
-          weight = weight * tEff
-        elif trigger32e2 or trigger35e2:
-          tEff = self.Ele32or35(row.e2Pt, abs(row.e2Eta))[0]
-          weight = weight * tEff
+          self.w1.var('e_pt').setVal(myEle1.Pt())
+          self.w1.var('e_eta').setVal(myEle1.Eta())
+          tEff = self.w1.function('e_trg32_trg35_binned_kit_ratio').getVal() 
+        if trigger32e2 or trigger35e2:
+          self.w1.var('e_pt').setVal(myEle2.Pt())
+          self.w1.var('e_eta').setVal(myEle2.Eta())
+          tEff = self.w1.function('e_trg32_trg35_binned_kit_ratio').getVal()   
+        if e1tautrigger2430:
+          self.w1.var('e_pt').setVal(myEle1.Pt())
+          self.w1.var('e_eta').setVal(myEle1.Eta())
+          tEff = self.w1.function('e_trg_EleTau_Ele24Leg_desy_ratio').getVal()
+          if row.tDecayMode==11:
+            tEff = tEff * self.tauSF.getTriggerScaleFactor(myTau.Pt(), myTau.Eta(), myTau.Phi(), 10)
+          else:
+            tEff = tEff * self.tauSF.getTriggerScaleFactor(myTau.Pt(), myTau.Eta(), myTau.Phi(), row.tDecayMode)
+        if e2tautrigger2430:
+          self.w1.var('e_pt').setVal(myEle2.Pt())
+          self.w1.var('e_eta').setVal(myEle2.Eta())
+          tEff = self.w1.function('e_trg_EleTau_Ele24Leg_desy_ratio').getVal() 
+          if row.tDecayMode==11:
+            tEff = tEff * self.tauSF.getTriggerScaleFactor(myTau.Pt(), myTau.Eta(), myTau.Phi(), 10)
+          else:
+            tEff = tEff * self.tauSF.getTriggerScaleFactor(myTau.Pt(), myTau.Eta(), myTau.Phi(), row.tDecayMode)
         # Electron 1 Scale Factors
         e1IdIso = self.EleIdIso(row.e1Pt, abs(row.e1Eta))[0]
         # ELectron 2 Scale Factors
