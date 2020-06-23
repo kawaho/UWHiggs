@@ -42,7 +42,7 @@ class AnalyzeEET(MegaBase):
     self.FesTau = mcCorrections.FesTau
     self.DYreweight = mcCorrections.DYreweight
     self.w2 = mcCorrections.w2
-
+    self.tauSF = mcCorrections.tauSF
     self.DYweight = self.mcWeight.DYweight
 
     self.deltaPhi = Kinematics.deltaPhi
@@ -158,11 +158,12 @@ class AnalyzeEET(MegaBase):
       e2trigger27 = row.Ele27WPTightPass and row.e2MatchesEle27Filter and row.e2MatchesEle27Path and row.e2Pt > 28
       e2trigger32 = row.Ele32WPTightPass and row.e2MatchesEle32Filter and row.e2MatchesEle32Path and row.e2Pt > 33
       e2trigger35 = row.Ele35WPTightPass and row.e2MatchesEle35Filter and row.e2MatchesEle35Path and row.e2Pt > 36
-
+      e1tautrigger2430 = row.Ele24LooseTau30Pass and row.e1MatchesEle24Tau30Filter and row.e1MatchesEle24Tau30Path and row.tMatchesEle24Tau30Filter and row.tMatchesEle24Tau30Path and row.ePt > 25 and row.ePt < 28 and row.tPt > 36 and abs(row.tEta) < 2.1
+      e2tautrigger2430 = row.Ele24LooseTau30Pass and row.e2MatchesEle24Tau30Filter and row.e2MatchesEle24Tau30Path and row.tMatchesEle24Tau30Filter and row.tMatchesEle24Tau30Path and row.ePt > 25 and row.ePt < 28 and row.tPt > 36 and abs(row.tEta) < 2.1
       if self.filters(row):
         continue
 
-      if not bool(e1trigger27 or e1trigger32 or e1trigger35 or e2trigger27 or e2trigger32 or e2trigger35):
+      if not bool(e1trigger27 or e1trigger32 or e1trigger35 or e2trigger27 or e2trigger32 or e2trigger35 or e1tautrigger2430 or e2tautrigger2430):
         continue
 
       if not self.kinematics(row):
@@ -213,6 +214,17 @@ class AnalyzeEET(MegaBase):
           self.w2.var("e_pt").setVal(myEle2.Pt())
           self.w2.var("e_eta").setVal(myEle2.Eta())
           tEff = 0 if self.w2.function("e_trg27_trg32_trg35_kit_mc").getVal()==0 else self.w2.function("e_trg27_trg32_trg35_kit_data").getVal()/self.w2.function("e_trg27_trg32_trg35_kit_mc").getVal()
+        if e1tautrigger2430:
+          self.w2.var("e_pt").setVal(myEle1.Pt())
+          self.w2.var("e_eta").setVal(myEle1.Eta()) 
+          tEff = 0 if self.w2.function('e_trg_EleTau_Ele24Leg_desy_mc').getVal()==0 else self.w2.function('e_trg_EleTau_Ele24Leg_desy_data').getVal()/self.w2.function('e_trg_EleTau_Ele24Leg_desy_mc').getVal()
+           tEff = tEff * self.tauSF.getETauScaleFactor(myTau.Pt(), myTau.Eta(), myTau.Phi())
+         if e2tautrigger2430:
+           self.w2.var("e_pt").setVal(myEle2.Pt())
+           self.w2.var("e_eta").setVal(myEle2.Eta()) 
+           tEff = 0 if self.w2.function('e_trg_EleTau_Ele24Leg_desy_mc').getVal()==0 else self.w2.function('e_trg_EleTau_Ele24Leg_desy_data').getVal()/self.w2.function('e_trg_EleTau_Ele24Leg_desy_mc').getVal()
+           tEff = tEff * self.tauSF.getETauScaleFactor(myTau.Pt(), myTau.Eta(), myTau.Phi())
+        
         # Electron 1 Scale Factors
         e1ID = self.eIDnoiso90(row.e1Eta, row.e1Pt)
         e1Trk = self.eReco(row.e1Eta, row.e1Pt)
