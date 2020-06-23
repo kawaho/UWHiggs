@@ -160,8 +160,13 @@ class AnalyzeEETDeep(MegaBase):
       trigger35e1 = row.Ele35WPTightPass and row.e1MatchesEle35Filter and row.e1MatchesEle35Path and row.e1Pt > 36
       trigger32e2 = row.Ele32WPTightPass and row.e2MatchesEle32Filter and row.e2MatchesEle32Path and row.e2Pt > 33
       trigger35e2 = row.Ele35WPTightPass and row.e2MatchesEle35Filter and row.e2MatchesEle35Path and row.e2Pt > 36 
-      e1tautrigger2430 = row.Ele24LooseTau30Pass and row.e1MatchEmbeddedFilterEle24Tau30 and row.tMatchEmbeddedFilterEle24Tau30 and row.e1Pt > 25 and row.e1Pt < 33 and row.tPt > 32 and abs(row.tEta) < 2.1
-      e2tautrigger2430 = row.Ele24LooseTau30Pass and row.e2MatchEmbeddedFilterEle24Tau30 and row.tMatchEmbeddedFilterEle24Tau30 and row.e2Pt > 25 and row.e2Pt < 33 and row.tPt > 32 and abs(row.tEta) < 2.1
+      if self.is_data and row.run < 317509:
+        e1tautrigger2430 = row.Ele24LooseTau30Pass and row.e1MatchesEle24Tau30Filter and row.e1MatchesEle24Tau30Path and row.tMatchesEle24Tau30Filter and row.tMatchesEle24Tau30Path and row.e1Pt > 25 and row.e1Pt < 33 and row.tPt > 32 and abs(row.tEta) < 2.1
+        e2tautrigger2430 = row.Ele24LooseTau30Pass and row.e2MatchesEle24Tau30Filter and row.e2MatchesEle24Tau30Path and row.tMatchesEle24Tau30Filter and row.tMatchesEle24Tau30Path and row.e2Pt > 25 and row.e2Pt < 33 and row.tPt > 32 and abs(row.tEta) < 2.1
+      else:
+        e1tautrigger2430 = row.Ele24LooseHPSTau30Pass and row.e1MatchesEle24HPSTau30Filter and row.e1MatchesEle24HPSTau30Path and row.tMatchesEle24HPSTau30Filter and row.tMatchesEle24HPSTau30Path and row.e1Pt > 25 and row.e1Pt < 33 and row.tPt > 32 and abs(row.tEta) < 2.1 
+        e2tautrigger2430 = row.Ele24LooseHPSTau30Pass and row.e2MatchesEle24HPSTau30Filter and row.e2MatchesEle24HPSTau30Path and row.tMatchesEle24HPSTau30Filter and row.tMatchesEle24HPSTau30Path and row.e2Pt > 25 and row.e2Pt < 33 and row.tPt > 32 and abs(row.tEta) < 2.1 
+
 
       if self.filters(row):
         continue
