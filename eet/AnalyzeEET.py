@@ -219,7 +219,7 @@ class AnalyzeEET(MegaBase):
           self.w2.var("e_pt").setVal(myEle1.Pt())
           self.w2.var("e_eta").setVal(myEle1.Eta()) 
           tEff = 0 if self.w2.function('e_trg_EleTau_Ele24Leg_desy_mc').getVal()==0 else self.w2.function('e_trg_EleTau_Ele24Leg_desy_data').getVal()/self.w2.function('e_trg_EleTau_Ele24Leg_desy_mc').getVal()
-           tEff = tEff * self.tauSF.getETauScaleFactor(myTau.Pt(), myTau.Eta(), myTau.Phi())
+          tEff = tEff * self.tauSF.getETauScaleFactor(myTau.Pt(), myTau.Eta(), myTau.Phi())
         if e2tautrigger2430:
           self.w2.var("e_pt").setVal(myEle2.Pt())
           self.w2.var("e_eta").setVal(myEle2.Eta()) 

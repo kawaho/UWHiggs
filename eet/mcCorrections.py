@@ -6,6 +6,7 @@ import FinalStateAnalysis.TagAndProbe.TauPOGCorrections as TauPOGCorrections
 import FinalStateAnalysis.TagAndProbe.DYCorrection as DYCorrection
 import FinalStateAnalysis.TagAndProbe.RecoilCorrector as RecoilCorrector
 import ROOT
+from getTauTriggerSFs import getTauTriggerSFs
 
 dataset = 'singlee'
 year = '2017'
@@ -73,5 +74,6 @@ def FesTau(eta, dm):
             fes = fesTau('EEDM1')
     return fes
 
+tauSF = getTauTriggerSFs()
 f2 = ROOT.TFile("../../FinalStateAnalysis/TagAndProbe/data/2017/htt_scalefactors_2017_v2.root")
 w2 = f2.Get("w")
