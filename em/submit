@@ -1,0 +1,14 @@
+mkdir -p `dirname results/Data2017JEC/AnalyzeEM/VBF_LFV_HToEMu_M125_13TeV_powheg_pythia8_v2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1.root`
+mkdir -p `dirname results/Data2017JEC/AnalyzeEM/GluGlu_LFV_HToEMu_M125_13TeV_powheg_pythia8_v2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1.root`
+#using farmout:1
+#dry run:1
+export megatarget=results/Data2017JEC/AnalyzeEM/VBF_LFV_HToEMu_M125_13TeV_powheg_pythia8_v2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1.root
+mkdir -p batch_logs
+mega-farmout AnalyzeEM.py inputs/Data2017JEC/VBF_LFV_HToEMu_M125_13TeV_powheg_pythia8_v2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1.txt results/Data2017JEC/AnalyzeEM/VBF_LFV_HToEMu_M125_13TeV_powheg_pythia8_v2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1.root --verbose >& batch_logs/results_Data2017JEC_AnalyzeEM_VBF_LFV_HToEMu_M125_13TeV_powheg_pythia8_v2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1.log &
+sleep 10s
+#using farmout:1
+#dry run:1
+export megatarget=results/Data2017JEC/AnalyzeEM/GluGlu_LFV_HToEMu_M125_13TeV_powheg_pythia8_v2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1.root
+mkdir -p batch_logs
+mega-farmout AnalyzeEM.py inputs/Data2017JEC/GluGlu_LFV_HToEMu_M125_13TeV_powheg_pythia8_v2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1.txt results/Data2017JEC/AnalyzeEM/GluGlu_LFV_HToEMu_M125_13TeV_powheg_pythia8_v2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1.root --verbose >& batch_logs/results_Data2017JEC_AnalyzeEM_GluGlu_LFV_HToEMu_M125_13TeV_powheg_pythia8_v2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1.log &
+sleep 10s
