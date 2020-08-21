@@ -1,10 +1,10 @@
 import xml.etree.ElementTree as ET
 import math
 root = ET.parse('dataset/weights/TMVA_Opt_Category_Cuts0.weights.xml').getroot()
-for cat in root.findall('Weights/SubMethod'):
-  print cat.attrib
+for catname in root.findall('Weights/SubMethod'):
+  cat = catname.attrib.get('Index')
   s_max = -1
-  for bin_ in cat.findall('Weights/Bin'):
+  for bin_ in catname.findall('Weights/Bin'):
     effs = float(bin_.attrib.get('effS'))
     effb = float(bin_.attrib.get('effB'))
     if float(bin_.attrib.get('effB')) != 0:
@@ -19,6 +19,7 @@ for cat in root.findall('Weights/SubMethod'):
           metcut = float(cut.attrib.get('cutMax_2'))
     else:
       s = 0
+  print catname.attrib.get('Index')
   print "effS: %s"% effs_max, " effB: %s" % effb_max
   print "Max Sensitivity: %f" % s_max
-  print "mPt cut: %s, ePt cut: %s, MET cut: %s \n" % (round(mPtcut), round(ePtcut), round(metcut))
+  print "ePt cut: %s, mPt cut: %s, MET cut: %s \n" % (round(ePtcut), round(mPtcut), round(metcut))

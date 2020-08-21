@@ -40,6 +40,7 @@ class EMBase():
     self.muTracking = mcCorrections.muonTracking
     self.eIDnoiso80 = mcCorrections.eIDnoiso80
     self.eReco = mcCorrections.eReco
+
     self.DYreweight = mcCorrections.DYreweight
     self.w1 = mcCorrections.w1
     self.rc = mcCorrections.rc
@@ -49,8 +50,16 @@ class EMBase():
     self.deltaR = Kinematics.deltaR
     self.visibleMass = Kinematics.visibleMass
     self.transverseMass = Kinematics.transverseMass
+    self.invert_case = Kinematics.invert_case
 
-    self.names = Kinematics.names
+    self.plotnames = Kinematics.plotnames
+
+    self.branches='mPt/F:ePt/F:e_m_Mass/F:type1_pfMetEt/F:itype/I:cat/I:weight/F'
+    self.holders = []
+    self.name='opttree'
+    self.title='opttree'
+
+    self.cutparms = Kinematics.SensitivityParser()
 
   # Requirement on the charge of the leptons
   def oppositesign(self, row):
@@ -60,9 +69,9 @@ class EMBase():
 
   # Trigger
   def trigger(self, row):
-      triggerm8e23 = row.mu8e23DZPass
-      triggerm23e12 = row.mu23e12Pass
-      return bool(triggerm8e23 and triggerm23e12)
+    triggerm8e23 = row.mu8e23DZPass
+    triggerm23e12 = row.mu23e12DZPass
+    return bool(triggerm8e23 and triggerm23e12)
 
   # Kinematics requirements on both the leptons
   def kinematics(self, row):
@@ -97,18 +106,33 @@ class EMBase():
   def vetos(self, row):
     return bool(row.eVetoZTTp001dxyz < 0.5) and bool(row.muVetoZTTp001dxyz < 0.5) and bool(row.tauVetoPtDeepVtx < 0.5)
 
+  def cuts(self, row, cat):
+    tmp = self.cutparms[cat]  
+    if tmp['geo'] == 'EB-MB':
+      geobool = bool(abs(row.mEta) < 0.8 and abs(row.eEta) < 1.5)
+    elif tmp['geo'] == 'EB-ME':
+      geobool = bool (abs(row.mEta) > 0.8 and abs(row.eEta) < 1.5)
+    elif tmp['geo'] == 'EE-MB':
+      geobool = bool (abs(row.mEta) < 0.8 and abs(row.eEta) > 1.5)
+    elif tmp['geo'] == 'EE-ME':
+      geobool = bool (abs(row.mEta) > 0.8 and abs(row.eEta) > 1.5)
+    ept_min = tmp['cuts'].get('ept_min')
+    mpt_min = tmp['cuts'].get('mpt_min')
+    met_max = tmp['cuts'].get('met_max')
+    return geobool and bool(row.ePt > ept_min) and bool(row.mPt > mpt_min) and bool(row.type1_pfMetEt < met_max) 
+
   # Book histograms
   def begin(self):
-    for n in Kinematics.names:
+    for n in Kinematics.plotnames:
       self.book(n, 'e_m_Mass', 'Electron + Muon Mass', 300, 0, 300)
       self.book(n, 'deltaR', 'DeltaR Electron and Muon', 40, 0, 4)
-      self.book(n, 'METpT', 'MET pT', 400, 0, 400)
+      self.book(n, 'MET', 'MET', 400, 0, 400)
 
   def fill_histos(self, myEle, myMuon, myMET, weight, name=''):
     histos = self.histograms
     histos[name+'/e_m_Mass'].Fill(self.visibleMass(myEle, myMuon), weight)
     histos[name+'/deltaR'].Fill(self.deltaR(myEle.Phi(), myMuon.Phi(), myEle.Eta(), myMuon.Eta()), weight)
-    histos[name+'/METpT'].Fill(myMET.Pt(), weight)
+    histos[name+'/MET'].Fill(myMET.Pt(), weight)
 
   # Selections
   def eventSel(self, row):
@@ -148,7 +172,7 @@ class EMBase():
     myMuon.SetPtEtaPhiM(row.mPt, row.mEta, row.mPhi, row.mMass)
     # Recoil
     if self.is_recoilC and self.MetCorrection:
-      tmpMet = self.Metcorected.CorrectByMeanResolution(row.type1_pfMetEt*math.cos(row.type1_pfMetPhi), row.type1_pfMetEt*math.sin(row.type1_pfMetPhi), row.genpX, row.genpY, row.vispX, row.vispY, int(round(row.jetVeto30)))
+      tmpMet = self.Metcorected.CorrectByMeanResolution(row.type1_pfMetEt*math.cos(row.type1_pfMetPhi), row.type1_pfMetEt*math.sin(row.type1_pfMetPhi), row.genpX, row.genpY, row.vispX, row.vispY, int(round(row.jetVeto30WoNoisyJets)))
       myMET.SetPtEtaPhiM(math.sqrt(tmpMet[0]*tmpMet[0] + tmpMet[1]*tmpMet[1]), 0, math.atan2(tmpMet[1], tmpMet[0]), 0)
     # Electron Scale Correction
     if self.is_data:
@@ -162,25 +186,25 @@ class EMBase():
       myMET.SetPxPyPzE(myMETpx, myMETpy, 0, math.sqrt(myMETpx * myMETpx + myMETpy * myMETpy))
     return [myEle, myMET, myMuon]
 
-
+  # Apply all the various corrections to the MC samples
   def corrFact(self, row, myEle, myMuon):
-    # Apply all the various corrections to the MC samples
     weight = 1.0
     if self.is_mc:
-      self.w1.var("e_pt").setVal(myEle.Pt())
-      self.w1.var("e_eta").setVal(myEle.Eta())
-      self.w1.var("m_pt").setVal(myMuon.Pt())
-      self.w1.var("m_eta").setVal(myMuon.Eta())
-      eff_trg_data = self.w1.function("e_trg_23_ic_data").getVal()*self.w1.function("m_trg_8_ic_data").getVal()
-      eff_trg_mc = self.w1.function("e_trg_23_ic_mc").getVal()*self.w1.function("m_trg_8_ic_mc").getVal()
+      self.w1.var('e_pt').setVal(myEle.Pt())
+      self.w1.var('e_eta').setVal(myEle.Eta())
+      self.w1.var('m_pt').setVal(myMuon.Pt())
+      self.w1.var('m_eta').setVal(myMuon.Eta())
+      eff_trg_data = self.w1.function('e_trg_23_ic_data').getVal()*self.w1.function('m_trg_23_ic_data').getVal()
+      eff_trg_mc = self.w1.function('e_trg_23_ic_mc').getVal()*self.w1.function('m_trg_23_ic_mc').getVal()
       tEff = 0 if eff_trg_mc==0 else eff_trg_data/eff_trg_mc
       eID = self.eIDnoiso80(myEle.Eta(), myEle.Pt())
       eReco = self.eReco(myEle.Eta(), myEle.Pt())
       mID = self.muonTightID(myMuon.Pt(), abs(myMuon.Eta()))
       mIso = self.muonTightIsoTightID(myMuon.Pt(), abs(myMuon.Eta()))
       mTrk = self.muTracking(myMuon.Eta())[0]
+      zvtx = 0.991
       mcSF = self.rc.kSpreadMC(row.mCharge, myMuon.Pt(), myMuon.Eta(), myMuon.Phi(), row.mGenPt, 0, 0)
-      weight = weight*row.GenWeight*pucorrector[''](row.nTruePU)*tEff*eID*eReco*mID*mIso*mTrk*mcSF*row.prefiring_weight
+      weight = weight*row.GenWeight*pucorrector[''](row.nTruePU)*tEff*eID*eReco*mID*mIso*mTrk*zvtx*mcSF*row.prefiring_weight
       weight = self.mcWeight.lumiWeight(weight)
       if weight > 10:
         weight = 0

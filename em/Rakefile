@@ -52,9 +52,9 @@ def get_plotter_results(analyzer)
 end
 
 
-#task :EM => get_analyzer_results("AnalyzeEMu.py", samples['eraB'] + samples['eraC'] + samples['eraD'] + samples['eraE'] + samples['eraF'] + samples['ggHEM'] + samples['vbfHEM'])
+#task :EM => get_analyzer_results("AnalyzeEMTree.py", samples['eraB'] + samples['eraC'] + samples['eraD'] + samples['eraE'] + samples['eraF'] + samples['ggHEM'] + samples['vbfHEM'])
 
-task :EM => get_analyzer_results("AnalyzeEM.py", samples['vbfHEM'] + samples['ggHEM'])
+task :EM => get_analyzer_results("AnalyzeEMCut.py", samples['vbfHEM'] + samples['ggHEM'])
 
 $etdir = "plots/#{$jobid}/AnalyzerMuTau/mt_now/"
 directory $etdir

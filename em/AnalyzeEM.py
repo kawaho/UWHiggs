@@ -36,53 +36,53 @@ class AnalyzeEM(MegaBase, EMBase):
 
       if self.oppositesign(row):
         self.fill_histos(myEle, myMuon, myMET, weight, 'TightOS')
-        if myMuon.Eta() < 0.8 and myEle.Eta() < 1.5:
+        if abs(myMuon.Eta()) < 0.8 and abs(myEle.Eta()) < 1.5:
           self.fill_histos(myEle, myMuon, myMET, weight, 'TightOSEB-MB')
-        elif myMuon.Eta() > 0.8 and myEle.Eta() < 1.5:
+        elif abs(myMuon.Eta()) > 0.8 and abs(myEle.Eta()) < 1.5:
           self.fill_histos(myEle, myMuon, myMET, weight, 'TightOSEB-ME')
-        elif myMuon.Eta() < 0.8 and myEle.Eta() > 1.5:
+        elif abs(myMuon.Eta()) < 0.8 and abs(myEle.Eta()) > 1.5:
           self.fill_histos(myEle, myMuon, myMET, weight, 'TightOSEE-MB')
-        elif myMuon.Eta() > 0.8 and myEle.Eta() > 1.5:
+        elif abs(myMuon.Eta()) > 0.8 and abs(myEle.Eta()) > 1.5:
           self.fill_histos(myEle, myMuon, myMET, weight, 'TightOSEE-ME')
         if njets==0:
           self.fill_histos(myEle, myMuon, myMET, weight, 'TightOS0Jet')
-          if myMuon.Eta() < 0.8 and myEle.Eta() < 1.5:
+          if abs(myMuon.Eta()) < 0.8 and abs(myEle.Eta()) < 1.5:
             self.fill_histos(myEle, myMuon, myMET, weight, 'TightOS0JetEB-MB')
-          elif myMuon.Eta() > 0.8 and myEle.Eta() < 1.5:
+          elif abs(myMuon.Eta()) > 0.8 and abs(myEle.Eta()) < 1.5:
             self.fill_histos(myEle, myMuon, myMET, weight, 'TightOS0JetEB-ME')
-          elif myMuon.Eta() < 0.8 and myEle.Eta() > 1.5:
+          elif abs(myMuon.Eta()) < 0.8 and abs(myEle.Eta()) > 1.5:
             self.fill_histos(myEle, myMuon, myMET, weight, 'TightOS0JetEE-MB')
-          elif myMuon.Eta() > 0.8 and myEle.Eta() > 1.5:
+          elif abs(myMuon.Eta()) > 0.8 and abs(myEle.Eta()) > 1.5:
             self.fill_histos(myEle, myMuon, myMET, weight, 'TightOS0JetEE-ME')
         elif njets==1:
           self.fill_histos(myEle, myMuon, myMET, weight, 'TightOS1Jet')
-          if myMuon.Eta() < 0.8 and myEle.Eta() < 1.5:
+          if abs(myMuon.Eta()) < 0.8 and abs(myEle.Eta()) < 1.5:
             self.fill_histos(myEle, myMuon, myMET, weight, 'TightOS1JetEB-MB')
-          elif myMuon.Eta() > 0.8 and myEle.Eta() < 1.5:
+          elif abs(myMuon.Eta()) > 0.8 and abs(myEle.Eta()) < 1.5:
             self.fill_histos(myEle, myMuon, myMET, weight, 'TightOS1JetEB-ME')
-          elif myMuon.Eta() < 0.8 and myEle.Eta() > 1.5:
+          elif abs(myMuon.Eta()) < 0.8 and abs(myEle.Eta()) > 1.5:
             self.fill_histos(myEle, myMuon, myMET, weight, 'TightOS1JetEE-MB')
-          elif myMuon.Eta() > 0.8 and myEle.Eta() > 1.5:
+          elif abs(myMuon.Eta()) > 0.8 and abs(myEle.Eta()) > 1.5:
             self.fill_histos(myEle, myMuon, myMET, weight, 'TightOS1JetEE-ME')
         elif njets==2 and mjj < 500:
           self.fill_histos(myEle, myMuon, myMET, weight, 'TightOS2Jet')
-          if myMuon.Eta() < 0.8 and myEle.Eta() < 1.5:
+          if abs(myMuon.Eta()) < 0.8 and abs(myEle.Eta()) < 1.5:
             self.fill_histos(myEle, myMuon, myMET, weight, 'TightOS2JetEB-MB')
-          elif myMuon.Eta() > 0.8 and myEle.Eta() < 1.5:
+          elif abs(myMuon.Eta()) > 0.8 and abs(myEle.Eta()) < 1.5:
             self.fill_histos(myEle, myMuon, myMET, weight, 'TightOS2JetEB-ME')
-          elif myMuon.Eta() < 0.8 and myEle.Eta() > 1.5:
+          elif abs(myMuon.Eta()) < 0.8 and abs(myEle.Eta()) > 1.5:
             self.fill_histos(myEle, myMuon, myMET, weight, 'TightOS2JetEE-MB')
-          elif myMuon.Eta() > 0.8 and myEle.Eta() > 1.5:
+          elif abs(myMuon.Eta()) > 0.8 and abs(myEle.Eta()) > 1.5:
             self.fill_histos(myEle, myMuon, myMET, weight, 'TightOS2JetEE-ME')
         elif njets==2 and mjj > 500:
           self.fill_histos(myEle, myMuon, myMET, weight, 'TightOS2JetVBF')
-          if myMuon.Eta() < 0.8 and myEle.Eta() < 1.5:
+          if abs(myMuon.Eta()) < 0.8 and abs(myEle.Eta()) < 1.5:
             self.fill_histos(myEle, myMuon, myMET, weight, 'TightOS2JetVBFEB-MB')
-          elif myMuon.Eta() > 0.8 and myEle.Eta() < 1.5:
+          elif abs(myMuon.Eta()) > 0.8 and abs(myEle.Eta()) < 1.5:
             self.fill_histos(myEle, myMuon, myMET, weight, 'TightOS2JetVBFEB-ME')
-          elif myMuon.Eta() < 0.8 and myEle.Eta() > 1.5:
+          elif abs(myMuon.Eta()) < 0.8 and abs(myEle.Eta()) > 1.5:
             self.fill_histos(myEle, myMuon, myMET, weight, 'TightOS2JetVBFEE-MB')
-          elif myMuon.Eta() > 0.8 and myEle.Eta() > 1.5:
+          elif abs(myMuon.Eta()) > 0.8 and abs(myEle.Eta()) > 1.5:
             self.fill_histos(myEle, myMuon, myMET, weight, 'TightOS2JetVBFEE-ME')
 
   def finish(self):

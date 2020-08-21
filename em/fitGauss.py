@@ -12,18 +12,21 @@ files.extend(glob.glob('results/Data2017JEC/AnalyzeEM/*.root'))
 canvas = TCanvas('canvas','canvas',800,800)
 
 for f in files:
-	print f
-	file = TFile(f)
-	file.cd()
-	for f in file.GetListOfKeys():
-		f = f.ReadObj()
-		f.cd()
-		for h in f.GetListOfKeys():
-			if h.GetName() == 'e_m_Mass':
-				hm = h. ReadObj()
-				f1 = TF1('f1', 'gaus')
-				hm.Fit(f1, 'Q')
-				print  f.GetName(),', Mean:', f1.GetParameter('Mean'), ', Sigma: ', f1.GetParameter('Sigma'), ', % to mean: ', f1.GetParameter('Sigma')*100/f1.GetParameter('Mean')
+	if bool('GluGlu_LFV' in f) or bool('VBF_LFV' in f):
+		f_title = f.replace('.root', '').replace('results/Data2017JEC/AnalyzeEM/', '')
+		file = TFile(f)
+		file.cd()
+		for f in file.GetListOfKeys():
+			f = f.ReadObj()
+			f.cd()
+			for h in f.GetListOfKeys():
+				if h.GetName() == 'e_m_Mass':
+					hm = h. ReadObj()
+					f1 = TF1('f1', 'gaus')
+					hm.Fit(f1, 'Q')
+					hm.Draw()
+					canvas.SaveAs(f.GetName() + f_title + '.png')
+					print  f.GetName(),', Mean:', f1.GetParameter('Mean'), ', Sigma: ', f1.GetParameter('Sigma'), ', % to mean: ', f1.GetParameter('Sigma')*100/f1.GetParameter('Mean')
 #	f_title = f.replace('.root', '')
 #        if f_title == "FRJets/tEta":
 #          f_title2 = "#eta"

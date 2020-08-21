@@ -88,7 +88,7 @@ def findEffSigma(cdf, recoMassVar, count = 1, sigRange = 0, dir_ = None):
       return -9999
      
 files = []
-files.extend(glob.glob('results/Data2017JEC/AnalyzeEM/[!data]*.root')) 
+files.extend(glob.glob('results/Data2017JEC/AnalyzeEMCut/[!data]*.root')) 
 recoMassVar = ROOT.RooRealVar("M_{e#mu}", "M_{e#mu}", 110, 140)
 getattr(ws, 'import')(recoMassVar)
 for f in files:

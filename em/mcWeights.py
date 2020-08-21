@@ -11,5 +11,5 @@ class mcWeights:
         if self.is_GluGlu:
             weight = weight*0.00048
         if self.is_VBF:
-            weight = weight*0.00264
+            weight = weight*0.00021
         return weight
