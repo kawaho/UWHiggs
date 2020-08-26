@@ -18,6 +18,9 @@ def deltaPhi(phi1, phi2):
 def deltaEta(eta1, eta2):
   return abs(eta1 - eta2)
 
+def Zeppenfeld(lEta1, lEta2, jEta1, jEta2):
+  return abs((lEta1 + lEta2) - (jEta1 + jEta2)/2)
+
 def deltaR(phi1, phi2, eta1, eta2):
   deta = eta1 - eta2
   dphi = abs(phi1-phi2)
@@ -49,40 +52,74 @@ def topPtreweight(pt1, pt2):
   wt = sqrt(wt1 * wt2)
   return wt
 
-plotnames = ['TightOS', 'TightOSEB-MB', 'TightOSEB-ME', 'TightOSEE-MB', 'TightOSEE-ME', 'TightOS0Jet', 'TightOS0JetEB-MB', 'TightOS0JetEB-ME', 'TightOS0JetEE-MB', 'TightOS0JetEE-ME', 'TightOS1Jet', 'TightOS1JetEB-MB', 'TightOS1JetEB-ME', 'TightOS1JetEE-MB', 'TightOS1JetEE-ME', 'TightOS2Jet', 'TightOS2JetEB-MB', 'TightOS2JetEB-ME', 'TightOS2JetEE-MB', 'TightOS2JetEE-ME', 'TightOS2JetVBF', 'TightOS2JetVBFEB-MB', 'TightOS2JetVBFEB-ME', 'TightOS2JetVBFEE-MB', 'TightOS2JetVBFEE-ME']
+plotnames = ['TightOS', 'TightOSEB-MB', 'TightOSEB-ME', 'TightOSEE', 'TightOS0JetEB-MB', 'TightOS0JetEB-ME', 'TightOS0JetEE', 'TightOS1JetEB-MB', 'TightOS1JetEB-ME', 'TightOS1JetEE', 'TightOS2JetEB-MB', 'TightOS2JetEB-ME', 'TightOS2JetEE', 'TightOS2JetVBF']
+
+#plotnames = ['TightOS', 'TightOSEB-MB', 'TightOSEB-ME', 'TightOSEE-MB', 'TightOSEE-ME', 'TightOS0Jet', 'TightOS0JetEB-MB', 'TightOS0JetEB-ME', 'TightOS0JetEE-MB', 'TightOS0JetEE-ME', 'TightOS1Jet', 'TightOS1JetEB-MB', 'TightOS1JetEB-ME', 'TightOS1JetEE-MB', 'TightOS1JetEE-ME', 'TightOS2Jet', 'TightOS2JetEB-MB', 'TightOS2JetEB-ME', 'TightOS2JetEE-MB', 'TightOS2JetEE-ME', 'TightOS2JetVBF', 'TightOS2JetVBFEB-MB', 'TightOS2JetVBFEB-ME', 'TightOS2JetVBFEE-MB', 'TightOS2JetVBFEE-ME']
 
 def SensitivityParser():
-  root = ET.parse('/afs/hep.wisc.edu/user/kaho/CMSSW_10_2_16_UL/src/UWHiggs2017/em/dataset/weights/TMVA_Opt_Category_Cuts0.weights.xml').getroot()
   cutparms = {}
-  for catname in root.findall('Weights/SubMethod'):
-    cat = catname.attrib.get('Index')
-    s_max = -1
-    for bin_ in catname.findall('Weights/Bin'):
-      effs = float(bin_.attrib.get('effS'))
-      effb = float(bin_.attrib.get('effB'))
-      if float(bin_.attrib.get('effB')) != 0:
-        s = effs/sqrt(effb)
-        if s > s_max:
-          s_max = s
-          effs_max = effs
-          effb_max = effb
-          for cut in bin_.findall('Cuts'):
-            mPtcut = float(cut.attrib.get('cutMin_0'))
-            ePtcut = float(cut.attrib.get('cutMin_1'))
-            metcut = float(cut.attrib.get('cutMax_2'))
-      else:
-        s = 0
-    cutparms[cat] = {}
-    if (cat == '0' or cat == '4' or cat == '8' or cat == '12'):
-      cutparms[cat]['geo'] = 'EB-MB'
-    elif (cat == '1' or cat == '5' or cat == '9' or cat == '13'):
-      cutparms[cat]['geo'] = 'EB-ME'
-    elif (cat == '2' or cat == '6' or cat == '10' or cat == '14'):
-      cutparms[cat]['geo'] = 'EE-MB'  
-    elif (cat == '3' or cat == '7' or cat == '11' or cat == '15'):
-      cutparms[cat]['geo'] = 'EE-ME'
-    cutparms[cat]['cuts'] = {}
-    cutparms[cat]['cuts']['ept_min'] = round(ePtcut)
-    cutparms[cat]['cuts']['mpt_min'] = round(mPtcut)
-    cutparms[cat]['cuts']['met_max'] = round(metcut)
+  for cat in range(10):
+    catname = str(cat)
+    cutparms[catname] = {}
+    if (catname == '0'):
+      cutparms[catname]['geo'] = 'EB-MB'
+      cutparms[catname]['cuts'] = {}
+      cutparms[catname]['cuts']['ept_min'] = 36 
+      cutparms[catname]['cuts']['mpt_min'] = 30
+      cutparms[catname]['cuts']['met_max'] = 62
+    elif (catname == '1'):
+      cutparms[catname]['geo'] = 'EB-ME'
+      cutparms[catname]['cuts'] = {}
+      cutparms[catname]['cuts']['ept_min'] = 25
+      cutparms[catname]['cuts']['mpt_min'] = 27
+      cutparms[catname]['cuts']['met_max'] = 61
+    elif (catname == '2'):
+      cutparms[catname]['geo'] = 'EE'
+      cutparms[catname]['cuts'] = {}
+      cutparms[catname]['cuts']['ept_min'] = 25
+      cutparms[catname]['cuts']['mpt_min'] = 30
+      cutparms[catname]['cuts']['met_max'] = 65
+    elif (catname == '3'):
+      cutparms[catname]['geo'] = 'EB-MB'
+      cutparms[catname]['cuts'] = {}
+      cutparms[catname]['cuts']['ept_min'] = 18
+      cutparms[catname]['cuts']['mpt_min'] = 21
+      cutparms[catname]['cuts']['met_max'] = 64
+    elif (catname == '4'):
+      cutparms[catname]['geo'] = 'EB-ME'
+      cutparms[catname]['cuts'] = {}
+      cutparms[catname]['cuts']['ept_min'] = 25
+      cutparms[catname]['cuts']['mpt_min'] = 22
+      cutparms[catname]['cuts']['met_max'] = 65
+    elif (catname == '5'):
+      cutparms[catname]['geo'] = 'EE'
+      cutparms[catname]['cuts'] = {}
+      cutparms[catname]['cuts']['ept_min'] = 20
+      cutparms[catname]['cuts']['mpt_min'] = 24
+      cutparms[catname]['cuts']['met_max'] = 64
+    elif (catname == '6'):
+      cutparms[catname]['geo'] = 'EB-MB'
+      cutparms[catname]['cuts'] = {}
+      cutparms[catname]['cuts']['ept_min'] = 20
+      cutparms[catname]['cuts']['mpt_min'] = 21
+      cutparms[catname]['cuts']['met_max'] = 68
+    elif (catname == '7'):
+      cutparms[catname]['geo'] = 'EB-ME'
+      cutparms[catname]['cuts'] = {}
+      cutparms[catname]['cuts']['ept_min'] = 20
+      cutparms[catname]['cuts']['mpt_min'] = 18
+      cutparms[catname]['cuts']['met_max'] = 68
+    elif (catname == '8'):
+      cutparms[catname]['geo'] = 'EE'
+      cutparms[catname]['cuts'] = {}
+      cutparms[catname]['cuts']['ept_min'] = 20
+      cutparms[catname]['cuts']['mpt_min'] = 23
+      cutparms[catname]['cuts']['met_max'] = 69
+    elif (catname == '9'):
+      cutparms[catname]['geo'] = None
+      cutparms[catname]['cuts'] = {}
+      cutparms[catname]['cuts']['ept_min'] = 21
+      cutparms[catname]['cuts']['mpt_min'] = 22
+      cutparms[catname]['cuts']['met_max'] = 69
+  
   return cutparms
