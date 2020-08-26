@@ -66,16 +66,16 @@ def makeSumOfGaussians(pdfName, recoMassVar, mhypVar, deltaMuVars, sigmaVars, fr
 
 def findEffSigma(cdf, recoMassVar, count = 1, sigRange = 0, dir_ = None):
   if dir_ == None:
-    lower_sig = cdf.findRoot(recoMassVar, 110, 140, (1 - effsigma)/2)
-    upper_sig = cdf.findRoot(recoMassVar, 110, 140, (1 + effsigma)/2)
+    lower_sig = cdf.findRoot(recoMassVar, 110, 160, (1 - effsigma)/2)
+    upper_sig = cdf.findRoot(recoMassVar, 110, 160, (1 + effsigma)/2)
     sigRange  = upper_sig - lower_sig
     if dir_ != "DOWN": 
-      lower_sigU = cdf.findRoot(recoMassVar, 110, 140, (1 - effsigma)/2 + 0.1*count)
-      upper_sigU = cdf.findRoot(recoMassVar, 110, 140, (1 + effsigma)/2 + 0.1*count)
+      lower_sigU = cdf.findRoot(recoMassVar, 110, 160, (1 - effsigma)/2 + 0.1*count)
+      upper_sigU = cdf.findRoot(recoMassVar, 110, 160, (1 + effsigma)/2 + 0.1*count)
       sigRangeUp  = upper_sigU - lower_sigU
     if dir_ != "UP":
-      lower_sigD = cdf.findRoot(recoMassVar, 110, 140, (1 - effsigma)/2 - 0.1*count)
-      upper_sigD = cdf.findRoot(recoMassVar, 110, 140, (1 + effsigma)/2 - 0.1*count)
+      lower_sigD = cdf.findRoot(recoMassVar, 110, 160, (1 - effsigma)/2 - 0.1*count)
+      upper_sigD = cdf.findRoot(recoMassVar, 110, 160, (1 + effsigma)/2 - 0.1*count)
       sigRangeDown  = upper_sigD - lower_sigD
    
     if sigRange > sigRangeUp:
@@ -88,11 +88,13 @@ def findEffSigma(cdf, recoMassVar, count = 1, sigRange = 0, dir_ = None):
       return -9999
      
 files = []
-files.extend(glob.glob('results/Data2017JEC/AnalyzeEMCut/[!data]*.root')) 
-recoMassVar = ROOT.RooRealVar("M_{e#mu}", "M_{e#mu}", 110, 140)
+files.extend(glob.glob('results/Data2017JEC/AnalyzeEMCut/vbf_gg.root'))
+recoMassVar = ROOT.RooRealVar("M_{e#mu}", "M_{e#mu}", 110, 160)
+recoMassVar.setUnit("GeV/c^{2}") 
 getattr(ws, 'import')(recoMassVar)
 for f in files:
-  proc = "gg" if bool('GluGlu_LFV' in f) else "vbf"
+  proc = "combined"
+#  proc = "gg" if bool('GluGlu_LFV' in f) else "vbf"
   file = ROOT.TFile(f)
   file.cd()
   for f in file.GetListOfKeys():
@@ -102,6 +104,7 @@ for f in files:
     for h in f.GetListOfKeys(): 
       if h.GetName() == 'e_m_Mass':
         hh = h.ReadObj()  
+        histmax = hh.GetMaximum()
         suffix = "_".join([proc, cat,]) 
         dh = ROOT.RooDataHist("dh_" + suffix, "dh_" + suffix, ROOT.RooArgList(recoMassVar), ROOT.RooFit.Import(hh))
 
@@ -110,10 +113,11 @@ for f in files:
         fractionvars = [ ROOT.RooRealVar(makeGaussianVarname("frac", proc, mhyp, cat, gaussIndex), "fraction variable for Gaussian sum", 0.5, 0, 1) for gaussIndex in range(numGaussians - 1)]
 
         pdf = makeSumOfGaussians("sigpdf_" + suffix, recoMassVar, mhyp, dmuvars, sigmavars, fractionvars)
-        pdf.fitTo(dh, ROOT.RooFit.Minimizer("Minuit2"), ROOT.RooFit.Range(mhyp - 5,mhyp + 5), ROOT.RooFit.SumW2Error(False))
+        pdf.fitTo(dh, ROOT.RooFit.Minimizer("Minuit2"), ROOT.RooFit.Range(mhyp - 15,mhyp + 35), ROOT.RooFit.SumW2Error(False))
         getattr(ws, 'import')(pdf, ROOT.RooFit.RecycleConflictNodes())
         cdf = pdf.createCdf(ROOT.RooArgSet(recoMassVar))
-        result_effSigma = proc + "_" + cat + "\n" + str(findEffSigma(cdf, recoMassVar)) + "\n"
+        eff_sig = str("%.3f" % round(findEffSigma(cdf, recoMassVar)/2,3))
+        result_effSigma = proc + "_" + cat + "\n" + eff_sig + "\n"
         f_effsigma.write(result_effSigma)
 
       ##Do single Gaussian Fit
@@ -126,11 +130,14 @@ for f in files:
       #  normVar = ROOT.RooRealVar(gauss.GetName() + "_norm", gauss.GetName() + "_norm", sumWeights, 0, sumWeights);
       #  normVar.setConstant(True)
       
-        frame = recoMassVar.frame()
+        frame = recoMassVar.frame(ROOT.RooFit.Title(cat))
         dh.plotOn(frame)
         pdf.plotOn(frame)
+        txt = ROOT.TLatex(140, histmax*.8, "#sigma_{eff} = " + eff_sig)
+        txt.SetTextSize(0.05)
+        frame.addObject(txt)
         frame.Draw()
-        canvas.SaveAs(makeGaussianVarname("plot", proc, mhyp, cat, gaussIndex) + ".png")
+        canvas.SaveAs("SignalPlot/" + makeGaussianVarname("plot", proc, mhyp, cat, gaussIndex) + ".png")
     f_effsigma.write("\n")
   f_effsigma.write("\n")
 f_effsigma.close()
