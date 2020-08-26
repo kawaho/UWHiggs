@@ -34,6 +34,9 @@ class AnalyzeEM(MegaBase, EMBase):
       njets = row.jetVeto30WoNoisyJets
       mjj = row.vbfMassWoNoisyJets
 
+      if self.visibleMass(myEle, myMuon) > 160 or self.visibleMass(myEle, myMuon) < 110:
+        continue
+
       if self.oppositesign(row):
         self.fill_histos(myEle, myMuon, myMET, weight, 'TightOS')
         if abs(myMuon.Eta()) < 0.8 and abs(myEle.Eta()) < 1.5:
