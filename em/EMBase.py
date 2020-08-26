@@ -51,7 +51,7 @@ class EMBase():
     self.visibleMass = Kinematics.visibleMass
     self.transverseMass = Kinematics.transverseMass
     self.invert_case = Kinematics.invert_case
-
+    self.Zeppenfeld = Kinematics.Zeppenfeld
     self.plotnames = Kinematics.plotnames
 
     self.branches='mPt/F:ePt/F:e_m_Mass/F:type1_pfMetEt/F:itype/I:cat/I:weight/F'
@@ -60,6 +60,14 @@ class EMBase():
     self.title='opttree'
 
     self.cutparms = Kinematics.SensitivityParser()
+    self.workspace = ROOT.RooWorkspace("CMS_emu_workspace")
+  
+  def imp(self, obj, recycle = False):
+        # helper function to import objects into the output workspace
+        if recycle:
+            getattr(self.workspace,'import')(obj, ROOT.RooFit.RecycleConflictNodes())
+        else:
+            getattr(self.workspace,'import')(obj)
 
   # Requirement on the charge of the leptons
   def oppositesign(self, row):
@@ -112,10 +120,10 @@ class EMBase():
       geobool = bool(abs(row.mEta) < 0.8 and abs(row.eEta) < 1.5)
     elif tmp['geo'] == 'EB-ME':
       geobool = bool (abs(row.mEta) > 0.8 and abs(row.eEta) < 1.5)
-    elif tmp['geo'] == 'EE-MB':
-      geobool = bool (abs(row.mEta) < 0.8 and abs(row.eEta) > 1.5)
-    elif tmp['geo'] == 'EE-ME':
-      geobool = bool (abs(row.mEta) > 0.8 and abs(row.eEta) > 1.5)
+    elif tmp['geo'] == 'EE':
+      geobool = bool (abs(row.eEta) > 1.5)
+    elif tmp['geo'] == None:
+      geobool = True
     ept_min = tmp['cuts'].get('ept_min')
     mpt_min = tmp['cuts'].get('mpt_min')
     met_max = tmp['cuts'].get('met_max')
@@ -136,7 +144,7 @@ class EMBase():
 
   # Selections
   def eventSel(self, row):
-    njets = row.jetVeto30
+    njets = row.jetVeto30WoNoisyJets
     if self.filters(row):
       return False
     elif not self.trigger(row):
@@ -162,6 +170,23 @@ class EMBase():
     else:
       return True
 
+#  def vbfSel(self, row):
+#    if self.Zeppenfeld(row.eEta, row.mEta, row.j1etaWoNoisyJets, row.j2etaWoNoisyJets) > 2.5:
+#      return False
+#    elif self.deltaEta(row.j1etaWoNoisyJets, row.j2etaWoNoisyJets) < 3:
+#      return False
+#    elif self.deltaPhi(self.sumPhi(row.ePhi, row.mPhi), self.sumPhi(row.j1phiWoNoisyJets, row.j2phiWoNoisyJets)) < 2.6:
+#      return False
+#    else:
+#      return True
+    
+  def jetVec(self,row):
+    myJet1 = ROOT.TLorentzVector()
+    myJet1.SetPtEtaPhiM(row.j1ptWoNoisyJets, j1etaWoNoisyJets, j1phiWoNoisyJets, 0)
+    myJet2 = ROOT.TLorentzVector()
+    myJet2.SetPtEtaPhiM(row.j2ptWoNoisyJets, j2etaWoNoisyJets, j2phiWoNoisyJets, 0)
+    return [myJet1, myJet2]
+    
   # TVector
   def lepVec(self, row):
     myEle = ROOT.TLorentzVector()
