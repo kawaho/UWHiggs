@@ -19,7 +19,6 @@ class AnalyzeEMCut(MegaBase, EMBase):
     self.out = outfile
     EMBase.__init__(self)
 
-
   def process(self):
 
     for row in self.tree:
@@ -34,56 +33,45 @@ class AnalyzeEMCut(MegaBase, EMBase):
       njets = row.jetVeto30WoNoisyJets
       mjj = row.vbfMassWoNoisyJets
 
+      if self.visibleMass(myEle, myMuon) > 160 or self.visibleMass(myEle, myMuon) < 110:
+       continue
+
       if self.oppositesign(row):
-#        self.fill_histos(myEle, myMuon, myMET, weight, 'TightOS')
-#        if myMuon.Eta() < 0.8 and myEle.Eta() < 1.5:
-#          self.fill_histos(myEle, myMuon, myMET, weight, 'TightOSEB-MB')
-#        elif myMuon.Eta() > 0.8 and myEle.Eta() < 1.5:
-#          self.fill_histos(myEle, myMuon, myMET, weight, 'TightOSEB-ME')
-#        elif myMuon.Eta() < 0.8 and myEle.Eta() > 1.5:
-#          self.fill_histos(myEle, myMuon, myMET, weight, 'TightOSEE-MB')
-#        elif myMuon.Eta() > 0.8 and myEle.Eta() > 1.5:
-#          self.fill_histos(myEle, myMuon, myMET, weight, 'TightOSEE-ME')
-        if njets==0:     
-          self.fill_histos(myEle, myMuon, myMET, weight, 'TightOS0Jet')
+        self.fill_histos(myEle, myMuon, myMET, weight, 'TightOS')
+        if abs(myMuon.Eta()) < 0.8 and abs(myEle.Eta()) < 1.5:
+          self.fill_histos(myEle, myMuon, myMET, weight, 'TightOSEB-MB')
+        elif abs(myMuon.Eta()) > 0.8 and abs(myEle.Eta()) < 1.5:
+          self.fill_histos(myEle, myMuon, myMET, weight, 'TightOSEB-ME')
+        elif abs(myEle.Eta()) > 1.5:
+          self.fill_histos(myEle, myMuon, myMET, weight, 'TightOSEE')
+        if njets==0:
+#          self.fill_histos(myEle, myMuon, myMET, weight, 'TightOS0Jet')
           if self.cuts(row, '0'):
-              self.fill_histos(myEle, myMuon, myMET, weight, 'TightOS0JetEB-MB')
+            self.fill_histos(myEle, myMuon, myMET, weight, 'TightOS0JetEB-MB')
           elif self.cuts(row, '1'):
             self.fill_histos(myEle, myMuon, myMET, weight, 'TightOS0JetEB-ME')
           elif self.cuts(row, '2'):
-            self.fill_histos(myEle, myMuon, myMET, weight, 'TightOS0JetEE-MB')
-          elif self.cuts(row, '3'):
-            self.fill_histos(myEle, myMuon, myMET, weight, 'TightOS0JetEE-ME')
+            self.fill_histos(myEle, myMuon, myMET, weight, 'TightOS0JetEE')
         elif njets==1:
-          self.fill_histos(myEle, myMuon, myMET, weight, 'TightOS1Jet')
-          if self.cuts(row, '4'):
+#          self.fill_histos(myEle, myMuon, myMET, weight, 'TightOS1Jet')
+          if self.cuts(row, '3'):
             self.fill_histos(myEle, myMuon, myMET, weight, 'TightOS1JetEB-MB')
-          elif self.cuts(row, '5'):
+          elif self.cuts(row, '4'):
             self.fill_histos(myEle, myMuon, myMET, weight, 'TightOS1JetEB-ME')
-          elif self.cuts(row, '6'):
-            self.fill_histos(myEle, myMuon, myMET, weight, 'TightOS1JetEE-MB')
-          elif self.cuts(row, '7'):
-            self.fill_histos(myEle, myMuon, myMET, weight, 'TightOS1JetEE-ME')
+          elif self.cuts(row, '5'):
+            self.fill_histos(myEle, myMuon, myMET, weight, 'TightOS1JetEE')
         elif njets==2 and mjj < 500:
-          self.fill_histos(myEle, myMuon, myMET, weight, 'TightOS2Jet')
-          if self.cuts(row, '8'):
+#          self.fill_histos(myEle, myMuon, myMET, weight, 'TightOS2Jet')
+          if self.cuts(row, '6'):
             self.fill_histos(myEle, myMuon, myMET, weight, 'TightOS2JetEB-MB')
-          elif self.cuts(row, '9'):
+          elif self.cuts(row, '7'):
             self.fill_histos(myEle, myMuon, myMET, weight, 'TightOS2JetEB-ME')
-          elif self.cuts(row, '10'):
-            self.fill_histos(myEle, myMuon, myMET, weight, 'TightOS2JetEE-MB')
-          elif self.cuts(row, '11'):
-            self.fill_histos(myEle, myMuon, myMET, weight, 'TightOS2JetEE-ME')
+          elif self.cuts(row, '8'):
+            self.fill_histos(myEle, myMuon, myMET, weight, 'TightOS2JetEE')
         elif njets==2 and mjj > 500:
-          self.fill_histos(myEle, myMuon, myMET, weight, 'TightOS2JetVBF')
-          if self.cuts(row, '12'):
-            self.fill_histos(myEle, myMuon, myMET, weight, 'TightOS2JetVBFEB-MB')
-          elif self.cuts(row, '13'):
-            self.fill_histos(myEle, myMuon, myMET, weight, 'TightOS2JetVBFEB-ME')
-          elif self.cuts(row, '14'):
-            self.fill_histos(myEle, myMuon, myMET, weight, 'TightOS2JetVBFEE-MB')
-          elif self.cuts(row, '15'):
-            self.fill_histos(myEle, myMuon, myMET, weight, 'TightOS2JetVBFEE-ME')
+#          self.fill_histos(myEle, myMuon, myMET, weight, 'TightOS2JetVBF')
+          if self.cuts(row, '9'):
+            self.fill_histos(myEle, myMuon, myMET, weight, 'TightOS2JetVBF')
 
   def finish(self):
     self.write_histos()
