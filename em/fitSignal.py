@@ -92,6 +92,7 @@ files.extend(glob.glob('results/Data2017JEC/AnalyzeEMCut/vbf_gg.root'))
 recoMassVar = ROOT.RooRealVar("M_{e#mu}", "M_{e#mu}", 110, 160)
 recoMassVar.setUnit("GeV/c^{2}") 
 getattr(ws, 'import')(recoMassVar)
+hists = {}
 for f in files:
   proc = "combined"
 #  proc = "gg" if bool('GluGlu_LFV' in f) else "vbf"
@@ -106,15 +107,16 @@ for f in files:
         hh = h.ReadObj()  
         histmax = hh.GetMaximum()
         suffix = "_".join([proc, cat,]) 
+        print "hello", suffix
         dh = ROOT.RooDataHist("dh_" + suffix, "dh_" + suffix, ROOT.RooArgList(recoMassVar), ROOT.RooFit.Import(hh))
-
+        hists[suffix] = dh
         dmuvars = [ROOT.RooRealVar(makeGaussianVarname("dmu", proc, mhyp, cat, gaussIndex), "delta mu", gaussIndex, -1.5, +1.5) for gaussIndex in range(numGaussians)]
         sigmavars = [ ROOT.RooRealVar(makeGaussianVarname("sigma", proc, mhyp, cat, gaussIndex), "sigma", 1 + gaussIndex, 0.01, 10) for gaussIndex in range(numGaussians)]
         fractionvars = [ ROOT.RooRealVar(makeGaussianVarname("frac", proc, mhyp, cat, gaussIndex), "fraction variable for Gaussian sum", 0.5, 0, 1) for gaussIndex in range(numGaussians - 1)]
 
         pdf = makeSumOfGaussians("sigpdf_" + suffix, recoMassVar, mhyp, dmuvars, sigmavars, fractionvars)
         pdf.fitTo(dh, ROOT.RooFit.Minimizer("Minuit2"), ROOT.RooFit.Range(mhyp - 15,mhyp + 35), ROOT.RooFit.SumW2Error(False))
-        getattr(ws, 'import')(pdf, ROOT.RooFit.RecycleConflictNodes())
+#        getattr(ws, 'import')(pdf, ROOT.RooFit.RecycleConflictNodes())
         cdf = pdf.createCdf(ROOT.RooArgSet(recoMassVar))
         eff_sig = str("%.3f" % round(findEffSigma(cdf, recoMassVar)/2,3))
         result_effSigma = proc + "_" + cat + "\n" + eff_sig + "\n"
@@ -141,5 +143,6 @@ for f in files:
     f_effsigma.write("\n")
   f_effsigma.write("\n")
 f_effsigma.close()
-ws.Print()
+#for hist in hists.values():
+getattr(ws, 'import')(hists['combined_2JetVBF'])
 ws.writeToFile("emu_ws.root")

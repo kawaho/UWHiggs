@@ -1,39 +1,4 @@
-mkdir -p `dirname results/FakeData2017_ee/AnalyzeEEM/data_SingleElectron_Run2017B-31Mar2018.root`
-mkdir -p `dirname results/FakeData2017_ee/AnalyzeEEM/data_SingleElectron_Run2017C-31Mar2018.root`
-#using farmout:1
-#dry run:1
-export megatarget=results/FakeData2017_ee/AnalyzeEEM/data_SingleElectron_Run2017B-31Mar2018.root
-mkdir -p batch_logs
-mega-farmout AnalyzeEEM.py inputs/FakeData2017_ee/data_SingleElectron_Run2017B-31Mar2018.txt results/FakeData2017_ee/AnalyzeEEM/data_SingleElectron_Run2017B-31Mar2018.root --verbose >& batch_logs/results_FakeData2017_ee_AnalyzeEEM_data_SingleElectron_Run2017B-31Mar2018.log &
-sleep 10s
-mkdir -p `dirname results/FakeData2017_ee/AnalyzeEEM/data_SingleElectron_Run2017D-31Mar2018.root`
-#using farmout:1
-#dry run:1
-export megatarget=results/FakeData2017_ee/AnalyzeEEM/data_SingleElectron_Run2017C-31Mar2018.root
-mkdir -p batch_logs
-mega-farmout AnalyzeEEM.py inputs/FakeData2017_ee/data_SingleElectron_Run2017C-31Mar2018.txt results/FakeData2017_ee/AnalyzeEEM/data_SingleElectron_Run2017C-31Mar2018.root --verbose >& batch_logs/results_FakeData2017_ee_AnalyzeEEM_data_SingleElectron_Run2017C-31Mar2018.log &
-sleep 10s
-mkdir -p `dirname results/FakeData2017_ee/AnalyzeEEM/data_SingleElectron_Run2017E-31Mar2018.root`
-#using farmout:1
-#dry run:1
-export megatarget=results/FakeData2017_ee/AnalyzeEEM/data_SingleElectron_Run2017D-31Mar2018.root
-mkdir -p batch_logs
-mega-farmout AnalyzeEEM.py inputs/FakeData2017_ee/data_SingleElectron_Run2017D-31Mar2018.txt results/FakeData2017_ee/AnalyzeEEM/data_SingleElectron_Run2017D-31Mar2018.root --verbose >& batch_logs/results_FakeData2017_ee_AnalyzeEEM_data_SingleElectron_Run2017D-31Mar2018.log &
-sleep 10s
-mkdir -p `dirname results/FakeData2017_ee/AnalyzeEEM/data_SingleElectron_Run2017F-31Mar2018.root`
-#using farmout:1
-#dry run:1
-export megatarget=results/FakeData2017_ee/AnalyzeEEM/data_SingleElectron_Run2017E-31Mar2018.root
-mkdir -p batch_logs
-mega-farmout AnalyzeEEM.py inputs/FakeData2017_ee/data_SingleElectron_Run2017E-31Mar2018.txt results/FakeData2017_ee/AnalyzeEEM/data_SingleElectron_Run2017E-31Mar2018.root --verbose >& batch_logs/results_FakeData2017_ee_AnalyzeEEM_data_SingleElectron_Run2017E-31Mar2018.log &
-sleep 10s
 mkdir -p `dirname results/FakeData2017_ee/AnalyzeEEM/WW_TuneCP5_13TeV-pythia8_v2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v2.root`
-#using farmout:1
-#dry run:1
-export megatarget=results/FakeData2017_ee/AnalyzeEEM/data_SingleElectron_Run2017F-31Mar2018.root
-mkdir -p batch_logs
-mega-farmout AnalyzeEEM.py inputs/FakeData2017_ee/data_SingleElectron_Run2017F-31Mar2018.txt results/FakeData2017_ee/AnalyzeEEM/data_SingleElectron_Run2017F-31Mar2018.root --verbose >& batch_logs/results_FakeData2017_ee_AnalyzeEEM_data_SingleElectron_Run2017F-31Mar2018.log &
-sleep 10s
 mkdir -p `dirname results/FakeData2017_ee/AnalyzeEEM/WZ_TuneCP5_13TeV-pythia8_v2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1.root`
 #using farmout:1
 #dry run:1

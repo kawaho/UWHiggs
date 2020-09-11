@@ -78,64 +78,64 @@ class AnalyzeEMTree(MegaBase, EMBase):
 
       if self.oppositesign(row):
         if njets==0:
-          if abs(myMuon.Eta()) < 0.8 and abs(myEle.Eta()) < 1.5:
+          if self.cuts(row, '0'):
             if self.is_data:
               self.filltree(myEle, myMET, myMuon, 0, 1, weight)
             else:
               self.filltree(myEle, myMET, myMuon, -1, 1, weight)
 
-          elif abs(myMuon.Eta()) > 0.8 and abs(myEle.Eta()) < 1.5:
+          elif self.cuts(row, '1'):
             if self.is_data:
               self.filltree(myEle, myMET, myMuon, 0, 2, weight)
             else:
               self.filltree(myEle, myMET, myMuon, -1, 2, weight)
 
-          elif abs(myEle.Eta()) > 1.5:
+          elif self.cuts(row, '2'):
             if self.is_data:
               self.filltree(myEle, myMET, myMuon, 0, 3, weight)
             else:
               self.filltree(myEle, myMET, myMuon, -1, 3, weight)
 
         elif njets==1:
-          if abs(myMuon.Eta()) < 0.8 and abs(myEle.Eta()) < 1.5:
+          if self.cuts(row, '3'):
             if self.is_data:
               self.filltree(myEle, myMET, myMuon, 0, 4, weight)
             else:
               self.filltree(myEle, myMET, myMuon, -1, 4, weight)
 
-          if abs(myMuon.Eta()) > 0.8 and abs(myEle.Eta()) < 1.5:
+          if self.cuts(row, '4'):
             if self.is_data:
               self.filltree(myEle, myMET, myMuon, 0, 5, weight)
             else:
               self.filltree(myEle, myMET, myMuon, -1, 5, weight)
 
-          elif abs(myEle.Eta()) > 1.5:
+          elif self.cuts(row, '5'):
             if self.is_data:
               self.filltree(myEle, myMET, myMuon, 0, 6, weight)
             else:
               self.filltree(myEle, myMET, myMuon, -1, 6, weight)
 
         elif njets==2 and mjj < 500:
-          if abs(myMuon.Eta()) < 0.8 and abs(myEle.Eta()) < 1.5:
+          if self.cuts(row, '6'):
             if self.is_data:
               self.filltree(myEle, myMET, myMuon, 0, 7, weight)
             else:
               self.filltree(myEle, myMET, myMuon, -1, 7, weight)
 
-          if abs(myMuon.Eta()) > 0.8 and abs(myEle.Eta()) < 1.5:
+          if self.cuts(row, '7'):
             if self.is_data:
               self.filltree(myEle, myMET, myMuon, 0, 8, weight)
             else:
               self.filltree(myEle, myMET, myMuon, -1, 8, weight)
 
-          elif abs(myEle.Eta()) > 1.5:
+          elif self.cuts(row, '8'):
             if self.is_data:
               self.filltree(myEle, myMET, myMuon, 0, 9, weight)
             else:
               self.filltree(myEle, myMET, myMuon, -1, 9, weight)
 
 
-        elif njets==2 and mjj > 500: 
+        elif njets==2 and mjj > 500 and self.cuts(row, '9'): 
           if self.is_data:
             self.filltree(myEle, myMET, myMuon, 0, 10, weight)
           else:

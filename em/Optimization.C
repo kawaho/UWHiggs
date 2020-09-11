@@ -30,8 +30,9 @@ void Optimization(const char* outputFileName = "TMVA_Opt") {
   dataloader->AddVariable("mPt", 'F');
   dataloader->AddVariable("ePt", 'F');
   dataloader->AddVariable("type1_pfMetEt", 'F');
+//  dataloader->AddVariable("deltaR", 'F');
 
-  TFile* input = TFile::Open("Input/Opt.root");
+  TFile* input = TFile::Open("Input/Opt2.root");
   TTree* inputTree = (TTree*)input->Get("opttree");
   outputFile->cd();
 
@@ -40,22 +41,22 @@ void Optimization(const char* outputFileName = "TMVA_Opt") {
 
   dataloader->PrepareTrainingAndTestTree("", "", "nTrain_Signal=0:nTrain_Background=0::nTest_Signal=0:nTest_Background=0:SplitMode=Random:!V" );
 
-  const int nCategories = 16;
+  const int nCategories = 10;
   const int nMethods = 1;
   TMVA::MethodCategory* mcat[nMethods];
   TMVA::MethodBase* methodBase[nMethods];
 
-  TString vars = "mPt:ePt:type1_pfMetEt";
+  TString vars = "mPt:ePt:type1_pfMetEt"; //:deltaR";
   // TString vars = "type1_pfMetEt";
   
   TCut cat_definition[nCategories];
 
-  for (int i=0; i<16; i++) {
+  for (int i=0; i<nCategories; i++) {
     cat_definition[i] = TString::Format("e_m_Mass < 160 & cat == %d", i+1);
   } 
   
   TString methodOptions[nMethods];
-  methodOptions[0] = "!H:!V:EffMethod=EffSel:FitMethod=GA:VarProp[0]=FMax:VarProp[1]=FMax:VarProp[2]=FMin"; //VarProp[0]=FMax:VarProp[1]=FMax:VarProp[2]=FMin
+  methodOptions[0] = "!H:!V:EffMethod=EffSel:FitMethod=GA:VarProp[0]=FMax:VarProp[1]=FMax:VarProp[2]=FMin"; //:VarProp[3]=FMax";
   
   for (int i=0; i<1; i++) {
     sprintf(a, "Category_Cuts%d", i);
