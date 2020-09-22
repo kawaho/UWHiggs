@@ -28,6 +28,8 @@ class AnalyzeEMBDT(MegaBase, EMBase):
     branch_names = self.branches.split(':')
     self.treeS = ROOT.TTree("TreeS", "TreeS")
     self.treeB = ROOT.TTree("TreeB", "TreeB")
+    self.treeSss = ROOT.TTree("TreeSss", "TreeSss")
+    self.treeBss = ROOT.TTree("TreeBss", "TreeBss")
     for name in branch_names:
       try:
           varname, vartype = tuple(name.split('/'))
@@ -39,8 +41,10 @@ class AnalyzeEMBDT(MegaBase, EMBase):
       varname, holder = varinfo
       self.treeS.Branch(varname, holder, name)
       self.treeB.Branch(varname, holder, name)
+      self.treeSss.Branch(varname, holder, name)
+      self.treeBss.Branch(varname, holder, name)
 
-  def filltree(self, myEle, myMuon, myMET, myJet1, myJet2, njets, mjj, e_m_PZeta, weight, itype):
+  def filltree(self, myEle, myMuon, myMET, myJet1, myJet2, njets, mjj, e_m_PZeta, weight, itype, sign):
     for varname, holder in self.holders:
       if varname=="mPt_Per_e_m_Mass":
         holder[0] = myMuon.Pt()/self.visibleMass(myEle, myMuon)
@@ -156,11 +160,16 @@ class AnalyzeEMBDT(MegaBase, EMBase):
           holder[0] = -50
       elif varname=="weight":
         holder[0] = weight
-
-    if (itype == 0):
-      self.treeB.Fill()
-    elif (itype == 1):
-      self.treeS.Fill()
+    if (sign == 0):
+      if (itype == 0):
+        self.treeB.Fill()
+      elif (itype == 1):
+        self.treeS.Fill()
+    else:
+      if (itype == 0):
+        self.treeBss.Fill()
+      elif (itype == 1):
+        self.treeSss.Fill()
 
   def process(self):
 
@@ -175,6 +184,7 @@ class AnalyzeEMBDT(MegaBase, EMBase):
       mjj = row.vbfMassWoNoisyJets
 
       weight = self.corrFact(row, myEle, myMuon)[0]
+      osss = self.corrFact(row, myEle, myMuon)[1]
 
       if math.isnan(row.vbfMassWoNoisyJets):
         continue
@@ -184,11 +194,18 @@ class AnalyzeEMBDT(MegaBase, EMBase):
 
       if self.oppositesign(row):
         if self.is_VBF or self.is_GluGlu:
-          self.filltree(myEle, myMuon, myMET, myJet1, myJet2, njets, mjj, row.e_m_PZeta, weight, 1)
-        else:
-          self.filltree(myEle, myMuon, myMET, myJet1, myJet2, njets, mjj, row.e_m_PZeta, weight, 0)
+          self.filltree(myEle, myMuon, myMET, myJet1, myJet2, njets, mjj, row.e_m_PZeta, weight, 1, 0)
+        elif self.is_mc:
+          self.filltree(myEle, myMuon, myMET, myJet1, myJet2, njets, mjj, row.e_m_PZeta, weight, 0, 0)
+      else: 
+        if self.is_mc and not (self.is_VBF or self.is_GluGlu):
+          self.filltree(myEle, myMuon, myMET, myJet1, myJet2, njets, mjj, row.e_m_PZeta, -weight*osss, 0, 1)
+        elif self.is_data :
+          self.filltree(myEle, myMuon, myMET, myJet1, myJet2, njets, mjj, row.e_m_PZeta, weight*osss, 0, 1)
 
   def finish(self):
      self.treeS.Write()
      self.treeB.Write()
+     self.treeSss.Write()
+     self.treeBss.Write()
      self.write_histos()  

@@ -50,13 +50,13 @@ class BasePlotter():
 
         data_view = views.SumView( *[ plotter.get_view(regex) for regex in filter(lambda x : x.startswith('QCD'), Lists.mc_samples)])
         mc_view = views.SumView( *[ plotter.get_view(regex) for regex in filter(lambda x : x.startswith('MC'), Lists.mc_samples)])
-#        QCDData = views.SubdirectoryView(data_view, s[1])
-#        QCDMC = views.SubdirectoryView(mc_view, s[1])
-#        QCD = SubtractionView(QCDData, QCDMC, restrict_positive=True)
+        QCDData = views.SubdirectoryView(data_view, s[1])
+        QCDMC = views.SubdirectoryView(mc_view, s[1])
+        QCD = SubtractionView(QCDData, QCDMC, restrict_positive=True)
         Wtotal = views.SumView( *[ plotter.get_view(regex) for regex in filter(lambda x : x.startswith('W1') or x.startswith('W2') or x.startswith('W3') or x.startswith('W4') or x.startswith('WGToLNuG'), Lists.mc_samples)])
         W = views.SubdirectoryView(Wtotal, s[0])
-#        QCD = views.StyleView(views.SumView(QCD, W), **Lists.remove_name_entry(data_styles['QCD*']))
-#        QCD = views.TitleView(QCD, "W/QCD")
+        QCD = views.StyleView(views.SumView(QCD, W), **Lists.remove_name_entry(data_styles['QCD*']))
+        QCD = views.TitleView(QCD, "W/QCD")
 
         vbfHET = views.StyleView(views.SumView( *[ plotter.get_view(regex) for regex in filter(lambda x : 'VBF_LFV_HToEMu' in x , Lists.mc_samples)]), **Lists.remove_name_entry(data_styles['VBF_LFV*']))
         ggHET = views.StyleView(views.SumView( *[ plotter.get_view(regex) for regex in filter(lambda x : 'GluGlu_LFV_HToEMu' in x , Lists.mc_samples)]), **Lists.remove_name_entry(data_styles['GluGlu_LFV*']))
@@ -64,13 +64,13 @@ class BasePlotter():
         plotter.views['vbfHET']={'view' : vbfHET }
         plotter.views['ggHET']={'view' : ggHET }
         plotter.views['DY']={'view' : DY }
-#        plotter.views['embed']={'view' : embed }
+        plotter.views['embed']={'view' : embed }
         plotter.views['EWK']={'view' : EWK }
         plotter.views['SMH']={'view' : SMH }
         plotter.views['TT']={'view' : TT }
         plotter.views['QCD']={'view' : QCD }
         plotter.views['Diboson']={'view' : Diboson }
 
-        plotter.mc_samples = ['QCD', 'Diboson', 'TT', 'EWK', 'DY', 'SMH'] #, 'embed']
+        plotter.mc_samples = ['QCD', 'Diboson', 'TT', 'EWK', 'DY', 'SMH', 'embed']
 
         return plotter

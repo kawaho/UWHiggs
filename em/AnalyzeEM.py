@@ -28,8 +28,9 @@ class AnalyzeEM(MegaBase, EMBase):
         continue
 
       myEle, myMET, myMuon = self.lepVec(row)[0], self.lepVec(row)[1], self.lepVec(row)[2]
+      myJet1, myJet2 = self.jetVec(row)[0], self.jetVec(row)[1]
 
-      weight = self.corrFact(row, myEle, myMuon)
+      weight = self.corrFact(row, myEle, myMuon)[0]
 
       njets = row.jetVeto30WoNoisyJets
       mjj = row.vbfMassWoNoisyJets
@@ -40,41 +41,11 @@ class AnalyzeEM(MegaBase, EMBase):
         continue
 
       if self.oppositesign(row):
-        self.fill_histos(myEle, myMuon, myMET, j1eta, j2eta, mjj, weight, 'TightOS')
-        if abs(myMuon.Eta()) < 0.8 and abs(myEle.Eta()) < 1.5:
-          self.fill_histos(myEle, myMuon, myMET, j1eta, j2eta, mjj, weight, 'TightOSEB-MB')
-        elif abs(myMuon.Eta()) > 0.8 and abs(myEle.Eta()) < 1.5:
-          self.fill_histos(myEle, myMuon, myMET, j1eta, j2eta, mjj, weight, 'TightOSEB-ME')
-        elif abs(myEle.Eta()) > 1.5:
-          self.fill_histos(myEle, myMuon, myMET, j1eta, j2eta, mjj, weight, 'TightOSEE')
-        if njets==0:
-          self.fill_histos(myEle, myMuon, myMET, j1eta, j2eta, mjj, weight, 'TightOS0Jet')
-          if abs(myMuon.Eta()) < 0.8 and abs(myEle.Eta()) < 1.5:
-            self.fill_histos(myEle, myMuon, myMET, j1eta, j2eta, mjj, weight, 'TightOS0JetEB-MB')
-          elif abs(myMuon.Eta()) > 0.8 and abs(myEle.Eta()) < 1.5:
-            self.fill_histos(myEle, myMuon, myMET, j1eta, j2eta, mjj, weight, 'TightOS0JetEB-ME')
-          elif abs(myEle.Eta()) > 1.5:
-            self.fill_histos(myEle, myMuon, myMET, j1eta, j2eta, mjj, weight, 'TightOS0JetEE')
-        elif njets==1:
-          self.fill_histos(myEle, myMuon, myMET, j1eta, j2eta, mjj, weight, 'TightOS1Jet')
-          if abs(myMuon.Eta()) < 0.8 and abs(myEle.Eta()) < 1.5:
-            self.fill_histos(myEle, myMuon, myMET, j1eta, j2eta, mjj, weight, 'TightOS1JetEB-MB')
-          elif abs(myMuon.Eta()) > 0.8 and abs(myEle.Eta()) < 1.5:
-            self.fill_histos(myEle, myMuon, myMET, j1eta, j2eta, mjj, weight, 'TightOS1JetEB-ME')
-          elif abs(myEle.Eta()) > 1.5:
-            self.fill_histos(myEle, myMuon, myMET, j1eta, j2eta, mjj, weight, 'TightOS1JetEE')
+        self.fill_histos(myEle, myMuon, myMET, myJet1, myJet2, njets, mjj, row.e_m_PZeta, weight, 'TightOS')
+        if njets==1:
+          self.fill_histos(myEle, myMuon, myMET, myJet1, myJet2, njets, mjj, row.e_m_PZeta, weight, 'TightOS1Jet')
         elif njets==2:
-          self.fill_histos(myEle, myMuon, myMET, j1eta, j2eta, mjj, weight, 'TightOS2Jet')
-          if mjj < 500:
-            self.fill_histos(myEle, myMuon, myMET, j1eta, j2eta, mjj, weight, 'TightOS2JetGG')
-            if abs(myMuon.Eta()) < 0.8 and abs(myEle.Eta()) < 1.5:
-              self.fill_histos(myEle, myMuon, myMET, j1eta, j2eta, mjj, weight, 'TightOS2JetGGEB-MB')
-            elif abs(myMuon.Eta()) > 0.8 and abs(myEle.Eta()) < 1.5:
-              self.fill_histos(myEle, myMuon, myMET, j1eta, j2eta, mjj, weight, 'TightOS2JetGGEB-ME')
-            elif abs(myEle.Eta()) > 1.5:
-              self.fill_histos(myEle, myMuon, myMET, j1eta, j2eta, mjj, weight, 'TightOS2JetGGEE')
-          elif mjj > 500:
-            self.fill_histos(myEle, myMuon, myMET, j1eta, j2eta, mjj, weight, 'TightOS2JetVBF')
+          self.fill_histos(myEle, myMuon, myMET, myJet1, myJet2, njets, mjj, row.e_m_PZeta, weight, 'TightOS2Jet')
 
   def finish(self):
     self.write_histos()

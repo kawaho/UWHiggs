@@ -57,9 +57,9 @@ class mcWeights:
         if self.is_WG:
             weight = weight*3.0717
         if self.is_GluGlu:
-            weight = weight*0.00048
+            weight = weight*0.000479
         if self.is_VBF:
-            weight = weight*0.00021
+            weight = weight*0.000205
         if self.is_WW:
             weight = weight*(118.7/75.88)*0.406
         if self.is_WZ:
@@ -103,18 +103,3 @@ class mcWeights:
         if self.is_GluGluHWW:
             weight = weight*0.00167
         return weight
-#class mcWeights:
-#    def __init__(self, target):
-#        self.is_data = target.startswith('data_')
-#        self.is_mc = not self.is_data
-#        self.is_GluGlu = bool('GluGlu_LFV' in target)
-#        self.is_VBF = bool('VBF_LFV' in target)
-#        self.is_recoilC = bool(self.is_GluGlu or self.is_VBF)
-#        self.MetCorrection = True
-#
-#    def lumiWeight(self, weight):
-#        if self.is_GluGlu:
-#            weight = weight*0.00048
-#        if self.is_VBF:
-#            weight = weight*0.00021
-#        return weight
