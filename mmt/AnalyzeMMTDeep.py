@@ -91,7 +91,7 @@ class AnalyzeMMTDeep(MegaBase):
 
   # Tau decay mode finding along with discrimination against electron and muon, and primary vertex matching
   def tau_id(self, row):
-    return bool(row.tDecayModeFindingNewDMs > 0.5) and bool(row.tVLooseDeepTau2017v2p1VSe > 0.5) and bool(row.tTightDeepTau2017v2p1VSmu > 0.5) and bool(abs(row.tPVDZ) < 0.2)
+    return bool(row.tDecayModeFindingNewDMs > 0.5) and bool(row.tTightDeepTau2017v2p1VSe > 0.5) and bool(row.tLooseDeepTau2017v2p1VSmu > 0.5) and bool(abs(row.tPVDZ) < 0.2)
 
   # Tight Working Point(WP) for tau
   def tau_tight(self, row):
@@ -109,31 +109,31 @@ class AnalyzeMMTDeep(MegaBase):
   def begin(self):
     names = ['initial', 'loose', 'LEBDM0', 'LEBDM1', 'LEBDM10', 'LEBDM11', 'LEEDM0', 'LEEDM1', 'LEEDM10', 'LEEDM11', 'tight', 'TEBDM0', 'TEBDM1', 'TEBDM10', 'TEBDM11', 'TEEDM0', 'TEEDM1', 'TEEDM10', 'TEEDM11']
     for n in names:
-#      self.book(n, "tPt", "Tau Pt", 20, 0, 200)
-#      self.book(n, "tEta", "Tau Eta", 20, -3, 3)
-#      self.book(n, "tDecayMode", "Tau Decay Mode", 20, 0, 20)
-#      self.book(n, "m1_m2_Mass", "Invariant Muon Mass", 10, 50, 150)
-#      self.book(n, "m1Pt", "Muon 1 Pt", 20, 0, 200)
-#      self.book(n, "m1Eta", "Muon 1 Eta", 20, -3, 3)
-#      self.book(n, "m2Pt", "Muon 2 Pt", 20, 0, 200)
-#      self.book(n, "m2Eta", "Muon 2 Eta", 20, -3, 3)
-#      self.book(n, 'numOfJets', 'Number of Jets', 5, 0, 5)
-       self.book(n, 'leadingdR', 'Leading Delta R', 50, 0, 5)
-       self.book(n, 'trailingdR', 'Trailing Delta R', 50 ,0 ,5)
+      self.book(n, "tPt", "Tau Pt", 20, 0, 200)
+      self.book(n, "tEta", "Tau Eta", 20, -3, 3)
+      self.book(n, "tDecayMode", "Tau Decay Mode", 20, 0, 20)
+      self.book(n, "m1_m2_Mass", "Invariant Muon Mass", 10, 50, 150)
+      self.book(n, "m1Pt", "Muon 1 Pt", 20, 0, 200)
+      self.book(n, "m1Eta", "Muon 1 Eta", 20, -3, 3)
+      self.book(n, "m2Pt", "Muon 2 Pt", 20, 0, 200)
+      self.book(n, "m2Eta", "Muon 2 Eta", 20, -3, 3)
+      self.book(n, 'numOfJets', 'Number of Jets', 5, 0, 5)
+#       self.book(n, 'leadingdR', 'Leading Delta R', 50, 0, 5)
+#       self.book(n, 'trailingdR', 'Trailing Delta R', 50 ,0 ,5)
         
   def fill_histos(self, row, myMuon1, myMuon2, myTau, weight, name=''):
     histos = self.histograms
-#    histos[name+'/tPt'].Fill(myTau.Pt(), weight)
-#    histos[name+'/tEta'].Fill(myTau.Eta(), weight)
-#    histos[name+'/tDecayMode'].Fill(row.tDecayMode, weight)
-#    histos[name+'/m1_m2_Mass'].Fill(self.visibleMass(myMuon1, myMuon2), weight)
-#    histos[name+'/m1Pt'].Fill(myMuon1.Pt(), weight)
-#    histos[name+'/m1Eta'].Fill(myMuon1.Eta(), weight)
-#    histos[name+'/m2Pt'].Fill(myMuon2.Pt(), weight)
-#    histos[name+'/m2Eta'].Fill(myMuon2.Eta(), weight)
-#    histos[name+'/numOfJets'].Fill(row.jetVeto30, weight)
-    histos[name+'/leadingdR'].Fill(self.deltaR(myMuon1.Phi(), myTau.Phi(), myMuon1.Eta(), myTau.Eta()), weight)
-    histos[name+'/trailingdR'].Fill(self.deltaR(myMuon2.Phi(), myTau.Phi(), myMuon2.Eta(), myTau.Eta()), weight)
+    histos[name+'/tPt'].Fill(myTau.Pt(), weight)
+    histos[name+'/tEta'].Fill(myTau.Eta(), weight)
+    histos[name+'/tDecayMode'].Fill(row.tDecayMode, weight)
+    histos[name+'/m1_m2_Mass'].Fill(self.visibleMass(myMuon1, myMuon2), weight)
+    histos[name+'/m1Pt'].Fill(myMuon1.Pt(), weight)
+    histos[name+'/m1Eta'].Fill(myMuon1.Eta(), weight)
+    histos[name+'/m2Pt'].Fill(myMuon2.Pt(), weight)
+    histos[name+'/m2Eta'].Fill(myMuon2.Eta(), weight)
+    histos[name+'/numOfJets'].Fill(row.jetVeto30, weight)
+#    histos[name+'/leadingdR'].Fill(self.deltaR(myMuon1.Phi(), myTau.Phi(), myMuon1.Eta(), myTau.Eta()), weight)
+#    histos[name+'/trailingdR'].Fill(self.deltaR(myMuon2.Phi(), myTau.Phi(), myMuon2.Eta(), myTau.Eta()), weight)
   # Tau energy scale correction
   def tauPtC(self, row, myTau):
     tmpTau = myTau

@@ -1,0 +1,14 @@
+mkdir -p `dirname results/Data2016JEC/AnalyzeEMSys/GluGlu_LFV_HToEMu_M125_13TeV_powheg_pythia8_v3-PUMoriond17_94X_mcRun2_asymptotic_v3-v2.root`
+mkdir -p `dirname results/Data2016JEC/AnalyzeEMSys/VBF_LFV_HToEMu_M125_13TeV_powheg_pythia8_v3-PUMoriond17_94X_mcRun2_asymptotic_v3-v2.root`
+#using farmout:1
+#dry run:1
+export megatarget=results/Data2016JEC/AnalyzeEMSys/GluGlu_LFV_HToEMu_M125_13TeV_powheg_pythia8_v3-PUMoriond17_94X_mcRun2_asymptotic_v3-v2.root
+mkdir -p batch_logs
+mega-farmout AnalyzeEMSys.py inputs/Data2016JEC/GluGlu_LFV_HToEMu_M125_13TeV_powheg_pythia8_v3-PUMoriond17_94X_mcRun2_asymptotic_v3-v2.txt results/Data2016JEC/AnalyzeEMSys/GluGlu_LFV_HToEMu_M125_13TeV_powheg_pythia8_v3-PUMoriond17_94X_mcRun2_asymptotic_v3-v2.root --verbose >& batch_logs/results_Data2016JEC_AnalyzeEMSys_GluGlu_LFV_HToEMu_M125_13TeV_powheg_pythia8_v3-PUMoriond17_94X_mcRun2_asymptotic_v3-v2.log &
+sleep 10s
+#using farmout:1
+#dry run:1
+export megatarget=results/Data2016JEC/AnalyzeEMSys/VBF_LFV_HToEMu_M125_13TeV_powheg_pythia8_v3-PUMoriond17_94X_mcRun2_asymptotic_v3-v2.root
+mkdir -p batch_logs
+mega-farmout AnalyzeEMSys.py inputs/Data2016JEC/VBF_LFV_HToEMu_M125_13TeV_powheg_pythia8_v3-PUMoriond17_94X_mcRun2_asymptotic_v3-v2.txt results/Data2016JEC/AnalyzeEMSys/VBF_LFV_HToEMu_M125_13TeV_powheg_pythia8_v3-PUMoriond17_94X_mcRun2_asymptotic_v3-v2.root --verbose >& batch_logs/results_Data2016JEC_AnalyzeEMSys_VBF_LFV_HToEMu_M125_13TeV_powheg_pythia8_v3-PUMoriond17_94X_mcRun2_asymptotic_v3-v2.log &
+sleep 10s
