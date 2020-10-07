@@ -38,7 +38,6 @@ class AnalyzeEMTree(MegaBase, EMBase):
       varname, holder = varinfo
       self.tree1.Branch(varname, holder, name)
 
-
   def filltree(self, myEle, myMuon, myMET, myJet1, myJet2, njets, mjj, e_m_PZeta, weight, cat):
     for varname, holder in self.holders:
       if varname=="mPt_Per_e_m_Mass":
@@ -157,7 +156,7 @@ class AnalyzeEMTree(MegaBase, EMBase):
         holder[0] = weight
       elif varname=="cat":
         holder[0] = cat
-      self.tree1.Fill()
+    self.tree1.Fill()
 
   def process(self):
 
@@ -182,25 +181,21 @@ class AnalyzeEMTree(MegaBase, EMBase):
 #      if self.is_data and self.visibleMass(myEle, myMuon) > 120 and self.visibleMass(myEle, myMuon) < 130:
 #        continue
 
-      if self.oppositesign(row):
-        if njets == 0:
-          mva = self.functor_gg(**self.var_d_gg_0(myEle, myMuon, myMET, myJet1, myJet2, row.e_m_PZeta))
-        elif njets == 1:
-          mva = self.functor_gg(**self.var_d_gg_1(myEle, myMuon, myMET, myJet1, myJet2, row.e_m_PZeta))
-        else:
-          mva = self.functor_gg(**self.var_d_gg_2(myEle, myMuon, myMET, myJet1, myJet2, row.e_m_PZeta))
 
+      if self.oppositesign(row):
         if njets==2 and mjj>400 and self.deltaEta(myJet1.Eta(), myJet2.Eta())>2.5:
           self.filltree(myEle, myMuon, myMET, myJet1, myJet2, njets, mjj, row.e_m_PZeta, weight, 3)
         else:
+          if njets == 0:
+            mva = self.functor_gg(**self.var_d_gg_0(myEle, myMuon, myMET, myJet1, myJet2, row.e_m_PZeta))
+          elif njets == 1:
+            mva = self.functor_gg(**self.var_d_gg_1(myEle, myMuon, myMET, myJet1, myJet2, row.e_m_PZeta))
+          else:
+            mva = self.functor_gg(**self.var_d_gg_2(myEle, myMuon, myMET, myJet1, myJet2, row.e_m_PZeta))
           if mva < 0.085:
             self.filltree(myEle, myMuon, myMET, myJet1, myJet2, njets, mjj, row.e_m_PZeta, weight, 0)
           elif mva < 0.125:
             self.filltree(myEle, myMuon, myMET, myJet1, myJet2, njets, mjj, row.e_m_PZeta, weight, 1)
-#        elif mva < 0.145:
-#          self.filltree(myEle, myMuon, myMET, myJet1, myJet2, njets, mjj, row.e_m_PZeta, weight, 2)
-#        elif mva < 0.175:
-#          self.filltree(myEle, myMuon, myMET, myJet1, myJet2, njets, mjj, row.e_m_PZeta, weight, 3)
           else:
             self.filltree(myEle, myMuon, myMET, myJet1, myJet2, njets, mjj, row.e_m_PZeta, weight, 2)
 

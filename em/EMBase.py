@@ -64,14 +64,12 @@ class EMBase():
     self.transverseMass = Kinematics.transverseMass
     self.invert_case = Kinematics.invert_case
     self.Zeppenfeld = Kinematics.Zeppenfeld
-    self.plotnames = Kinematics.plotnames
     self.sysnames = Kinematics.sysnames
-#    self.functor_vbf = Kinematics.functor_vbf
     self.functor_gg = Kinematics.functor_gg
     self.var_d_gg_0 = Kinematics.var_d_gg_0
     self.var_d_gg_1 = Kinematics.var_d_gg_1
     self.var_d_gg_2 = Kinematics.var_d_gg_2
-#    self.var_d_vbf = Kinematics.var_d_vbf
+    self.bdtSys = Kinematics.bdtSys
     self.bdtnames = Kinematics.bdtnames
 #    self.branches='mPt/F:ePt/F:e_m_Mass/F:type1_pfMetEt/F:itype/I:cat/I:weight/F'
     self.holders = []
@@ -79,8 +77,8 @@ class EMBase():
     self.title='opttree'
 
     self.branches='Nj/F:mPt_Per_e_m_Mass/F:ePt_Per_e_m_Mass/F:e_m_Mass/F:emPt/F:emEta/F:mEta/F:eEta/F:j1Pt/F:j2Pt/F:j1Eta/F:j2Eta/F:DeltaEta_em_j1/F:DeltaPhi_em_j1/F:DeltaEta_em_j2/F:DeltaPhi_em_j2/F:DeltaEta_j1_j2/F:DeltaPhi_j1_j2/F:Zeppenfeld/F:j1_j2_mass/F:minDeltaPhi_em_j1j2/F:minDeltaEta_em_j1j2/F:m_met_mT/F:e_met_mT/F:DeltaPhi_e_met/F:DeltaPhi_m_met/F:DeltaEta_e_met/F:DeltaEta_m_met/F:MetEt/F:e_m_PZeta/F:R_pT/F:pT_cen/F:weight/F:cat/I'
-#    self.jes = Kinematics.jes
-#    self.ues = Kinematics.ues
+    self.jes = Kinematics.jes
+    self.ues = Kinematics.ues
 #    self.names = Kinematics.names
 #    self.ssnames = Kinematics.ssnames
 #    self.sys = Kinematics.sys
@@ -91,7 +89,6 @@ class EMBase():
 #    self.functor = Kinematics.functor
 #    self.var_d = Kinematics.var_d
 
-    self.cutparms = Kinematics.SensitivityParser()
     self.workspace = ROOT.RooWorkspace("CMS_emu_workspace")
   
   def imp(self, obj, recycle = False):
@@ -167,7 +164,7 @@ class EMBase():
 
   # Book histograms
   def begin(self):
-    for n in Kinematics.sysnames: #bdtnames:
+    for n in Kinematics.catnames:
       self.book(n, 'emEta', 'Electron + Muon Eta', 200, -10, 10)
       self.book(n, 'DeltaEta_m_met', 'Delta Eta of Muon and MET', 25, 0, 2.5)
       self.book(n, 'DeltaEta_e_met', 'Delta Eta of Electron and MET', 25, 0, 2.5)
