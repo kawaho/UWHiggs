@@ -10,15 +10,18 @@ gROOT.SetBatch(True)
 canvas = TCanvas('canvas','canvas',850,800)
 
 fFileold = [TFile("BDT.root"), TFile("../../UWHiggs2017/em/BDT.root")]
-hmvaS = []
-hmvaB = []
-for fFile in fFileold:
-  hmvaS.append(fFile.Get("mvaS"))
-  hmvaB.append(fFile.Get("mvaS"))
+#hmvaS = []
+#hmvaB = []
+#for fFile in fFileold:
+#  hmvaS.append(fFile.Get("mvaS"))
+#  hmvaB.append(fFile.Get("mvaS"))
+
+hmvaS = fFileold[0].Get("mvaS")
+hmvaB = fFileold[0].Get("mvaB")
 
 fFileold2017 = TFile("../../UWHiggs2017/em/BDT.root")
 hmvaS2017 = fFileold2017.Get("mvaS")
-hmvaB2017 = fFileold.Get("mvaB")
+hmvaB2017 = fFileold[0].Get("mvaB")
 
 n = 100
 xq = np.empty(n)
@@ -195,7 +198,7 @@ while run:
     continue
 
   diff = abs(maxComb - maxCombprev)/maxCombprev
-  if diff > 0.065:
+  if diff > 0.03:
     Bprev2 = Bprev[:]
     S.append(0)
     B.append(0)

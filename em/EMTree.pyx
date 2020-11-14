@@ -574,6 +574,78 @@ cdef class EMTree:
     cdef TBranch* j1etaWoNoisyJets_branch
     cdef float j1etaWoNoisyJets_value
 
+    cdef TBranch* j1eta_JERDown_branch
+    cdef float j1eta_JERDown_value
+
+    cdef TBranch* j1eta_JERUp_branch
+    cdef float j1eta_JERUp_value
+
+    cdef TBranch* j1eta_JetAbsoluteDown_branch
+    cdef float j1eta_JetAbsoluteDown_value
+
+    cdef TBranch* j1eta_JetAbsoluteUp_branch
+    cdef float j1eta_JetAbsoluteUp_value
+
+    cdef TBranch* j1eta_JetAbsoluteyearDown_branch
+    cdef float j1eta_JetAbsoluteyearDown_value
+
+    cdef TBranch* j1eta_JetAbsoluteyearUp_branch
+    cdef float j1eta_JetAbsoluteyearUp_value
+
+    cdef TBranch* j1eta_JetBBEC1Down_branch
+    cdef float j1eta_JetBBEC1Down_value
+
+    cdef TBranch* j1eta_JetBBEC1Up_branch
+    cdef float j1eta_JetBBEC1Up_value
+
+    cdef TBranch* j1eta_JetBBEC1yearDown_branch
+    cdef float j1eta_JetBBEC1yearDown_value
+
+    cdef TBranch* j1eta_JetBBEC1yearUp_branch
+    cdef float j1eta_JetBBEC1yearUp_value
+
+    cdef TBranch* j1eta_JetEC2Down_branch
+    cdef float j1eta_JetEC2Down_value
+
+    cdef TBranch* j1eta_JetEC2Up_branch
+    cdef float j1eta_JetEC2Up_value
+
+    cdef TBranch* j1eta_JetEC2yearDown_branch
+    cdef float j1eta_JetEC2yearDown_value
+
+    cdef TBranch* j1eta_JetEC2yearUp_branch
+    cdef float j1eta_JetEC2yearUp_value
+
+    cdef TBranch* j1eta_JetFlavorQCDDown_branch
+    cdef float j1eta_JetFlavorQCDDown_value
+
+    cdef TBranch* j1eta_JetFlavorQCDUp_branch
+    cdef float j1eta_JetFlavorQCDUp_value
+
+    cdef TBranch* j1eta_JetHFDown_branch
+    cdef float j1eta_JetHFDown_value
+
+    cdef TBranch* j1eta_JetHFUp_branch
+    cdef float j1eta_JetHFUp_value
+
+    cdef TBranch* j1eta_JetHFyearDown_branch
+    cdef float j1eta_JetHFyearDown_value
+
+    cdef TBranch* j1eta_JetHFyearUp_branch
+    cdef float j1eta_JetHFyearUp_value
+
+    cdef TBranch* j1eta_JetRelativeBalDown_branch
+    cdef float j1eta_JetRelativeBalDown_value
+
+    cdef TBranch* j1eta_JetRelativeBalUp_branch
+    cdef float j1eta_JetRelativeBalUp_value
+
+    cdef TBranch* j1eta_JetRelativeSampleDown_branch
+    cdef float j1eta_JetRelativeSampleDown_value
+
+    cdef TBranch* j1eta_JetRelativeSampleUp_branch
+    cdef float j1eta_JetRelativeSampleUp_value
+
     cdef TBranch* j1hadronflavor_branch
     cdef float j1hadronflavor_value
 
@@ -585,6 +657,78 @@ cdef class EMTree:
 
     cdef TBranch* j1phiWoNoisyJets_branch
     cdef float j1phiWoNoisyJets_value
+
+    cdef TBranch* j1phi_JERDown_branch
+    cdef float j1phi_JERDown_value
+
+    cdef TBranch* j1phi_JERUp_branch
+    cdef float j1phi_JERUp_value
+
+    cdef TBranch* j1phi_JetAbsoluteDown_branch
+    cdef float j1phi_JetAbsoluteDown_value
+
+    cdef TBranch* j1phi_JetAbsoluteUp_branch
+    cdef float j1phi_JetAbsoluteUp_value
+
+    cdef TBranch* j1phi_JetAbsoluteyearDown_branch
+    cdef float j1phi_JetAbsoluteyearDown_value
+
+    cdef TBranch* j1phi_JetAbsoluteyearUp_branch
+    cdef float j1phi_JetAbsoluteyearUp_value
+
+    cdef TBranch* j1phi_JetBBEC1Down_branch
+    cdef float j1phi_JetBBEC1Down_value
+
+    cdef TBranch* j1phi_JetBBEC1Up_branch
+    cdef float j1phi_JetBBEC1Up_value
+
+    cdef TBranch* j1phi_JetBBEC1yearDown_branch
+    cdef float j1phi_JetBBEC1yearDown_value
+
+    cdef TBranch* j1phi_JetBBEC1yearUp_branch
+    cdef float j1phi_JetBBEC1yearUp_value
+
+    cdef TBranch* j1phi_JetEC2Down_branch
+    cdef float j1phi_JetEC2Down_value
+
+    cdef TBranch* j1phi_JetEC2Up_branch
+    cdef float j1phi_JetEC2Up_value
+
+    cdef TBranch* j1phi_JetEC2yearDown_branch
+    cdef float j1phi_JetEC2yearDown_value
+
+    cdef TBranch* j1phi_JetEC2yearUp_branch
+    cdef float j1phi_JetEC2yearUp_value
+
+    cdef TBranch* j1phi_JetFlavorQCDDown_branch
+    cdef float j1phi_JetFlavorQCDDown_value
+
+    cdef TBranch* j1phi_JetFlavorQCDUp_branch
+    cdef float j1phi_JetFlavorQCDUp_value
+
+    cdef TBranch* j1phi_JetHFDown_branch
+    cdef float j1phi_JetHFDown_value
+
+    cdef TBranch* j1phi_JetHFUp_branch
+    cdef float j1phi_JetHFUp_value
+
+    cdef TBranch* j1phi_JetHFyearDown_branch
+    cdef float j1phi_JetHFyearDown_value
+
+    cdef TBranch* j1phi_JetHFyearUp_branch
+    cdef float j1phi_JetHFyearUp_value
+
+    cdef TBranch* j1phi_JetRelativeBalDown_branch
+    cdef float j1phi_JetRelativeBalDown_value
+
+    cdef TBranch* j1phi_JetRelativeBalUp_branch
+    cdef float j1phi_JetRelativeBalUp_value
+
+    cdef TBranch* j1phi_JetRelativeSampleDown_branch
+    cdef float j1phi_JetRelativeSampleDown_value
+
+    cdef TBranch* j1phi_JetRelativeSampleUp_branch
+    cdef float j1phi_JetRelativeSampleUp_value
 
     cdef TBranch* j1pt_branch
     cdef float j1pt_value
@@ -676,6 +820,78 @@ cdef class EMTree:
     cdef TBranch* j2etaWoNoisyJets_branch
     cdef float j2etaWoNoisyJets_value
 
+    cdef TBranch* j2eta_JERDown_branch
+    cdef float j2eta_JERDown_value
+
+    cdef TBranch* j2eta_JERUp_branch
+    cdef float j2eta_JERUp_value
+
+    cdef TBranch* j2eta_JetAbsoluteDown_branch
+    cdef float j2eta_JetAbsoluteDown_value
+
+    cdef TBranch* j2eta_JetAbsoluteUp_branch
+    cdef float j2eta_JetAbsoluteUp_value
+
+    cdef TBranch* j2eta_JetAbsoluteyearDown_branch
+    cdef float j2eta_JetAbsoluteyearDown_value
+
+    cdef TBranch* j2eta_JetAbsoluteyearUp_branch
+    cdef float j2eta_JetAbsoluteyearUp_value
+
+    cdef TBranch* j2eta_JetBBEC1Down_branch
+    cdef float j2eta_JetBBEC1Down_value
+
+    cdef TBranch* j2eta_JetBBEC1Up_branch
+    cdef float j2eta_JetBBEC1Up_value
+
+    cdef TBranch* j2eta_JetBBEC1yearDown_branch
+    cdef float j2eta_JetBBEC1yearDown_value
+
+    cdef TBranch* j2eta_JetBBEC1yearUp_branch
+    cdef float j2eta_JetBBEC1yearUp_value
+
+    cdef TBranch* j2eta_JetEC2Down_branch
+    cdef float j2eta_JetEC2Down_value
+
+    cdef TBranch* j2eta_JetEC2Up_branch
+    cdef float j2eta_JetEC2Up_value
+
+    cdef TBranch* j2eta_JetEC2yearDown_branch
+    cdef float j2eta_JetEC2yearDown_value
+
+    cdef TBranch* j2eta_JetEC2yearUp_branch
+    cdef float j2eta_JetEC2yearUp_value
+
+    cdef TBranch* j2eta_JetFlavorQCDDown_branch
+    cdef float j2eta_JetFlavorQCDDown_value
+
+    cdef TBranch* j2eta_JetFlavorQCDUp_branch
+    cdef float j2eta_JetFlavorQCDUp_value
+
+    cdef TBranch* j2eta_JetHFDown_branch
+    cdef float j2eta_JetHFDown_value
+
+    cdef TBranch* j2eta_JetHFUp_branch
+    cdef float j2eta_JetHFUp_value
+
+    cdef TBranch* j2eta_JetHFyearDown_branch
+    cdef float j2eta_JetHFyearDown_value
+
+    cdef TBranch* j2eta_JetHFyearUp_branch
+    cdef float j2eta_JetHFyearUp_value
+
+    cdef TBranch* j2eta_JetRelativeBalDown_branch
+    cdef float j2eta_JetRelativeBalDown_value
+
+    cdef TBranch* j2eta_JetRelativeBalUp_branch
+    cdef float j2eta_JetRelativeBalUp_value
+
+    cdef TBranch* j2eta_JetRelativeSampleDown_branch
+    cdef float j2eta_JetRelativeSampleDown_value
+
+    cdef TBranch* j2eta_JetRelativeSampleUp_branch
+    cdef float j2eta_JetRelativeSampleUp_value
+
     cdef TBranch* j2hadronflavor_branch
     cdef float j2hadronflavor_value
 
@@ -687,6 +903,78 @@ cdef class EMTree:
 
     cdef TBranch* j2phiWoNoisyJets_branch
     cdef float j2phiWoNoisyJets_value
+
+    cdef TBranch* j2phi_JERDown_branch
+    cdef float j2phi_JERDown_value
+
+    cdef TBranch* j2phi_JERUp_branch
+    cdef float j2phi_JERUp_value
+
+    cdef TBranch* j2phi_JetAbsoluteDown_branch
+    cdef float j2phi_JetAbsoluteDown_value
+
+    cdef TBranch* j2phi_JetAbsoluteUp_branch
+    cdef float j2phi_JetAbsoluteUp_value
+
+    cdef TBranch* j2phi_JetAbsoluteyearDown_branch
+    cdef float j2phi_JetAbsoluteyearDown_value
+
+    cdef TBranch* j2phi_JetAbsoluteyearUp_branch
+    cdef float j2phi_JetAbsoluteyearUp_value
+
+    cdef TBranch* j2phi_JetBBEC1Down_branch
+    cdef float j2phi_JetBBEC1Down_value
+
+    cdef TBranch* j2phi_JetBBEC1Up_branch
+    cdef float j2phi_JetBBEC1Up_value
+
+    cdef TBranch* j2phi_JetBBEC1yearDown_branch
+    cdef float j2phi_JetBBEC1yearDown_value
+
+    cdef TBranch* j2phi_JetBBEC1yearUp_branch
+    cdef float j2phi_JetBBEC1yearUp_value
+
+    cdef TBranch* j2phi_JetEC2Down_branch
+    cdef float j2phi_JetEC2Down_value
+
+    cdef TBranch* j2phi_JetEC2Up_branch
+    cdef float j2phi_JetEC2Up_value
+
+    cdef TBranch* j2phi_JetEC2yearDown_branch
+    cdef float j2phi_JetEC2yearDown_value
+
+    cdef TBranch* j2phi_JetEC2yearUp_branch
+    cdef float j2phi_JetEC2yearUp_value
+
+    cdef TBranch* j2phi_JetFlavorQCDDown_branch
+    cdef float j2phi_JetFlavorQCDDown_value
+
+    cdef TBranch* j2phi_JetFlavorQCDUp_branch
+    cdef float j2phi_JetFlavorQCDUp_value
+
+    cdef TBranch* j2phi_JetHFDown_branch
+    cdef float j2phi_JetHFDown_value
+
+    cdef TBranch* j2phi_JetHFUp_branch
+    cdef float j2phi_JetHFUp_value
+
+    cdef TBranch* j2phi_JetHFyearDown_branch
+    cdef float j2phi_JetHFyearDown_value
+
+    cdef TBranch* j2phi_JetHFyearUp_branch
+    cdef float j2phi_JetHFyearUp_value
+
+    cdef TBranch* j2phi_JetRelativeBalDown_branch
+    cdef float j2phi_JetRelativeBalDown_value
+
+    cdef TBranch* j2phi_JetRelativeBalUp_branch
+    cdef float j2phi_JetRelativeBalUp_value
+
+    cdef TBranch* j2phi_JetRelativeSampleDown_branch
+    cdef float j2phi_JetRelativeSampleDown_value
+
+    cdef TBranch* j2phi_JetRelativeSampleUp_branch
+    cdef float j2phi_JetRelativeSampleUp_value
 
     cdef TBranch* j2pt_branch
     cdef float j2pt_value
@@ -927,6 +1215,366 @@ cdef class EMTree:
 
     cdef TBranch* jetVeto30_JetTotalUp_branch
     cdef float jetVeto30_JetTotalUp_value
+
+    cdef TBranch* lheweight0_branch
+    cdef float lheweight0_value
+
+    cdef TBranch* lheweight1_branch
+    cdef float lheweight1_value
+
+    cdef TBranch* lheweight10_branch
+    cdef float lheweight10_value
+
+    cdef TBranch* lheweight100_branch
+    cdef float lheweight100_value
+
+    cdef TBranch* lheweight101_branch
+    cdef float lheweight101_value
+
+    cdef TBranch* lheweight102_branch
+    cdef float lheweight102_value
+
+    cdef TBranch* lheweight103_branch
+    cdef float lheweight103_value
+
+    cdef TBranch* lheweight104_branch
+    cdef float lheweight104_value
+
+    cdef TBranch* lheweight105_branch
+    cdef float lheweight105_value
+
+    cdef TBranch* lheweight106_branch
+    cdef float lheweight106_value
+
+    cdef TBranch* lheweight107_branch
+    cdef float lheweight107_value
+
+    cdef TBranch* lheweight108_branch
+    cdef float lheweight108_value
+
+    cdef TBranch* lheweight109_branch
+    cdef float lheweight109_value
+
+    cdef TBranch* lheweight11_branch
+    cdef float lheweight11_value
+
+    cdef TBranch* lheweight110_branch
+    cdef float lheweight110_value
+
+    cdef TBranch* lheweight111_branch
+    cdef float lheweight111_value
+
+    cdef TBranch* lheweight112_branch
+    cdef float lheweight112_value
+
+    cdef TBranch* lheweight113_branch
+    cdef float lheweight113_value
+
+    cdef TBranch* lheweight114_branch
+    cdef float lheweight114_value
+
+    cdef TBranch* lheweight115_branch
+    cdef float lheweight115_value
+
+    cdef TBranch* lheweight116_branch
+    cdef float lheweight116_value
+
+    cdef TBranch* lheweight117_branch
+    cdef float lheweight117_value
+
+    cdef TBranch* lheweight118_branch
+    cdef float lheweight118_value
+
+    cdef TBranch* lheweight119_branch
+    cdef float lheweight119_value
+
+    cdef TBranch* lheweight12_branch
+    cdef float lheweight12_value
+
+    cdef TBranch* lheweight13_branch
+    cdef float lheweight13_value
+
+    cdef TBranch* lheweight14_branch
+    cdef float lheweight14_value
+
+    cdef TBranch* lheweight15_branch
+    cdef float lheweight15_value
+
+    cdef TBranch* lheweight16_branch
+    cdef float lheweight16_value
+
+    cdef TBranch* lheweight17_branch
+    cdef float lheweight17_value
+
+    cdef TBranch* lheweight18_branch
+    cdef float lheweight18_value
+
+    cdef TBranch* lheweight19_branch
+    cdef float lheweight19_value
+
+    cdef TBranch* lheweight2_branch
+    cdef float lheweight2_value
+
+    cdef TBranch* lheweight20_branch
+    cdef float lheweight20_value
+
+    cdef TBranch* lheweight21_branch
+    cdef float lheweight21_value
+
+    cdef TBranch* lheweight22_branch
+    cdef float lheweight22_value
+
+    cdef TBranch* lheweight23_branch
+    cdef float lheweight23_value
+
+    cdef TBranch* lheweight24_branch
+    cdef float lheweight24_value
+
+    cdef TBranch* lheweight25_branch
+    cdef float lheweight25_value
+
+    cdef TBranch* lheweight26_branch
+    cdef float lheweight26_value
+
+    cdef TBranch* lheweight27_branch
+    cdef float lheweight27_value
+
+    cdef TBranch* lheweight28_branch
+    cdef float lheweight28_value
+
+    cdef TBranch* lheweight29_branch
+    cdef float lheweight29_value
+
+    cdef TBranch* lheweight3_branch
+    cdef float lheweight3_value
+
+    cdef TBranch* lheweight30_branch
+    cdef float lheweight30_value
+
+    cdef TBranch* lheweight31_branch
+    cdef float lheweight31_value
+
+    cdef TBranch* lheweight32_branch
+    cdef float lheweight32_value
+
+    cdef TBranch* lheweight33_branch
+    cdef float lheweight33_value
+
+    cdef TBranch* lheweight34_branch
+    cdef float lheweight34_value
+
+    cdef TBranch* lheweight35_branch
+    cdef float lheweight35_value
+
+    cdef TBranch* lheweight36_branch
+    cdef float lheweight36_value
+
+    cdef TBranch* lheweight37_branch
+    cdef float lheweight37_value
+
+    cdef TBranch* lheweight38_branch
+    cdef float lheweight38_value
+
+    cdef TBranch* lheweight39_branch
+    cdef float lheweight39_value
+
+    cdef TBranch* lheweight4_branch
+    cdef float lheweight4_value
+
+    cdef TBranch* lheweight40_branch
+    cdef float lheweight40_value
+
+    cdef TBranch* lheweight41_branch
+    cdef float lheweight41_value
+
+    cdef TBranch* lheweight42_branch
+    cdef float lheweight42_value
+
+    cdef TBranch* lheweight43_branch
+    cdef float lheweight43_value
+
+    cdef TBranch* lheweight44_branch
+    cdef float lheweight44_value
+
+    cdef TBranch* lheweight45_branch
+    cdef float lheweight45_value
+
+    cdef TBranch* lheweight46_branch
+    cdef float lheweight46_value
+
+    cdef TBranch* lheweight47_branch
+    cdef float lheweight47_value
+
+    cdef TBranch* lheweight48_branch
+    cdef float lheweight48_value
+
+    cdef TBranch* lheweight49_branch
+    cdef float lheweight49_value
+
+    cdef TBranch* lheweight5_branch
+    cdef float lheweight5_value
+
+    cdef TBranch* lheweight50_branch
+    cdef float lheweight50_value
+
+    cdef TBranch* lheweight51_branch
+    cdef float lheweight51_value
+
+    cdef TBranch* lheweight52_branch
+    cdef float lheweight52_value
+
+    cdef TBranch* lheweight53_branch
+    cdef float lheweight53_value
+
+    cdef TBranch* lheweight54_branch
+    cdef float lheweight54_value
+
+    cdef TBranch* lheweight55_branch
+    cdef float lheweight55_value
+
+    cdef TBranch* lheweight56_branch
+    cdef float lheweight56_value
+
+    cdef TBranch* lheweight57_branch
+    cdef float lheweight57_value
+
+    cdef TBranch* lheweight58_branch
+    cdef float lheweight58_value
+
+    cdef TBranch* lheweight59_branch
+    cdef float lheweight59_value
+
+    cdef TBranch* lheweight6_branch
+    cdef float lheweight6_value
+
+    cdef TBranch* lheweight60_branch
+    cdef float lheweight60_value
+
+    cdef TBranch* lheweight61_branch
+    cdef float lheweight61_value
+
+    cdef TBranch* lheweight62_branch
+    cdef float lheweight62_value
+
+    cdef TBranch* lheweight63_branch
+    cdef float lheweight63_value
+
+    cdef TBranch* lheweight64_branch
+    cdef float lheweight64_value
+
+    cdef TBranch* lheweight65_branch
+    cdef float lheweight65_value
+
+    cdef TBranch* lheweight66_branch
+    cdef float lheweight66_value
+
+    cdef TBranch* lheweight67_branch
+    cdef float lheweight67_value
+
+    cdef TBranch* lheweight68_branch
+    cdef float lheweight68_value
+
+    cdef TBranch* lheweight69_branch
+    cdef float lheweight69_value
+
+    cdef TBranch* lheweight7_branch
+    cdef float lheweight7_value
+
+    cdef TBranch* lheweight70_branch
+    cdef float lheweight70_value
+
+    cdef TBranch* lheweight71_branch
+    cdef float lheweight71_value
+
+    cdef TBranch* lheweight72_branch
+    cdef float lheweight72_value
+
+    cdef TBranch* lheweight73_branch
+    cdef float lheweight73_value
+
+    cdef TBranch* lheweight74_branch
+    cdef float lheweight74_value
+
+    cdef TBranch* lheweight75_branch
+    cdef float lheweight75_value
+
+    cdef TBranch* lheweight76_branch
+    cdef float lheweight76_value
+
+    cdef TBranch* lheweight77_branch
+    cdef float lheweight77_value
+
+    cdef TBranch* lheweight78_branch
+    cdef float lheweight78_value
+
+    cdef TBranch* lheweight79_branch
+    cdef float lheweight79_value
+
+    cdef TBranch* lheweight8_branch
+    cdef float lheweight8_value
+
+    cdef TBranch* lheweight80_branch
+    cdef float lheweight80_value
+
+    cdef TBranch* lheweight81_branch
+    cdef float lheweight81_value
+
+    cdef TBranch* lheweight82_branch
+    cdef float lheweight82_value
+
+    cdef TBranch* lheweight83_branch
+    cdef float lheweight83_value
+
+    cdef TBranch* lheweight84_branch
+    cdef float lheweight84_value
+
+    cdef TBranch* lheweight85_branch
+    cdef float lheweight85_value
+
+    cdef TBranch* lheweight86_branch
+    cdef float lheweight86_value
+
+    cdef TBranch* lheweight87_branch
+    cdef float lheweight87_value
+
+    cdef TBranch* lheweight88_branch
+    cdef float lheweight88_value
+
+    cdef TBranch* lheweight89_branch
+    cdef float lheweight89_value
+
+    cdef TBranch* lheweight9_branch
+    cdef float lheweight9_value
+
+    cdef TBranch* lheweight90_branch
+    cdef float lheweight90_value
+
+    cdef TBranch* lheweight91_branch
+    cdef float lheweight91_value
+
+    cdef TBranch* lheweight92_branch
+    cdef float lheweight92_value
+
+    cdef TBranch* lheweight93_branch
+    cdef float lheweight93_value
+
+    cdef TBranch* lheweight94_branch
+    cdef float lheweight94_value
+
+    cdef TBranch* lheweight95_branch
+    cdef float lheweight95_value
+
+    cdef TBranch* lheweight96_branch
+    cdef float lheweight96_value
+
+    cdef TBranch* lheweight97_branch
+    cdef float lheweight97_value
+
+    cdef TBranch* lheweight98_branch
+    cdef float lheweight98_value
+
+    cdef TBranch* lheweight99_branch
+    cdef float lheweight99_value
 
     cdef TBranch* lumi_branch
     cdef int lumi_value
@@ -3193,6 +3841,222 @@ cdef class EMTree:
         else:
             self.j1etaWoNoisyJets_branch.SetAddress(<void*>&self.j1etaWoNoisyJets_value)
 
+        #print "making j1eta_JERDown"
+        self.j1eta_JERDown_branch = the_tree.GetBranch("j1eta_JERDown")
+        #if not self.j1eta_JERDown_branch and "j1eta_JERDown" not in self.complained:
+        if not self.j1eta_JERDown_branch and "j1eta_JERDown":
+            warnings.warn( "EMTree: Expected branch j1eta_JERDown does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("j1eta_JERDown")
+        else:
+            self.j1eta_JERDown_branch.SetAddress(<void*>&self.j1eta_JERDown_value)
+
+        #print "making j1eta_JERUp"
+        self.j1eta_JERUp_branch = the_tree.GetBranch("j1eta_JERUp")
+        #if not self.j1eta_JERUp_branch and "j1eta_JERUp" not in self.complained:
+        if not self.j1eta_JERUp_branch and "j1eta_JERUp":
+            warnings.warn( "EMTree: Expected branch j1eta_JERUp does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("j1eta_JERUp")
+        else:
+            self.j1eta_JERUp_branch.SetAddress(<void*>&self.j1eta_JERUp_value)
+
+        #print "making j1eta_JetAbsoluteDown"
+        self.j1eta_JetAbsoluteDown_branch = the_tree.GetBranch("j1eta_JetAbsoluteDown")
+        #if not self.j1eta_JetAbsoluteDown_branch and "j1eta_JetAbsoluteDown" not in self.complained:
+        if not self.j1eta_JetAbsoluteDown_branch and "j1eta_JetAbsoluteDown":
+            warnings.warn( "EMTree: Expected branch j1eta_JetAbsoluteDown does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("j1eta_JetAbsoluteDown")
+        else:
+            self.j1eta_JetAbsoluteDown_branch.SetAddress(<void*>&self.j1eta_JetAbsoluteDown_value)
+
+        #print "making j1eta_JetAbsoluteUp"
+        self.j1eta_JetAbsoluteUp_branch = the_tree.GetBranch("j1eta_JetAbsoluteUp")
+        #if not self.j1eta_JetAbsoluteUp_branch and "j1eta_JetAbsoluteUp" not in self.complained:
+        if not self.j1eta_JetAbsoluteUp_branch and "j1eta_JetAbsoluteUp":
+            warnings.warn( "EMTree: Expected branch j1eta_JetAbsoluteUp does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("j1eta_JetAbsoluteUp")
+        else:
+            self.j1eta_JetAbsoluteUp_branch.SetAddress(<void*>&self.j1eta_JetAbsoluteUp_value)
+
+        #print "making j1eta_JetAbsoluteyearDown"
+        self.j1eta_JetAbsoluteyearDown_branch = the_tree.GetBranch("j1eta_JetAbsoluteyearDown")
+        #if not self.j1eta_JetAbsoluteyearDown_branch and "j1eta_JetAbsoluteyearDown" not in self.complained:
+        if not self.j1eta_JetAbsoluteyearDown_branch and "j1eta_JetAbsoluteyearDown":
+            warnings.warn( "EMTree: Expected branch j1eta_JetAbsoluteyearDown does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("j1eta_JetAbsoluteyearDown")
+        else:
+            self.j1eta_JetAbsoluteyearDown_branch.SetAddress(<void*>&self.j1eta_JetAbsoluteyearDown_value)
+
+        #print "making j1eta_JetAbsoluteyearUp"
+        self.j1eta_JetAbsoluteyearUp_branch = the_tree.GetBranch("j1eta_JetAbsoluteyearUp")
+        #if not self.j1eta_JetAbsoluteyearUp_branch and "j1eta_JetAbsoluteyearUp" not in self.complained:
+        if not self.j1eta_JetAbsoluteyearUp_branch and "j1eta_JetAbsoluteyearUp":
+            warnings.warn( "EMTree: Expected branch j1eta_JetAbsoluteyearUp does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("j1eta_JetAbsoluteyearUp")
+        else:
+            self.j1eta_JetAbsoluteyearUp_branch.SetAddress(<void*>&self.j1eta_JetAbsoluteyearUp_value)
+
+        #print "making j1eta_JetBBEC1Down"
+        self.j1eta_JetBBEC1Down_branch = the_tree.GetBranch("j1eta_JetBBEC1Down")
+        #if not self.j1eta_JetBBEC1Down_branch and "j1eta_JetBBEC1Down" not in self.complained:
+        if not self.j1eta_JetBBEC1Down_branch and "j1eta_JetBBEC1Down":
+            warnings.warn( "EMTree: Expected branch j1eta_JetBBEC1Down does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("j1eta_JetBBEC1Down")
+        else:
+            self.j1eta_JetBBEC1Down_branch.SetAddress(<void*>&self.j1eta_JetBBEC1Down_value)
+
+        #print "making j1eta_JetBBEC1Up"
+        self.j1eta_JetBBEC1Up_branch = the_tree.GetBranch("j1eta_JetBBEC1Up")
+        #if not self.j1eta_JetBBEC1Up_branch and "j1eta_JetBBEC1Up" not in self.complained:
+        if not self.j1eta_JetBBEC1Up_branch and "j1eta_JetBBEC1Up":
+            warnings.warn( "EMTree: Expected branch j1eta_JetBBEC1Up does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("j1eta_JetBBEC1Up")
+        else:
+            self.j1eta_JetBBEC1Up_branch.SetAddress(<void*>&self.j1eta_JetBBEC1Up_value)
+
+        #print "making j1eta_JetBBEC1yearDown"
+        self.j1eta_JetBBEC1yearDown_branch = the_tree.GetBranch("j1eta_JetBBEC1yearDown")
+        #if not self.j1eta_JetBBEC1yearDown_branch and "j1eta_JetBBEC1yearDown" not in self.complained:
+        if not self.j1eta_JetBBEC1yearDown_branch and "j1eta_JetBBEC1yearDown":
+            warnings.warn( "EMTree: Expected branch j1eta_JetBBEC1yearDown does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("j1eta_JetBBEC1yearDown")
+        else:
+            self.j1eta_JetBBEC1yearDown_branch.SetAddress(<void*>&self.j1eta_JetBBEC1yearDown_value)
+
+        #print "making j1eta_JetBBEC1yearUp"
+        self.j1eta_JetBBEC1yearUp_branch = the_tree.GetBranch("j1eta_JetBBEC1yearUp")
+        #if not self.j1eta_JetBBEC1yearUp_branch and "j1eta_JetBBEC1yearUp" not in self.complained:
+        if not self.j1eta_JetBBEC1yearUp_branch and "j1eta_JetBBEC1yearUp":
+            warnings.warn( "EMTree: Expected branch j1eta_JetBBEC1yearUp does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("j1eta_JetBBEC1yearUp")
+        else:
+            self.j1eta_JetBBEC1yearUp_branch.SetAddress(<void*>&self.j1eta_JetBBEC1yearUp_value)
+
+        #print "making j1eta_JetEC2Down"
+        self.j1eta_JetEC2Down_branch = the_tree.GetBranch("j1eta_JetEC2Down")
+        #if not self.j1eta_JetEC2Down_branch and "j1eta_JetEC2Down" not in self.complained:
+        if not self.j1eta_JetEC2Down_branch and "j1eta_JetEC2Down":
+            warnings.warn( "EMTree: Expected branch j1eta_JetEC2Down does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("j1eta_JetEC2Down")
+        else:
+            self.j1eta_JetEC2Down_branch.SetAddress(<void*>&self.j1eta_JetEC2Down_value)
+
+        #print "making j1eta_JetEC2Up"
+        self.j1eta_JetEC2Up_branch = the_tree.GetBranch("j1eta_JetEC2Up")
+        #if not self.j1eta_JetEC2Up_branch and "j1eta_JetEC2Up" not in self.complained:
+        if not self.j1eta_JetEC2Up_branch and "j1eta_JetEC2Up":
+            warnings.warn( "EMTree: Expected branch j1eta_JetEC2Up does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("j1eta_JetEC2Up")
+        else:
+            self.j1eta_JetEC2Up_branch.SetAddress(<void*>&self.j1eta_JetEC2Up_value)
+
+        #print "making j1eta_JetEC2yearDown"
+        self.j1eta_JetEC2yearDown_branch = the_tree.GetBranch("j1eta_JetEC2yearDown")
+        #if not self.j1eta_JetEC2yearDown_branch and "j1eta_JetEC2yearDown" not in self.complained:
+        if not self.j1eta_JetEC2yearDown_branch and "j1eta_JetEC2yearDown":
+            warnings.warn( "EMTree: Expected branch j1eta_JetEC2yearDown does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("j1eta_JetEC2yearDown")
+        else:
+            self.j1eta_JetEC2yearDown_branch.SetAddress(<void*>&self.j1eta_JetEC2yearDown_value)
+
+        #print "making j1eta_JetEC2yearUp"
+        self.j1eta_JetEC2yearUp_branch = the_tree.GetBranch("j1eta_JetEC2yearUp")
+        #if not self.j1eta_JetEC2yearUp_branch and "j1eta_JetEC2yearUp" not in self.complained:
+        if not self.j1eta_JetEC2yearUp_branch and "j1eta_JetEC2yearUp":
+            warnings.warn( "EMTree: Expected branch j1eta_JetEC2yearUp does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("j1eta_JetEC2yearUp")
+        else:
+            self.j1eta_JetEC2yearUp_branch.SetAddress(<void*>&self.j1eta_JetEC2yearUp_value)
+
+        #print "making j1eta_JetFlavorQCDDown"
+        self.j1eta_JetFlavorQCDDown_branch = the_tree.GetBranch("j1eta_JetFlavorQCDDown")
+        #if not self.j1eta_JetFlavorQCDDown_branch and "j1eta_JetFlavorQCDDown" not in self.complained:
+        if not self.j1eta_JetFlavorQCDDown_branch and "j1eta_JetFlavorQCDDown":
+            warnings.warn( "EMTree: Expected branch j1eta_JetFlavorQCDDown does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("j1eta_JetFlavorQCDDown")
+        else:
+            self.j1eta_JetFlavorQCDDown_branch.SetAddress(<void*>&self.j1eta_JetFlavorQCDDown_value)
+
+        #print "making j1eta_JetFlavorQCDUp"
+        self.j1eta_JetFlavorQCDUp_branch = the_tree.GetBranch("j1eta_JetFlavorQCDUp")
+        #if not self.j1eta_JetFlavorQCDUp_branch and "j1eta_JetFlavorQCDUp" not in self.complained:
+        if not self.j1eta_JetFlavorQCDUp_branch and "j1eta_JetFlavorQCDUp":
+            warnings.warn( "EMTree: Expected branch j1eta_JetFlavorQCDUp does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("j1eta_JetFlavorQCDUp")
+        else:
+            self.j1eta_JetFlavorQCDUp_branch.SetAddress(<void*>&self.j1eta_JetFlavorQCDUp_value)
+
+        #print "making j1eta_JetHFDown"
+        self.j1eta_JetHFDown_branch = the_tree.GetBranch("j1eta_JetHFDown")
+        #if not self.j1eta_JetHFDown_branch and "j1eta_JetHFDown" not in self.complained:
+        if not self.j1eta_JetHFDown_branch and "j1eta_JetHFDown":
+            warnings.warn( "EMTree: Expected branch j1eta_JetHFDown does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("j1eta_JetHFDown")
+        else:
+            self.j1eta_JetHFDown_branch.SetAddress(<void*>&self.j1eta_JetHFDown_value)
+
+        #print "making j1eta_JetHFUp"
+        self.j1eta_JetHFUp_branch = the_tree.GetBranch("j1eta_JetHFUp")
+        #if not self.j1eta_JetHFUp_branch and "j1eta_JetHFUp" not in self.complained:
+        if not self.j1eta_JetHFUp_branch and "j1eta_JetHFUp":
+            warnings.warn( "EMTree: Expected branch j1eta_JetHFUp does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("j1eta_JetHFUp")
+        else:
+            self.j1eta_JetHFUp_branch.SetAddress(<void*>&self.j1eta_JetHFUp_value)
+
+        #print "making j1eta_JetHFyearDown"
+        self.j1eta_JetHFyearDown_branch = the_tree.GetBranch("j1eta_JetHFyearDown")
+        #if not self.j1eta_JetHFyearDown_branch and "j1eta_JetHFyearDown" not in self.complained:
+        if not self.j1eta_JetHFyearDown_branch and "j1eta_JetHFyearDown":
+            warnings.warn( "EMTree: Expected branch j1eta_JetHFyearDown does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("j1eta_JetHFyearDown")
+        else:
+            self.j1eta_JetHFyearDown_branch.SetAddress(<void*>&self.j1eta_JetHFyearDown_value)
+
+        #print "making j1eta_JetHFyearUp"
+        self.j1eta_JetHFyearUp_branch = the_tree.GetBranch("j1eta_JetHFyearUp")
+        #if not self.j1eta_JetHFyearUp_branch and "j1eta_JetHFyearUp" not in self.complained:
+        if not self.j1eta_JetHFyearUp_branch and "j1eta_JetHFyearUp":
+            warnings.warn( "EMTree: Expected branch j1eta_JetHFyearUp does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("j1eta_JetHFyearUp")
+        else:
+            self.j1eta_JetHFyearUp_branch.SetAddress(<void*>&self.j1eta_JetHFyearUp_value)
+
+        #print "making j1eta_JetRelativeBalDown"
+        self.j1eta_JetRelativeBalDown_branch = the_tree.GetBranch("j1eta_JetRelativeBalDown")
+        #if not self.j1eta_JetRelativeBalDown_branch and "j1eta_JetRelativeBalDown" not in self.complained:
+        if not self.j1eta_JetRelativeBalDown_branch and "j1eta_JetRelativeBalDown":
+            warnings.warn( "EMTree: Expected branch j1eta_JetRelativeBalDown does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("j1eta_JetRelativeBalDown")
+        else:
+            self.j1eta_JetRelativeBalDown_branch.SetAddress(<void*>&self.j1eta_JetRelativeBalDown_value)
+
+        #print "making j1eta_JetRelativeBalUp"
+        self.j1eta_JetRelativeBalUp_branch = the_tree.GetBranch("j1eta_JetRelativeBalUp")
+        #if not self.j1eta_JetRelativeBalUp_branch and "j1eta_JetRelativeBalUp" not in self.complained:
+        if not self.j1eta_JetRelativeBalUp_branch and "j1eta_JetRelativeBalUp":
+            warnings.warn( "EMTree: Expected branch j1eta_JetRelativeBalUp does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("j1eta_JetRelativeBalUp")
+        else:
+            self.j1eta_JetRelativeBalUp_branch.SetAddress(<void*>&self.j1eta_JetRelativeBalUp_value)
+
+        #print "making j1eta_JetRelativeSampleDown"
+        self.j1eta_JetRelativeSampleDown_branch = the_tree.GetBranch("j1eta_JetRelativeSampleDown")
+        #if not self.j1eta_JetRelativeSampleDown_branch and "j1eta_JetRelativeSampleDown" not in self.complained:
+        if not self.j1eta_JetRelativeSampleDown_branch and "j1eta_JetRelativeSampleDown":
+            warnings.warn( "EMTree: Expected branch j1eta_JetRelativeSampleDown does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("j1eta_JetRelativeSampleDown")
+        else:
+            self.j1eta_JetRelativeSampleDown_branch.SetAddress(<void*>&self.j1eta_JetRelativeSampleDown_value)
+
+        #print "making j1eta_JetRelativeSampleUp"
+        self.j1eta_JetRelativeSampleUp_branch = the_tree.GetBranch("j1eta_JetRelativeSampleUp")
+        #if not self.j1eta_JetRelativeSampleUp_branch and "j1eta_JetRelativeSampleUp" not in self.complained:
+        if not self.j1eta_JetRelativeSampleUp_branch and "j1eta_JetRelativeSampleUp":
+            warnings.warn( "EMTree: Expected branch j1eta_JetRelativeSampleUp does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("j1eta_JetRelativeSampleUp")
+        else:
+            self.j1eta_JetRelativeSampleUp_branch.SetAddress(<void*>&self.j1eta_JetRelativeSampleUp_value)
+
         #print "making j1hadronflavor"
         self.j1hadronflavor_branch = the_tree.GetBranch("j1hadronflavor")
         #if not self.j1hadronflavor_branch and "j1hadronflavor" not in self.complained:
@@ -3228,6 +4092,222 @@ cdef class EMTree:
             #self.complained.add("j1phiWoNoisyJets")
         else:
             self.j1phiWoNoisyJets_branch.SetAddress(<void*>&self.j1phiWoNoisyJets_value)
+
+        #print "making j1phi_JERDown"
+        self.j1phi_JERDown_branch = the_tree.GetBranch("j1phi_JERDown")
+        #if not self.j1phi_JERDown_branch and "j1phi_JERDown" not in self.complained:
+        if not self.j1phi_JERDown_branch and "j1phi_JERDown":
+            warnings.warn( "EMTree: Expected branch j1phi_JERDown does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("j1phi_JERDown")
+        else:
+            self.j1phi_JERDown_branch.SetAddress(<void*>&self.j1phi_JERDown_value)
+
+        #print "making j1phi_JERUp"
+        self.j1phi_JERUp_branch = the_tree.GetBranch("j1phi_JERUp")
+        #if not self.j1phi_JERUp_branch and "j1phi_JERUp" not in self.complained:
+        if not self.j1phi_JERUp_branch and "j1phi_JERUp":
+            warnings.warn( "EMTree: Expected branch j1phi_JERUp does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("j1phi_JERUp")
+        else:
+            self.j1phi_JERUp_branch.SetAddress(<void*>&self.j1phi_JERUp_value)
+
+        #print "making j1phi_JetAbsoluteDown"
+        self.j1phi_JetAbsoluteDown_branch = the_tree.GetBranch("j1phi_JetAbsoluteDown")
+        #if not self.j1phi_JetAbsoluteDown_branch and "j1phi_JetAbsoluteDown" not in self.complained:
+        if not self.j1phi_JetAbsoluteDown_branch and "j1phi_JetAbsoluteDown":
+            warnings.warn( "EMTree: Expected branch j1phi_JetAbsoluteDown does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("j1phi_JetAbsoluteDown")
+        else:
+            self.j1phi_JetAbsoluteDown_branch.SetAddress(<void*>&self.j1phi_JetAbsoluteDown_value)
+
+        #print "making j1phi_JetAbsoluteUp"
+        self.j1phi_JetAbsoluteUp_branch = the_tree.GetBranch("j1phi_JetAbsoluteUp")
+        #if not self.j1phi_JetAbsoluteUp_branch and "j1phi_JetAbsoluteUp" not in self.complained:
+        if not self.j1phi_JetAbsoluteUp_branch and "j1phi_JetAbsoluteUp":
+            warnings.warn( "EMTree: Expected branch j1phi_JetAbsoluteUp does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("j1phi_JetAbsoluteUp")
+        else:
+            self.j1phi_JetAbsoluteUp_branch.SetAddress(<void*>&self.j1phi_JetAbsoluteUp_value)
+
+        #print "making j1phi_JetAbsoluteyearDown"
+        self.j1phi_JetAbsoluteyearDown_branch = the_tree.GetBranch("j1phi_JetAbsoluteyearDown")
+        #if not self.j1phi_JetAbsoluteyearDown_branch and "j1phi_JetAbsoluteyearDown" not in self.complained:
+        if not self.j1phi_JetAbsoluteyearDown_branch and "j1phi_JetAbsoluteyearDown":
+            warnings.warn( "EMTree: Expected branch j1phi_JetAbsoluteyearDown does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("j1phi_JetAbsoluteyearDown")
+        else:
+            self.j1phi_JetAbsoluteyearDown_branch.SetAddress(<void*>&self.j1phi_JetAbsoluteyearDown_value)
+
+        #print "making j1phi_JetAbsoluteyearUp"
+        self.j1phi_JetAbsoluteyearUp_branch = the_tree.GetBranch("j1phi_JetAbsoluteyearUp")
+        #if not self.j1phi_JetAbsoluteyearUp_branch and "j1phi_JetAbsoluteyearUp" not in self.complained:
+        if not self.j1phi_JetAbsoluteyearUp_branch and "j1phi_JetAbsoluteyearUp":
+            warnings.warn( "EMTree: Expected branch j1phi_JetAbsoluteyearUp does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("j1phi_JetAbsoluteyearUp")
+        else:
+            self.j1phi_JetAbsoluteyearUp_branch.SetAddress(<void*>&self.j1phi_JetAbsoluteyearUp_value)
+
+        #print "making j1phi_JetBBEC1Down"
+        self.j1phi_JetBBEC1Down_branch = the_tree.GetBranch("j1phi_JetBBEC1Down")
+        #if not self.j1phi_JetBBEC1Down_branch and "j1phi_JetBBEC1Down" not in self.complained:
+        if not self.j1phi_JetBBEC1Down_branch and "j1phi_JetBBEC1Down":
+            warnings.warn( "EMTree: Expected branch j1phi_JetBBEC1Down does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("j1phi_JetBBEC1Down")
+        else:
+            self.j1phi_JetBBEC1Down_branch.SetAddress(<void*>&self.j1phi_JetBBEC1Down_value)
+
+        #print "making j1phi_JetBBEC1Up"
+        self.j1phi_JetBBEC1Up_branch = the_tree.GetBranch("j1phi_JetBBEC1Up")
+        #if not self.j1phi_JetBBEC1Up_branch and "j1phi_JetBBEC1Up" not in self.complained:
+        if not self.j1phi_JetBBEC1Up_branch and "j1phi_JetBBEC1Up":
+            warnings.warn( "EMTree: Expected branch j1phi_JetBBEC1Up does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("j1phi_JetBBEC1Up")
+        else:
+            self.j1phi_JetBBEC1Up_branch.SetAddress(<void*>&self.j1phi_JetBBEC1Up_value)
+
+        #print "making j1phi_JetBBEC1yearDown"
+        self.j1phi_JetBBEC1yearDown_branch = the_tree.GetBranch("j1phi_JetBBEC1yearDown")
+        #if not self.j1phi_JetBBEC1yearDown_branch and "j1phi_JetBBEC1yearDown" not in self.complained:
+        if not self.j1phi_JetBBEC1yearDown_branch and "j1phi_JetBBEC1yearDown":
+            warnings.warn( "EMTree: Expected branch j1phi_JetBBEC1yearDown does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("j1phi_JetBBEC1yearDown")
+        else:
+            self.j1phi_JetBBEC1yearDown_branch.SetAddress(<void*>&self.j1phi_JetBBEC1yearDown_value)
+
+        #print "making j1phi_JetBBEC1yearUp"
+        self.j1phi_JetBBEC1yearUp_branch = the_tree.GetBranch("j1phi_JetBBEC1yearUp")
+        #if not self.j1phi_JetBBEC1yearUp_branch and "j1phi_JetBBEC1yearUp" not in self.complained:
+        if not self.j1phi_JetBBEC1yearUp_branch and "j1phi_JetBBEC1yearUp":
+            warnings.warn( "EMTree: Expected branch j1phi_JetBBEC1yearUp does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("j1phi_JetBBEC1yearUp")
+        else:
+            self.j1phi_JetBBEC1yearUp_branch.SetAddress(<void*>&self.j1phi_JetBBEC1yearUp_value)
+
+        #print "making j1phi_JetEC2Down"
+        self.j1phi_JetEC2Down_branch = the_tree.GetBranch("j1phi_JetEC2Down")
+        #if not self.j1phi_JetEC2Down_branch and "j1phi_JetEC2Down" not in self.complained:
+        if not self.j1phi_JetEC2Down_branch and "j1phi_JetEC2Down":
+            warnings.warn( "EMTree: Expected branch j1phi_JetEC2Down does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("j1phi_JetEC2Down")
+        else:
+            self.j1phi_JetEC2Down_branch.SetAddress(<void*>&self.j1phi_JetEC2Down_value)
+
+        #print "making j1phi_JetEC2Up"
+        self.j1phi_JetEC2Up_branch = the_tree.GetBranch("j1phi_JetEC2Up")
+        #if not self.j1phi_JetEC2Up_branch and "j1phi_JetEC2Up" not in self.complained:
+        if not self.j1phi_JetEC2Up_branch and "j1phi_JetEC2Up":
+            warnings.warn( "EMTree: Expected branch j1phi_JetEC2Up does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("j1phi_JetEC2Up")
+        else:
+            self.j1phi_JetEC2Up_branch.SetAddress(<void*>&self.j1phi_JetEC2Up_value)
+
+        #print "making j1phi_JetEC2yearDown"
+        self.j1phi_JetEC2yearDown_branch = the_tree.GetBranch("j1phi_JetEC2yearDown")
+        #if not self.j1phi_JetEC2yearDown_branch and "j1phi_JetEC2yearDown" not in self.complained:
+        if not self.j1phi_JetEC2yearDown_branch and "j1phi_JetEC2yearDown":
+            warnings.warn( "EMTree: Expected branch j1phi_JetEC2yearDown does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("j1phi_JetEC2yearDown")
+        else:
+            self.j1phi_JetEC2yearDown_branch.SetAddress(<void*>&self.j1phi_JetEC2yearDown_value)
+
+        #print "making j1phi_JetEC2yearUp"
+        self.j1phi_JetEC2yearUp_branch = the_tree.GetBranch("j1phi_JetEC2yearUp")
+        #if not self.j1phi_JetEC2yearUp_branch and "j1phi_JetEC2yearUp" not in self.complained:
+        if not self.j1phi_JetEC2yearUp_branch and "j1phi_JetEC2yearUp":
+            warnings.warn( "EMTree: Expected branch j1phi_JetEC2yearUp does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("j1phi_JetEC2yearUp")
+        else:
+            self.j1phi_JetEC2yearUp_branch.SetAddress(<void*>&self.j1phi_JetEC2yearUp_value)
+
+        #print "making j1phi_JetFlavorQCDDown"
+        self.j1phi_JetFlavorQCDDown_branch = the_tree.GetBranch("j1phi_JetFlavorQCDDown")
+        #if not self.j1phi_JetFlavorQCDDown_branch and "j1phi_JetFlavorQCDDown" not in self.complained:
+        if not self.j1phi_JetFlavorQCDDown_branch and "j1phi_JetFlavorQCDDown":
+            warnings.warn( "EMTree: Expected branch j1phi_JetFlavorQCDDown does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("j1phi_JetFlavorQCDDown")
+        else:
+            self.j1phi_JetFlavorQCDDown_branch.SetAddress(<void*>&self.j1phi_JetFlavorQCDDown_value)
+
+        #print "making j1phi_JetFlavorQCDUp"
+        self.j1phi_JetFlavorQCDUp_branch = the_tree.GetBranch("j1phi_JetFlavorQCDUp")
+        #if not self.j1phi_JetFlavorQCDUp_branch and "j1phi_JetFlavorQCDUp" not in self.complained:
+        if not self.j1phi_JetFlavorQCDUp_branch and "j1phi_JetFlavorQCDUp":
+            warnings.warn( "EMTree: Expected branch j1phi_JetFlavorQCDUp does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("j1phi_JetFlavorQCDUp")
+        else:
+            self.j1phi_JetFlavorQCDUp_branch.SetAddress(<void*>&self.j1phi_JetFlavorQCDUp_value)
+
+        #print "making j1phi_JetHFDown"
+        self.j1phi_JetHFDown_branch = the_tree.GetBranch("j1phi_JetHFDown")
+        #if not self.j1phi_JetHFDown_branch and "j1phi_JetHFDown" not in self.complained:
+        if not self.j1phi_JetHFDown_branch and "j1phi_JetHFDown":
+            warnings.warn( "EMTree: Expected branch j1phi_JetHFDown does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("j1phi_JetHFDown")
+        else:
+            self.j1phi_JetHFDown_branch.SetAddress(<void*>&self.j1phi_JetHFDown_value)
+
+        #print "making j1phi_JetHFUp"
+        self.j1phi_JetHFUp_branch = the_tree.GetBranch("j1phi_JetHFUp")
+        #if not self.j1phi_JetHFUp_branch and "j1phi_JetHFUp" not in self.complained:
+        if not self.j1phi_JetHFUp_branch and "j1phi_JetHFUp":
+            warnings.warn( "EMTree: Expected branch j1phi_JetHFUp does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("j1phi_JetHFUp")
+        else:
+            self.j1phi_JetHFUp_branch.SetAddress(<void*>&self.j1phi_JetHFUp_value)
+
+        #print "making j1phi_JetHFyearDown"
+        self.j1phi_JetHFyearDown_branch = the_tree.GetBranch("j1phi_JetHFyearDown")
+        #if not self.j1phi_JetHFyearDown_branch and "j1phi_JetHFyearDown" not in self.complained:
+        if not self.j1phi_JetHFyearDown_branch and "j1phi_JetHFyearDown":
+            warnings.warn( "EMTree: Expected branch j1phi_JetHFyearDown does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("j1phi_JetHFyearDown")
+        else:
+            self.j1phi_JetHFyearDown_branch.SetAddress(<void*>&self.j1phi_JetHFyearDown_value)
+
+        #print "making j1phi_JetHFyearUp"
+        self.j1phi_JetHFyearUp_branch = the_tree.GetBranch("j1phi_JetHFyearUp")
+        #if not self.j1phi_JetHFyearUp_branch and "j1phi_JetHFyearUp" not in self.complained:
+        if not self.j1phi_JetHFyearUp_branch and "j1phi_JetHFyearUp":
+            warnings.warn( "EMTree: Expected branch j1phi_JetHFyearUp does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("j1phi_JetHFyearUp")
+        else:
+            self.j1phi_JetHFyearUp_branch.SetAddress(<void*>&self.j1phi_JetHFyearUp_value)
+
+        #print "making j1phi_JetRelativeBalDown"
+        self.j1phi_JetRelativeBalDown_branch = the_tree.GetBranch("j1phi_JetRelativeBalDown")
+        #if not self.j1phi_JetRelativeBalDown_branch and "j1phi_JetRelativeBalDown" not in self.complained:
+        if not self.j1phi_JetRelativeBalDown_branch and "j1phi_JetRelativeBalDown":
+            warnings.warn( "EMTree: Expected branch j1phi_JetRelativeBalDown does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("j1phi_JetRelativeBalDown")
+        else:
+            self.j1phi_JetRelativeBalDown_branch.SetAddress(<void*>&self.j1phi_JetRelativeBalDown_value)
+
+        #print "making j1phi_JetRelativeBalUp"
+        self.j1phi_JetRelativeBalUp_branch = the_tree.GetBranch("j1phi_JetRelativeBalUp")
+        #if not self.j1phi_JetRelativeBalUp_branch and "j1phi_JetRelativeBalUp" not in self.complained:
+        if not self.j1phi_JetRelativeBalUp_branch and "j1phi_JetRelativeBalUp":
+            warnings.warn( "EMTree: Expected branch j1phi_JetRelativeBalUp does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("j1phi_JetRelativeBalUp")
+        else:
+            self.j1phi_JetRelativeBalUp_branch.SetAddress(<void*>&self.j1phi_JetRelativeBalUp_value)
+
+        #print "making j1phi_JetRelativeSampleDown"
+        self.j1phi_JetRelativeSampleDown_branch = the_tree.GetBranch("j1phi_JetRelativeSampleDown")
+        #if not self.j1phi_JetRelativeSampleDown_branch and "j1phi_JetRelativeSampleDown" not in self.complained:
+        if not self.j1phi_JetRelativeSampleDown_branch and "j1phi_JetRelativeSampleDown":
+            warnings.warn( "EMTree: Expected branch j1phi_JetRelativeSampleDown does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("j1phi_JetRelativeSampleDown")
+        else:
+            self.j1phi_JetRelativeSampleDown_branch.SetAddress(<void*>&self.j1phi_JetRelativeSampleDown_value)
+
+        #print "making j1phi_JetRelativeSampleUp"
+        self.j1phi_JetRelativeSampleUp_branch = the_tree.GetBranch("j1phi_JetRelativeSampleUp")
+        #if not self.j1phi_JetRelativeSampleUp_branch and "j1phi_JetRelativeSampleUp" not in self.complained:
+        if not self.j1phi_JetRelativeSampleUp_branch and "j1phi_JetRelativeSampleUp":
+            warnings.warn( "EMTree: Expected branch j1phi_JetRelativeSampleUp does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("j1phi_JetRelativeSampleUp")
+        else:
+            self.j1phi_JetRelativeSampleUp_branch.SetAddress(<void*>&self.j1phi_JetRelativeSampleUp_value)
 
         #print "making j1pt"
         self.j1pt_branch = the_tree.GetBranch("j1pt")
@@ -3499,6 +4579,222 @@ cdef class EMTree:
         else:
             self.j2etaWoNoisyJets_branch.SetAddress(<void*>&self.j2etaWoNoisyJets_value)
 
+        #print "making j2eta_JERDown"
+        self.j2eta_JERDown_branch = the_tree.GetBranch("j2eta_JERDown")
+        #if not self.j2eta_JERDown_branch and "j2eta_JERDown" not in self.complained:
+        if not self.j2eta_JERDown_branch and "j2eta_JERDown":
+            warnings.warn( "EMTree: Expected branch j2eta_JERDown does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("j2eta_JERDown")
+        else:
+            self.j2eta_JERDown_branch.SetAddress(<void*>&self.j2eta_JERDown_value)
+
+        #print "making j2eta_JERUp"
+        self.j2eta_JERUp_branch = the_tree.GetBranch("j2eta_JERUp")
+        #if not self.j2eta_JERUp_branch and "j2eta_JERUp" not in self.complained:
+        if not self.j2eta_JERUp_branch and "j2eta_JERUp":
+            warnings.warn( "EMTree: Expected branch j2eta_JERUp does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("j2eta_JERUp")
+        else:
+            self.j2eta_JERUp_branch.SetAddress(<void*>&self.j2eta_JERUp_value)
+
+        #print "making j2eta_JetAbsoluteDown"
+        self.j2eta_JetAbsoluteDown_branch = the_tree.GetBranch("j2eta_JetAbsoluteDown")
+        #if not self.j2eta_JetAbsoluteDown_branch and "j2eta_JetAbsoluteDown" not in self.complained:
+        if not self.j2eta_JetAbsoluteDown_branch and "j2eta_JetAbsoluteDown":
+            warnings.warn( "EMTree: Expected branch j2eta_JetAbsoluteDown does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("j2eta_JetAbsoluteDown")
+        else:
+            self.j2eta_JetAbsoluteDown_branch.SetAddress(<void*>&self.j2eta_JetAbsoluteDown_value)
+
+        #print "making j2eta_JetAbsoluteUp"
+        self.j2eta_JetAbsoluteUp_branch = the_tree.GetBranch("j2eta_JetAbsoluteUp")
+        #if not self.j2eta_JetAbsoluteUp_branch and "j2eta_JetAbsoluteUp" not in self.complained:
+        if not self.j2eta_JetAbsoluteUp_branch and "j2eta_JetAbsoluteUp":
+            warnings.warn( "EMTree: Expected branch j2eta_JetAbsoluteUp does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("j2eta_JetAbsoluteUp")
+        else:
+            self.j2eta_JetAbsoluteUp_branch.SetAddress(<void*>&self.j2eta_JetAbsoluteUp_value)
+
+        #print "making j2eta_JetAbsoluteyearDown"
+        self.j2eta_JetAbsoluteyearDown_branch = the_tree.GetBranch("j2eta_JetAbsoluteyearDown")
+        #if not self.j2eta_JetAbsoluteyearDown_branch and "j2eta_JetAbsoluteyearDown" not in self.complained:
+        if not self.j2eta_JetAbsoluteyearDown_branch and "j2eta_JetAbsoluteyearDown":
+            warnings.warn( "EMTree: Expected branch j2eta_JetAbsoluteyearDown does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("j2eta_JetAbsoluteyearDown")
+        else:
+            self.j2eta_JetAbsoluteyearDown_branch.SetAddress(<void*>&self.j2eta_JetAbsoluteyearDown_value)
+
+        #print "making j2eta_JetAbsoluteyearUp"
+        self.j2eta_JetAbsoluteyearUp_branch = the_tree.GetBranch("j2eta_JetAbsoluteyearUp")
+        #if not self.j2eta_JetAbsoluteyearUp_branch and "j2eta_JetAbsoluteyearUp" not in self.complained:
+        if not self.j2eta_JetAbsoluteyearUp_branch and "j2eta_JetAbsoluteyearUp":
+            warnings.warn( "EMTree: Expected branch j2eta_JetAbsoluteyearUp does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("j2eta_JetAbsoluteyearUp")
+        else:
+            self.j2eta_JetAbsoluteyearUp_branch.SetAddress(<void*>&self.j2eta_JetAbsoluteyearUp_value)
+
+        #print "making j2eta_JetBBEC1Down"
+        self.j2eta_JetBBEC1Down_branch = the_tree.GetBranch("j2eta_JetBBEC1Down")
+        #if not self.j2eta_JetBBEC1Down_branch and "j2eta_JetBBEC1Down" not in self.complained:
+        if not self.j2eta_JetBBEC1Down_branch and "j2eta_JetBBEC1Down":
+            warnings.warn( "EMTree: Expected branch j2eta_JetBBEC1Down does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("j2eta_JetBBEC1Down")
+        else:
+            self.j2eta_JetBBEC1Down_branch.SetAddress(<void*>&self.j2eta_JetBBEC1Down_value)
+
+        #print "making j2eta_JetBBEC1Up"
+        self.j2eta_JetBBEC1Up_branch = the_tree.GetBranch("j2eta_JetBBEC1Up")
+        #if not self.j2eta_JetBBEC1Up_branch and "j2eta_JetBBEC1Up" not in self.complained:
+        if not self.j2eta_JetBBEC1Up_branch and "j2eta_JetBBEC1Up":
+            warnings.warn( "EMTree: Expected branch j2eta_JetBBEC1Up does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("j2eta_JetBBEC1Up")
+        else:
+            self.j2eta_JetBBEC1Up_branch.SetAddress(<void*>&self.j2eta_JetBBEC1Up_value)
+
+        #print "making j2eta_JetBBEC1yearDown"
+        self.j2eta_JetBBEC1yearDown_branch = the_tree.GetBranch("j2eta_JetBBEC1yearDown")
+        #if not self.j2eta_JetBBEC1yearDown_branch and "j2eta_JetBBEC1yearDown" not in self.complained:
+        if not self.j2eta_JetBBEC1yearDown_branch and "j2eta_JetBBEC1yearDown":
+            warnings.warn( "EMTree: Expected branch j2eta_JetBBEC1yearDown does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("j2eta_JetBBEC1yearDown")
+        else:
+            self.j2eta_JetBBEC1yearDown_branch.SetAddress(<void*>&self.j2eta_JetBBEC1yearDown_value)
+
+        #print "making j2eta_JetBBEC1yearUp"
+        self.j2eta_JetBBEC1yearUp_branch = the_tree.GetBranch("j2eta_JetBBEC1yearUp")
+        #if not self.j2eta_JetBBEC1yearUp_branch and "j2eta_JetBBEC1yearUp" not in self.complained:
+        if not self.j2eta_JetBBEC1yearUp_branch and "j2eta_JetBBEC1yearUp":
+            warnings.warn( "EMTree: Expected branch j2eta_JetBBEC1yearUp does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("j2eta_JetBBEC1yearUp")
+        else:
+            self.j2eta_JetBBEC1yearUp_branch.SetAddress(<void*>&self.j2eta_JetBBEC1yearUp_value)
+
+        #print "making j2eta_JetEC2Down"
+        self.j2eta_JetEC2Down_branch = the_tree.GetBranch("j2eta_JetEC2Down")
+        #if not self.j2eta_JetEC2Down_branch and "j2eta_JetEC2Down" not in self.complained:
+        if not self.j2eta_JetEC2Down_branch and "j2eta_JetEC2Down":
+            warnings.warn( "EMTree: Expected branch j2eta_JetEC2Down does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("j2eta_JetEC2Down")
+        else:
+            self.j2eta_JetEC2Down_branch.SetAddress(<void*>&self.j2eta_JetEC2Down_value)
+
+        #print "making j2eta_JetEC2Up"
+        self.j2eta_JetEC2Up_branch = the_tree.GetBranch("j2eta_JetEC2Up")
+        #if not self.j2eta_JetEC2Up_branch and "j2eta_JetEC2Up" not in self.complained:
+        if not self.j2eta_JetEC2Up_branch and "j2eta_JetEC2Up":
+            warnings.warn( "EMTree: Expected branch j2eta_JetEC2Up does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("j2eta_JetEC2Up")
+        else:
+            self.j2eta_JetEC2Up_branch.SetAddress(<void*>&self.j2eta_JetEC2Up_value)
+
+        #print "making j2eta_JetEC2yearDown"
+        self.j2eta_JetEC2yearDown_branch = the_tree.GetBranch("j2eta_JetEC2yearDown")
+        #if not self.j2eta_JetEC2yearDown_branch and "j2eta_JetEC2yearDown" not in self.complained:
+        if not self.j2eta_JetEC2yearDown_branch and "j2eta_JetEC2yearDown":
+            warnings.warn( "EMTree: Expected branch j2eta_JetEC2yearDown does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("j2eta_JetEC2yearDown")
+        else:
+            self.j2eta_JetEC2yearDown_branch.SetAddress(<void*>&self.j2eta_JetEC2yearDown_value)
+
+        #print "making j2eta_JetEC2yearUp"
+        self.j2eta_JetEC2yearUp_branch = the_tree.GetBranch("j2eta_JetEC2yearUp")
+        #if not self.j2eta_JetEC2yearUp_branch and "j2eta_JetEC2yearUp" not in self.complained:
+        if not self.j2eta_JetEC2yearUp_branch and "j2eta_JetEC2yearUp":
+            warnings.warn( "EMTree: Expected branch j2eta_JetEC2yearUp does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("j2eta_JetEC2yearUp")
+        else:
+            self.j2eta_JetEC2yearUp_branch.SetAddress(<void*>&self.j2eta_JetEC2yearUp_value)
+
+        #print "making j2eta_JetFlavorQCDDown"
+        self.j2eta_JetFlavorQCDDown_branch = the_tree.GetBranch("j2eta_JetFlavorQCDDown")
+        #if not self.j2eta_JetFlavorQCDDown_branch and "j2eta_JetFlavorQCDDown" not in self.complained:
+        if not self.j2eta_JetFlavorQCDDown_branch and "j2eta_JetFlavorQCDDown":
+            warnings.warn( "EMTree: Expected branch j2eta_JetFlavorQCDDown does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("j2eta_JetFlavorQCDDown")
+        else:
+            self.j2eta_JetFlavorQCDDown_branch.SetAddress(<void*>&self.j2eta_JetFlavorQCDDown_value)
+
+        #print "making j2eta_JetFlavorQCDUp"
+        self.j2eta_JetFlavorQCDUp_branch = the_tree.GetBranch("j2eta_JetFlavorQCDUp")
+        #if not self.j2eta_JetFlavorQCDUp_branch and "j2eta_JetFlavorQCDUp" not in self.complained:
+        if not self.j2eta_JetFlavorQCDUp_branch and "j2eta_JetFlavorQCDUp":
+            warnings.warn( "EMTree: Expected branch j2eta_JetFlavorQCDUp does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("j2eta_JetFlavorQCDUp")
+        else:
+            self.j2eta_JetFlavorQCDUp_branch.SetAddress(<void*>&self.j2eta_JetFlavorQCDUp_value)
+
+        #print "making j2eta_JetHFDown"
+        self.j2eta_JetHFDown_branch = the_tree.GetBranch("j2eta_JetHFDown")
+        #if not self.j2eta_JetHFDown_branch and "j2eta_JetHFDown" not in self.complained:
+        if not self.j2eta_JetHFDown_branch and "j2eta_JetHFDown":
+            warnings.warn( "EMTree: Expected branch j2eta_JetHFDown does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("j2eta_JetHFDown")
+        else:
+            self.j2eta_JetHFDown_branch.SetAddress(<void*>&self.j2eta_JetHFDown_value)
+
+        #print "making j2eta_JetHFUp"
+        self.j2eta_JetHFUp_branch = the_tree.GetBranch("j2eta_JetHFUp")
+        #if not self.j2eta_JetHFUp_branch and "j2eta_JetHFUp" not in self.complained:
+        if not self.j2eta_JetHFUp_branch and "j2eta_JetHFUp":
+            warnings.warn( "EMTree: Expected branch j2eta_JetHFUp does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("j2eta_JetHFUp")
+        else:
+            self.j2eta_JetHFUp_branch.SetAddress(<void*>&self.j2eta_JetHFUp_value)
+
+        #print "making j2eta_JetHFyearDown"
+        self.j2eta_JetHFyearDown_branch = the_tree.GetBranch("j2eta_JetHFyearDown")
+        #if not self.j2eta_JetHFyearDown_branch and "j2eta_JetHFyearDown" not in self.complained:
+        if not self.j2eta_JetHFyearDown_branch and "j2eta_JetHFyearDown":
+            warnings.warn( "EMTree: Expected branch j2eta_JetHFyearDown does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("j2eta_JetHFyearDown")
+        else:
+            self.j2eta_JetHFyearDown_branch.SetAddress(<void*>&self.j2eta_JetHFyearDown_value)
+
+        #print "making j2eta_JetHFyearUp"
+        self.j2eta_JetHFyearUp_branch = the_tree.GetBranch("j2eta_JetHFyearUp")
+        #if not self.j2eta_JetHFyearUp_branch and "j2eta_JetHFyearUp" not in self.complained:
+        if not self.j2eta_JetHFyearUp_branch and "j2eta_JetHFyearUp":
+            warnings.warn( "EMTree: Expected branch j2eta_JetHFyearUp does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("j2eta_JetHFyearUp")
+        else:
+            self.j2eta_JetHFyearUp_branch.SetAddress(<void*>&self.j2eta_JetHFyearUp_value)
+
+        #print "making j2eta_JetRelativeBalDown"
+        self.j2eta_JetRelativeBalDown_branch = the_tree.GetBranch("j2eta_JetRelativeBalDown")
+        #if not self.j2eta_JetRelativeBalDown_branch and "j2eta_JetRelativeBalDown" not in self.complained:
+        if not self.j2eta_JetRelativeBalDown_branch and "j2eta_JetRelativeBalDown":
+            warnings.warn( "EMTree: Expected branch j2eta_JetRelativeBalDown does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("j2eta_JetRelativeBalDown")
+        else:
+            self.j2eta_JetRelativeBalDown_branch.SetAddress(<void*>&self.j2eta_JetRelativeBalDown_value)
+
+        #print "making j2eta_JetRelativeBalUp"
+        self.j2eta_JetRelativeBalUp_branch = the_tree.GetBranch("j2eta_JetRelativeBalUp")
+        #if not self.j2eta_JetRelativeBalUp_branch and "j2eta_JetRelativeBalUp" not in self.complained:
+        if not self.j2eta_JetRelativeBalUp_branch and "j2eta_JetRelativeBalUp":
+            warnings.warn( "EMTree: Expected branch j2eta_JetRelativeBalUp does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("j2eta_JetRelativeBalUp")
+        else:
+            self.j2eta_JetRelativeBalUp_branch.SetAddress(<void*>&self.j2eta_JetRelativeBalUp_value)
+
+        #print "making j2eta_JetRelativeSampleDown"
+        self.j2eta_JetRelativeSampleDown_branch = the_tree.GetBranch("j2eta_JetRelativeSampleDown")
+        #if not self.j2eta_JetRelativeSampleDown_branch and "j2eta_JetRelativeSampleDown" not in self.complained:
+        if not self.j2eta_JetRelativeSampleDown_branch and "j2eta_JetRelativeSampleDown":
+            warnings.warn( "EMTree: Expected branch j2eta_JetRelativeSampleDown does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("j2eta_JetRelativeSampleDown")
+        else:
+            self.j2eta_JetRelativeSampleDown_branch.SetAddress(<void*>&self.j2eta_JetRelativeSampleDown_value)
+
+        #print "making j2eta_JetRelativeSampleUp"
+        self.j2eta_JetRelativeSampleUp_branch = the_tree.GetBranch("j2eta_JetRelativeSampleUp")
+        #if not self.j2eta_JetRelativeSampleUp_branch and "j2eta_JetRelativeSampleUp" not in self.complained:
+        if not self.j2eta_JetRelativeSampleUp_branch and "j2eta_JetRelativeSampleUp":
+            warnings.warn( "EMTree: Expected branch j2eta_JetRelativeSampleUp does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("j2eta_JetRelativeSampleUp")
+        else:
+            self.j2eta_JetRelativeSampleUp_branch.SetAddress(<void*>&self.j2eta_JetRelativeSampleUp_value)
+
         #print "making j2hadronflavor"
         self.j2hadronflavor_branch = the_tree.GetBranch("j2hadronflavor")
         #if not self.j2hadronflavor_branch and "j2hadronflavor" not in self.complained:
@@ -3534,6 +4830,222 @@ cdef class EMTree:
             #self.complained.add("j2phiWoNoisyJets")
         else:
             self.j2phiWoNoisyJets_branch.SetAddress(<void*>&self.j2phiWoNoisyJets_value)
+
+        #print "making j2phi_JERDown"
+        self.j2phi_JERDown_branch = the_tree.GetBranch("j2phi_JERDown")
+        #if not self.j2phi_JERDown_branch and "j2phi_JERDown" not in self.complained:
+        if not self.j2phi_JERDown_branch and "j2phi_JERDown":
+            warnings.warn( "EMTree: Expected branch j2phi_JERDown does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("j2phi_JERDown")
+        else:
+            self.j2phi_JERDown_branch.SetAddress(<void*>&self.j2phi_JERDown_value)
+
+        #print "making j2phi_JERUp"
+        self.j2phi_JERUp_branch = the_tree.GetBranch("j2phi_JERUp")
+        #if not self.j2phi_JERUp_branch and "j2phi_JERUp" not in self.complained:
+        if not self.j2phi_JERUp_branch and "j2phi_JERUp":
+            warnings.warn( "EMTree: Expected branch j2phi_JERUp does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("j2phi_JERUp")
+        else:
+            self.j2phi_JERUp_branch.SetAddress(<void*>&self.j2phi_JERUp_value)
+
+        #print "making j2phi_JetAbsoluteDown"
+        self.j2phi_JetAbsoluteDown_branch = the_tree.GetBranch("j2phi_JetAbsoluteDown")
+        #if not self.j2phi_JetAbsoluteDown_branch and "j2phi_JetAbsoluteDown" not in self.complained:
+        if not self.j2phi_JetAbsoluteDown_branch and "j2phi_JetAbsoluteDown":
+            warnings.warn( "EMTree: Expected branch j2phi_JetAbsoluteDown does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("j2phi_JetAbsoluteDown")
+        else:
+            self.j2phi_JetAbsoluteDown_branch.SetAddress(<void*>&self.j2phi_JetAbsoluteDown_value)
+
+        #print "making j2phi_JetAbsoluteUp"
+        self.j2phi_JetAbsoluteUp_branch = the_tree.GetBranch("j2phi_JetAbsoluteUp")
+        #if not self.j2phi_JetAbsoluteUp_branch and "j2phi_JetAbsoluteUp" not in self.complained:
+        if not self.j2phi_JetAbsoluteUp_branch and "j2phi_JetAbsoluteUp":
+            warnings.warn( "EMTree: Expected branch j2phi_JetAbsoluteUp does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("j2phi_JetAbsoluteUp")
+        else:
+            self.j2phi_JetAbsoluteUp_branch.SetAddress(<void*>&self.j2phi_JetAbsoluteUp_value)
+
+        #print "making j2phi_JetAbsoluteyearDown"
+        self.j2phi_JetAbsoluteyearDown_branch = the_tree.GetBranch("j2phi_JetAbsoluteyearDown")
+        #if not self.j2phi_JetAbsoluteyearDown_branch and "j2phi_JetAbsoluteyearDown" not in self.complained:
+        if not self.j2phi_JetAbsoluteyearDown_branch and "j2phi_JetAbsoluteyearDown":
+            warnings.warn( "EMTree: Expected branch j2phi_JetAbsoluteyearDown does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("j2phi_JetAbsoluteyearDown")
+        else:
+            self.j2phi_JetAbsoluteyearDown_branch.SetAddress(<void*>&self.j2phi_JetAbsoluteyearDown_value)
+
+        #print "making j2phi_JetAbsoluteyearUp"
+        self.j2phi_JetAbsoluteyearUp_branch = the_tree.GetBranch("j2phi_JetAbsoluteyearUp")
+        #if not self.j2phi_JetAbsoluteyearUp_branch and "j2phi_JetAbsoluteyearUp" not in self.complained:
+        if not self.j2phi_JetAbsoluteyearUp_branch and "j2phi_JetAbsoluteyearUp":
+            warnings.warn( "EMTree: Expected branch j2phi_JetAbsoluteyearUp does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("j2phi_JetAbsoluteyearUp")
+        else:
+            self.j2phi_JetAbsoluteyearUp_branch.SetAddress(<void*>&self.j2phi_JetAbsoluteyearUp_value)
+
+        #print "making j2phi_JetBBEC1Down"
+        self.j2phi_JetBBEC1Down_branch = the_tree.GetBranch("j2phi_JetBBEC1Down")
+        #if not self.j2phi_JetBBEC1Down_branch and "j2phi_JetBBEC1Down" not in self.complained:
+        if not self.j2phi_JetBBEC1Down_branch and "j2phi_JetBBEC1Down":
+            warnings.warn( "EMTree: Expected branch j2phi_JetBBEC1Down does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("j2phi_JetBBEC1Down")
+        else:
+            self.j2phi_JetBBEC1Down_branch.SetAddress(<void*>&self.j2phi_JetBBEC1Down_value)
+
+        #print "making j2phi_JetBBEC1Up"
+        self.j2phi_JetBBEC1Up_branch = the_tree.GetBranch("j2phi_JetBBEC1Up")
+        #if not self.j2phi_JetBBEC1Up_branch and "j2phi_JetBBEC1Up" not in self.complained:
+        if not self.j2phi_JetBBEC1Up_branch and "j2phi_JetBBEC1Up":
+            warnings.warn( "EMTree: Expected branch j2phi_JetBBEC1Up does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("j2phi_JetBBEC1Up")
+        else:
+            self.j2phi_JetBBEC1Up_branch.SetAddress(<void*>&self.j2phi_JetBBEC1Up_value)
+
+        #print "making j2phi_JetBBEC1yearDown"
+        self.j2phi_JetBBEC1yearDown_branch = the_tree.GetBranch("j2phi_JetBBEC1yearDown")
+        #if not self.j2phi_JetBBEC1yearDown_branch and "j2phi_JetBBEC1yearDown" not in self.complained:
+        if not self.j2phi_JetBBEC1yearDown_branch and "j2phi_JetBBEC1yearDown":
+            warnings.warn( "EMTree: Expected branch j2phi_JetBBEC1yearDown does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("j2phi_JetBBEC1yearDown")
+        else:
+            self.j2phi_JetBBEC1yearDown_branch.SetAddress(<void*>&self.j2phi_JetBBEC1yearDown_value)
+
+        #print "making j2phi_JetBBEC1yearUp"
+        self.j2phi_JetBBEC1yearUp_branch = the_tree.GetBranch("j2phi_JetBBEC1yearUp")
+        #if not self.j2phi_JetBBEC1yearUp_branch and "j2phi_JetBBEC1yearUp" not in self.complained:
+        if not self.j2phi_JetBBEC1yearUp_branch and "j2phi_JetBBEC1yearUp":
+            warnings.warn( "EMTree: Expected branch j2phi_JetBBEC1yearUp does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("j2phi_JetBBEC1yearUp")
+        else:
+            self.j2phi_JetBBEC1yearUp_branch.SetAddress(<void*>&self.j2phi_JetBBEC1yearUp_value)
+
+        #print "making j2phi_JetEC2Down"
+        self.j2phi_JetEC2Down_branch = the_tree.GetBranch("j2phi_JetEC2Down")
+        #if not self.j2phi_JetEC2Down_branch and "j2phi_JetEC2Down" not in self.complained:
+        if not self.j2phi_JetEC2Down_branch and "j2phi_JetEC2Down":
+            warnings.warn( "EMTree: Expected branch j2phi_JetEC2Down does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("j2phi_JetEC2Down")
+        else:
+            self.j2phi_JetEC2Down_branch.SetAddress(<void*>&self.j2phi_JetEC2Down_value)
+
+        #print "making j2phi_JetEC2Up"
+        self.j2phi_JetEC2Up_branch = the_tree.GetBranch("j2phi_JetEC2Up")
+        #if not self.j2phi_JetEC2Up_branch and "j2phi_JetEC2Up" not in self.complained:
+        if not self.j2phi_JetEC2Up_branch and "j2phi_JetEC2Up":
+            warnings.warn( "EMTree: Expected branch j2phi_JetEC2Up does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("j2phi_JetEC2Up")
+        else:
+            self.j2phi_JetEC2Up_branch.SetAddress(<void*>&self.j2phi_JetEC2Up_value)
+
+        #print "making j2phi_JetEC2yearDown"
+        self.j2phi_JetEC2yearDown_branch = the_tree.GetBranch("j2phi_JetEC2yearDown")
+        #if not self.j2phi_JetEC2yearDown_branch and "j2phi_JetEC2yearDown" not in self.complained:
+        if not self.j2phi_JetEC2yearDown_branch and "j2phi_JetEC2yearDown":
+            warnings.warn( "EMTree: Expected branch j2phi_JetEC2yearDown does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("j2phi_JetEC2yearDown")
+        else:
+            self.j2phi_JetEC2yearDown_branch.SetAddress(<void*>&self.j2phi_JetEC2yearDown_value)
+
+        #print "making j2phi_JetEC2yearUp"
+        self.j2phi_JetEC2yearUp_branch = the_tree.GetBranch("j2phi_JetEC2yearUp")
+        #if not self.j2phi_JetEC2yearUp_branch and "j2phi_JetEC2yearUp" not in self.complained:
+        if not self.j2phi_JetEC2yearUp_branch and "j2phi_JetEC2yearUp":
+            warnings.warn( "EMTree: Expected branch j2phi_JetEC2yearUp does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("j2phi_JetEC2yearUp")
+        else:
+            self.j2phi_JetEC2yearUp_branch.SetAddress(<void*>&self.j2phi_JetEC2yearUp_value)
+
+        #print "making j2phi_JetFlavorQCDDown"
+        self.j2phi_JetFlavorQCDDown_branch = the_tree.GetBranch("j2phi_JetFlavorQCDDown")
+        #if not self.j2phi_JetFlavorQCDDown_branch and "j2phi_JetFlavorQCDDown" not in self.complained:
+        if not self.j2phi_JetFlavorQCDDown_branch and "j2phi_JetFlavorQCDDown":
+            warnings.warn( "EMTree: Expected branch j2phi_JetFlavorQCDDown does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("j2phi_JetFlavorQCDDown")
+        else:
+            self.j2phi_JetFlavorQCDDown_branch.SetAddress(<void*>&self.j2phi_JetFlavorQCDDown_value)
+
+        #print "making j2phi_JetFlavorQCDUp"
+        self.j2phi_JetFlavorQCDUp_branch = the_tree.GetBranch("j2phi_JetFlavorQCDUp")
+        #if not self.j2phi_JetFlavorQCDUp_branch and "j2phi_JetFlavorQCDUp" not in self.complained:
+        if not self.j2phi_JetFlavorQCDUp_branch and "j2phi_JetFlavorQCDUp":
+            warnings.warn( "EMTree: Expected branch j2phi_JetFlavorQCDUp does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("j2phi_JetFlavorQCDUp")
+        else:
+            self.j2phi_JetFlavorQCDUp_branch.SetAddress(<void*>&self.j2phi_JetFlavorQCDUp_value)
+
+        #print "making j2phi_JetHFDown"
+        self.j2phi_JetHFDown_branch = the_tree.GetBranch("j2phi_JetHFDown")
+        #if not self.j2phi_JetHFDown_branch and "j2phi_JetHFDown" not in self.complained:
+        if not self.j2phi_JetHFDown_branch and "j2phi_JetHFDown":
+            warnings.warn( "EMTree: Expected branch j2phi_JetHFDown does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("j2phi_JetHFDown")
+        else:
+            self.j2phi_JetHFDown_branch.SetAddress(<void*>&self.j2phi_JetHFDown_value)
+
+        #print "making j2phi_JetHFUp"
+        self.j2phi_JetHFUp_branch = the_tree.GetBranch("j2phi_JetHFUp")
+        #if not self.j2phi_JetHFUp_branch and "j2phi_JetHFUp" not in self.complained:
+        if not self.j2phi_JetHFUp_branch and "j2phi_JetHFUp":
+            warnings.warn( "EMTree: Expected branch j2phi_JetHFUp does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("j2phi_JetHFUp")
+        else:
+            self.j2phi_JetHFUp_branch.SetAddress(<void*>&self.j2phi_JetHFUp_value)
+
+        #print "making j2phi_JetHFyearDown"
+        self.j2phi_JetHFyearDown_branch = the_tree.GetBranch("j2phi_JetHFyearDown")
+        #if not self.j2phi_JetHFyearDown_branch and "j2phi_JetHFyearDown" not in self.complained:
+        if not self.j2phi_JetHFyearDown_branch and "j2phi_JetHFyearDown":
+            warnings.warn( "EMTree: Expected branch j2phi_JetHFyearDown does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("j2phi_JetHFyearDown")
+        else:
+            self.j2phi_JetHFyearDown_branch.SetAddress(<void*>&self.j2phi_JetHFyearDown_value)
+
+        #print "making j2phi_JetHFyearUp"
+        self.j2phi_JetHFyearUp_branch = the_tree.GetBranch("j2phi_JetHFyearUp")
+        #if not self.j2phi_JetHFyearUp_branch and "j2phi_JetHFyearUp" not in self.complained:
+        if not self.j2phi_JetHFyearUp_branch and "j2phi_JetHFyearUp":
+            warnings.warn( "EMTree: Expected branch j2phi_JetHFyearUp does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("j2phi_JetHFyearUp")
+        else:
+            self.j2phi_JetHFyearUp_branch.SetAddress(<void*>&self.j2phi_JetHFyearUp_value)
+
+        #print "making j2phi_JetRelativeBalDown"
+        self.j2phi_JetRelativeBalDown_branch = the_tree.GetBranch("j2phi_JetRelativeBalDown")
+        #if not self.j2phi_JetRelativeBalDown_branch and "j2phi_JetRelativeBalDown" not in self.complained:
+        if not self.j2phi_JetRelativeBalDown_branch and "j2phi_JetRelativeBalDown":
+            warnings.warn( "EMTree: Expected branch j2phi_JetRelativeBalDown does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("j2phi_JetRelativeBalDown")
+        else:
+            self.j2phi_JetRelativeBalDown_branch.SetAddress(<void*>&self.j2phi_JetRelativeBalDown_value)
+
+        #print "making j2phi_JetRelativeBalUp"
+        self.j2phi_JetRelativeBalUp_branch = the_tree.GetBranch("j2phi_JetRelativeBalUp")
+        #if not self.j2phi_JetRelativeBalUp_branch and "j2phi_JetRelativeBalUp" not in self.complained:
+        if not self.j2phi_JetRelativeBalUp_branch and "j2phi_JetRelativeBalUp":
+            warnings.warn( "EMTree: Expected branch j2phi_JetRelativeBalUp does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("j2phi_JetRelativeBalUp")
+        else:
+            self.j2phi_JetRelativeBalUp_branch.SetAddress(<void*>&self.j2phi_JetRelativeBalUp_value)
+
+        #print "making j2phi_JetRelativeSampleDown"
+        self.j2phi_JetRelativeSampleDown_branch = the_tree.GetBranch("j2phi_JetRelativeSampleDown")
+        #if not self.j2phi_JetRelativeSampleDown_branch and "j2phi_JetRelativeSampleDown" not in self.complained:
+        if not self.j2phi_JetRelativeSampleDown_branch and "j2phi_JetRelativeSampleDown":
+            warnings.warn( "EMTree: Expected branch j2phi_JetRelativeSampleDown does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("j2phi_JetRelativeSampleDown")
+        else:
+            self.j2phi_JetRelativeSampleDown_branch.SetAddress(<void*>&self.j2phi_JetRelativeSampleDown_value)
+
+        #print "making j2phi_JetRelativeSampleUp"
+        self.j2phi_JetRelativeSampleUp_branch = the_tree.GetBranch("j2phi_JetRelativeSampleUp")
+        #if not self.j2phi_JetRelativeSampleUp_branch and "j2phi_JetRelativeSampleUp" not in self.complained:
+        if not self.j2phi_JetRelativeSampleUp_branch and "j2phi_JetRelativeSampleUp":
+            warnings.warn( "EMTree: Expected branch j2phi_JetRelativeSampleUp does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("j2phi_JetRelativeSampleUp")
+        else:
+            self.j2phi_JetRelativeSampleUp_branch.SetAddress(<void*>&self.j2phi_JetRelativeSampleUp_value)
 
         #print "making j2pt"
         self.j2pt_branch = the_tree.GetBranch("j2pt")
@@ -4254,6 +5766,1086 @@ cdef class EMTree:
             #self.complained.add("jetVeto30_JetTotalUp")
         else:
             self.jetVeto30_JetTotalUp_branch.SetAddress(<void*>&self.jetVeto30_JetTotalUp_value)
+
+        #print "making lheweight0"
+        self.lheweight0_branch = the_tree.GetBranch("lheweight0")
+        #if not self.lheweight0_branch and "lheweight0" not in self.complained:
+        if not self.lheweight0_branch and "lheweight0":
+            warnings.warn( "EMTree: Expected branch lheweight0 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight0")
+        else:
+            self.lheweight0_branch.SetAddress(<void*>&self.lheweight0_value)
+
+        #print "making lheweight1"
+        self.lheweight1_branch = the_tree.GetBranch("lheweight1")
+        #if not self.lheweight1_branch and "lheweight1" not in self.complained:
+        if not self.lheweight1_branch and "lheweight1":
+            warnings.warn( "EMTree: Expected branch lheweight1 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight1")
+        else:
+            self.lheweight1_branch.SetAddress(<void*>&self.lheweight1_value)
+
+        #print "making lheweight10"
+        self.lheweight10_branch = the_tree.GetBranch("lheweight10")
+        #if not self.lheweight10_branch and "lheweight10" not in self.complained:
+        if not self.lheweight10_branch and "lheweight10":
+            warnings.warn( "EMTree: Expected branch lheweight10 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight10")
+        else:
+            self.lheweight10_branch.SetAddress(<void*>&self.lheweight10_value)
+
+        #print "making lheweight100"
+        self.lheweight100_branch = the_tree.GetBranch("lheweight100")
+        #if not self.lheweight100_branch and "lheweight100" not in self.complained:
+        if not self.lheweight100_branch and "lheweight100":
+            warnings.warn( "EMTree: Expected branch lheweight100 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight100")
+        else:
+            self.lheweight100_branch.SetAddress(<void*>&self.lheweight100_value)
+
+        #print "making lheweight101"
+        self.lheweight101_branch = the_tree.GetBranch("lheweight101")
+        #if not self.lheweight101_branch and "lheweight101" not in self.complained:
+        if not self.lheweight101_branch and "lheweight101":
+            warnings.warn( "EMTree: Expected branch lheweight101 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight101")
+        else:
+            self.lheweight101_branch.SetAddress(<void*>&self.lheweight101_value)
+
+        #print "making lheweight102"
+        self.lheweight102_branch = the_tree.GetBranch("lheweight102")
+        #if not self.lheweight102_branch and "lheweight102" not in self.complained:
+        if not self.lheweight102_branch and "lheweight102":
+            warnings.warn( "EMTree: Expected branch lheweight102 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight102")
+        else:
+            self.lheweight102_branch.SetAddress(<void*>&self.lheweight102_value)
+
+        #print "making lheweight103"
+        self.lheweight103_branch = the_tree.GetBranch("lheweight103")
+        #if not self.lheweight103_branch and "lheweight103" not in self.complained:
+        if not self.lheweight103_branch and "lheweight103":
+            warnings.warn( "EMTree: Expected branch lheweight103 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight103")
+        else:
+            self.lheweight103_branch.SetAddress(<void*>&self.lheweight103_value)
+
+        #print "making lheweight104"
+        self.lheweight104_branch = the_tree.GetBranch("lheweight104")
+        #if not self.lheweight104_branch and "lheweight104" not in self.complained:
+        if not self.lheweight104_branch and "lheweight104":
+            warnings.warn( "EMTree: Expected branch lheweight104 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight104")
+        else:
+            self.lheweight104_branch.SetAddress(<void*>&self.lheweight104_value)
+
+        #print "making lheweight105"
+        self.lheweight105_branch = the_tree.GetBranch("lheweight105")
+        #if not self.lheweight105_branch and "lheweight105" not in self.complained:
+        if not self.lheweight105_branch and "lheweight105":
+            warnings.warn( "EMTree: Expected branch lheweight105 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight105")
+        else:
+            self.lheweight105_branch.SetAddress(<void*>&self.lheweight105_value)
+
+        #print "making lheweight106"
+        self.lheweight106_branch = the_tree.GetBranch("lheweight106")
+        #if not self.lheweight106_branch and "lheweight106" not in self.complained:
+        if not self.lheweight106_branch and "lheweight106":
+            warnings.warn( "EMTree: Expected branch lheweight106 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight106")
+        else:
+            self.lheweight106_branch.SetAddress(<void*>&self.lheweight106_value)
+
+        #print "making lheweight107"
+        self.lheweight107_branch = the_tree.GetBranch("lheweight107")
+        #if not self.lheweight107_branch and "lheweight107" not in self.complained:
+        if not self.lheweight107_branch and "lheweight107":
+            warnings.warn( "EMTree: Expected branch lheweight107 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight107")
+        else:
+            self.lheweight107_branch.SetAddress(<void*>&self.lheweight107_value)
+
+        #print "making lheweight108"
+        self.lheweight108_branch = the_tree.GetBranch("lheweight108")
+        #if not self.lheweight108_branch and "lheweight108" not in self.complained:
+        if not self.lheweight108_branch and "lheweight108":
+            warnings.warn( "EMTree: Expected branch lheweight108 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight108")
+        else:
+            self.lheweight108_branch.SetAddress(<void*>&self.lheweight108_value)
+
+        #print "making lheweight109"
+        self.lheweight109_branch = the_tree.GetBranch("lheweight109")
+        #if not self.lheweight109_branch and "lheweight109" not in self.complained:
+        if not self.lheweight109_branch and "lheweight109":
+            warnings.warn( "EMTree: Expected branch lheweight109 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight109")
+        else:
+            self.lheweight109_branch.SetAddress(<void*>&self.lheweight109_value)
+
+        #print "making lheweight11"
+        self.lheweight11_branch = the_tree.GetBranch("lheweight11")
+        #if not self.lheweight11_branch and "lheweight11" not in self.complained:
+        if not self.lheweight11_branch and "lheweight11":
+            warnings.warn( "EMTree: Expected branch lheweight11 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight11")
+        else:
+            self.lheweight11_branch.SetAddress(<void*>&self.lheweight11_value)
+
+        #print "making lheweight110"
+        self.lheweight110_branch = the_tree.GetBranch("lheweight110")
+        #if not self.lheweight110_branch and "lheweight110" not in self.complained:
+        if not self.lheweight110_branch and "lheweight110":
+            warnings.warn( "EMTree: Expected branch lheweight110 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight110")
+        else:
+            self.lheweight110_branch.SetAddress(<void*>&self.lheweight110_value)
+
+        #print "making lheweight111"
+        self.lheweight111_branch = the_tree.GetBranch("lheweight111")
+        #if not self.lheweight111_branch and "lheweight111" not in self.complained:
+        if not self.lheweight111_branch and "lheweight111":
+            warnings.warn( "EMTree: Expected branch lheweight111 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight111")
+        else:
+            self.lheweight111_branch.SetAddress(<void*>&self.lheweight111_value)
+
+        #print "making lheweight112"
+        self.lheweight112_branch = the_tree.GetBranch("lheweight112")
+        #if not self.lheweight112_branch and "lheweight112" not in self.complained:
+        if not self.lheweight112_branch and "lheweight112":
+            warnings.warn( "EMTree: Expected branch lheweight112 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight112")
+        else:
+            self.lheweight112_branch.SetAddress(<void*>&self.lheweight112_value)
+
+        #print "making lheweight113"
+        self.lheweight113_branch = the_tree.GetBranch("lheweight113")
+        #if not self.lheweight113_branch and "lheweight113" not in self.complained:
+        if not self.lheweight113_branch and "lheweight113":
+            warnings.warn( "EMTree: Expected branch lheweight113 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight113")
+        else:
+            self.lheweight113_branch.SetAddress(<void*>&self.lheweight113_value)
+
+        #print "making lheweight114"
+        self.lheweight114_branch = the_tree.GetBranch("lheweight114")
+        #if not self.lheweight114_branch and "lheweight114" not in self.complained:
+        if not self.lheweight114_branch and "lheweight114":
+            warnings.warn( "EMTree: Expected branch lheweight114 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight114")
+        else:
+            self.lheweight114_branch.SetAddress(<void*>&self.lheweight114_value)
+
+        #print "making lheweight115"
+        self.lheweight115_branch = the_tree.GetBranch("lheweight115")
+        #if not self.lheweight115_branch and "lheweight115" not in self.complained:
+        if not self.lheweight115_branch and "lheweight115":
+            warnings.warn( "EMTree: Expected branch lheweight115 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight115")
+        else:
+            self.lheweight115_branch.SetAddress(<void*>&self.lheweight115_value)
+
+        #print "making lheweight116"
+        self.lheweight116_branch = the_tree.GetBranch("lheweight116")
+        #if not self.lheweight116_branch and "lheweight116" not in self.complained:
+        if not self.lheweight116_branch and "lheweight116":
+            warnings.warn( "EMTree: Expected branch lheweight116 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight116")
+        else:
+            self.lheweight116_branch.SetAddress(<void*>&self.lheweight116_value)
+
+        #print "making lheweight117"
+        self.lheweight117_branch = the_tree.GetBranch("lheweight117")
+        #if not self.lheweight117_branch and "lheweight117" not in self.complained:
+        if not self.lheweight117_branch and "lheweight117":
+            warnings.warn( "EMTree: Expected branch lheweight117 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight117")
+        else:
+            self.lheweight117_branch.SetAddress(<void*>&self.lheweight117_value)
+
+        #print "making lheweight118"
+        self.lheweight118_branch = the_tree.GetBranch("lheweight118")
+        #if not self.lheweight118_branch and "lheweight118" not in self.complained:
+        if not self.lheweight118_branch and "lheweight118":
+            warnings.warn( "EMTree: Expected branch lheweight118 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight118")
+        else:
+            self.lheweight118_branch.SetAddress(<void*>&self.lheweight118_value)
+
+        #print "making lheweight119"
+        self.lheweight119_branch = the_tree.GetBranch("lheweight119")
+        #if not self.lheweight119_branch and "lheweight119" not in self.complained:
+        if not self.lheweight119_branch and "lheweight119":
+            warnings.warn( "EMTree: Expected branch lheweight119 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight119")
+        else:
+            self.lheweight119_branch.SetAddress(<void*>&self.lheweight119_value)
+
+        #print "making lheweight12"
+        self.lheweight12_branch = the_tree.GetBranch("lheweight12")
+        #if not self.lheweight12_branch and "lheweight12" not in self.complained:
+        if not self.lheweight12_branch and "lheweight12":
+            warnings.warn( "EMTree: Expected branch lheweight12 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight12")
+        else:
+            self.lheweight12_branch.SetAddress(<void*>&self.lheweight12_value)
+
+        #print "making lheweight13"
+        self.lheweight13_branch = the_tree.GetBranch("lheweight13")
+        #if not self.lheweight13_branch and "lheweight13" not in self.complained:
+        if not self.lheweight13_branch and "lheweight13":
+            warnings.warn( "EMTree: Expected branch lheweight13 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight13")
+        else:
+            self.lheweight13_branch.SetAddress(<void*>&self.lheweight13_value)
+
+        #print "making lheweight14"
+        self.lheweight14_branch = the_tree.GetBranch("lheweight14")
+        #if not self.lheweight14_branch and "lheweight14" not in self.complained:
+        if not self.lheweight14_branch and "lheweight14":
+            warnings.warn( "EMTree: Expected branch lheweight14 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight14")
+        else:
+            self.lheweight14_branch.SetAddress(<void*>&self.lheweight14_value)
+
+        #print "making lheweight15"
+        self.lheweight15_branch = the_tree.GetBranch("lheweight15")
+        #if not self.lheweight15_branch and "lheweight15" not in self.complained:
+        if not self.lheweight15_branch and "lheweight15":
+            warnings.warn( "EMTree: Expected branch lheweight15 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight15")
+        else:
+            self.lheweight15_branch.SetAddress(<void*>&self.lheweight15_value)
+
+        #print "making lheweight16"
+        self.lheweight16_branch = the_tree.GetBranch("lheweight16")
+        #if not self.lheweight16_branch and "lheweight16" not in self.complained:
+        if not self.lheweight16_branch and "lheweight16":
+            warnings.warn( "EMTree: Expected branch lheweight16 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight16")
+        else:
+            self.lheweight16_branch.SetAddress(<void*>&self.lheweight16_value)
+
+        #print "making lheweight17"
+        self.lheweight17_branch = the_tree.GetBranch("lheweight17")
+        #if not self.lheweight17_branch and "lheweight17" not in self.complained:
+        if not self.lheweight17_branch and "lheweight17":
+            warnings.warn( "EMTree: Expected branch lheweight17 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight17")
+        else:
+            self.lheweight17_branch.SetAddress(<void*>&self.lheweight17_value)
+
+        #print "making lheweight18"
+        self.lheweight18_branch = the_tree.GetBranch("lheweight18")
+        #if not self.lheweight18_branch and "lheweight18" not in self.complained:
+        if not self.lheweight18_branch and "lheweight18":
+            warnings.warn( "EMTree: Expected branch lheweight18 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight18")
+        else:
+            self.lheweight18_branch.SetAddress(<void*>&self.lheweight18_value)
+
+        #print "making lheweight19"
+        self.lheweight19_branch = the_tree.GetBranch("lheweight19")
+        #if not self.lheweight19_branch and "lheweight19" not in self.complained:
+        if not self.lheweight19_branch and "lheweight19":
+            warnings.warn( "EMTree: Expected branch lheweight19 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight19")
+        else:
+            self.lheweight19_branch.SetAddress(<void*>&self.lheweight19_value)
+
+        #print "making lheweight2"
+        self.lheweight2_branch = the_tree.GetBranch("lheweight2")
+        #if not self.lheweight2_branch and "lheweight2" not in self.complained:
+        if not self.lheweight2_branch and "lheweight2":
+            warnings.warn( "EMTree: Expected branch lheweight2 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight2")
+        else:
+            self.lheweight2_branch.SetAddress(<void*>&self.lheweight2_value)
+
+        #print "making lheweight20"
+        self.lheweight20_branch = the_tree.GetBranch("lheweight20")
+        #if not self.lheweight20_branch and "lheweight20" not in self.complained:
+        if not self.lheweight20_branch and "lheweight20":
+            warnings.warn( "EMTree: Expected branch lheweight20 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight20")
+        else:
+            self.lheweight20_branch.SetAddress(<void*>&self.lheweight20_value)
+
+        #print "making lheweight21"
+        self.lheweight21_branch = the_tree.GetBranch("lheweight21")
+        #if not self.lheweight21_branch and "lheweight21" not in self.complained:
+        if not self.lheweight21_branch and "lheweight21":
+            warnings.warn( "EMTree: Expected branch lheweight21 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight21")
+        else:
+            self.lheweight21_branch.SetAddress(<void*>&self.lheweight21_value)
+
+        #print "making lheweight22"
+        self.lheweight22_branch = the_tree.GetBranch("lheweight22")
+        #if not self.lheweight22_branch and "lheweight22" not in self.complained:
+        if not self.lheweight22_branch and "lheweight22":
+            warnings.warn( "EMTree: Expected branch lheweight22 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight22")
+        else:
+            self.lheweight22_branch.SetAddress(<void*>&self.lheweight22_value)
+
+        #print "making lheweight23"
+        self.lheweight23_branch = the_tree.GetBranch("lheweight23")
+        #if not self.lheweight23_branch and "lheweight23" not in self.complained:
+        if not self.lheweight23_branch and "lheweight23":
+            warnings.warn( "EMTree: Expected branch lheweight23 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight23")
+        else:
+            self.lheweight23_branch.SetAddress(<void*>&self.lheweight23_value)
+
+        #print "making lheweight24"
+        self.lheweight24_branch = the_tree.GetBranch("lheweight24")
+        #if not self.lheweight24_branch and "lheweight24" not in self.complained:
+        if not self.lheweight24_branch and "lheweight24":
+            warnings.warn( "EMTree: Expected branch lheweight24 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight24")
+        else:
+            self.lheweight24_branch.SetAddress(<void*>&self.lheweight24_value)
+
+        #print "making lheweight25"
+        self.lheweight25_branch = the_tree.GetBranch("lheweight25")
+        #if not self.lheweight25_branch and "lheweight25" not in self.complained:
+        if not self.lheweight25_branch and "lheweight25":
+            warnings.warn( "EMTree: Expected branch lheweight25 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight25")
+        else:
+            self.lheweight25_branch.SetAddress(<void*>&self.lheweight25_value)
+
+        #print "making lheweight26"
+        self.lheweight26_branch = the_tree.GetBranch("lheweight26")
+        #if not self.lheweight26_branch and "lheweight26" not in self.complained:
+        if not self.lheweight26_branch and "lheweight26":
+            warnings.warn( "EMTree: Expected branch lheweight26 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight26")
+        else:
+            self.lheweight26_branch.SetAddress(<void*>&self.lheweight26_value)
+
+        #print "making lheweight27"
+        self.lheweight27_branch = the_tree.GetBranch("lheweight27")
+        #if not self.lheweight27_branch and "lheweight27" not in self.complained:
+        if not self.lheweight27_branch and "lheweight27":
+            warnings.warn( "EMTree: Expected branch lheweight27 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight27")
+        else:
+            self.lheweight27_branch.SetAddress(<void*>&self.lheweight27_value)
+
+        #print "making lheweight28"
+        self.lheweight28_branch = the_tree.GetBranch("lheweight28")
+        #if not self.lheweight28_branch and "lheweight28" not in self.complained:
+        if not self.lheweight28_branch and "lheweight28":
+            warnings.warn( "EMTree: Expected branch lheweight28 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight28")
+        else:
+            self.lheweight28_branch.SetAddress(<void*>&self.lheweight28_value)
+
+        #print "making lheweight29"
+        self.lheweight29_branch = the_tree.GetBranch("lheweight29")
+        #if not self.lheweight29_branch and "lheweight29" not in self.complained:
+        if not self.lheweight29_branch and "lheweight29":
+            warnings.warn( "EMTree: Expected branch lheweight29 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight29")
+        else:
+            self.lheweight29_branch.SetAddress(<void*>&self.lheweight29_value)
+
+        #print "making lheweight3"
+        self.lheweight3_branch = the_tree.GetBranch("lheweight3")
+        #if not self.lheweight3_branch and "lheweight3" not in self.complained:
+        if not self.lheweight3_branch and "lheweight3":
+            warnings.warn( "EMTree: Expected branch lheweight3 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight3")
+        else:
+            self.lheweight3_branch.SetAddress(<void*>&self.lheweight3_value)
+
+        #print "making lheweight30"
+        self.lheweight30_branch = the_tree.GetBranch("lheweight30")
+        #if not self.lheweight30_branch and "lheweight30" not in self.complained:
+        if not self.lheweight30_branch and "lheweight30":
+            warnings.warn( "EMTree: Expected branch lheweight30 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight30")
+        else:
+            self.lheweight30_branch.SetAddress(<void*>&self.lheweight30_value)
+
+        #print "making lheweight31"
+        self.lheweight31_branch = the_tree.GetBranch("lheweight31")
+        #if not self.lheweight31_branch and "lheweight31" not in self.complained:
+        if not self.lheweight31_branch and "lheweight31":
+            warnings.warn( "EMTree: Expected branch lheweight31 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight31")
+        else:
+            self.lheweight31_branch.SetAddress(<void*>&self.lheweight31_value)
+
+        #print "making lheweight32"
+        self.lheweight32_branch = the_tree.GetBranch("lheweight32")
+        #if not self.lheweight32_branch and "lheweight32" not in self.complained:
+        if not self.lheweight32_branch and "lheweight32":
+            warnings.warn( "EMTree: Expected branch lheweight32 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight32")
+        else:
+            self.lheweight32_branch.SetAddress(<void*>&self.lheweight32_value)
+
+        #print "making lheweight33"
+        self.lheweight33_branch = the_tree.GetBranch("lheweight33")
+        #if not self.lheweight33_branch and "lheweight33" not in self.complained:
+        if not self.lheweight33_branch and "lheweight33":
+            warnings.warn( "EMTree: Expected branch lheweight33 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight33")
+        else:
+            self.lheweight33_branch.SetAddress(<void*>&self.lheweight33_value)
+
+        #print "making lheweight34"
+        self.lheweight34_branch = the_tree.GetBranch("lheweight34")
+        #if not self.lheweight34_branch and "lheweight34" not in self.complained:
+        if not self.lheweight34_branch and "lheweight34":
+            warnings.warn( "EMTree: Expected branch lheweight34 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight34")
+        else:
+            self.lheweight34_branch.SetAddress(<void*>&self.lheweight34_value)
+
+        #print "making lheweight35"
+        self.lheweight35_branch = the_tree.GetBranch("lheweight35")
+        #if not self.lheweight35_branch and "lheweight35" not in self.complained:
+        if not self.lheweight35_branch and "lheweight35":
+            warnings.warn( "EMTree: Expected branch lheweight35 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight35")
+        else:
+            self.lheweight35_branch.SetAddress(<void*>&self.lheweight35_value)
+
+        #print "making lheweight36"
+        self.lheweight36_branch = the_tree.GetBranch("lheweight36")
+        #if not self.lheweight36_branch and "lheweight36" not in self.complained:
+        if not self.lheweight36_branch and "lheweight36":
+            warnings.warn( "EMTree: Expected branch lheweight36 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight36")
+        else:
+            self.lheweight36_branch.SetAddress(<void*>&self.lheweight36_value)
+
+        #print "making lheweight37"
+        self.lheweight37_branch = the_tree.GetBranch("lheweight37")
+        #if not self.lheweight37_branch and "lheweight37" not in self.complained:
+        if not self.lheweight37_branch and "lheweight37":
+            warnings.warn( "EMTree: Expected branch lheweight37 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight37")
+        else:
+            self.lheweight37_branch.SetAddress(<void*>&self.lheweight37_value)
+
+        #print "making lheweight38"
+        self.lheweight38_branch = the_tree.GetBranch("lheweight38")
+        #if not self.lheweight38_branch and "lheweight38" not in self.complained:
+        if not self.lheweight38_branch and "lheweight38":
+            warnings.warn( "EMTree: Expected branch lheweight38 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight38")
+        else:
+            self.lheweight38_branch.SetAddress(<void*>&self.lheweight38_value)
+
+        #print "making lheweight39"
+        self.lheweight39_branch = the_tree.GetBranch("lheweight39")
+        #if not self.lheweight39_branch and "lheweight39" not in self.complained:
+        if not self.lheweight39_branch and "lheweight39":
+            warnings.warn( "EMTree: Expected branch lheweight39 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight39")
+        else:
+            self.lheweight39_branch.SetAddress(<void*>&self.lheweight39_value)
+
+        #print "making lheweight4"
+        self.lheweight4_branch = the_tree.GetBranch("lheweight4")
+        #if not self.lheweight4_branch and "lheweight4" not in self.complained:
+        if not self.lheweight4_branch and "lheweight4":
+            warnings.warn( "EMTree: Expected branch lheweight4 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight4")
+        else:
+            self.lheweight4_branch.SetAddress(<void*>&self.lheweight4_value)
+
+        #print "making lheweight40"
+        self.lheweight40_branch = the_tree.GetBranch("lheweight40")
+        #if not self.lheweight40_branch and "lheweight40" not in self.complained:
+        if not self.lheweight40_branch and "lheweight40":
+            warnings.warn( "EMTree: Expected branch lheweight40 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight40")
+        else:
+            self.lheweight40_branch.SetAddress(<void*>&self.lheweight40_value)
+
+        #print "making lheweight41"
+        self.lheweight41_branch = the_tree.GetBranch("lheweight41")
+        #if not self.lheweight41_branch and "lheweight41" not in self.complained:
+        if not self.lheweight41_branch and "lheweight41":
+            warnings.warn( "EMTree: Expected branch lheweight41 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight41")
+        else:
+            self.lheweight41_branch.SetAddress(<void*>&self.lheweight41_value)
+
+        #print "making lheweight42"
+        self.lheweight42_branch = the_tree.GetBranch("lheweight42")
+        #if not self.lheweight42_branch and "lheweight42" not in self.complained:
+        if not self.lheweight42_branch and "lheweight42":
+            warnings.warn( "EMTree: Expected branch lheweight42 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight42")
+        else:
+            self.lheweight42_branch.SetAddress(<void*>&self.lheweight42_value)
+
+        #print "making lheweight43"
+        self.lheweight43_branch = the_tree.GetBranch("lheweight43")
+        #if not self.lheweight43_branch and "lheweight43" not in self.complained:
+        if not self.lheweight43_branch and "lheweight43":
+            warnings.warn( "EMTree: Expected branch lheweight43 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight43")
+        else:
+            self.lheweight43_branch.SetAddress(<void*>&self.lheweight43_value)
+
+        #print "making lheweight44"
+        self.lheweight44_branch = the_tree.GetBranch("lheweight44")
+        #if not self.lheweight44_branch and "lheweight44" not in self.complained:
+        if not self.lheweight44_branch and "lheweight44":
+            warnings.warn( "EMTree: Expected branch lheweight44 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight44")
+        else:
+            self.lheweight44_branch.SetAddress(<void*>&self.lheweight44_value)
+
+        #print "making lheweight45"
+        self.lheweight45_branch = the_tree.GetBranch("lheweight45")
+        #if not self.lheweight45_branch and "lheweight45" not in self.complained:
+        if not self.lheweight45_branch and "lheweight45":
+            warnings.warn( "EMTree: Expected branch lheweight45 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight45")
+        else:
+            self.lheweight45_branch.SetAddress(<void*>&self.lheweight45_value)
+
+        #print "making lheweight46"
+        self.lheweight46_branch = the_tree.GetBranch("lheweight46")
+        #if not self.lheweight46_branch and "lheweight46" not in self.complained:
+        if not self.lheweight46_branch and "lheweight46":
+            warnings.warn( "EMTree: Expected branch lheweight46 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight46")
+        else:
+            self.lheweight46_branch.SetAddress(<void*>&self.lheweight46_value)
+
+        #print "making lheweight47"
+        self.lheweight47_branch = the_tree.GetBranch("lheweight47")
+        #if not self.lheweight47_branch and "lheweight47" not in self.complained:
+        if not self.lheweight47_branch and "lheweight47":
+            warnings.warn( "EMTree: Expected branch lheweight47 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight47")
+        else:
+            self.lheweight47_branch.SetAddress(<void*>&self.lheweight47_value)
+
+        #print "making lheweight48"
+        self.lheweight48_branch = the_tree.GetBranch("lheweight48")
+        #if not self.lheweight48_branch and "lheweight48" not in self.complained:
+        if not self.lheweight48_branch and "lheweight48":
+            warnings.warn( "EMTree: Expected branch lheweight48 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight48")
+        else:
+            self.lheweight48_branch.SetAddress(<void*>&self.lheweight48_value)
+
+        #print "making lheweight49"
+        self.lheweight49_branch = the_tree.GetBranch("lheweight49")
+        #if not self.lheweight49_branch and "lheweight49" not in self.complained:
+        if not self.lheweight49_branch and "lheweight49":
+            warnings.warn( "EMTree: Expected branch lheweight49 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight49")
+        else:
+            self.lheweight49_branch.SetAddress(<void*>&self.lheweight49_value)
+
+        #print "making lheweight5"
+        self.lheweight5_branch = the_tree.GetBranch("lheweight5")
+        #if not self.lheweight5_branch and "lheweight5" not in self.complained:
+        if not self.lheweight5_branch and "lheweight5":
+            warnings.warn( "EMTree: Expected branch lheweight5 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight5")
+        else:
+            self.lheweight5_branch.SetAddress(<void*>&self.lheweight5_value)
+
+        #print "making lheweight50"
+        self.lheweight50_branch = the_tree.GetBranch("lheweight50")
+        #if not self.lheweight50_branch and "lheweight50" not in self.complained:
+        if not self.lheweight50_branch and "lheweight50":
+            warnings.warn( "EMTree: Expected branch lheweight50 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight50")
+        else:
+            self.lheweight50_branch.SetAddress(<void*>&self.lheweight50_value)
+
+        #print "making lheweight51"
+        self.lheweight51_branch = the_tree.GetBranch("lheweight51")
+        #if not self.lheweight51_branch and "lheweight51" not in self.complained:
+        if not self.lheweight51_branch and "lheweight51":
+            warnings.warn( "EMTree: Expected branch lheweight51 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight51")
+        else:
+            self.lheweight51_branch.SetAddress(<void*>&self.lheweight51_value)
+
+        #print "making lheweight52"
+        self.lheweight52_branch = the_tree.GetBranch("lheweight52")
+        #if not self.lheweight52_branch and "lheweight52" not in self.complained:
+        if not self.lheweight52_branch and "lheweight52":
+            warnings.warn( "EMTree: Expected branch lheweight52 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight52")
+        else:
+            self.lheweight52_branch.SetAddress(<void*>&self.lheweight52_value)
+
+        #print "making lheweight53"
+        self.lheweight53_branch = the_tree.GetBranch("lheweight53")
+        #if not self.lheweight53_branch and "lheweight53" not in self.complained:
+        if not self.lheweight53_branch and "lheweight53":
+            warnings.warn( "EMTree: Expected branch lheweight53 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight53")
+        else:
+            self.lheweight53_branch.SetAddress(<void*>&self.lheweight53_value)
+
+        #print "making lheweight54"
+        self.lheweight54_branch = the_tree.GetBranch("lheweight54")
+        #if not self.lheweight54_branch and "lheweight54" not in self.complained:
+        if not self.lheweight54_branch and "lheweight54":
+            warnings.warn( "EMTree: Expected branch lheweight54 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight54")
+        else:
+            self.lheweight54_branch.SetAddress(<void*>&self.lheweight54_value)
+
+        #print "making lheweight55"
+        self.lheweight55_branch = the_tree.GetBranch("lheweight55")
+        #if not self.lheweight55_branch and "lheweight55" not in self.complained:
+        if not self.lheweight55_branch and "lheweight55":
+            warnings.warn( "EMTree: Expected branch lheweight55 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight55")
+        else:
+            self.lheweight55_branch.SetAddress(<void*>&self.lheweight55_value)
+
+        #print "making lheweight56"
+        self.lheweight56_branch = the_tree.GetBranch("lheweight56")
+        #if not self.lheweight56_branch and "lheweight56" not in self.complained:
+        if not self.lheweight56_branch and "lheweight56":
+            warnings.warn( "EMTree: Expected branch lheweight56 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight56")
+        else:
+            self.lheweight56_branch.SetAddress(<void*>&self.lheweight56_value)
+
+        #print "making lheweight57"
+        self.lheweight57_branch = the_tree.GetBranch("lheweight57")
+        #if not self.lheweight57_branch and "lheweight57" not in self.complained:
+        if not self.lheweight57_branch and "lheweight57":
+            warnings.warn( "EMTree: Expected branch lheweight57 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight57")
+        else:
+            self.lheweight57_branch.SetAddress(<void*>&self.lheweight57_value)
+
+        #print "making lheweight58"
+        self.lheweight58_branch = the_tree.GetBranch("lheweight58")
+        #if not self.lheweight58_branch and "lheweight58" not in self.complained:
+        if not self.lheweight58_branch and "lheweight58":
+            warnings.warn( "EMTree: Expected branch lheweight58 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight58")
+        else:
+            self.lheweight58_branch.SetAddress(<void*>&self.lheweight58_value)
+
+        #print "making lheweight59"
+        self.lheweight59_branch = the_tree.GetBranch("lheweight59")
+        #if not self.lheweight59_branch and "lheweight59" not in self.complained:
+        if not self.lheweight59_branch and "lheweight59":
+            warnings.warn( "EMTree: Expected branch lheweight59 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight59")
+        else:
+            self.lheweight59_branch.SetAddress(<void*>&self.lheweight59_value)
+
+        #print "making lheweight6"
+        self.lheweight6_branch = the_tree.GetBranch("lheweight6")
+        #if not self.lheweight6_branch and "lheweight6" not in self.complained:
+        if not self.lheweight6_branch and "lheweight6":
+            warnings.warn( "EMTree: Expected branch lheweight6 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight6")
+        else:
+            self.lheweight6_branch.SetAddress(<void*>&self.lheweight6_value)
+
+        #print "making lheweight60"
+        self.lheweight60_branch = the_tree.GetBranch("lheweight60")
+        #if not self.lheweight60_branch and "lheweight60" not in self.complained:
+        if not self.lheweight60_branch and "lheweight60":
+            warnings.warn( "EMTree: Expected branch lheweight60 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight60")
+        else:
+            self.lheweight60_branch.SetAddress(<void*>&self.lheweight60_value)
+
+        #print "making lheweight61"
+        self.lheweight61_branch = the_tree.GetBranch("lheweight61")
+        #if not self.lheweight61_branch and "lheweight61" not in self.complained:
+        if not self.lheweight61_branch and "lheweight61":
+            warnings.warn( "EMTree: Expected branch lheweight61 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight61")
+        else:
+            self.lheweight61_branch.SetAddress(<void*>&self.lheweight61_value)
+
+        #print "making lheweight62"
+        self.lheweight62_branch = the_tree.GetBranch("lheweight62")
+        #if not self.lheweight62_branch and "lheweight62" not in self.complained:
+        if not self.lheweight62_branch and "lheweight62":
+            warnings.warn( "EMTree: Expected branch lheweight62 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight62")
+        else:
+            self.lheweight62_branch.SetAddress(<void*>&self.lheweight62_value)
+
+        #print "making lheweight63"
+        self.lheweight63_branch = the_tree.GetBranch("lheweight63")
+        #if not self.lheweight63_branch and "lheweight63" not in self.complained:
+        if not self.lheweight63_branch and "lheweight63":
+            warnings.warn( "EMTree: Expected branch lheweight63 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight63")
+        else:
+            self.lheweight63_branch.SetAddress(<void*>&self.lheweight63_value)
+
+        #print "making lheweight64"
+        self.lheweight64_branch = the_tree.GetBranch("lheweight64")
+        #if not self.lheweight64_branch and "lheweight64" not in self.complained:
+        if not self.lheweight64_branch and "lheweight64":
+            warnings.warn( "EMTree: Expected branch lheweight64 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight64")
+        else:
+            self.lheweight64_branch.SetAddress(<void*>&self.lheweight64_value)
+
+        #print "making lheweight65"
+        self.lheweight65_branch = the_tree.GetBranch("lheweight65")
+        #if not self.lheweight65_branch and "lheweight65" not in self.complained:
+        if not self.lheweight65_branch and "lheweight65":
+            warnings.warn( "EMTree: Expected branch lheweight65 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight65")
+        else:
+            self.lheweight65_branch.SetAddress(<void*>&self.lheweight65_value)
+
+        #print "making lheweight66"
+        self.lheweight66_branch = the_tree.GetBranch("lheweight66")
+        #if not self.lheweight66_branch and "lheweight66" not in self.complained:
+        if not self.lheweight66_branch and "lheweight66":
+            warnings.warn( "EMTree: Expected branch lheweight66 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight66")
+        else:
+            self.lheweight66_branch.SetAddress(<void*>&self.lheweight66_value)
+
+        #print "making lheweight67"
+        self.lheweight67_branch = the_tree.GetBranch("lheweight67")
+        #if not self.lheweight67_branch and "lheweight67" not in self.complained:
+        if not self.lheweight67_branch and "lheweight67":
+            warnings.warn( "EMTree: Expected branch lheweight67 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight67")
+        else:
+            self.lheweight67_branch.SetAddress(<void*>&self.lheweight67_value)
+
+        #print "making lheweight68"
+        self.lheweight68_branch = the_tree.GetBranch("lheweight68")
+        #if not self.lheweight68_branch and "lheweight68" not in self.complained:
+        if not self.lheweight68_branch and "lheweight68":
+            warnings.warn( "EMTree: Expected branch lheweight68 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight68")
+        else:
+            self.lheweight68_branch.SetAddress(<void*>&self.lheweight68_value)
+
+        #print "making lheweight69"
+        self.lheweight69_branch = the_tree.GetBranch("lheweight69")
+        #if not self.lheweight69_branch and "lheweight69" not in self.complained:
+        if not self.lheweight69_branch and "lheweight69":
+            warnings.warn( "EMTree: Expected branch lheweight69 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight69")
+        else:
+            self.lheweight69_branch.SetAddress(<void*>&self.lheweight69_value)
+
+        #print "making lheweight7"
+        self.lheweight7_branch = the_tree.GetBranch("lheweight7")
+        #if not self.lheweight7_branch and "lheweight7" not in self.complained:
+        if not self.lheweight7_branch and "lheweight7":
+            warnings.warn( "EMTree: Expected branch lheweight7 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight7")
+        else:
+            self.lheweight7_branch.SetAddress(<void*>&self.lheweight7_value)
+
+        #print "making lheweight70"
+        self.lheweight70_branch = the_tree.GetBranch("lheweight70")
+        #if not self.lheweight70_branch and "lheweight70" not in self.complained:
+        if not self.lheweight70_branch and "lheweight70":
+            warnings.warn( "EMTree: Expected branch lheweight70 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight70")
+        else:
+            self.lheweight70_branch.SetAddress(<void*>&self.lheweight70_value)
+
+        #print "making lheweight71"
+        self.lheweight71_branch = the_tree.GetBranch("lheweight71")
+        #if not self.lheweight71_branch and "lheweight71" not in self.complained:
+        if not self.lheweight71_branch and "lheweight71":
+            warnings.warn( "EMTree: Expected branch lheweight71 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight71")
+        else:
+            self.lheweight71_branch.SetAddress(<void*>&self.lheweight71_value)
+
+        #print "making lheweight72"
+        self.lheweight72_branch = the_tree.GetBranch("lheweight72")
+        #if not self.lheweight72_branch and "lheweight72" not in self.complained:
+        if not self.lheweight72_branch and "lheweight72":
+            warnings.warn( "EMTree: Expected branch lheweight72 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight72")
+        else:
+            self.lheweight72_branch.SetAddress(<void*>&self.lheweight72_value)
+
+        #print "making lheweight73"
+        self.lheweight73_branch = the_tree.GetBranch("lheweight73")
+        #if not self.lheweight73_branch and "lheweight73" not in self.complained:
+        if not self.lheweight73_branch and "lheweight73":
+            warnings.warn( "EMTree: Expected branch lheweight73 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight73")
+        else:
+            self.lheweight73_branch.SetAddress(<void*>&self.lheweight73_value)
+
+        #print "making lheweight74"
+        self.lheweight74_branch = the_tree.GetBranch("lheweight74")
+        #if not self.lheweight74_branch and "lheweight74" not in self.complained:
+        if not self.lheweight74_branch and "lheweight74":
+            warnings.warn( "EMTree: Expected branch lheweight74 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight74")
+        else:
+            self.lheweight74_branch.SetAddress(<void*>&self.lheweight74_value)
+
+        #print "making lheweight75"
+        self.lheweight75_branch = the_tree.GetBranch("lheweight75")
+        #if not self.lheweight75_branch and "lheweight75" not in self.complained:
+        if not self.lheweight75_branch and "lheweight75":
+            warnings.warn( "EMTree: Expected branch lheweight75 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight75")
+        else:
+            self.lheweight75_branch.SetAddress(<void*>&self.lheweight75_value)
+
+        #print "making lheweight76"
+        self.lheweight76_branch = the_tree.GetBranch("lheweight76")
+        #if not self.lheweight76_branch and "lheweight76" not in self.complained:
+        if not self.lheweight76_branch and "lheweight76":
+            warnings.warn( "EMTree: Expected branch lheweight76 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight76")
+        else:
+            self.lheweight76_branch.SetAddress(<void*>&self.lheweight76_value)
+
+        #print "making lheweight77"
+        self.lheweight77_branch = the_tree.GetBranch("lheweight77")
+        #if not self.lheweight77_branch and "lheweight77" not in self.complained:
+        if not self.lheweight77_branch and "lheweight77":
+            warnings.warn( "EMTree: Expected branch lheweight77 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight77")
+        else:
+            self.lheweight77_branch.SetAddress(<void*>&self.lheweight77_value)
+
+        #print "making lheweight78"
+        self.lheweight78_branch = the_tree.GetBranch("lheweight78")
+        #if not self.lheweight78_branch and "lheweight78" not in self.complained:
+        if not self.lheweight78_branch and "lheweight78":
+            warnings.warn( "EMTree: Expected branch lheweight78 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight78")
+        else:
+            self.lheweight78_branch.SetAddress(<void*>&self.lheweight78_value)
+
+        #print "making lheweight79"
+        self.lheweight79_branch = the_tree.GetBranch("lheweight79")
+        #if not self.lheweight79_branch and "lheweight79" not in self.complained:
+        if not self.lheweight79_branch and "lheweight79":
+            warnings.warn( "EMTree: Expected branch lheweight79 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight79")
+        else:
+            self.lheweight79_branch.SetAddress(<void*>&self.lheweight79_value)
+
+        #print "making lheweight8"
+        self.lheweight8_branch = the_tree.GetBranch("lheweight8")
+        #if not self.lheweight8_branch and "lheweight8" not in self.complained:
+        if not self.lheweight8_branch and "lheweight8":
+            warnings.warn( "EMTree: Expected branch lheweight8 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight8")
+        else:
+            self.lheweight8_branch.SetAddress(<void*>&self.lheweight8_value)
+
+        #print "making lheweight80"
+        self.lheweight80_branch = the_tree.GetBranch("lheweight80")
+        #if not self.lheweight80_branch and "lheweight80" not in self.complained:
+        if not self.lheweight80_branch and "lheweight80":
+            warnings.warn( "EMTree: Expected branch lheweight80 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight80")
+        else:
+            self.lheweight80_branch.SetAddress(<void*>&self.lheweight80_value)
+
+        #print "making lheweight81"
+        self.lheweight81_branch = the_tree.GetBranch("lheweight81")
+        #if not self.lheweight81_branch and "lheweight81" not in self.complained:
+        if not self.lheweight81_branch and "lheweight81":
+            warnings.warn( "EMTree: Expected branch lheweight81 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight81")
+        else:
+            self.lheweight81_branch.SetAddress(<void*>&self.lheweight81_value)
+
+        #print "making lheweight82"
+        self.lheweight82_branch = the_tree.GetBranch("lheweight82")
+        #if not self.lheweight82_branch and "lheweight82" not in self.complained:
+        if not self.lheweight82_branch and "lheweight82":
+            warnings.warn( "EMTree: Expected branch lheweight82 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight82")
+        else:
+            self.lheweight82_branch.SetAddress(<void*>&self.lheweight82_value)
+
+        #print "making lheweight83"
+        self.lheweight83_branch = the_tree.GetBranch("lheweight83")
+        #if not self.lheweight83_branch and "lheweight83" not in self.complained:
+        if not self.lheweight83_branch and "lheweight83":
+            warnings.warn( "EMTree: Expected branch lheweight83 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight83")
+        else:
+            self.lheweight83_branch.SetAddress(<void*>&self.lheweight83_value)
+
+        #print "making lheweight84"
+        self.lheweight84_branch = the_tree.GetBranch("lheweight84")
+        #if not self.lheweight84_branch and "lheweight84" not in self.complained:
+        if not self.lheweight84_branch and "lheweight84":
+            warnings.warn( "EMTree: Expected branch lheweight84 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight84")
+        else:
+            self.lheweight84_branch.SetAddress(<void*>&self.lheweight84_value)
+
+        #print "making lheweight85"
+        self.lheweight85_branch = the_tree.GetBranch("lheweight85")
+        #if not self.lheweight85_branch and "lheweight85" not in self.complained:
+        if not self.lheweight85_branch and "lheweight85":
+            warnings.warn( "EMTree: Expected branch lheweight85 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight85")
+        else:
+            self.lheweight85_branch.SetAddress(<void*>&self.lheweight85_value)
+
+        #print "making lheweight86"
+        self.lheweight86_branch = the_tree.GetBranch("lheweight86")
+        #if not self.lheweight86_branch and "lheweight86" not in self.complained:
+        if not self.lheweight86_branch and "lheweight86":
+            warnings.warn( "EMTree: Expected branch lheweight86 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight86")
+        else:
+            self.lheweight86_branch.SetAddress(<void*>&self.lheweight86_value)
+
+        #print "making lheweight87"
+        self.lheweight87_branch = the_tree.GetBranch("lheweight87")
+        #if not self.lheweight87_branch and "lheweight87" not in self.complained:
+        if not self.lheweight87_branch and "lheweight87":
+            warnings.warn( "EMTree: Expected branch lheweight87 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight87")
+        else:
+            self.lheweight87_branch.SetAddress(<void*>&self.lheweight87_value)
+
+        #print "making lheweight88"
+        self.lheweight88_branch = the_tree.GetBranch("lheweight88")
+        #if not self.lheweight88_branch and "lheweight88" not in self.complained:
+        if not self.lheweight88_branch and "lheweight88":
+            warnings.warn( "EMTree: Expected branch lheweight88 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight88")
+        else:
+            self.lheweight88_branch.SetAddress(<void*>&self.lheweight88_value)
+
+        #print "making lheweight89"
+        self.lheweight89_branch = the_tree.GetBranch("lheweight89")
+        #if not self.lheweight89_branch and "lheweight89" not in self.complained:
+        if not self.lheweight89_branch and "lheweight89":
+            warnings.warn( "EMTree: Expected branch lheweight89 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight89")
+        else:
+            self.lheweight89_branch.SetAddress(<void*>&self.lheweight89_value)
+
+        #print "making lheweight9"
+        self.lheweight9_branch = the_tree.GetBranch("lheweight9")
+        #if not self.lheweight9_branch and "lheweight9" not in self.complained:
+        if not self.lheweight9_branch and "lheweight9":
+            warnings.warn( "EMTree: Expected branch lheweight9 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight9")
+        else:
+            self.lheweight9_branch.SetAddress(<void*>&self.lheweight9_value)
+
+        #print "making lheweight90"
+        self.lheweight90_branch = the_tree.GetBranch("lheweight90")
+        #if not self.lheweight90_branch and "lheweight90" not in self.complained:
+        if not self.lheweight90_branch and "lheweight90":
+            warnings.warn( "EMTree: Expected branch lheweight90 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight90")
+        else:
+            self.lheweight90_branch.SetAddress(<void*>&self.lheweight90_value)
+
+        #print "making lheweight91"
+        self.lheweight91_branch = the_tree.GetBranch("lheweight91")
+        #if not self.lheweight91_branch and "lheweight91" not in self.complained:
+        if not self.lheweight91_branch and "lheweight91":
+            warnings.warn( "EMTree: Expected branch lheweight91 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight91")
+        else:
+            self.lheweight91_branch.SetAddress(<void*>&self.lheweight91_value)
+
+        #print "making lheweight92"
+        self.lheweight92_branch = the_tree.GetBranch("lheweight92")
+        #if not self.lheweight92_branch and "lheweight92" not in self.complained:
+        if not self.lheweight92_branch and "lheweight92":
+            warnings.warn( "EMTree: Expected branch lheweight92 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight92")
+        else:
+            self.lheweight92_branch.SetAddress(<void*>&self.lheweight92_value)
+
+        #print "making lheweight93"
+        self.lheweight93_branch = the_tree.GetBranch("lheweight93")
+        #if not self.lheweight93_branch and "lheweight93" not in self.complained:
+        if not self.lheweight93_branch and "lheweight93":
+            warnings.warn( "EMTree: Expected branch lheweight93 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight93")
+        else:
+            self.lheweight93_branch.SetAddress(<void*>&self.lheweight93_value)
+
+        #print "making lheweight94"
+        self.lheweight94_branch = the_tree.GetBranch("lheweight94")
+        #if not self.lheweight94_branch and "lheweight94" not in self.complained:
+        if not self.lheweight94_branch and "lheweight94":
+            warnings.warn( "EMTree: Expected branch lheweight94 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight94")
+        else:
+            self.lheweight94_branch.SetAddress(<void*>&self.lheweight94_value)
+
+        #print "making lheweight95"
+        self.lheweight95_branch = the_tree.GetBranch("lheweight95")
+        #if not self.lheweight95_branch and "lheweight95" not in self.complained:
+        if not self.lheweight95_branch and "lheweight95":
+            warnings.warn( "EMTree: Expected branch lheweight95 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight95")
+        else:
+            self.lheweight95_branch.SetAddress(<void*>&self.lheweight95_value)
+
+        #print "making lheweight96"
+        self.lheweight96_branch = the_tree.GetBranch("lheweight96")
+        #if not self.lheweight96_branch and "lheweight96" not in self.complained:
+        if not self.lheweight96_branch and "lheweight96":
+            warnings.warn( "EMTree: Expected branch lheweight96 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight96")
+        else:
+            self.lheweight96_branch.SetAddress(<void*>&self.lheweight96_value)
+
+        #print "making lheweight97"
+        self.lheweight97_branch = the_tree.GetBranch("lheweight97")
+        #if not self.lheweight97_branch and "lheweight97" not in self.complained:
+        if not self.lheweight97_branch and "lheweight97":
+            warnings.warn( "EMTree: Expected branch lheweight97 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight97")
+        else:
+            self.lheweight97_branch.SetAddress(<void*>&self.lheweight97_value)
+
+        #print "making lheweight98"
+        self.lheweight98_branch = the_tree.GetBranch("lheweight98")
+        #if not self.lheweight98_branch and "lheweight98" not in self.complained:
+        if not self.lheweight98_branch and "lheweight98":
+            warnings.warn( "EMTree: Expected branch lheweight98 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight98")
+        else:
+            self.lheweight98_branch.SetAddress(<void*>&self.lheweight98_value)
+
+        #print "making lheweight99"
+        self.lheweight99_branch = the_tree.GetBranch("lheweight99")
+        #if not self.lheweight99_branch and "lheweight99" not in self.complained:
+        if not self.lheweight99_branch and "lheweight99":
+            warnings.warn( "EMTree: Expected branch lheweight99 does not exist!"                " It will crash if you try and use it!",Warning)
+            #self.complained.add("lheweight99")
+        else:
+            self.lheweight99_branch.SetAddress(<void*>&self.lheweight99_value)
 
         #print "making lumi"
         self.lumi_branch = the_tree.GetBranch("lumi")
@@ -7170,6 +9762,126 @@ cdef class EMTree:
             self.j1etaWoNoisyJets_branch.GetEntry(self.localentry, 0)
             return self.j1etaWoNoisyJets_value
 
+    property j1eta_JERDown:
+        def __get__(self):
+            self.j1eta_JERDown_branch.GetEntry(self.localentry, 0)
+            return self.j1eta_JERDown_value
+
+    property j1eta_JERUp:
+        def __get__(self):
+            self.j1eta_JERUp_branch.GetEntry(self.localentry, 0)
+            return self.j1eta_JERUp_value
+
+    property j1eta_JetAbsoluteDown:
+        def __get__(self):
+            self.j1eta_JetAbsoluteDown_branch.GetEntry(self.localentry, 0)
+            return self.j1eta_JetAbsoluteDown_value
+
+    property j1eta_JetAbsoluteUp:
+        def __get__(self):
+            self.j1eta_JetAbsoluteUp_branch.GetEntry(self.localentry, 0)
+            return self.j1eta_JetAbsoluteUp_value
+
+    property j1eta_JetAbsoluteyearDown:
+        def __get__(self):
+            self.j1eta_JetAbsoluteyearDown_branch.GetEntry(self.localentry, 0)
+            return self.j1eta_JetAbsoluteyearDown_value
+
+    property j1eta_JetAbsoluteyearUp:
+        def __get__(self):
+            self.j1eta_JetAbsoluteyearUp_branch.GetEntry(self.localentry, 0)
+            return self.j1eta_JetAbsoluteyearUp_value
+
+    property j1eta_JetBBEC1Down:
+        def __get__(self):
+            self.j1eta_JetBBEC1Down_branch.GetEntry(self.localentry, 0)
+            return self.j1eta_JetBBEC1Down_value
+
+    property j1eta_JetBBEC1Up:
+        def __get__(self):
+            self.j1eta_JetBBEC1Up_branch.GetEntry(self.localentry, 0)
+            return self.j1eta_JetBBEC1Up_value
+
+    property j1eta_JetBBEC1yearDown:
+        def __get__(self):
+            self.j1eta_JetBBEC1yearDown_branch.GetEntry(self.localentry, 0)
+            return self.j1eta_JetBBEC1yearDown_value
+
+    property j1eta_JetBBEC1yearUp:
+        def __get__(self):
+            self.j1eta_JetBBEC1yearUp_branch.GetEntry(self.localentry, 0)
+            return self.j1eta_JetBBEC1yearUp_value
+
+    property j1eta_JetEC2Down:
+        def __get__(self):
+            self.j1eta_JetEC2Down_branch.GetEntry(self.localentry, 0)
+            return self.j1eta_JetEC2Down_value
+
+    property j1eta_JetEC2Up:
+        def __get__(self):
+            self.j1eta_JetEC2Up_branch.GetEntry(self.localentry, 0)
+            return self.j1eta_JetEC2Up_value
+
+    property j1eta_JetEC2yearDown:
+        def __get__(self):
+            self.j1eta_JetEC2yearDown_branch.GetEntry(self.localentry, 0)
+            return self.j1eta_JetEC2yearDown_value
+
+    property j1eta_JetEC2yearUp:
+        def __get__(self):
+            self.j1eta_JetEC2yearUp_branch.GetEntry(self.localentry, 0)
+            return self.j1eta_JetEC2yearUp_value
+
+    property j1eta_JetFlavorQCDDown:
+        def __get__(self):
+            self.j1eta_JetFlavorQCDDown_branch.GetEntry(self.localentry, 0)
+            return self.j1eta_JetFlavorQCDDown_value
+
+    property j1eta_JetFlavorQCDUp:
+        def __get__(self):
+            self.j1eta_JetFlavorQCDUp_branch.GetEntry(self.localentry, 0)
+            return self.j1eta_JetFlavorQCDUp_value
+
+    property j1eta_JetHFDown:
+        def __get__(self):
+            self.j1eta_JetHFDown_branch.GetEntry(self.localentry, 0)
+            return self.j1eta_JetHFDown_value
+
+    property j1eta_JetHFUp:
+        def __get__(self):
+            self.j1eta_JetHFUp_branch.GetEntry(self.localentry, 0)
+            return self.j1eta_JetHFUp_value
+
+    property j1eta_JetHFyearDown:
+        def __get__(self):
+            self.j1eta_JetHFyearDown_branch.GetEntry(self.localentry, 0)
+            return self.j1eta_JetHFyearDown_value
+
+    property j1eta_JetHFyearUp:
+        def __get__(self):
+            self.j1eta_JetHFyearUp_branch.GetEntry(self.localentry, 0)
+            return self.j1eta_JetHFyearUp_value
+
+    property j1eta_JetRelativeBalDown:
+        def __get__(self):
+            self.j1eta_JetRelativeBalDown_branch.GetEntry(self.localentry, 0)
+            return self.j1eta_JetRelativeBalDown_value
+
+    property j1eta_JetRelativeBalUp:
+        def __get__(self):
+            self.j1eta_JetRelativeBalUp_branch.GetEntry(self.localentry, 0)
+            return self.j1eta_JetRelativeBalUp_value
+
+    property j1eta_JetRelativeSampleDown:
+        def __get__(self):
+            self.j1eta_JetRelativeSampleDown_branch.GetEntry(self.localentry, 0)
+            return self.j1eta_JetRelativeSampleDown_value
+
+    property j1eta_JetRelativeSampleUp:
+        def __get__(self):
+            self.j1eta_JetRelativeSampleUp_branch.GetEntry(self.localentry, 0)
+            return self.j1eta_JetRelativeSampleUp_value
+
     property j1hadronflavor:
         def __get__(self):
             self.j1hadronflavor_branch.GetEntry(self.localentry, 0)
@@ -7189,6 +9901,126 @@ cdef class EMTree:
         def __get__(self):
             self.j1phiWoNoisyJets_branch.GetEntry(self.localentry, 0)
             return self.j1phiWoNoisyJets_value
+
+    property j1phi_JERDown:
+        def __get__(self):
+            self.j1phi_JERDown_branch.GetEntry(self.localentry, 0)
+            return self.j1phi_JERDown_value
+
+    property j1phi_JERUp:
+        def __get__(self):
+            self.j1phi_JERUp_branch.GetEntry(self.localentry, 0)
+            return self.j1phi_JERUp_value
+
+    property j1phi_JetAbsoluteDown:
+        def __get__(self):
+            self.j1phi_JetAbsoluteDown_branch.GetEntry(self.localentry, 0)
+            return self.j1phi_JetAbsoluteDown_value
+
+    property j1phi_JetAbsoluteUp:
+        def __get__(self):
+            self.j1phi_JetAbsoluteUp_branch.GetEntry(self.localentry, 0)
+            return self.j1phi_JetAbsoluteUp_value
+
+    property j1phi_JetAbsoluteyearDown:
+        def __get__(self):
+            self.j1phi_JetAbsoluteyearDown_branch.GetEntry(self.localentry, 0)
+            return self.j1phi_JetAbsoluteyearDown_value
+
+    property j1phi_JetAbsoluteyearUp:
+        def __get__(self):
+            self.j1phi_JetAbsoluteyearUp_branch.GetEntry(self.localentry, 0)
+            return self.j1phi_JetAbsoluteyearUp_value
+
+    property j1phi_JetBBEC1Down:
+        def __get__(self):
+            self.j1phi_JetBBEC1Down_branch.GetEntry(self.localentry, 0)
+            return self.j1phi_JetBBEC1Down_value
+
+    property j1phi_JetBBEC1Up:
+        def __get__(self):
+            self.j1phi_JetBBEC1Up_branch.GetEntry(self.localentry, 0)
+            return self.j1phi_JetBBEC1Up_value
+
+    property j1phi_JetBBEC1yearDown:
+        def __get__(self):
+            self.j1phi_JetBBEC1yearDown_branch.GetEntry(self.localentry, 0)
+            return self.j1phi_JetBBEC1yearDown_value
+
+    property j1phi_JetBBEC1yearUp:
+        def __get__(self):
+            self.j1phi_JetBBEC1yearUp_branch.GetEntry(self.localentry, 0)
+            return self.j1phi_JetBBEC1yearUp_value
+
+    property j1phi_JetEC2Down:
+        def __get__(self):
+            self.j1phi_JetEC2Down_branch.GetEntry(self.localentry, 0)
+            return self.j1phi_JetEC2Down_value
+
+    property j1phi_JetEC2Up:
+        def __get__(self):
+            self.j1phi_JetEC2Up_branch.GetEntry(self.localentry, 0)
+            return self.j1phi_JetEC2Up_value
+
+    property j1phi_JetEC2yearDown:
+        def __get__(self):
+            self.j1phi_JetEC2yearDown_branch.GetEntry(self.localentry, 0)
+            return self.j1phi_JetEC2yearDown_value
+
+    property j1phi_JetEC2yearUp:
+        def __get__(self):
+            self.j1phi_JetEC2yearUp_branch.GetEntry(self.localentry, 0)
+            return self.j1phi_JetEC2yearUp_value
+
+    property j1phi_JetFlavorQCDDown:
+        def __get__(self):
+            self.j1phi_JetFlavorQCDDown_branch.GetEntry(self.localentry, 0)
+            return self.j1phi_JetFlavorQCDDown_value
+
+    property j1phi_JetFlavorQCDUp:
+        def __get__(self):
+            self.j1phi_JetFlavorQCDUp_branch.GetEntry(self.localentry, 0)
+            return self.j1phi_JetFlavorQCDUp_value
+
+    property j1phi_JetHFDown:
+        def __get__(self):
+            self.j1phi_JetHFDown_branch.GetEntry(self.localentry, 0)
+            return self.j1phi_JetHFDown_value
+
+    property j1phi_JetHFUp:
+        def __get__(self):
+            self.j1phi_JetHFUp_branch.GetEntry(self.localentry, 0)
+            return self.j1phi_JetHFUp_value
+
+    property j1phi_JetHFyearDown:
+        def __get__(self):
+            self.j1phi_JetHFyearDown_branch.GetEntry(self.localentry, 0)
+            return self.j1phi_JetHFyearDown_value
+
+    property j1phi_JetHFyearUp:
+        def __get__(self):
+            self.j1phi_JetHFyearUp_branch.GetEntry(self.localentry, 0)
+            return self.j1phi_JetHFyearUp_value
+
+    property j1phi_JetRelativeBalDown:
+        def __get__(self):
+            self.j1phi_JetRelativeBalDown_branch.GetEntry(self.localentry, 0)
+            return self.j1phi_JetRelativeBalDown_value
+
+    property j1phi_JetRelativeBalUp:
+        def __get__(self):
+            self.j1phi_JetRelativeBalUp_branch.GetEntry(self.localentry, 0)
+            return self.j1phi_JetRelativeBalUp_value
+
+    property j1phi_JetRelativeSampleDown:
+        def __get__(self):
+            self.j1phi_JetRelativeSampleDown_branch.GetEntry(self.localentry, 0)
+            return self.j1phi_JetRelativeSampleDown_value
+
+    property j1phi_JetRelativeSampleUp:
+        def __get__(self):
+            self.j1phi_JetRelativeSampleUp_branch.GetEntry(self.localentry, 0)
+            return self.j1phi_JetRelativeSampleUp_value
 
     property j1pt:
         def __get__(self):
@@ -7340,6 +10172,126 @@ cdef class EMTree:
             self.j2etaWoNoisyJets_branch.GetEntry(self.localentry, 0)
             return self.j2etaWoNoisyJets_value
 
+    property j2eta_JERDown:
+        def __get__(self):
+            self.j2eta_JERDown_branch.GetEntry(self.localentry, 0)
+            return self.j2eta_JERDown_value
+
+    property j2eta_JERUp:
+        def __get__(self):
+            self.j2eta_JERUp_branch.GetEntry(self.localentry, 0)
+            return self.j2eta_JERUp_value
+
+    property j2eta_JetAbsoluteDown:
+        def __get__(self):
+            self.j2eta_JetAbsoluteDown_branch.GetEntry(self.localentry, 0)
+            return self.j2eta_JetAbsoluteDown_value
+
+    property j2eta_JetAbsoluteUp:
+        def __get__(self):
+            self.j2eta_JetAbsoluteUp_branch.GetEntry(self.localentry, 0)
+            return self.j2eta_JetAbsoluteUp_value
+
+    property j2eta_JetAbsoluteyearDown:
+        def __get__(self):
+            self.j2eta_JetAbsoluteyearDown_branch.GetEntry(self.localentry, 0)
+            return self.j2eta_JetAbsoluteyearDown_value
+
+    property j2eta_JetAbsoluteyearUp:
+        def __get__(self):
+            self.j2eta_JetAbsoluteyearUp_branch.GetEntry(self.localentry, 0)
+            return self.j2eta_JetAbsoluteyearUp_value
+
+    property j2eta_JetBBEC1Down:
+        def __get__(self):
+            self.j2eta_JetBBEC1Down_branch.GetEntry(self.localentry, 0)
+            return self.j2eta_JetBBEC1Down_value
+
+    property j2eta_JetBBEC1Up:
+        def __get__(self):
+            self.j2eta_JetBBEC1Up_branch.GetEntry(self.localentry, 0)
+            return self.j2eta_JetBBEC1Up_value
+
+    property j2eta_JetBBEC1yearDown:
+        def __get__(self):
+            self.j2eta_JetBBEC1yearDown_branch.GetEntry(self.localentry, 0)
+            return self.j2eta_JetBBEC1yearDown_value
+
+    property j2eta_JetBBEC1yearUp:
+        def __get__(self):
+            self.j2eta_JetBBEC1yearUp_branch.GetEntry(self.localentry, 0)
+            return self.j2eta_JetBBEC1yearUp_value
+
+    property j2eta_JetEC2Down:
+        def __get__(self):
+            self.j2eta_JetEC2Down_branch.GetEntry(self.localentry, 0)
+            return self.j2eta_JetEC2Down_value
+
+    property j2eta_JetEC2Up:
+        def __get__(self):
+            self.j2eta_JetEC2Up_branch.GetEntry(self.localentry, 0)
+            return self.j2eta_JetEC2Up_value
+
+    property j2eta_JetEC2yearDown:
+        def __get__(self):
+            self.j2eta_JetEC2yearDown_branch.GetEntry(self.localentry, 0)
+            return self.j2eta_JetEC2yearDown_value
+
+    property j2eta_JetEC2yearUp:
+        def __get__(self):
+            self.j2eta_JetEC2yearUp_branch.GetEntry(self.localentry, 0)
+            return self.j2eta_JetEC2yearUp_value
+
+    property j2eta_JetFlavorQCDDown:
+        def __get__(self):
+            self.j2eta_JetFlavorQCDDown_branch.GetEntry(self.localentry, 0)
+            return self.j2eta_JetFlavorQCDDown_value
+
+    property j2eta_JetFlavorQCDUp:
+        def __get__(self):
+            self.j2eta_JetFlavorQCDUp_branch.GetEntry(self.localentry, 0)
+            return self.j2eta_JetFlavorQCDUp_value
+
+    property j2eta_JetHFDown:
+        def __get__(self):
+            self.j2eta_JetHFDown_branch.GetEntry(self.localentry, 0)
+            return self.j2eta_JetHFDown_value
+
+    property j2eta_JetHFUp:
+        def __get__(self):
+            self.j2eta_JetHFUp_branch.GetEntry(self.localentry, 0)
+            return self.j2eta_JetHFUp_value
+
+    property j2eta_JetHFyearDown:
+        def __get__(self):
+            self.j2eta_JetHFyearDown_branch.GetEntry(self.localentry, 0)
+            return self.j2eta_JetHFyearDown_value
+
+    property j2eta_JetHFyearUp:
+        def __get__(self):
+            self.j2eta_JetHFyearUp_branch.GetEntry(self.localentry, 0)
+            return self.j2eta_JetHFyearUp_value
+
+    property j2eta_JetRelativeBalDown:
+        def __get__(self):
+            self.j2eta_JetRelativeBalDown_branch.GetEntry(self.localentry, 0)
+            return self.j2eta_JetRelativeBalDown_value
+
+    property j2eta_JetRelativeBalUp:
+        def __get__(self):
+            self.j2eta_JetRelativeBalUp_branch.GetEntry(self.localentry, 0)
+            return self.j2eta_JetRelativeBalUp_value
+
+    property j2eta_JetRelativeSampleDown:
+        def __get__(self):
+            self.j2eta_JetRelativeSampleDown_branch.GetEntry(self.localentry, 0)
+            return self.j2eta_JetRelativeSampleDown_value
+
+    property j2eta_JetRelativeSampleUp:
+        def __get__(self):
+            self.j2eta_JetRelativeSampleUp_branch.GetEntry(self.localentry, 0)
+            return self.j2eta_JetRelativeSampleUp_value
+
     property j2hadronflavor:
         def __get__(self):
             self.j2hadronflavor_branch.GetEntry(self.localentry, 0)
@@ -7359,6 +10311,126 @@ cdef class EMTree:
         def __get__(self):
             self.j2phiWoNoisyJets_branch.GetEntry(self.localentry, 0)
             return self.j2phiWoNoisyJets_value
+
+    property j2phi_JERDown:
+        def __get__(self):
+            self.j2phi_JERDown_branch.GetEntry(self.localentry, 0)
+            return self.j2phi_JERDown_value
+
+    property j2phi_JERUp:
+        def __get__(self):
+            self.j2phi_JERUp_branch.GetEntry(self.localentry, 0)
+            return self.j2phi_JERUp_value
+
+    property j2phi_JetAbsoluteDown:
+        def __get__(self):
+            self.j2phi_JetAbsoluteDown_branch.GetEntry(self.localentry, 0)
+            return self.j2phi_JetAbsoluteDown_value
+
+    property j2phi_JetAbsoluteUp:
+        def __get__(self):
+            self.j2phi_JetAbsoluteUp_branch.GetEntry(self.localentry, 0)
+            return self.j2phi_JetAbsoluteUp_value
+
+    property j2phi_JetAbsoluteyearDown:
+        def __get__(self):
+            self.j2phi_JetAbsoluteyearDown_branch.GetEntry(self.localentry, 0)
+            return self.j2phi_JetAbsoluteyearDown_value
+
+    property j2phi_JetAbsoluteyearUp:
+        def __get__(self):
+            self.j2phi_JetAbsoluteyearUp_branch.GetEntry(self.localentry, 0)
+            return self.j2phi_JetAbsoluteyearUp_value
+
+    property j2phi_JetBBEC1Down:
+        def __get__(self):
+            self.j2phi_JetBBEC1Down_branch.GetEntry(self.localentry, 0)
+            return self.j2phi_JetBBEC1Down_value
+
+    property j2phi_JetBBEC1Up:
+        def __get__(self):
+            self.j2phi_JetBBEC1Up_branch.GetEntry(self.localentry, 0)
+            return self.j2phi_JetBBEC1Up_value
+
+    property j2phi_JetBBEC1yearDown:
+        def __get__(self):
+            self.j2phi_JetBBEC1yearDown_branch.GetEntry(self.localentry, 0)
+            return self.j2phi_JetBBEC1yearDown_value
+
+    property j2phi_JetBBEC1yearUp:
+        def __get__(self):
+            self.j2phi_JetBBEC1yearUp_branch.GetEntry(self.localentry, 0)
+            return self.j2phi_JetBBEC1yearUp_value
+
+    property j2phi_JetEC2Down:
+        def __get__(self):
+            self.j2phi_JetEC2Down_branch.GetEntry(self.localentry, 0)
+            return self.j2phi_JetEC2Down_value
+
+    property j2phi_JetEC2Up:
+        def __get__(self):
+            self.j2phi_JetEC2Up_branch.GetEntry(self.localentry, 0)
+            return self.j2phi_JetEC2Up_value
+
+    property j2phi_JetEC2yearDown:
+        def __get__(self):
+            self.j2phi_JetEC2yearDown_branch.GetEntry(self.localentry, 0)
+            return self.j2phi_JetEC2yearDown_value
+
+    property j2phi_JetEC2yearUp:
+        def __get__(self):
+            self.j2phi_JetEC2yearUp_branch.GetEntry(self.localentry, 0)
+            return self.j2phi_JetEC2yearUp_value
+
+    property j2phi_JetFlavorQCDDown:
+        def __get__(self):
+            self.j2phi_JetFlavorQCDDown_branch.GetEntry(self.localentry, 0)
+            return self.j2phi_JetFlavorQCDDown_value
+
+    property j2phi_JetFlavorQCDUp:
+        def __get__(self):
+            self.j2phi_JetFlavorQCDUp_branch.GetEntry(self.localentry, 0)
+            return self.j2phi_JetFlavorQCDUp_value
+
+    property j2phi_JetHFDown:
+        def __get__(self):
+            self.j2phi_JetHFDown_branch.GetEntry(self.localentry, 0)
+            return self.j2phi_JetHFDown_value
+
+    property j2phi_JetHFUp:
+        def __get__(self):
+            self.j2phi_JetHFUp_branch.GetEntry(self.localentry, 0)
+            return self.j2phi_JetHFUp_value
+
+    property j2phi_JetHFyearDown:
+        def __get__(self):
+            self.j2phi_JetHFyearDown_branch.GetEntry(self.localentry, 0)
+            return self.j2phi_JetHFyearDown_value
+
+    property j2phi_JetHFyearUp:
+        def __get__(self):
+            self.j2phi_JetHFyearUp_branch.GetEntry(self.localentry, 0)
+            return self.j2phi_JetHFyearUp_value
+
+    property j2phi_JetRelativeBalDown:
+        def __get__(self):
+            self.j2phi_JetRelativeBalDown_branch.GetEntry(self.localentry, 0)
+            return self.j2phi_JetRelativeBalDown_value
+
+    property j2phi_JetRelativeBalUp:
+        def __get__(self):
+            self.j2phi_JetRelativeBalUp_branch.GetEntry(self.localentry, 0)
+            return self.j2phi_JetRelativeBalUp_value
+
+    property j2phi_JetRelativeSampleDown:
+        def __get__(self):
+            self.j2phi_JetRelativeSampleDown_branch.GetEntry(self.localentry, 0)
+            return self.j2phi_JetRelativeSampleDown_value
+
+    property j2phi_JetRelativeSampleUp:
+        def __get__(self):
+            self.j2phi_JetRelativeSampleUp_branch.GetEntry(self.localentry, 0)
+            return self.j2phi_JetRelativeSampleUp_value
 
     property j2pt:
         def __get__(self):
@@ -7759,6 +10831,606 @@ cdef class EMTree:
         def __get__(self):
             self.jetVeto30_JetTotalUp_branch.GetEntry(self.localentry, 0)
             return self.jetVeto30_JetTotalUp_value
+
+    property lheweight0:
+        def __get__(self):
+            self.lheweight0_branch.GetEntry(self.localentry, 0)
+            return self.lheweight0_value
+
+    property lheweight1:
+        def __get__(self):
+            self.lheweight1_branch.GetEntry(self.localentry, 0)
+            return self.lheweight1_value
+
+    property lheweight10:
+        def __get__(self):
+            self.lheweight10_branch.GetEntry(self.localentry, 0)
+            return self.lheweight10_value
+
+    property lheweight100:
+        def __get__(self):
+            self.lheweight100_branch.GetEntry(self.localentry, 0)
+            return self.lheweight100_value
+
+    property lheweight101:
+        def __get__(self):
+            self.lheweight101_branch.GetEntry(self.localentry, 0)
+            return self.lheweight101_value
+
+    property lheweight102:
+        def __get__(self):
+            self.lheweight102_branch.GetEntry(self.localentry, 0)
+            return self.lheweight102_value
+
+    property lheweight103:
+        def __get__(self):
+            self.lheweight103_branch.GetEntry(self.localentry, 0)
+            return self.lheweight103_value
+
+    property lheweight104:
+        def __get__(self):
+            self.lheweight104_branch.GetEntry(self.localentry, 0)
+            return self.lheweight104_value
+
+    property lheweight105:
+        def __get__(self):
+            self.lheweight105_branch.GetEntry(self.localentry, 0)
+            return self.lheweight105_value
+
+    property lheweight106:
+        def __get__(self):
+            self.lheweight106_branch.GetEntry(self.localentry, 0)
+            return self.lheweight106_value
+
+    property lheweight107:
+        def __get__(self):
+            self.lheweight107_branch.GetEntry(self.localentry, 0)
+            return self.lheweight107_value
+
+    property lheweight108:
+        def __get__(self):
+            self.lheweight108_branch.GetEntry(self.localentry, 0)
+            return self.lheweight108_value
+
+    property lheweight109:
+        def __get__(self):
+            self.lheweight109_branch.GetEntry(self.localentry, 0)
+            return self.lheweight109_value
+
+    property lheweight11:
+        def __get__(self):
+            self.lheweight11_branch.GetEntry(self.localentry, 0)
+            return self.lheweight11_value
+
+    property lheweight110:
+        def __get__(self):
+            self.lheweight110_branch.GetEntry(self.localentry, 0)
+            return self.lheweight110_value
+
+    property lheweight111:
+        def __get__(self):
+            self.lheweight111_branch.GetEntry(self.localentry, 0)
+            return self.lheweight111_value
+
+    property lheweight112:
+        def __get__(self):
+            self.lheweight112_branch.GetEntry(self.localentry, 0)
+            return self.lheweight112_value
+
+    property lheweight113:
+        def __get__(self):
+            self.lheweight113_branch.GetEntry(self.localentry, 0)
+            return self.lheweight113_value
+
+    property lheweight114:
+        def __get__(self):
+            self.lheweight114_branch.GetEntry(self.localentry, 0)
+            return self.lheweight114_value
+
+    property lheweight115:
+        def __get__(self):
+            self.lheweight115_branch.GetEntry(self.localentry, 0)
+            return self.lheweight115_value
+
+    property lheweight116:
+        def __get__(self):
+            self.lheweight116_branch.GetEntry(self.localentry, 0)
+            return self.lheweight116_value
+
+    property lheweight117:
+        def __get__(self):
+            self.lheweight117_branch.GetEntry(self.localentry, 0)
+            return self.lheweight117_value
+
+    property lheweight118:
+        def __get__(self):
+            self.lheweight118_branch.GetEntry(self.localentry, 0)
+            return self.lheweight118_value
+
+    property lheweight119:
+        def __get__(self):
+            self.lheweight119_branch.GetEntry(self.localentry, 0)
+            return self.lheweight119_value
+
+    property lheweight12:
+        def __get__(self):
+            self.lheweight12_branch.GetEntry(self.localentry, 0)
+            return self.lheweight12_value
+
+    property lheweight13:
+        def __get__(self):
+            self.lheweight13_branch.GetEntry(self.localentry, 0)
+            return self.lheweight13_value
+
+    property lheweight14:
+        def __get__(self):
+            self.lheweight14_branch.GetEntry(self.localentry, 0)
+            return self.lheweight14_value
+
+    property lheweight15:
+        def __get__(self):
+            self.lheweight15_branch.GetEntry(self.localentry, 0)
+            return self.lheweight15_value
+
+    property lheweight16:
+        def __get__(self):
+            self.lheweight16_branch.GetEntry(self.localentry, 0)
+            return self.lheweight16_value
+
+    property lheweight17:
+        def __get__(self):
+            self.lheweight17_branch.GetEntry(self.localentry, 0)
+            return self.lheweight17_value
+
+    property lheweight18:
+        def __get__(self):
+            self.lheweight18_branch.GetEntry(self.localentry, 0)
+            return self.lheweight18_value
+
+    property lheweight19:
+        def __get__(self):
+            self.lheweight19_branch.GetEntry(self.localentry, 0)
+            return self.lheweight19_value
+
+    property lheweight2:
+        def __get__(self):
+            self.lheweight2_branch.GetEntry(self.localentry, 0)
+            return self.lheweight2_value
+
+    property lheweight20:
+        def __get__(self):
+            self.lheweight20_branch.GetEntry(self.localentry, 0)
+            return self.lheweight20_value
+
+    property lheweight21:
+        def __get__(self):
+            self.lheweight21_branch.GetEntry(self.localentry, 0)
+            return self.lheweight21_value
+
+    property lheweight22:
+        def __get__(self):
+            self.lheweight22_branch.GetEntry(self.localentry, 0)
+            return self.lheweight22_value
+
+    property lheweight23:
+        def __get__(self):
+            self.lheweight23_branch.GetEntry(self.localentry, 0)
+            return self.lheweight23_value
+
+    property lheweight24:
+        def __get__(self):
+            self.lheweight24_branch.GetEntry(self.localentry, 0)
+            return self.lheweight24_value
+
+    property lheweight25:
+        def __get__(self):
+            self.lheweight25_branch.GetEntry(self.localentry, 0)
+            return self.lheweight25_value
+
+    property lheweight26:
+        def __get__(self):
+            self.lheweight26_branch.GetEntry(self.localentry, 0)
+            return self.lheweight26_value
+
+    property lheweight27:
+        def __get__(self):
+            self.lheweight27_branch.GetEntry(self.localentry, 0)
+            return self.lheweight27_value
+
+    property lheweight28:
+        def __get__(self):
+            self.lheweight28_branch.GetEntry(self.localentry, 0)
+            return self.lheweight28_value
+
+    property lheweight29:
+        def __get__(self):
+            self.lheweight29_branch.GetEntry(self.localentry, 0)
+            return self.lheweight29_value
+
+    property lheweight3:
+        def __get__(self):
+            self.lheweight3_branch.GetEntry(self.localentry, 0)
+            return self.lheweight3_value
+
+    property lheweight30:
+        def __get__(self):
+            self.lheweight30_branch.GetEntry(self.localentry, 0)
+            return self.lheweight30_value
+
+    property lheweight31:
+        def __get__(self):
+            self.lheweight31_branch.GetEntry(self.localentry, 0)
+            return self.lheweight31_value
+
+    property lheweight32:
+        def __get__(self):
+            self.lheweight32_branch.GetEntry(self.localentry, 0)
+            return self.lheweight32_value
+
+    property lheweight33:
+        def __get__(self):
+            self.lheweight33_branch.GetEntry(self.localentry, 0)
+            return self.lheweight33_value
+
+    property lheweight34:
+        def __get__(self):
+            self.lheweight34_branch.GetEntry(self.localentry, 0)
+            return self.lheweight34_value
+
+    property lheweight35:
+        def __get__(self):
+            self.lheweight35_branch.GetEntry(self.localentry, 0)
+            return self.lheweight35_value
+
+    property lheweight36:
+        def __get__(self):
+            self.lheweight36_branch.GetEntry(self.localentry, 0)
+            return self.lheweight36_value
+
+    property lheweight37:
+        def __get__(self):
+            self.lheweight37_branch.GetEntry(self.localentry, 0)
+            return self.lheweight37_value
+
+    property lheweight38:
+        def __get__(self):
+            self.lheweight38_branch.GetEntry(self.localentry, 0)
+            return self.lheweight38_value
+
+    property lheweight39:
+        def __get__(self):
+            self.lheweight39_branch.GetEntry(self.localentry, 0)
+            return self.lheweight39_value
+
+    property lheweight4:
+        def __get__(self):
+            self.lheweight4_branch.GetEntry(self.localentry, 0)
+            return self.lheweight4_value
+
+    property lheweight40:
+        def __get__(self):
+            self.lheweight40_branch.GetEntry(self.localentry, 0)
+            return self.lheweight40_value
+
+    property lheweight41:
+        def __get__(self):
+            self.lheweight41_branch.GetEntry(self.localentry, 0)
+            return self.lheweight41_value
+
+    property lheweight42:
+        def __get__(self):
+            self.lheweight42_branch.GetEntry(self.localentry, 0)
+            return self.lheweight42_value
+
+    property lheweight43:
+        def __get__(self):
+            self.lheweight43_branch.GetEntry(self.localentry, 0)
+            return self.lheweight43_value
+
+    property lheweight44:
+        def __get__(self):
+            self.lheweight44_branch.GetEntry(self.localentry, 0)
+            return self.lheweight44_value
+
+    property lheweight45:
+        def __get__(self):
+            self.lheweight45_branch.GetEntry(self.localentry, 0)
+            return self.lheweight45_value
+
+    property lheweight46:
+        def __get__(self):
+            self.lheweight46_branch.GetEntry(self.localentry, 0)
+            return self.lheweight46_value
+
+    property lheweight47:
+        def __get__(self):
+            self.lheweight47_branch.GetEntry(self.localentry, 0)
+            return self.lheweight47_value
+
+    property lheweight48:
+        def __get__(self):
+            self.lheweight48_branch.GetEntry(self.localentry, 0)
+            return self.lheweight48_value
+
+    property lheweight49:
+        def __get__(self):
+            self.lheweight49_branch.GetEntry(self.localentry, 0)
+            return self.lheweight49_value
+
+    property lheweight5:
+        def __get__(self):
+            self.lheweight5_branch.GetEntry(self.localentry, 0)
+            return self.lheweight5_value
+
+    property lheweight50:
+        def __get__(self):
+            self.lheweight50_branch.GetEntry(self.localentry, 0)
+            return self.lheweight50_value
+
+    property lheweight51:
+        def __get__(self):
+            self.lheweight51_branch.GetEntry(self.localentry, 0)
+            return self.lheweight51_value
+
+    property lheweight52:
+        def __get__(self):
+            self.lheweight52_branch.GetEntry(self.localentry, 0)
+            return self.lheweight52_value
+
+    property lheweight53:
+        def __get__(self):
+            self.lheweight53_branch.GetEntry(self.localentry, 0)
+            return self.lheweight53_value
+
+    property lheweight54:
+        def __get__(self):
+            self.lheweight54_branch.GetEntry(self.localentry, 0)
+            return self.lheweight54_value
+
+    property lheweight55:
+        def __get__(self):
+            self.lheweight55_branch.GetEntry(self.localentry, 0)
+            return self.lheweight55_value
+
+    property lheweight56:
+        def __get__(self):
+            self.lheweight56_branch.GetEntry(self.localentry, 0)
+            return self.lheweight56_value
+
+    property lheweight57:
+        def __get__(self):
+            self.lheweight57_branch.GetEntry(self.localentry, 0)
+            return self.lheweight57_value
+
+    property lheweight58:
+        def __get__(self):
+            self.lheweight58_branch.GetEntry(self.localentry, 0)
+            return self.lheweight58_value
+
+    property lheweight59:
+        def __get__(self):
+            self.lheweight59_branch.GetEntry(self.localentry, 0)
+            return self.lheweight59_value
+
+    property lheweight6:
+        def __get__(self):
+            self.lheweight6_branch.GetEntry(self.localentry, 0)
+            return self.lheweight6_value
+
+    property lheweight60:
+        def __get__(self):
+            self.lheweight60_branch.GetEntry(self.localentry, 0)
+            return self.lheweight60_value
+
+    property lheweight61:
+        def __get__(self):
+            self.lheweight61_branch.GetEntry(self.localentry, 0)
+            return self.lheweight61_value
+
+    property lheweight62:
+        def __get__(self):
+            self.lheweight62_branch.GetEntry(self.localentry, 0)
+            return self.lheweight62_value
+
+    property lheweight63:
+        def __get__(self):
+            self.lheweight63_branch.GetEntry(self.localentry, 0)
+            return self.lheweight63_value
+
+    property lheweight64:
+        def __get__(self):
+            self.lheweight64_branch.GetEntry(self.localentry, 0)
+            return self.lheweight64_value
+
+    property lheweight65:
+        def __get__(self):
+            self.lheweight65_branch.GetEntry(self.localentry, 0)
+            return self.lheweight65_value
+
+    property lheweight66:
+        def __get__(self):
+            self.lheweight66_branch.GetEntry(self.localentry, 0)
+            return self.lheweight66_value
+
+    property lheweight67:
+        def __get__(self):
+            self.lheweight67_branch.GetEntry(self.localentry, 0)
+            return self.lheweight67_value
+
+    property lheweight68:
+        def __get__(self):
+            self.lheweight68_branch.GetEntry(self.localentry, 0)
+            return self.lheweight68_value
+
+    property lheweight69:
+        def __get__(self):
+            self.lheweight69_branch.GetEntry(self.localentry, 0)
+            return self.lheweight69_value
+
+    property lheweight7:
+        def __get__(self):
+            self.lheweight7_branch.GetEntry(self.localentry, 0)
+            return self.lheweight7_value
+
+    property lheweight70:
+        def __get__(self):
+            self.lheweight70_branch.GetEntry(self.localentry, 0)
+            return self.lheweight70_value
+
+    property lheweight71:
+        def __get__(self):
+            self.lheweight71_branch.GetEntry(self.localentry, 0)
+            return self.lheweight71_value
+
+    property lheweight72:
+        def __get__(self):
+            self.lheweight72_branch.GetEntry(self.localentry, 0)
+            return self.lheweight72_value
+
+    property lheweight73:
+        def __get__(self):
+            self.lheweight73_branch.GetEntry(self.localentry, 0)
+            return self.lheweight73_value
+
+    property lheweight74:
+        def __get__(self):
+            self.lheweight74_branch.GetEntry(self.localentry, 0)
+            return self.lheweight74_value
+
+    property lheweight75:
+        def __get__(self):
+            self.lheweight75_branch.GetEntry(self.localentry, 0)
+            return self.lheweight75_value
+
+    property lheweight76:
+        def __get__(self):
+            self.lheweight76_branch.GetEntry(self.localentry, 0)
+            return self.lheweight76_value
+
+    property lheweight77:
+        def __get__(self):
+            self.lheweight77_branch.GetEntry(self.localentry, 0)
+            return self.lheweight77_value
+
+    property lheweight78:
+        def __get__(self):
+            self.lheweight78_branch.GetEntry(self.localentry, 0)
+            return self.lheweight78_value
+
+    property lheweight79:
+        def __get__(self):
+            self.lheweight79_branch.GetEntry(self.localentry, 0)
+            return self.lheweight79_value
+
+    property lheweight8:
+        def __get__(self):
+            self.lheweight8_branch.GetEntry(self.localentry, 0)
+            return self.lheweight8_value
+
+    property lheweight80:
+        def __get__(self):
+            self.lheweight80_branch.GetEntry(self.localentry, 0)
+            return self.lheweight80_value
+
+    property lheweight81:
+        def __get__(self):
+            self.lheweight81_branch.GetEntry(self.localentry, 0)
+            return self.lheweight81_value
+
+    property lheweight82:
+        def __get__(self):
+            self.lheweight82_branch.GetEntry(self.localentry, 0)
+            return self.lheweight82_value
+
+    property lheweight83:
+        def __get__(self):
+            self.lheweight83_branch.GetEntry(self.localentry, 0)
+            return self.lheweight83_value
+
+    property lheweight84:
+        def __get__(self):
+            self.lheweight84_branch.GetEntry(self.localentry, 0)
+            return self.lheweight84_value
+
+    property lheweight85:
+        def __get__(self):
+            self.lheweight85_branch.GetEntry(self.localentry, 0)
+            return self.lheweight85_value
+
+    property lheweight86:
+        def __get__(self):
+            self.lheweight86_branch.GetEntry(self.localentry, 0)
+            return self.lheweight86_value
+
+    property lheweight87:
+        def __get__(self):
+            self.lheweight87_branch.GetEntry(self.localentry, 0)
+            return self.lheweight87_value
+
+    property lheweight88:
+        def __get__(self):
+            self.lheweight88_branch.GetEntry(self.localentry, 0)
+            return self.lheweight88_value
+
+    property lheweight89:
+        def __get__(self):
+            self.lheweight89_branch.GetEntry(self.localentry, 0)
+            return self.lheweight89_value
+
+    property lheweight9:
+        def __get__(self):
+            self.lheweight9_branch.GetEntry(self.localentry, 0)
+            return self.lheweight9_value
+
+    property lheweight90:
+        def __get__(self):
+            self.lheweight90_branch.GetEntry(self.localentry, 0)
+            return self.lheweight90_value
+
+    property lheweight91:
+        def __get__(self):
+            self.lheweight91_branch.GetEntry(self.localentry, 0)
+            return self.lheweight91_value
+
+    property lheweight92:
+        def __get__(self):
+            self.lheweight92_branch.GetEntry(self.localentry, 0)
+            return self.lheweight92_value
+
+    property lheweight93:
+        def __get__(self):
+            self.lheweight93_branch.GetEntry(self.localentry, 0)
+            return self.lheweight93_value
+
+    property lheweight94:
+        def __get__(self):
+            self.lheweight94_branch.GetEntry(self.localentry, 0)
+            return self.lheweight94_value
+
+    property lheweight95:
+        def __get__(self):
+            self.lheweight95_branch.GetEntry(self.localentry, 0)
+            return self.lheweight95_value
+
+    property lheweight96:
+        def __get__(self):
+            self.lheweight96_branch.GetEntry(self.localentry, 0)
+            return self.lheweight96_value
+
+    property lheweight97:
+        def __get__(self):
+            self.lheweight97_branch.GetEntry(self.localentry, 0)
+            return self.lheweight97_value
+
+    property lheweight98:
+        def __get__(self):
+            self.lheweight98_branch.GetEntry(self.localentry, 0)
+            return self.lheweight98_value
+
+    property lheweight99:
+        def __get__(self):
+            self.lheweight99_branch.GetEntry(self.localentry, 0)
+            return self.lheweight99_value
 
     property lumi:
         def __get__(self):

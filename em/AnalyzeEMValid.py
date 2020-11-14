@@ -28,20 +28,18 @@ class AnalyzeEMValid(MegaBase, EMBase):
       self.book(n, 'bdtDiscriminator', 'BDT Discriminator', 200, -1.0, 1.0)
       self.book(n, 'bdtDiscriminator_scaledBkg', 'BDT Discriminator_scaledBkg', 200, 0, 3)
       self.book(n, 'bdtDiscriminator_scaledSig', 'BDT Discriminator_scaledSig', 200, 0, 3)
-      self.book(n, 'M_BDT', 'M_BDT', 200, -1.0, 1.0, 500, 110, 160, type=ROOT.TH2F)
+#      self.book(n, 'M_BDT', 'M_BDT', 200, -1.0, 1.0, 500, 110, 160, type=ROOT.TH2F)
 
   def fill_histos(self, myEle, myMuon, myMET, myJet1, myJet2, njets, e_m_PZeta, weight, name=''):
     histos = self.histograms
     if njets == 0:
       mva = self.functor_gg(**self.var_d_gg_0(myEle, myMuon, myMET, myJet1, myJet2, e_m_PZeta))
-    elif njets == 1:
-      mva = self.functor_gg(**self.var_d_gg_1(myEle, myMuon, myMET, myJet1, myJet2, e_m_PZeta))
     else:
-      mva = self.functor_gg(**self.var_d_gg_2(myEle, myMuon, myMET, myJet1, myJet2, e_m_PZeta))
+      mva = self.functor_gg(**self.var_d_gg_1(myEle, myMuon, myMET, myJet1, myJet2, e_m_PZeta))
     histos[name+'/bdtDiscriminator'].Fill(mva, weight)
     histos[name+'/bdtDiscriminator_scaledBkg'].Fill(math.atanh((1-mva)/2), weight)
     histos[name+'/bdtDiscriminator_scaledSig'].Fill(math.atanh((1+mva)/2), weight)
-    histos[name+'/M_BDT'].Fill(mva, self.visibleMass(myEle, myMuon), weight)
+#    histos[name+'/M_BDT'].Fill(mva, self.visibleMass(myEle, myMuon), weight)
 
   def process(self):
 
@@ -64,22 +62,19 @@ class AnalyzeEMValid(MegaBase, EMBase):
       if self.visibleMass(myEle, myMuon) > 160 or self.visibleMass(myEle, myMuon) < 110:
        continue
 
-#      if self.visibleMass(myEle, myMuon) < 130 and self.visibleMass(myEle, myMuon) > 120:
-#       continue
+      if self.visibleMass(myEle, myMuon) < 130 and self.visibleMass(myEle, myMuon) > 120 and not self.is_Signal:
+       continue
+
+      if njets==2 and mjj>400 and self.deltaEta(myJet1.Eta(), myJet2.Eta())>2.5:
+          continue
 
       if self.oppositesign(row):
-        if njets==2 and mjj>400 and self.deltaEta(myJet1.Eta(), myJet2.Eta())>2.5:
-          continue
-        else:
           self.fill_histos(myEle, myMuon, myMET, myJet1, myJet2, njets, row.e_m_PZeta, weight, 'TightOSgg')
       else:
-        if njets==2 and mjj>400 and self.deltaEta(myJet1.Eta(), myJet2.Eta())>2.5:
-          continue
-        else:
-          if self.is_mc and not (self.is_VBF or self.is_GluGlu):
-            self.fill_histos(myEle, myMuon, myMET, myJet1, myJet2, njets, row.e_m_PZeta, -weight*osss, 'TightSSgg')
-          elif self.is_data :
-            self.fill_histos(myEle, myMuon, myMET, myJet1, myJet2, njets, row.e_m_PZeta, weight*osss, 'TightSSgg')
+#          if self.is_mc and not (self.is_VBF or self.is_GluGlu):
+          self.fill_histos(myEle, myMuon, myMET, myJet1, myJet2, njets, row.e_m_PZeta, weight*osss, 'TightSSgg')
+#          elif self.is_data :
+#            self.fill_histos(myEle, myMuon, myMET, myJet1, myJet2, njets, row.e_m_PZeta, weight*osss, 'TightSSgg')
             
   def finish(self):
      self.write_histos()  

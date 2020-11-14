@@ -42,8 +42,8 @@ histoname = [("mPt", "#mu  p_{T} (GeV)", 1), ("ePt", "e p_{T} (Gev)", 1), ("mEta
 
 colhisto = [("e_m_CollinearMass", "M_{col}(e, #mu) (GeV)", 1)]
 
-bdthisto = [('e_m_Mass', 'm_{e#mu}',1)]
-#bdthisto = [("bdtDiscriminator", "BDT Discriminator", 1), ("bdtDiscriminator_scaledBkg", "atanh((1-BDT Discriminator)/2)", 1), ("bdtDiscriminator_scaledSig", "atanh((1+BDT Discriminator)/2)", 1)]
+#bdthisto = [('e_m_Mass', 'm_{e#mu}',1)]
+bdthisto = [("bdtDiscriminator", "BDT Discriminator", 1), ("bdtDiscriminator_scaledBkg", "atanh((1-BDT Discriminator)/2)", 1), ("bdtDiscriminator_scaledSig", "atanh((1+BDT Discriminator)/2)", 1)]
 #bdthisto = [("mPt", "#mu  p_{T} (GeV)", 1), ("ePt", "e p_{T} (Gev)", 1),('emEta', 'Electron + Muon Eta', 1), ('DeltaEta_m_met', 'Delta Eta of Muon and MET',1), ('DeltaEta_e_met', 'Delta Eta of Electron and MET', 1), ('DeltaPhi_m_met', 'Delta Phi of Muon and MET', 1), ('MetEt', 'MET E_T',1), ('DeltaPhi_e_met', 'Delta Phi of Electron and MET',1), ('emPt', 'Electron + Muon Pt',1), ('ePt_Per_e_m_Mass', 'Electron pT per Electron +  Muon Mass',1),('e_met_mT', 'Electron + MET Transverse Mass',1),('mPt_Per_e_m_Mass', 'Muon pT per Electron + Muon Mass',1),('m_met_mT', 'Muon + MET Transverse Mass',1),('e_m_PZeta', 'Electron + Muon PZeta',1),('DeltaPhi_em_j1', 'Delta Phi of Electron and Leading Jet',1),('j1Pt', 'Leading Jet pT', 1),('DeltaEta_em_j1', 'Delta Eta of Electron + Muonand Leading Jet',1),('DeltaEta_em_j2', 'Delta Eta of Electron + Muon and Subleading Jet',1),('DeltaPhi_em_j2', 'Delta Phi of Electron + Muon and Subleading Jet',1),('DeltaEta_j1_j2', 'Delta Eta of Jets',1),('DeltaPhi_j1_j2', 'Delta Phi of Jets',1),('e_m_Mass', 'Electron + Muon Mass',1),('deltaR', 'DeltaR Electron and Muon',1)]
 
 files = []
@@ -51,10 +51,9 @@ files = []
 lumifiles = []
 
 jet = ['', '0Jet', '1Jet', '2Jet', '2JetVBF']
-
 jetc = ['', '0Jet', '1Jet', '2Jet', '2JetVBF', '0JetCut', '1JetCut', '2JetCut', '2JetVBFCut']
 
-procs = ['']
+procs = ['gg']
 
 def remove_name_entry(dictionary):
     return dict( [ i for i in dictionary.iteritems() if i[0] != 'name'] )

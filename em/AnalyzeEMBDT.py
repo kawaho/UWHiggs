@@ -80,6 +80,10 @@ class AnalyzeEMBDT(MegaBase, EMBase):
           holder[0] = myJet2.Eta()
         else:
           holder[0] = -10
+      elif varname=="DeltaEta_e_m":
+        holder[0] = self.deltaEta(myEle.Eta(), myMuon.Eta())
+      elif varname=="DeltaPhi_e_m":
+        holder[0] = self.deltaPhi(myEle.Phi(), myMuon.Phi())
       elif varname=="DeltaEta_em_j1":
         if njets == 0:
           holder[0] = -1
@@ -136,6 +140,10 @@ class AnalyzeEMBDT(MegaBase, EMBase):
         holder[0] = self.transverseMass(myEle, myMET)
       elif varname=="m_met_mT":
         holder[0] = self.transverseMass(myMuon, myMET)
+      elif varname=="e_met_mT_per_M":
+        holder[0] = self.transverseMass(myEle, myMET)/self.visibleMass(myEle, myMuon)
+      elif varname=="m_met_mT_per_M":
+        holder[0] = self.transverseMass(myMuon, myMET)/self.visibleMass(myEle, myMuon)
       elif varname=="DeltaPhi_e_met":
         holder[0] = self.deltaPhi(myEle.Phi(), myMET.Phi())
       elif varname=="DeltaPhi_m_met":
@@ -144,6 +152,46 @@ class AnalyzeEMBDT(MegaBase, EMBase):
         holder[0] = self.deltaEta(myEle.Eta(), myMET.Eta())
       elif varname=="DeltaEta_m_met":
         holder[0] = self.deltaEta(myMuon.Eta(), myMET.Eta())
+      elif varname=="DeltaPhi_e_j1":
+        if njets != 0:
+          holder[0] = self.deltaPhi(myEle.Phi(), myJet1.Phi())
+        else:
+          holder[0] = -1
+      elif varname=="DeltaPhi_m_j1":
+        if njets != 0:
+          holder[0] = self.deltaPhi(myMuon.Phi(), myJet1.Phi())
+        else:
+          holder[0] = -1
+      elif varname=="DeltaEta_e_j1":
+        if njets != 0:
+          holder[0] = self.deltaEta(myEle.Eta(), myJet1.Eta())
+        else:
+          holder[0] = -1
+      elif varname=="DeltaEta_m_j1":
+        if njets != 0:
+          holder[0] = self.deltaEta(myMuon.Eta(), myJet1.Eta())
+        else:
+          holder[0] = -1
+      elif varname=="DeltaPhi_e_j2":
+        if njets == 2:
+          holder[0] = self.deltaPhi(myEle.Phi(), myJet2.Phi())
+        else:
+          holder[0] = -1
+      elif varname=="DeltaPhi_m_j2":
+        if njets == 2:
+          holder[0] = self.deltaPhi(myMuon.Phi(), myJet2.Phi())
+        else:
+          holder[0] = -1
+      elif varname=="DeltaEta_e_j2":
+        if njets == 2:
+          holder[0] = self.deltaEta(myEle.Eta(), myJet2.Eta())
+        else:
+          holder[0] = -1
+      elif varname=="DeltaEta_m_j2":
+        if njets == 2:
+          holder[0] = self.deltaEta(myMuon.Eta(), myJet2.Eta())
+        else:
+          holder[0] = -1
       elif varname=="MetEt":
         holder[0] = myMET.Et()
       elif varname=="e_m_PZeta":
@@ -193,12 +241,12 @@ class AnalyzeEMBDT(MegaBase, EMBase):
        continue
 
       if self.oppositesign(row):
-        if self.is_VBF or self.is_GluGlu:
+        if self.is_Signal:
           self.filltree(myEle, myMuon, myMET, myJet1, myJet2, njets, mjj, row.e_m_PZeta, weight, 1, 0)
         elif self.is_mc:
           self.filltree(myEle, myMuon, myMET, myJet1, myJet2, njets, mjj, row.e_m_PZeta, weight, 0, 0)
       else: 
-        if self.is_mc and not (self.is_VBF or self.is_GluGlu):
+        if self.is_mc and not self.is_Signal:
           self.filltree(myEle, myMuon, myMET, myJet1, myJet2, njets, mjj, row.e_m_PZeta, -weight*osss, 0, 1)
         elif self.is_data :
           self.filltree(myEle, myMuon, myMET, myJet1, myJet2, njets, mjj, row.e_m_PZeta, weight*osss, 0, 1)

@@ -7,8 +7,13 @@ class mcWeights:
         self.is_mc = not self.is_data and not self.is_embed
         self.is_DYlow = bool('DYJetsToLL_M-10to50' in target)
         self.is_DY = bool('DY' in target) and not self.is_DYlow
-        self.is_GluGlu = bool('GluGlu_LFV' in target)
-        self.is_VBF = bool('VBF_LFV' in target)
+        self.is_GluGlu = bool('GluGlu_LFV' in target and 'M125' in target)
+        self.is_VBF = bool('VBF_LFV' in target and 'M125' in target)
+        self.is_GluGlu120 = bool('GluGlu_LFV' in target and 'M120' in target)
+        self.is_VBF120 = bool('VBF_LFV' in target and 'M120' in target)
+        self.is_GluGlu130 = bool('GluGlu_LFV' in target and 'M130' in target)
+        self.is_VBF130 = bool('VBF_LFV' in target and 'M130' in target)
+        self.is_Signal = bool(self.is_GluGlu or self.is_VBF or self.is_GluGlu120 or self.is_VBF120 or self.is_GluGlu130 or self.is_VBF130)
         self.is_W = bool('JetsToLNu' in target)
         self.is_WG = bool('WGToLNuG' in target)
         self.is_WW = bool('WW_Tune' in target)
@@ -36,7 +41,8 @@ class mcWeights:
         self.is_GluGluH = bool('GluGluHToTauTau' in target)
         self.is_VBFHWW = bool('VBFHToWW' in target)
         self.is_GluGluHWW = bool('GluGluHToWW' in target)
-        self.is_recoilC = False #bool(self.is_DYlow or self.is_DY or self.is_GluGlu or self.is_VBF or self.is_EWK or self.is_VBFH or self.is_GluGluH or self.is_VBFHWW or self.is_GluGluHWW or self.is_W)
+        self.is_recoilC = bool(self.is_DYlow or self.is_DY or self.is_EWK or self.is_VBFH or self.is_GluGluH or self.is_VBFHWW or self.is_GluGluHWW or self.is_W)
+         #or self.is_GluGlu or self.is_VBF)
         self.MetCorrection = True
         self.DYweight = {
             0 : 1.489999272,
@@ -60,8 +66,14 @@ class mcWeights:
             weight = weight*0.000662
         if self.is_GluGlu:
             weight = weight*0.06969
+        if self.is_GluGlu120 or self.is_GluGlu130:
+            weight = weight*0.17424
         if self.is_VBF:
             weight = weight*0.00145
+        if self.is_VBF120:
+            weight = weight*0.00349
+        if self.is_VBF130:
+            weight = weight*0.00378
         if self.is_WW:
             weight = weight*(118.7/75.88)*0.347
         if self.is_WZ:
