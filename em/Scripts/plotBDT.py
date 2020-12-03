@@ -24,5 +24,5 @@ for j in Lists.procs:
     plotter = basePlotter.mcInit(Lists.files, Lists.lumifiles, outputdir, s)
 
     for h in Lists.bdthisto:
-        plotter.plot_mc_vs_data('', ['VBF_LFV_HToEMu_M125*', 'GluGlu_LFV_HToEMu_M125*'], h[0], 5, xaxis = h[1], leftside=False, xrange=None, preprocess=None, show_ratio=True, ratio_range=1.5, sort=True, blind_region=False, control=s1, jets=j, year='2016', channel='emu')
+        plotter.plot_mc_vs_data('', ['VBF_LFV_HToEMu_M125*', 'GluGlu_LFV_HToEMu_M125*'], h[0], 4, xaxis = h[1], leftside=False, xrange=None, preprocess=None, show_ratio=True, ratio_range=2, sort=True, blind_region=False, control=s1, jets=j, year='2016', channel='emu')
         plotter.save(h[0]+j)

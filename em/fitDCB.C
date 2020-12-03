@@ -1,9 +1,109 @@
 #include <string>
 using namespace RooFit;
 
+void runToychi2(RooAbsPdf *pdf, TH1F* data, RooRealVar *mass, double chi2_p, int np, const char* cat, const char* proc, const char* sysname, std::string name) {
+  bool runToy = 0;
+  mass->setRange("higgsRange",110.,140.);
+  mass->setBins(120);
+  TRandom3 *RandomGen = new TRandom3();
+  RooArgSet *params = pdf->getParameters(RooArgSet(*mass));
+  RooArgSet preParams;
+  params->snapshot(preParams);
+//  double scale_factor = data->Integral()*data->GetBinWidth(1);
+//  cout << "width1 "<< data->GetBinWidth(1) << endl;
+//  TString formula = TString::Format("%f * %s_%s%s_pdf",scale_factor,cat,proc,sysname);
+//  RooFormulaVar scaled_pdf("scaled_pdf", formula, RooArgList(*pdf));
+//  TF1 *pdf_f = scaled_pdf.asTF(RooArgList(*mass), *params, RooArgList(*mass));
+//  pdf_f->SetRange(110,140); 
+//  for (int i = 1; i < data->GetNbinsX(); i++) {
+//     data->SetBinError(i, sqrt(data->GetBinContent(i));
+//  }
+//  double chi2 = data->Chisquare(pdf_f, "LR");
+//  cout << "chi2 "<< chi2 << endl;
+//  auto result = data->Fit(pdf_f,"S L");
+//  result->Print("V"); 
+//  double chi2_BC =  2.* result->MinFcnValue(); 
+//  cout << "chi2 "<< chi2_BC << endl;
+//  double prob_th_bc = TMath::Prob(chi2,120-np);
+//  TCanvas *can1 = new TCanvas();
+//  data->Draw();
+//  pdf_f->Draw("same"); 
+//  can1->SaveAs("trial.png");
+//  auto hist = new TH1F("hist","Data Sample distribution", 200 ,110 ,160);
+//  cout << "Th. BC p-value : " << prob_th_bc << endl; 
+
+  if (runToy) {
+    const int ntoys = 5000;
+    int npass = 0;
+    double chi2_t;
+    std::vector<double> toy_chi2;
+    int ndata = data->Integral();
+    for (int itoy = 0 ; itoy < ntoys ; itoy++){
+      params->assignValueOnly(preParams);
+//      int nToyEvents = ndata;
+      int nToyEvents = RandomGen->Poisson(ndata);
+//      auto hist = new TH1F("hist","Data Sample distribution",120,110,140);
+      RooDataHist *binnedtoy = pdf->generateBinned(RooArgSet(*mass),nToyEvents,0,1);
+//      TH1 *hist = binnedtoy->createHistogram("hist_toy", *mass);
+
+//      for (int i = 0; i < nToyEvents; ++i){
+//        hist->Fill(data->GetRandom());
+//      }
+//      RooDataHist* binnedtoy = new RooDataHist("toydata", "toydata", RooArgList(*mass), Import(*hist));
+       
+      pdf->fitTo(*binnedtoy, Minimizer("Minuit2","minimize"), Range(125 - 15,125 + 15),SumW2Error(true),RooFit::PrintLevel(-1));
+      RooPlot *frame = mass->frame(Range(125 - 15,125 + 15), Title(" "));
+      binnedtoy->plotOn(frame, CutRange("higgsRange"), DataError(RooAbsData::SumW2));
+      pdf->plotOn(frame, Normalization(binnedtoy->sumEntries("1", "higgsRange"), RooAbsReal::NumEvent), NormRange("higgsRange"), Range("higgsRange"));
+      chi2_t = frame->chiSquare(np);
+//      cout << "width "<< hist->GetBinWidth(1) << endl;
+//    double scale_factor = hist->Integral()*hist->GetBinWidth(1);
+//    TString formula = TString::Format("%f * %s_%s%s_pdf",scale_factor,cat,proc,sysname);
+//    RooFormulaVar scaled_pdf("scaled_pdf", formula, RooArgList(*pdf));
+//    TF1 *pdf_f = scaled_pdf.asTF(RooArgList(*mass), *params, RooArgList(*mass));
+//    pdf_f->SetRange(110,140); 
+//    chi2_t = hist->Chisquare(pdf_f, "LR");
+  //    TCanvas *can1 = new TCanvas();
+  //    hist->Draw();
+  //    pdf_f->Draw("same"); 
+  //    can1->SaveAs(Form("trial%i.png",itoy));
+  //    chi2_t = hist->Chisquare(pdf_f, "LR");
+      cout << "chi22 " << chi2_t << endl;
+  
+      if ( chi2_t >= chi2_p ) {npass++; cout << "haiyaaaa" << endl;}
+      toy_chi2.push_back(chi2_t*(120-np));
+//      delete hist; 
+    }
+  
+
+    double prob = (double)npass / ntoys;
+    TCanvas *can = new TCanvas();
+    double medianChi2 = toy_chi2[(int)(((float)ntoys)/2)];
+    double rms = TMath::Sqrt(medianChi2);
+  
+    //auto toyhist = TH1F();
+    TH1F toyhist(Form("gofTest_%s.pdf",pdf->GetName()),";Chi2;",50,medianChi2-5*rms,medianChi2+5*rms);
+    for (std::vector<double>::iterator itx = toy_chi2.begin();itx!=toy_chi2.end();itx++){
+      toyhist.Fill((*itx));
+    }
+    toyhist.Draw();
+  
+    TArrow lData(chi2_p*(120-np),toyhist.GetMaximum(),chi2_p*(120-np),0);
+    lData.SetLineWidth(2);
+    lData.Draw();
+    can->SaveAs(name.c_str());
+  
+    // back to best fit 	
+    params->assignValueOnly(preParams);
+    cout << "Toy p-value : " << prob << endl; 
+  }
+}
+
+
 void makepdf(bool is_sys, const char* proc, RooWorkspace *w, TH1F* hm, RooRealVar *mass, int mh, const char* cat, const char* sysname, double result[], double rangescale = 1, int buildcbpg = 0, bool saveplot = 0, double constr[] = NULL, std::string fixparm = "") {
   vector<string> fixparm_arr;
   stringstream ss(fixparm);
+  bool nofit = 0; 
   while(ss.good())
   {
       string substr;
@@ -11,7 +111,8 @@ void makepdf(bool is_sys, const char* proc, RooWorkspace *w, TH1F* hm, RooRealVa
       fixparm_arr.push_back(substr);
   }
 
-   hm->Rebin(50);
+   hm->Rebin(25);
+//   hm->Scale(0.01);
    RooDataHist* dh = new RooDataHist(Form("data_%s_%s%s",cat, proc,sysname), Form("data_%s_%s%s",cat, proc,sysname), RooArgList(*mass), Import(*hm));
    RooAbsPdf *pdf;
    if (buildcbpg == 0) {
@@ -86,24 +187,36 @@ void makepdf(bool is_sys, const char* proc, RooWorkspace *w, TH1F* hm, RooRealVa
      result[8] = fitResult->minNll();
    }
    else if (buildcbpg == 1) {
-     RooRealVar *a1_dcb = new RooRealVar(Form("%s_%s_a1%s",cat,proc,sysname),Form("%s_%s_a1%s",cat,proc,sysname), 1, 0.5, 2);   //.5, 2
-     RooRealVar *a2_dcb = new RooRealVar(Form("%s_%s_a2%s",cat,proc,sysname),Form("%s_%s_a2%s",cat,proc,sysname), 1., 0.5, 2);   //.5, 2
-     RooRealVar *dm_dcb = new RooRealVar(Form("%s_%s_dm%s",cat,proc,sysname),Form("%s_%s_dm%s",cat,proc,sysname), -0.1,-.5,0.);  //0.5
-     RooRealVar *mean_err_e = new RooRealVar("CMS_hem_nuisance_scale_e","CMS_hem_nuisance_scale_e", 0., -1., 1.);
-     RooRealVar *mean_err_m = new RooRealVar("CMS_hem_nuisance_scale_m","CMS_hem_nuisance_scale_m", 0., -1., 1.);
+     RooRealVar *a1_dcb = new RooRealVar(Form("%s_%s_a1%s",cat,proc,sysname),Form("%s_%s_a1%s",cat,proc,sysname), 2.5, .1, 5); 
+     RooRealVar *a2_dcb = new RooRealVar(Form("%s_%s_a2%s",cat,proc,sysname),Form("%s_%s_a2%s",cat,proc,sysname), 2.5, .1, 5);
+     RooRealVar *dm_dcb = new RooRealVar(Form("%s_%s_dm%s",cat,proc,sysname),Form("%s_%s_dm%s",cat,proc,sysname), -0.1,-1,0.);
+     RooRealVar *mean_err_e = new RooRealVar(Form("CMS_hem_nuisance_scale_e_%s",proc),Form("CMS_hem_nuisance_scale_e_%s",proc), 0., -1., 1.);
+     RooRealVar *mean_err_m = new RooRealVar(Form("CMS_hem_nuisance_scale_m_%s",proc),Form("CMS_hem_nuisance_scale_m_%s",proc), 0., -1., 1.);
      mean_err_e->setConstant(kTRUE);
      mean_err_m->setConstant(kTRUE);
-     RooFormulaVar *mean_dcb = new RooFormulaVar(Form("%s_%s_mean%s",cat,proc,sysname),Form("%s_%s_mean%s",cat,proc,sysname),"(125+@0)*(1+@1+@2)",RooArgList(*dm_dcb,*mean_err_e, *mean_err_m));
+
+//     RooFormulaVar *mean_dcb = new RooFormulaVar(Form("%s_%s_mean%s",cat,proc,sysname),Form("%s_%s_mean%s",cat,proc,sysname),"(125+@0)*(1+@1+@2)",RooArgList(*dm_dcb,*mean_err_e, *mean_err_m));
+     RooFormulaVar *mean_dcb = new RooFormulaVar(Form("%s_%s_mean%s",cat,proc,sysname),Form("%s_%s_mean%s",cat,proc,sysname),"(125+@0)*(1)",RooArgList(*dm_dcb));
+
+
      RooRealVar *n1_dcb = new RooRealVar(Form("%s_%s_n1%s",cat,proc,sysname),Form("%s_%s_n1%s",cat,proc,sysname), 3.5,2.,5.); //2,5
-//     RooRealVar *c2_dcb = new RooRealVar(Form("%s_%s_c2%s",cat,proc,sysname),Form("%s_%s_c2%s",cat,proc,sysname), 20,2.5,200); //2,5
-     RooRealVar *n2_dcb = new RooRealVar(Form("%s_%s_n2%s",cat,proc,sysname),Form("%s_%s_n2%s",cat,proc,sysname), 30., 10.,60.); //10,50
-//     RooFormulaVar *n2_dcb = new RooFormulaVar(Form("%s_%s_n2%s",cat,proc,sysname),Form("%s_%s_n2%s",cat,proc,sysname), "@0/(@1*@1)", RooArgList(*c2_dcb,*a2_dcb)); //10,50
-     RooRealVar *sigma = new RooRealVar(Form("%s_%s_sigma%s",cat,proc,sysname),Form("%s_%s_sigma%s",cat,proc,sysname), 2, 0.1, 2.5); //0.1,2.5
-     RooRealVar *sigma_err_e = new RooRealVar("CMS_hem_nuisance_res_e", "CMS_hem_nuisance_res_e", 0., -1., 1.);
-     RooRealVar *sigma_err_m = new RooRealVar("CMS_hem_nuisance_res_m","CMS_hem_nuisance_res_m", 0., -1., 1.);
+     RooRealVar *n2_dcb = new RooRealVar(Form("%s_%s_n2%s",cat,proc,sysname),Form("%s_%s_n2%s",cat,proc,sysname), 20., 5.,50.); //10,50
+//     if (strstr(cat, "EC") != NULL and strstr(proc, "ggH") != NULL) {
+//       n2_dcb->setRange(50,600);
+//       n2_dcb->setVal(200); 
+//     }
+//     if (strstr(cat, "ggcat1EC") != NULL and strstr(proc, "qqH") != NULL) {
+//       n2_dcb->setRange(0,100);
+//       n2_dcb->setVal(20); 
+//     }
+     RooRealVar *sigma = new RooRealVar(Form("%s_%s_sigma%s",cat,proc,sysname),Form("%s_%s_sigma%s",cat,proc,sysname), 2, 1., 2.5); //0.1,2.5
+     RooRealVar *sigma_err_e = new RooRealVar(Form("CMS_hem_nuisance_res_e_%s",proc), Form("CMS_hem_nuisance_res_e_%s",proc), 0., -1., 1.);
+     RooRealVar *sigma_err_m = new RooRealVar(Form("CMS_hem_nuisance_res_m_%s",proc), Form("CMS_hem_nuisance_res_m_%s",proc), 0., -1., 1.);
      sigma_err_e->setConstant(kTRUE);
      sigma_err_m->setConstant(kTRUE);
-     RooFormulaVar *sigma_dcb = new RooFormulaVar(Form("%s_%s_sigma%s",cat,proc,sysname),Form("%s_%s_sigma%s",cat,proc,sysname),"@0*(1+@1+@2)",RooArgList(*sigma,*sigma_err_e,*sigma_err_m));
+
+//     RooFormulaVar *sigma_dcb = new RooFormulaVar(Form("%s_%s_sigma%s",cat,proc,sysname),Form("%s_%s_sigma%s",cat,proc,sysname),"@0*(1+@1+@2)",RooArgList(*sigma,*sigma_err_e,*sigma_err_m));
+     RooFormulaVar *sigma_dcb = new RooFormulaVar(Form("%s_%s_sigma%s",cat,proc,sysname),Form("%s_%s_sigma%s",cat,proc,sysname),"@0*(1)",RooArgList(*sigma));
      if (constr != NULL) {
        double a1_dcb_low = ((constr[0] - constr[0]*rangescale) >= 0) ? (constr[0] - constr[0]*rangescale) : 0;
        double a2_dcb_low = ((constr[1] - constr[1]*rangescale) >= 0) ? (constr[1] - constr[1]*rangescale) : 0;
@@ -117,14 +230,13 @@ void makepdf(bool is_sys, const char* proc, RooWorkspace *w, TH1F* hm, RooRealVa
        n2_dcb->setRange(n2_dcb_low, constr[4] + constr[4]*rangescale);
        sigma->setRange(sigma_dcb_low, constr[5] + constr[5]*rangescale);
 
-    
        for(auto parm : fixparm_arr) {
  
-         if (parm == "a2") {
-           a2_dcb->setVal(constr[0]);
-           a2_dcb->setConstant(kTRUE);
+         if (parm == "a1") {
+           a1_dcb->setVal(constr[0]);
+           a1_dcb->setConstant(kTRUE);
          }
-         else if (parm == "a1") {
+         else if (parm == "a2") {
            a2_dcb->setVal(constr[1]);
            a2_dcb->setConstant(kTRUE);
          }
@@ -144,9 +256,32 @@ void makepdf(bool is_sys, const char* proc, RooWorkspace *w, TH1F* hm, RooRealVa
            sigma->setVal(constr[5]);
            sigma->setConstant(kTRUE);
          }
+         else if (parm == "default") {
+             a1_dcb->setVal(constr[0]);
+             a1_dcb->setConstant(kTRUE);
+             a2_dcb->setVal(constr[1]);
+             a2_dcb->setConstant(kTRUE);
+             n1_dcb->setVal(constr[3]);
+             n1_dcb->setConstant(kTRUE);
+             n2_dcb->setVal(constr[4]);
+             n2_dcb->setConstant(kTRUE);
+           if (strstr(sysname, "ees") != NULL) {
+             sigma->setVal(constr[5]);
+             sigma->setConstant(kTRUE);
+           }
+           if (strstr(sysname, "eer") != NULL) {
+             dm_dcb->setVal(constr[2]-125);
+             dm_dcb->setConstant(kTRUE);
+           }
+         }
+         else if (parm == "all") {
+           nofit = 1;
+         }
        } 
     }
      pdf = new RooDoubleCBFast(Form("%s_%s%s_pdf",cat, proc,sysname), Form("%s_%s%s_pdf",cat, proc,sysname), *mass,*mean_dcb,*sigma_dcb, *a1_dcb, *n1_dcb, *a2_dcb, *n2_dcb);
+//     TF1 *pdf_f = (TF1*) pdf->asTF(*mass, RooArgList(*mean_dcb,*sigma_dcb,*a1_dcb,*n1_dcb,*a2_dcb,*n2_dcb));
+
      a1_dcb->getVal();
      a2_dcb->getVal();
      mean_dcb->getVal();
@@ -154,7 +289,33 @@ void makepdf(bool is_sys, const char* proc, RooWorkspace *w, TH1F* hm, RooRealVa
      n2_dcb->getVal();
      sigma_dcb->getVal();
      RooFitResult *fitResult = pdf->fitTo(*dh, Minimizer("Minuit2","minimize"), RooFit::Save(1), Range(mh - 15,mh + 15), SumW2Error(true));
-//     cout << "Hello " << fitResult->status() << endl;
+//     double scale_factor = hm->Integral()*hm->GetBinWidth(1);
+//     TString formula = TString::Format("%f * %s_%s%s_pdf",scale_factor,cat,proc,sysname);
+//     RooFormulaVar scaled_pdf("scaled_pdf", formula, RooArgList(*pdf));
+//     RooArgSet pars(*(pdf->getParameters(RooArgSet(*mass))));
+////     TF1 *pdf_f = pdf->asTF(RooArgList(*mass), pars,RooArgList(*mass));
+//     TF1 *pdf_f = scaled_pdf.asTF(RooArgList(*mass), pars, RooArgList(*mass));
+//     TCanvas canvas2 = TCanvas("canvasB","canvas",800,800);
+//     pdf_f->Draw();
+////     hm->Scale(1/hm->Integral(), "width");
+//     hm->Draw("same");
+//     canvas2.SaveAs("Baker.png");
+    
+//     cout << "hahaha " << hm->Chisquare(pdf_f, "L") << endl;
+     cout << "Hello " << cat <<  proc << " " << fitResult->status() << endl;
+
+
+
+     mean_err_e->setConstant(kFALSE);
+     mean_err_m->setConstant(kFALSE);
+     sigma_err_e->setConstant(kFALSE);
+     sigma_err_m->setConstant(kFALSE);
+     a1_dcb->setConstant(kTRUE);
+     a2_dcb->setConstant(kTRUE);
+     dm_dcb->setConstant(kTRUE);
+     n1_dcb->setConstant(kTRUE);
+     n2_dcb->setConstant(kTRUE);
+     sigma->setConstant(kTRUE);
      fitResult->correlationMatrix().Print();
      result[0] = a1_dcb->getVal();
      result[1] = a2_dcb->getVal();
@@ -165,37 +326,104 @@ void makepdf(bool is_sys, const char* proc, RooWorkspace *w, TH1F* hm, RooRealVa
      result[8] = fitResult->minNll();
    }
    else if (buildcbpg == 3) {
-     RooRealVar *dm1 = new RooRealVar(Form("%s_%s_dm1%s",cat,proc,sysname),Form("%s_%s_dm1%s",cat,proc,sysname), 0.,-5.,5.);  //0.5
+     RooRealVar *dm1 = new RooRealVar(Form("%s_%s_dm1%s",cat,proc,sysname),Form("%s_%s_dm1%s",cat,proc,sysname), 0.,-10.,10.);  //0.5
      RooFormulaVar *mean1 = new RooFormulaVar(Form("%s_%s_mean1%s",cat,proc,sysname),Form("%s_%s_mean1%s",cat,proc,sysname),"125+@0",RooArgList(*dm1));
-     RooRealVar *sigma1 = new RooRealVar(Form("%s_%s_sigma1%s",cat,proc,sysname),Form("%s_%s_sigma1%s",cat,proc,sysname), 2, 0.1, 10); //0.1,2.5
-     RooRealVar *dm2 = new RooRealVar(Form("%s_%s_dm2%s",cat,proc,sysname),Form("%s_%s_dm2%s",cat,proc,sysname), -1,-5.,5.);  //0.5
+     RooRealVar *sigma1 = new RooRealVar(Form("%s_%s_sigma1%s",cat,proc,sysname),Form("%s_%s_sigma1%s",cat,proc,sysname), 2, 0.1, 15); //0.1,2.5
+     RooRealVar *dm2 = new RooRealVar(Form("%s_%s_dm2%s",cat,proc,sysname),Form("%s_%s_dm2%s",cat,proc,sysname), -1,-10.,10.);  //0.5
      RooFormulaVar *mean2 = new RooFormulaVar(Form("%s_%s_mean2%s",cat,proc,sysname),Form("%s_%s_mean2%s",cat,proc,sysname),"125+@0",RooArgList(*dm2));
-     RooRealVar *sigma2 = new RooRealVar(Form("%s_%s_sigma2%s",cat,proc,sysname),Form("%s_%s_sigma2%s",cat,proc,sysname), 2, 0.1, 10); //0.1,2.5
-     RooRealVar *dm3 = new RooRealVar(Form("%s_%s_dm3%s",cat,proc,sysname),Form("%s_%s_dm3%s",cat,proc,sysname), -1,-5.,5.);  //0.5
+     RooRealVar *sigma2 = new RooRealVar(Form("%s_%s_sigma2%s",cat,proc,sysname),Form("%s_%s_sigma2%s",cat,proc,sysname), 2, 0.1, 15); //0.1,2.5
+     RooRealVar *dm3 = new RooRealVar(Form("%s_%s_dm3%s",cat,proc,sysname),Form("%s_%s_dm3%s",cat,proc,sysname), -1,-10.,10.);  //0.5
      RooFormulaVar *mean3 = new RooFormulaVar(Form("%s_%s_mean3%s",cat,proc,sysname),Form("%s_%s_mean3%s",cat,proc,sysname),"125+@0",RooArgList(*dm3));
-     RooRealVar *sigma3 = new RooRealVar(Form("%s_%s_sigma3%s",cat,proc,sysname),Form("%s_%s_sigma3%s",cat,proc,sysname), 2, 0.1, 10); //0.1,2.5
+     RooRealVar *sigma3 = new RooRealVar(Form("%s_%s_sigma3%s",cat,proc,sysname),Form("%s_%s_sigma3%s",cat,proc,sysname), 2, 0.1, 15); //0.1,2.5
+     RooRealVar *dm4 = new RooRealVar(Form("%s_%s_dm4%s",cat,proc,sysname),Form("%s_%s_dm4%s",cat,proc,sysname), -1,-10.,10.);  //0.5
+     RooFormulaVar *mean4 = new RooFormulaVar(Form("%s_%s_mean4%s",cat,proc,sysname),Form("%s_%s_mean4%s",cat,proc,sysname),"125+@0",RooArgList(*dm3));
+     RooRealVar *sigma4 = new RooRealVar(Form("%s_%s_sigma4%s",cat,proc,sysname),Form("%s_%s_sigma4%s",cat,proc,sysname), 2, 0.1, 15); //0.1,2.5
      RooGaussian *pdf_gaus1 = new RooGaussian(Form("gaus1_mh_%s_%s%s",cat,proc,sysname),Form("gaus1_mh_%s_%s%s",cat,proc,sysname),*mass,*mean1,*sigma1);
      RooGaussian *pdf_gaus2 = new RooGaussian(Form("gaus2_mh_%s_%s%s",cat,proc,sysname),Form("gaus2_mh_%s_%s%s",cat,proc,sysname),*mass,*mean2,*sigma2);
      RooGaussian *pdf_gaus3 = new RooGaussian(Form("gaus3_mh_%s_%s%s",cat,proc,sysname),Form("gaus3_mh_%s_%s%s",cat,proc,sysname),*mass,*mean3,*sigma3);
+     RooGaussian *pdf_gaus4 = new RooGaussian(Form("gaus4_mh_%s_%s%s",cat,proc,sysname),Form("gaus4_mh_%s_%s%s",cat,proc,sysname),*mass,*mean4,*sigma4);
      RooRealVar *frac_gaus = new RooRealVar(Form("frac_mh_%s_%s%s",cat,proc,sysname),Form("frac_mh_%s_%s%s",cat,proc,sysname),0.5,0.01,0.99);
      RooRealVar *frac_gaus2 = new RooRealVar(Form("frac2_mh_%s_%s%s",cat,proc,sysname),Form("frac2_mh_%s_%s%s",cat,proc,sysname),0.5,0.01,0.99);
-     pdf = new RooAddPdf(Form("%s_%s%s_pdf",cat, proc,sysname),Form("%s_%s%s_pdf",cat, proc,sysname),RooArgList(*pdf_gaus1,*pdf_gaus2,*pdf_gaus3), RooArgList(*frac_gaus, *frac_gaus2), true);
-     RooFitResult *fitResult = pdf->fitTo(*dh, Minimizer("Minuit2","minimize"), RooFit::Save(1), Range(mh - 15,mh + 15), SumW2Error(true));
-     dm1->setConstant(true);
-     sigma1->setConstant(true);
-     dm2->setConstant(true);
-     sigma2->setConstant(true);
-     dm3->setConstant(true);
-     sigma3->setConstant(true);
-     frac_gaus->setConstant(true);
-     frac_gaus2->setConstant(true);
+     RooRealVar *frac_gaus3 = new RooRealVar(Form("frac3_mh_%s_%s%s",cat,proc,sysname),Form("frac3_mh_%s_%s%s",cat,proc,sysname),0.5,0.01,0.99);
+     if (constr != NULL) {
+       for(auto parm : fixparm_arr) {
+ 
+         if (parm == "dm1") {
+           dm1->setVal(constr[0]);
+           dm1->setConstant(kTRUE);
+         }
+         else if (parm == "sigma1") {
+           sigma1->setVal(constr[1]);
+           sigma1->setConstant(kTRUE);
+         }
+         else if (parm == "dm2") {
+           dm2->setVal(constr[2]);
+           dm2->setConstant(kTRUE);
+         }
+         else if (parm == "sigma2") {
+           sigma2->setVal(constr[3]);
+           sigma2->setConstant(kTRUE);
+         }
+         else if (parm == "dm3") {
+           dm3->setVal(constr[4]);
+           dm3->setConstant(kTRUE);
+         }
+         else if (parm == "sigma3") {
+           sigma3->setVal(constr[5]);
+           sigma3->setConstant(kTRUE);
+         }
+         else if (parm == "f1") {
+           frac_gaus->setVal(constr[6]);
+           frac_gaus->setConstant(kTRUE);
+         }
+         else if (parm == "f2") {
+           frac_gaus2->setVal(constr[7]);
+           frac_gaus2->setConstant(kTRUE);
+         }
+         else if (parm == "all") {
+           nofit = 1;
+           dm1->setVal(constr[0]);
+           dm1->setConstant(kTRUE);
+           sigma1->setVal(constr[1]);
+           sigma1->setConstant(kTRUE);
+           dm2->setVal(constr[2]);
+           dm2->setConstant(kTRUE);
+           sigma2->setVal(constr[3]);
+           sigma2->setConstant(kTRUE);
+           dm3->setVal(constr[4]);
+           dm3->setConstant(kTRUE);
+           sigma3->setVal(constr[5]);
+           sigma3->setConstant(kTRUE);
+           frac_gaus->setVal(constr[6]);
+           frac_gaus->setConstant(kTRUE);
+           frac_gaus2->setVal(constr[7]);
+           frac_gaus2->setConstant(kTRUE);
+         }
+       }
+     }  
+     pdf = new RooAddPdf(Form("%s_%s%s_pdf",cat, proc,sysname),Form("%s_%s%s_pdf",cat, proc,sysname),RooArgList(*pdf_gaus1,*pdf_gaus2,*pdf_gaus3,*pdf_gaus4), RooArgList(*frac_gaus, *frac_gaus2, *frac_gaus3), true);
+     if (!nofit) {
+       RooFitResult *fitResult = pdf->fitTo(*dh, Minimizer("Minuit2","minimize"), RooFit::Save(1), Range(mh - 15,mh + 15), SumW2Error(true));
+       fitResult->correlationMatrix().Print();
+       result[8] = fitResult->minNll();
+     }
+//     dm1->setConstant(true);
+//     sigma1->setConstant(true);
+//     dm2->setConstant(true);
+//     sigma2->setConstant(true);
+//     dm3->setConstant(true);
+//     sigma3->setConstant(true);
+//     frac_gaus->setConstant(true);
+//     frac_gaus2->setConstant(true);
 //     cout << "Hello " << fitResult->status() << endl;
-     fitResult->correlationMatrix().Print();
-     result[0] = mean1->getVal();
+     result[0] = dm1->getVal();
      result[1] = sigma1->getVal();
-     result[2] = mean2->getVal();
+     result[2] = dm2->getVal();
      result[3] = sigma2->getVal();
-     result[8] = fitResult->minNll();
+     result[4] = dm3->getVal();
+     result[5] = sigma3->getVal();
+     result[6] = frac_gaus->getVal();
+     result[7] = frac_gaus2->getVal();
    }
  
    
@@ -203,7 +431,7 @@ void makepdf(bool is_sys, const char* proc, RooWorkspace *w, TH1F* hm, RooRealVa
    dh->plotOn(frame, CutRange("higgsRange"), DataError(RooAbsData::SumW2));
    double numofevent = dh->sumEntries("1", "higgsRange");
    cout << cat << " " << proc << "Hello" << numofevent << endl;
-   RooRealVar* nevent = new RooRealVar(Form("%s_%s%s_pdf_norm",cat, proc,sysname), Form("%s_%s%s_pdf_norm",cat, proc,sysname), numofevent,0,20*numofevent);
+   RooRealVar* nevent = new RooRealVar(Form("%s_%s%s_pdf_norm",cat, proc,sysname), Form("%s_%s%s_pdf_norm",cat, proc,sysname), numofevent,0,10*numofevent);
    nevent->setConstant(true);
    RooExtendPdf* pdf2 = new RooExtendPdf(Form("%s_%s%s_pdf_ext",cat, proc,sysname),Form("%s_%s%s_pdf_ext",cat, proc,sysname),*pdf,*nevent);
    if (!is_sys) {
@@ -213,10 +441,26 @@ void makepdf(bool is_sys, const char* proc, RooWorkspace *w, TH1F* hm, RooRealVa
      w->import(*dh);
    }
    pdf->plotOn(frame,Normalization(dh->sumEntries("1", "higgsRange"), RooAbsReal::NumEvent), NormRange("higgsRange"), Range("higgsRange"));
-   std::cout << "chi2/dof:" << frame->chiSquare(buildcbpg?6:7) << std::endl;
-   result[7] = frame->chiSquare(buildcbpg?6:7);
+   double chi2_p = frame->chiSquare(buildcbpg?6:7);
+   std::cout << "chi2/dof:" << chi2_p << std::endl;
+   double p_th = TMath::Prob(chi2_p*(120-buildcbpg?6:7),120-buildcbpg?6:7);
+   std::cout << "Th. p-value:" << p_th << std::endl;
+   result[9] = chi2_p;
    if (saveplot) {
-     TCanvas canvas = TCanvas("canvas","canvas",800,800);
+     TCanvas canvas = TCanvas("canvas","",0,0,800,800);
+gPad->SetFillColor(0);
+gPad->SetBorderMode(0);
+gPad->SetBorderSize(10);
+gPad->SetTickx(1);
+gPad->SetTicky(1);
+gPad->SetFrameFillStyle(0);
+gPad->SetFrameLineStyle(0);
+gPad->SetFrameLineWidth(3);
+gPad->SetFrameBorderMode(0);
+gPad->SetFrameBorderSize(10);
+     canvas.SetLeftMargin(0.16);
+     canvas.SetRightMargin(0.05);
+     canvas.SetBottomMargin(0.14);
      TLatex latex = TLatex();
      latex.SetNDC();
      latex.SetTextFont(43);
@@ -231,21 +475,83 @@ void makepdf(bool is_sys, const char* proc, RooWorkspace *w, TH1F* hm, RooRealVa
      TString jets_text("e#mu ");
      jets_text.Append(cat);
      TString txt("#chi^{2} / ndf = ");
-     txt += Form("%.2f / %i",frame->chiSquare()*dh->numEntries(), dh->numEntries()-7);
+     txt += Form("%.2f / %i",frame->chiSquare()*120, 120-6);
+     frame->SetXTitle("m_{e#mu} [GeV]");
+     
+     frame->GetXaxis()->SetTitleFont(42);
+     frame->GetYaxis()->SetTitleFont(42);
+     frame->GetXaxis()->SetTitleSize(0.05);
+     frame->GetYaxis()->SetTitleSize(0.05);
+     frame->GetXaxis()->SetLabelSize(0.045);
+     frame->GetYaxis()->SetLabelSize(0.045);
+     
+     frame->GetYaxis()->SetTitleOffset(1.4);
+     frame->GetXaxis()->SetTitleOffset(1.2);
      frame->Draw();
-     gPad->SetLeftMargin(0.13);
-     latex.DrawLatex(0.65, 0.80, txt);
-     latex.DrawLatex(0.16, 0.84, label_text);
-     latex.DrawLatex(0.7, 0.91, data_text);
-     std::string pngname = cat;
+//     gPad->SetLeftMargin(0.13);
+//     latex.DrawLatex(0.65, 0.80, txt);
+//     latex.DrawLatex(0.16, 0.84, label_text);
+//     latex.DrawLatex(0.7, 0.91, data_text);
+     std::string pngname_init = cat;
      std::string sub = sysname;
      std::string label2 = cat;
      label2 = "cat " + label2 + ", " + proc + " mode";
      label2 += " " + sub;
-     latex.DrawLatex(0.16, 0.80, label2.c_str());
-     pngname = "SigSys/" + pngname + sub + '_' + proc + "_DCB.png"; 
-     
+//     latex.DrawLatex(0.16, 0.80, label2.c_str());
+
+     double lowX=0.65;
+     double lowY=0.83;
+     auto lumi  = TPaveText(lowX,lowY, lowX+0.30, lowY+0.2, "NDC");
+     lumi.SetBorderSize(   0 );
+     lumi.SetFillStyle(    0 );
+     lumi.SetTextAlign(   12 );
+     lumi.SetTextColor(    1 );
+     lumi.SetTextSize(0.038);
+     lumi.SetTextFont (   42 );
+     lumi.AddText("137.2 fb^{-1} (13 TeV)");
+     lumi.Draw("same");
+ 
+     lowX=0.18;
+     lowY=0.71;
+     auto cmstxt  = TPaveText(lowX, lowY+0.06, lowX+0.15, lowY+0.16, "NDC");
+     cmstxt.SetTextFont(61);
+     cmstxt.SetTextSize(0.055);
+     cmstxt.SetBorderSize(   0 );
+     cmstxt.SetFillStyle(    0 );
+     cmstxt.SetTextAlign(   12 );
+     cmstxt.SetTextColor(    1 );
+     cmstxt.AddText("CMS");
+     cmstxt.Draw("same");
+ 
+     lowX=0.18;
+     lowY=0.64;
+     auto cattxt  = TPaveText(lowX, lowY+0.06, lowX+0.3, lowY+0.16, "NDC");
+     cattxt.SetTextFont(42);
+     cattxt.SetTextSize(0.055*0.8*0.76);
+     cattxt.SetBorderSize(   0 );
+     cattxt.SetFillStyle(    0 );
+     cattxt.SetTextAlign(   12 );
+     cattxt.SetTextColor(    1 );
+     cattxt.AddText(label2.c_str());
+     cattxt.Draw("same");
+
+     lowX=0.30;
+     lowY=0.71;
+     auto pretxt  = TPaveText(lowX, lowY+0.05, lowX+0.15, lowY+0.15, "NDC");
+     pretxt.SetTextFont(52);
+     pretxt.SetTextSize(0.055*0.8*0.76);
+     pretxt.SetBorderSize(   0 );
+     pretxt.SetFillStyle(    0 );
+     pretxt.SetTextAlign(   12 );
+     pretxt.SetTextColor(    1 );
+     pretxt.AddText("Preliminary");
+     pretxt.Draw("same");
+
+
+     std::string pngname = "SigSys/" + pngname_init + sub + '_' + proc + "_DCB.png"; 
+     std::string pngnameBC = "SigSys/" + pngname_init + sub + '_' + proc + "_BC.png";
      canvas.SaveAs(pngname.c_str());
+     runToychi2(pdf, hm, mass, chi2_p, 6, cat,  proc, sysname, pngnameBC);
    }
 }
 
@@ -260,26 +566,15 @@ void fitDCB(bool dosys = 0, int buildcbpg = 1, int whichcat = -1, std::string wh
   mass->setRange("higgsRange",110.,140.);
 //  RooRealVar lumi("IntLumi", "Integrated luminosity", 35.87, "fb^{-1}");
 //  w->import(lumi);
-  const int numberofcat = 5;
+  const int numberofcat = 6;
   std::string procs[2] = {"ggH", "qqH"};
-  std::string catname[numberofcat] = {"TightOSggcat0/", "TightOSggcat1/", "TightOSggcat2/", "TightOSggcat3/", "TightOSvbf/"};
-  std::string cat[numberofcat] = {"ggcat0", "ggcat1", "ggcat2", "ggcat3", "vbf"};
-  std::string sysname[6] = {"ees", "me", "eer"};
-  std::string updown[2] = {"Up" ,"Down"};
-  std::string sysname2[] = {
-    "JetAbsolute","JetAbsoluteyear2016","JetAbsoluteyear2017","JetAbsoluteyear2018",
-    "JetBBEC1","JetBBEC1year2016","JetBBEC1year2017","JetBBEC1year2018",
-    "JetEC2","JetEC2year2016", "JetEC2year2017","JetEC2year2018",
-    "JetFlavorQCD",
-    "JetHF","JetHFyear2016","JetHFyear2017","JetHFyear2018",
-    "JetRelativeBal","JetRelativeSample2016","JetRelativeSample2017","JetRelativeSample2018",
-    "JER2016","JER2017","JER2018",
-    "eer","ees","me",
-    "pu2016","pu2017","pu2018",
-    "pf2016","pf2017",
-    "bTag2016","bTag2017","bTag2018",
-    "UnclusteredEn2016","UnclusteredEn2017","UnclusteredEn2018"
-  };
+
+//std::string catname[numberofcat] = {"TightOSvbf00/", "TightOSgg00/", "TightOSvbf01/", "TightOSgg01/", "TightOSvbf02/", "TightOSgg02/", "TightOSvbf03/", "TightOSgg03/", "TightOSvbf04/", "TightOSgg04/", "TightOSvbf10/", "TightOSgg10/", "TightOSvbf11/", "TightOSgg11/", "TightOSvbf12/", "TightOSgg12/", "TightOSvbf13/", "TightOSgg13/", "TightOSvbf14/", "TightOSgg14/", "TightOSvbf20/", "TightOSgg20/", "TightOSvbf21/", "TightOSgg21/", "TightOSvbf22/", "TightOSgg22/", "TightOSvbf23/", "TightOSgg23/", "TightOSvbf24/", "TightOSgg24/", "TightOSvbf30/", "TightOSgg30/", "TightOSvbf31/", "TightOSgg31/", "TightOSvbf32/", "TightOSgg32/", "TightOSvbf33/", "TightOSgg33/", "TightOSvbf34/", "TightOSgg34/"};
+  std::string catname[numberofcat] = {"TightOSggcat0/", "TightOSggcat1/", "TightOSggcat2/", "TightOSggcat3/", "TightOSggcat4/", "TightOSvbf/"};
+// std::string cat[numberofcat] =  {"TightOSvbf00", "TightOSgg00", "TightOSvbf01", "TightOSgg01", "TightOSvbf02", "TightOSgg02", "TightOSvbf03", "TightOSgg03", "TightOSvbf04", "TightOSgg04", "TightOSvbf10", "TightOSgg10", "TightOSvbf11", "TightOSgg11", "TightOSvbf12", "TightOSgg12", "TightOSvbf13", "TightOSgg13", "TightOSvbf14", "TightOSgg14", "TightOSvbf20", "TightOSgg20", "TightOSvbf21", "TightOSgg21", "TightOSvbf22", "TightOSgg22", "TightOSvbf23", "TightOSgg23", "TightOSvbf24", "TightOSgg24", "TightOSvbf30", "TightOSgg30", "TightOSvbf31", "TightOSgg31", "TightOSvbf32", "TightOSgg32", "TightOSvbf33", "TightOSgg33", "TightOSvbf34", "TightOSgg34"};
+  std::string cat[numberofcat] = {"ggcat0", "ggcat1", "ggcat2", "ggcat3", "ggcat4", "vbf"};
+//  std::string sysname[6] = {"ees", "me", "eer"};
+  std::string sysname[] = {"bTagUp2016", "bTagDown2016", "bTagUp2017", "bTagDown2017", "bTagUp2018", "bTagDown2018", "puUp2016", "puDown2016", "puUp2017", "puDown2017", "puUp2018", "puDown2018", "pfUp2016", "pfDown2016", "pfUp2017", "pfDown2017", "eesUp", "eesDown", "eerUp", "eerDown", "meUp", "meDown", "JetAbsoluteUp", "JetAbsoluteDown", "JetAbsoluteyearUp2016", "JetAbsoluteyearUp2017", "JetAbsoluteyearUp2018", "JetAbsoluteyearDown2016", "JetAbsoluteyearDown2017", "JetAbsoluteyearDown2018", "JetBBEC1Up", "JetBBEC1Down", "JetBBEC1yearUp2016", "JetBBEC1yearUp2017", "JetBBEC1yearUp2018", "JetBBEC1yearDown2016", "JetBBEC1yearDown2017", "JetBBEC1yearDown2018", "JetFlavorQCDUp", "JetFlavorQCDDown", "JetEC2Up", "JetEC2Down", "JetEC2yearUp2016", "JetEC2yearUp2017", "JetEC2yearUp2018", "JetEC2yearDown2016", "JetEC2yearDown2017", "JetEC2yearDown2018", "JetHFUp", "JetHFDown", "JetHFyearUp2016", "JetHFyearUp2017", "JetHFyearUp2018", "JetHFyearDown2016", "JetHFyearDown2017", "JetHFyearDown2018", "JetRelativeBalUp", "JetRelativeBalDown", "JetRelativeSampleUp2016", "JetRelativeSampleUp2017", "JetRelativeSampleUp2018", "JetRelativeSampleDown2016", "JetRelativeSampleDown2017", "JetRelativeSampleDown2018", "JERUp2016", "JERUp2017", "JERUp2018", "JERDown2016", "JERDown2017", "JERDown2018", "UnclusteredEnUp2016", "UnclusteredEnUp2017", "UnclusteredEnUp2018", "UnclusteredEnDown2016", "UnclusteredEnDown2017", "UnclusteredEnDown2018", "UesCHARGEDUp2016", "UesCHARGEDUp2017", "UesCHARGEDUp2018", "UesCHARGEDDown2016", "UesCHARGEDDown2017", "UesCHARGEDDown2018", "UesECALUp2016", "UesECALUp2017", "UesECALUp2018", "UesECALDown2016", "UesECALDown2017", "UesECALDown2018", "UesHCALUp2016", "UesHCALUp2017", "UesHCALUp2018", "UesHCALDown2016", "UesHCALDown2017", "UesHCALDown2018", "UesHFUp2016", "UesHFUp2017", "UesHFUp2018", "UesHFDown2016", "UesHFDown2017", "UesHFDown2018"};
   std::string emstr1 = "e_m_Mass";
   std::string emstr = "/e_m_Mass";
 
@@ -287,6 +582,8 @@ void fitDCB(bool dosys = 0, int buildcbpg = 1, int whichcat = -1, std::string wh
   for (int i = 0; i < numberofcat; i++){  
     WSLookupTable[cat[i]] = new RooWorkspace("w_13TeV","w_13TeV"); 
   }
+  FILE *f = fopen("Hem_shape_sys.csv", "w");
+  fprintf(f, "Proc,Cat,Sys,Param,Value\n");
   for (int p = 0; p < 2; p++) {
     TFile *file = new TFile();
     if (p == 0) {
@@ -302,56 +599,74 @@ void fitDCB(bool dosys = 0, int buildcbpg = 1, int whichcat = -1, std::string wh
       std::string dir_name = catname[i] + emstr1;
       auto hm = static_cast<TH1F*> (file->Get(dir_name.c_str()));
       const char* empty = "\0";
-      double fitresult[9];
+      double fitresult[20];
       makepdf(0, procs[p].c_str(), WSLookupTable[cat[i].c_str()], hm, mass, mh, cat[i].c_str(), empty, fitresult, rangescale, buildcbpg, 1);
       int start_ = 0;
-      int end_ = 6;
+      int end_ = 100;
       if (dosys) {
-        if (whichsys == "es") {
-          start_ = 0;
-          end_ = 2;
+
+        vector<string> sys_arr;
+        stringstream ss(whichsys);
+        while(ss.good())
+        {
+            string substr;
+            getline(ss, substr, ',');
+            sys_arr.push_back(substr);
         }
-        else if (whichsys == "m") {
-          start_ = 2;
-          end_ = 4;
-        }
-        else if (whichsys == "er") {
-          start_ = 4;
-          end_ = 6;
-        }
-       
         for (int j = start_; j < end_; j++) {
-          for (int k = 0; k < 2; k++) {
-            std::string dir_name_sys = catname[i] + sysname[j] + updown[k] + emstr;
-            auto hm = static_cast<TH1F*> (file->Get(dir_name_sys.c_str()));
-            double fitresult_sys[9];
-            makepdf(1, procs[p].c_str(), WSLookupTable[cat[i].c_str()], hm, mass, mh, cat[i].c_str(), sysname[j].c_str(), fitresult_sys, rangescale, buildcbpg, 1 , fitresult, fixparm);
-            cout << "Changes in: " << sysname[j].c_str() << endl;
-    
-            if (buildcbpg) { 
-              cout << "Changes in a: " << (fitresult_sys[0] - fitresult[0])*100/fitresult[0] << endl;
-              cout << "Changes in n: " << (fitresult_sys[1] - fitresult[1])*100/fitresult[1] << endl;
-              cout << "Changes in mean_cb: " << (fitresult_sys[2] - fitresult[2])*100/fitresult[2] << endl;
-              cout << "Changes in sigma_cb: " << (fitresult_sys[3] - fitresult[3])*100/fitresult[3] << endl;
-              cout << "Changes in mean_gaus: " << (fitresult_sys[4] - fitresult[4])*100/fitresult[4] << endl;
-              cout << "Changes in sigma_gaus: " << (fitresult_sys[5] - fitresult[5])*100/fitresult[5] << endl;
-              cout << "Changes in frac_gaus: " << (fitresult_sys[6] - fitresult[6])*100/fitresult[5] << endl;
-              cout << "Changes in chi2: " << (fitresult_sys[7] - fitresult[7])*100/fitresult[7] << endl;
-              cout << "Changes in NLL: " << (fitresult_sys[8] - fitresult[8])*100/fitresult[8] << endl;
-            }
-            else {
-              cout << "Changes in a1: " << (fitresult_sys[0] - fitresult[0])*100/fitresult[0] << endl;
-              cout << "Changes in a2: " << (fitresult_sys[1] - fitresult[1])*100/fitresult[1] << endl;
-              cout << "Changes in dm: " << (fitresult_sys[2] - fitresult[2])*100/fitresult[2] << endl;
-              cout << "Changes in n1: " << (fitresult_sys[3] - fitresult[3])*100/fitresult[3] << endl;
-              cout << "Changes in n2: " << (fitresult_sys[4] - fitresult[4])*100/fitresult[4] << endl;
-              cout << "Changes in sigma: " << (fitresult_sys[5] - fitresult[5])*100/fitresult[5] << endl;
-              cout << "Changes in chi2: " << (fitresult_sys[7] - fitresult[7])*100/fitresult[7] << endl;
-              cout << "Changes in NLL: " << (fitresult_sys[8] - fitresult[8])*100/fitresult[8] << endl;
-  
-            } 
+          bool run = false;
+          for(auto whs : sys_arr) {
+            if (sysname[j].find(whs) != std::string::npos) {run = true;}
           }
+          if (!run) {continue; }
+          std::string dir_name_sys = catname[i] + sysname[j] + emstr;
+          auto hm = static_cast<TH1F*> (file->Get(dir_name_sys.c_str()));
+          double fitresult_sys[20];
+          makepdf(1, procs[p].c_str(), WSLookupTable[cat[i].c_str()], hm, mass, mh, cat[i].c_str(), sysname[j].c_str(), fitresult_sys, rangescale, buildcbpg, 1 , fitresult, fixparm);
+          cout.precision(2);
+          cout << "Changes in: " << sysname[j].c_str() << endl;
+    
+          if (buildcbpg == 0) { 
+            cout << "Changes in a: " << (fitresult_sys[0] - fitresult[0])*100/fitresult[0] << endl;
+            cout << "Changes in n: " << (fitresult_sys[1] - fitresult[1])*100/fitresult[1] << endl;
+            cout << "Changes in mean_cb: " << (fitresult_sys[2] - fitresult[2])*100/fitresult[2] << endl;
+            cout << "Changes in sigma_cb: " << (fitresult_sys[3] - fitresult[3])*100/fitresult[3] << endl;
+            cout << "Changes in mean_gaus: " << (fitresult_sys[4] - fitresult[4])*100/fitresult[4] << endl;
+            cout << "Changes in sigma_gaus: " << (fitresult_sys[5] - fitresult[5])*100/fitresult[5] << endl;
+            cout << "Changes in frac_gaus: " << (fitresult_sys[6] - fitresult[6])*100/fitresult[5] << endl;
+            cout << "Changes in chi2: " << (fitresult_sys[9] - fitresult[9])*100/fitresult[9] << endl;
+            cout << "Changes in NLL: " << (fitresult_sys[8] - fitresult[8])*100/fitresult[8] << endl;
+          }
+          else if (buildcbpg == 1) {
+            cout << "Changes in a1: " << (fitresult_sys[0] - fitresult[0])*100/fitresult[0] << endl;
+            cout << "Changes in a2: " << (fitresult_sys[1] - fitresult[1])*100/fitresult[1] << endl;
+            double changeindm = (fitresult_sys[2] - fitresult[2])*100/fitresult[2];
+            double changeinsigma = (fitresult_sys[5] - fitresult[5])*100/fitresult[5];
+            cout << "Changes in dm: " << changeindm  << endl;
+            if (changeindm!=0.) {fprintf(f, "%s,%s,%s,dm,%f\n",procs[p].c_str(),cat[i].c_str(),sysname[j].c_str(),changeindm);}           
+            cout << "Changes in n1: " << (fitresult_sys[3] - fitresult[3])*100/fitresult[3] << endl;
+            cout << "Changes in n2: " << (fitresult_sys[4] - fitresult[4])*100/fitresult[4] << endl;
+            cout << "Changes in sigma: " << changeinsigma << endl;
+            if (changeinsigma!=0.) {fprintf(f, "%s,%s,%s,sigma,%f\n",procs[p].c_str(),cat[i].c_str(),sysname[j].c_str(),changeinsigma);}           
+            cout << "Changes in chi2: " << (fitresult_sys[9] - fitresult[9])*100/fitresult[9] << endl;
+            cout << "Changes in NLL: " << (fitresult_sys[8] - fitresult[8])*100/fitresult[8] << endl;
+  
+          } 
+          else if (buildcbpg == 3) {
+            cout << "Changes in dm1: " << (fitresult_sys[0] - fitresult[0])*100/fitresult[0] << endl;
+            cout << "Changes in sigma1: " << (fitresult_sys[1] - fitresult[1])*100/fitresult[1] << endl;
+            cout << "Changes in dm2: " << (fitresult_sys[2] - fitresult[2])*100/fitresult[2] << endl;
+            cout << "Changes in sigma2: " << (fitresult_sys[3] - fitresult[3])*100/fitresult[3] << endl;
+            cout << "Changes in dm3: " << (fitresult_sys[4] - fitresult[4])*100/fitresult[4] << endl;
+            cout << "Changes in sigma3: " << (fitresult_sys[5] - fitresult[5])*100/fitresult[5] << endl;
+            cout << "Changes in f1: " << (fitresult_sys[6] - fitresult[6])*100/fitresult[6] << endl;
+            cout << "Changes in f2: " << (fitresult_sys[7] - fitresult[7])*100/fitresult[7] << endl;
+            cout << "Changes in chi2: " << (fitresult_sys[9] - fitresult[9])*100/fitresult[9] << endl;
+            cout << "Changes in NLL: " << (fitresult_sys[8] - fitresult[8])*100/fitresult[8] << endl;
+  
+          } 
         }
+
       }
 //  for (TObject* keyAsObj : *(file->GetListOfKeys())){
 //    auto key = dynamic_cast<TKey*>(keyAsObj);
@@ -369,11 +684,12 @@ void fitDCB(bool dosys = 0, int buildcbpg = 1, int whichcat = -1, std::string wh
 //  }
   }
   for (auto const& ws : WSLookupTable) {
-    ws.second->Print();
+//    ws.second->Print();
     std::string filename = "workspace_sig_" + ws.first  + ".root";
     ws.second->writeToFile(filename.c_str());
   }
 //  w->writeToFile("FitSig.root");
 //  w->Print();
 }
+        fclose(f);
 }

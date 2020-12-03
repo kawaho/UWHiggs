@@ -1,0 +1,171 @@
+from ROOT import TLatex, TH1F, TFile, TCanvas, gStyle, TLegend, TLine, TPad, gPad, TPaveText, gROOT
+import array
+import numpy as np
+gROOT.SetBatch(True)
+gStyle.SetOptStat(False)
+canvas = TCanvas("canvas","",0,0,800,800)
+def add_lumi():
+    lowX=0.62
+    lowY=0.83
+    lumi  = TPaveText(lowX,lowY, lowX+0.30, lowY+0.2, "NDC")
+    lumi.SetBorderSize(   0 )
+    lumi.SetFillStyle(    0 )
+    lumi.SetTextAlign(   12 )
+    lumi.SetTextColor(    1 )
+    lumi.SetTextSize(0.038)
+    lumi.SetTextFont (   42 )
+    lumi.AddText("35.9 fb^{-1} (13 TeV)")
+    return lumi
+
+def add_CMS():
+    lowX=0.18
+    lowY=0.71
+    lumi  = TPaveText(lowX, lowY+0.06, lowX+0.15, lowY+0.16, "NDC")
+    lumi.SetTextFont(61)
+    lumi.SetTextSize(0.055)
+    lumi.SetBorderSize(   0 )
+    lumi.SetFillStyle(    0 )
+    lumi.SetTextAlign(   12 )
+    lumi.SetTextColor(    1 )
+    lumi.AddText("CMS")
+    return lumi
+
+def add_Preliminary():
+    lowX=0.30
+    lowY=0.71
+    lumi  = TPaveText(lowX, lowY+0.05, lowX+0.15, lowY+0.15, "NDC")
+    lumi.SetTextFont(52)
+    lumi.SetTextSize(0.055*0.8*0.76)
+    lumi.SetBorderSize(   0 )
+    lumi.SetFillStyle(    0 )
+    lumi.SetTextAlign(   12 )
+    lumi.SetTextColor(    1 )
+    lumi.AddText("Preliminary")
+    return lumi
+#f120 = TFile("Valid_per_M/Signal_120.root")
+f120 = TFile("valid_M/Signal120.root")
+h120 = f120.Get("TightOSgg/bdtDiscriminator")
+
+#f125 = TFile("Valid_per_M/Signal_125.root")
+f125 = TFile("valid_M/Signal125.root")
+h125 = f125.Get("TightOSgg/bdtDiscriminator")
+
+#f130 = TFile("Valid_per_M/Signal_130.root")
+f130 = TFile("valid_M/Signal130.root")
+h130 = f130.Get("TightOSgg/bdtDiscriminator")
+
+#h125.GetXaxis().SetRangeUser(-0.12, 0.22)
+#h120.GetXaxis().SetRangeUser(-0.12, 0.22)
+#h130.GetXaxis().SetRangeUser(-0.12, 0.22)
+print h120.Chi2Test(h125,"WW")
+print h130.Chi2Test(h125,"WW")
+print h120.AndersonDarlingTest(h125)
+print h130.AndersonDarlingTest(h125)
+
+h120.Scale( 1./h120.Integral())
+h125.Scale( 1./h125.Integral())
+h130.Scale( 1./h130.Integral())
+#pad1 = TPad("pad1","pad1",0,0.25,1,1)
+#pad2 = TPad("pad2","pad2",0,0,1,0.34)
+#pad1.SetBottomMargin(0.18)
+#pad2.SetTopMargin(0.01)
+#pad2.SetBottomMargin(0.25)
+#pad1.Draw()
+#pad2.Draw()
+#pad1.cd()
+
+gPad.SetFillColor(0)
+gPad.SetBorderMode(0)
+gPad.SetBorderSize(10)
+gPad.SetTickx(1)
+gPad.SetTicky(1)
+gPad.SetFrameFillStyle(0)
+gPad.SetFrameLineStyle(0)
+gPad.SetFrameLineWidth(3)
+gPad.SetFrameBorderMode(0)
+gPad.SetFrameBorderSize(10)
+h125.GetXaxis().SetRangeUser(-0.3, 0.3)
+#h125.GetXaxis().SetRangeUser(-0.19, 0.24)
+#h125.SetLineColor(2)
+h125.SetTitle(" ")
+h125.SetYTitle("a.u.")
+#h125.GetYaxis().SetTitleFont(43)
+#h125.GetYaxis().SetTitleSize(20)
+h125.GetYaxis().SetTitleOffset(1.6)
+canvas.SetLeftMargin(0.16)
+
+#h125.GetXaxis().SetLabelFont(43)
+#h125.GetYaxis().SetLabelFont(43)
+#h125.GetXaxis().SetLabelSize(20)
+#h125.GetYaxis().SetLabelSize(20)
+h125.SetXTitle("BDT Discriminator")
+
+h125.GetXaxis().SetTitleFont(42)
+h125.GetYaxis().SetTitleFont(42)
+h125.GetXaxis().SetTitleSize(0.05)
+h125.GetYaxis().SetTitleSize(0.05)
+h125.GetXaxis().SetLabelSize(0.045)
+h125.GetYaxis().SetLabelSize(0.045)
+
+
+
+#h125.GetXaxis().SetLabelOffset(999)
+h125.SetMarkerStyle(20)
+h125.SetLineColor(1)
+h125.SetLineWidth(3);
+h125.Sumw2()
+h125.Draw('pe0 same')
+#h125.Draw('pe2')
+h120.SetLineColor(2)
+h120.SetLineWidth(3);
+h120.Draw('HIST,SAME')
+h130.SetLineColor(4)
+h130.Draw('HIST,SAME')
+h130.SetLineWidth(3);
+
+l1 = add_lumi()
+l1.Draw("same")
+l2 = add_CMS()
+l2.Draw("same")
+l3 = add_Preliminary()
+l3.Draw("same")
+legend = TLegend(0.2, 0.55, .4, .75)
+legend.SetBorderSize(0)
+legend.SetTextFont(62)
+legend.AddEntry(h125,"m_{H}=125GeV","lep")
+legend.AddEntry(h120,"m_{H}=120GeV")
+legend.AddEntry(h130,"m_{H}=130GeV")
+legend.SetTextSize(0.045)
+legend.Draw()
+
+#pad2.cd()
+#h120_125 = h120.Clone("h3")
+#h120_125.Divide(h125)
+#h120_125.SetTitle(" ")
+#h120_125.SetLineColor(2)
+#h120_125.SetYTitle("Ratio Plot")
+#h120_125.SetXTitle("BDT Discriminator")
+#h120_125.GetYaxis().SetTitleFont(43)
+#h120_125.GetYaxis().SetTitleSize(20)
+#h120_125.GetYaxis().SetTitleOffset(1.2)
+#h120_125.GetXaxis().SetTitleFont(43)
+#h120_125.GetXaxis().SetTitleSize(20)
+#h120_125.GetXaxis().SetTitleOffset(2.6)
+#h120_125.GetXaxis().SetRangeUser(-0.3, 0.3)
+##h120_125.GetXaxis().SetRangeUser(-0.19, 0.24)
+#h120_125.GetXaxis().SetLabelFont(43)
+#h120_125.GetYaxis().SetLabelFont(43)
+#h120_125.GetXaxis().SetLabelSize(20)
+#h120_125.GetYaxis().SetLabelSize(20)
+#h120_125.Draw("HIST")
+#
+#h130_125 = h130.Clone("h4")
+#h130_125.Divide(h125)
+#h130_125.SetLineColor(4)
+#h130_125.Draw("HIST,same")
+##line3 = TLine(-0.19,1.,0.24,1)
+##line3.SetLineColor(1)
+##line3.SetLineStyle(2)
+##line3.SetLineWidth(5)
+##line3.Draw()
+canvas.SaveAs("MVA_othermasses.png")

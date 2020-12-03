@@ -43,18 +43,18 @@ class AnalyzeEMValid2(MegaBase, EMBase):
       if self.visibleMass(myEle, myMuon) > 160 or self.visibleMass(myEle, myMuon) < 110:
        continue
 
-      if self.visibleMass(myEle, myMuon) < 130 and self.visibleMass(myEle, myMuon) > 120 and self.is_data:
+      if self.visibleMass(myEle, myMuon) < 130 and self.visibleMass(myEle, myMuon) > 120: # and self.is_data:
        continue
 
       if self.oppositesign(row):
         self.fill_histos(myEle, myMuon, myMET, myJet1, myJet2, njets, mjj, row.e_m_PZeta, weight, 'TightOS')
-        if njets==2 and mjj>400 :
+        if njets==2 and mjj>400 and self.deltaEta(myJet1.Eta(), myJet2.Eta())>2.5:
           self.fill_histos(myEle, myMuon, myMET, myJet1, myJet2, njets, mjj, row.e_m_PZeta, weight, 'TightOSvbf')
         else:
           self.fill_histos(myEle, myMuon, myMET, myJet1, myJet2, njets, mjj, row.e_m_PZeta, weight, 'TightOSgg')
       else:
         self.fill_histos(myEle, myMuon, myMET, myJet1, myJet2, njets, mjj, row.e_m_PZeta, weight*osss, 'TightSS')
-        if njets==2 and mjj>400 :
+        if njets==2 and mjj>400 and self.deltaEta(myJet1.Eta(), myJet2.Eta())>2.5:
           self.fill_histos(myEle, myMuon, myMET, myJet1, myJet2, njets, mjj, row.e_m_PZeta, weight*osss, 'TightSSvbf')
         else:
           self.fill_histos(myEle, myMuon, myMET, myJet1, myJet2, njets, mjj, row.e_m_PZeta, weight*osss, 'TightSSgg')

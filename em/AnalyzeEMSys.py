@@ -56,18 +56,22 @@ class AnalyzeEMSys(MegaBase, EMBase):
       self.fill_histos(myEle, myMuon, weight, 'TightOSvbf'+name)
     else:
       if njets == 0:
-        mva = self.functor_gg(**self.var_d_gg_0(myEle, myMuon, myMET, myJet1, myJet2, e_m_PZeta))
+        mva = self.functor_gg(**self.var_d_gg_0(myEle, myMuon, myMET, myJet1, myJet2, e_m_PZeta, mjj))
+      elif njets == 1:
+        mva = self.functor_gg(**self.var_d_gg_1(myEle, myMuon, myMET, myJet1, myJet2, e_m_PZeta, mjj))
       else:
-        mva = self.functor_gg(**self.var_d_gg_1(myEle, myMuon, myMET, myJet1, myJet2, e_m_PZeta))
+        mva = self.functor_gg(**self.var_d_gg_2(myEle, myMuon, myMET, myJet1, myJet2, e_m_PZeta, mjj))
       self.fill_histos(myEle, myMuon, weight, 'TightOSgg'+name)
-      if mva < 0.0005:
+      if mva <  0.0255:
         self.fill_histos(myEle, myMuon, weight, 'TightOSggcat0'+name)
-      elif mva < 0.0955:
+      elif mva < 0.0975:
         self.fill_histos(myEle, myMuon, weight, 'TightOSggcat1'+name)
-      elif mva < 0.1295:
+      elif mva < 0.1245:
         self.fill_histos(myEle, myMuon, weight, 'TightOSggcat2'+name)
-      else:
+      elif mva < 0.1545:
         self.fill_histos(myEle, myMuon, weight, 'TightOSggcat3'+name)
+      else:
+        self.fill_histos(myEle, myMuon, weight, 'TightOSggcat4'+name)
 
   def fill_sys(self, row, myEle, myMuon, myMET, myJet1, myJet2, njets, mjj, e_m_PZeta, weight):    
 
@@ -96,7 +100,8 @@ class AnalyzeEMSys(MegaBase, EMBase):
       self.fill_categories(tmpEle, myMuon, tmpMET, myJet1, myJet2, njets, mjj, row.e_m_PZeta, weight, '/eesDown')
   
       #muon energy scale + reso
-      mcSFerror = self.rc.kSpreadMCerror(row.mCharge, myMuon.Pt(), myMuon.Eta(), myMuon.Phi(), row.mGenPt)
+
+      mcSFerror = self.rc.kSpreadMCerror(row.mCharge, row.mPt, row.mEta, row.mPhi, row.mGenPt)
 
       myMETpx = myMET.Px() + myMuon.Px()
       myMETpy = myMET.Py() + myMuon.Py()
