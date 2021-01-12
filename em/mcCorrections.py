@@ -11,9 +11,13 @@ import ROOT
 
 year = '2017'
 
-pu_distributions = glob.glob(os.path.join( 'inputs', os.environ['jobid'], 'data_MuonEG*pu.root'))
-pu_distributionsUp = glob.glob(os.path.join( 'inputs', os.environ['jobid'], 'data_MuonEG*pu_up.root'))
-pu_distributionsDown = glob.glob(os.path.join( 'inputs', os.environ['jobid'], 'data_MuonEG*pu_down.root'))
+#pu_distributions = glob.glob(os.path.join( 'inputs', os.environ['jobid'], 'data_MuonEG*pu.root'))
+#pu_distributionsUp = glob.glob(os.path.join( 'inputs', os.environ['jobid'], 'data_MuonEG*pu_up.root'))
+#pu_distributionsDown = glob.glob(os.path.join( 'inputs', os.environ['jobid'], 'data_MuonEG*pu_down.root'))
+
+pu_distributions = glob.glob(os.path.join( 'inputs', os.environ['jobid'], 'data_SingleMuon*pu.root'))
+pu_distributionsUp = glob.glob(os.path.join( 'inputs', os.environ['jobid'], 'data_SingleMuon*pu_up.root'))
+pu_distributionsDown = glob.glob(os.path.join( 'inputs', os.environ['jobid'], 'data_SingleMuon*pu_down.root'))
 
 def make_puCorrector(puname=''):
     return PileupWeight.PileupWeight(puname, year, *pu_distributions)
@@ -61,43 +65,43 @@ cmsswBase = os.environ['CMSSW_BASE'] + '/src/FinalStateAnalysis/TagAndProbe/data
 f1 = ROOT.TFile(cmsswBase + 'htt_scalefactors_legacy_2017.root')
 w1 = f1.Get('w')
 
-fphi = ROOT.TFile(cmsswBase + 'EMuEmbedPhi.root')
-wphi0 = fphi.Get('0Jet')
-wphi1 = fphi.Get('1Jet')
-wphi2 = fphi.Get('2Jet')
-
-def EmbedPhi(phi, njets, mjj):
-    if njets==0:
-        corr = wphi0.GetBinContent(wphi0.GetXaxis().FindBin(phi))
-    elif njets==1:
-        corr =  wphi1.GetBinContent(wphi1.GetXaxis().FindBin(phi))
-    elif njets==2 and mjj < 500:
-        corr = wphi2.GetBinContent(wphi2.GetXaxis().FindBin(phi))
-    else:
-        corr = 1.0
-    if corr > 2.0:
-        return 1
-    else:
-        return corr
-
-feta = ROOT.TFile(cmsswBase + 'EMuEmbedEta.root')
-weta0 = feta.Get('0Jet')
-weta1 = feta.Get('1Jet')
-weta2 = feta.Get('2Jet')
-
-def EmbedEta(eta, njets, mjj):
-    if njets==0:
-        corr = weta0.GetBinContent(weta0.GetXaxis().FindBin(eta))
-    elif njets==1:
-        corr =  weta1.GetBinContent(weta1.GetXaxis().FindBin(eta))
-    elif njets==2 and mjj < 500:
-        corr = weta2.GetBinContent(weta2.GetXaxis().FindBin(eta))
-    else:
-        corr = 1.0
-    if corr > 2.0 or abs(eta) > 2.4:
-        return 1
-    else:
-        return corr
+#fphi = ROOT.TFile(cmsswBase + 'EMuEmbedPhi.root')
+#wphi0 = fphi.Get('0Jet')
+#wphi1 = fphi.Get('1Jet')
+#wphi2 = fphi.Get('2Jet')
+#
+#def EmbedPhi(phi, njets, mjj):
+#    if njets==0:
+#        corr = wphi0.GetBinContent(wphi0.GetXaxis().FindBin(phi))
+#    elif njets==1:
+#        corr =  wphi1.GetBinContent(wphi1.GetXaxis().FindBin(phi))
+#    elif njets==2 and mjj < 500:
+#        corr = wphi2.GetBinContent(wphi2.GetXaxis().FindBin(phi))
+#    else:
+#        corr = 1.0
+#    if corr > 2.0:
+#        return 1
+#    else:
+#        return corr
+#
+#feta = ROOT.TFile(cmsswBase + 'EMuEmbedEta.root')
+#weta0 = feta.Get('0Jet')
+#weta1 = feta.Get('1Jet')
+#weta2 = feta.Get('2Jet')
+#
+#def EmbedEta(eta, njets, mjj):
+#    if njets==0:
+#        corr = weta0.GetBinContent(weta0.GetXaxis().FindBin(eta))
+#    elif njets==1:
+#        corr =  weta1.GetBinContent(weta1.GetXaxis().FindBin(eta))
+#    elif njets==2 and mjj < 500:
+#        corr = weta2.GetBinContent(weta2.GetXaxis().FindBin(eta))
+#    else:
+#        corr = 1.0
+#    if corr > 2.0 or abs(eta) > 2.4:
+#        return 1
+#    else:
+#        return corr
 
 def MESSys(eta):
     if eta < 1.2:

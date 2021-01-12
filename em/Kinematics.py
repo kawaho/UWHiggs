@@ -3,26 +3,18 @@ import xml.etree.ElementTree as ET
 import os
 from FinalStateAnalysis.StatTools.RooFunctorFromWS import FunctorFromMVA
 
-var_d_star_gg = ['mPt_Per_e_m_Mass','ePt_Per_e_m_Mass','emPt','emEta','j1Pt','DeltaEta_em_j1','DeltaPhi_em_j1','m_met_mT','e_met_mT','DeltaPhi_e_met','DeltaPhi_m_met','DeltaEta_e_met','DeltaEta_m_met','MetEt','e_m_PZeta']
-#var_d_star_gg = ['mPt_Per_e_m_Mass','ePt_Per_e_m_Mass','emPt','emEta','j1Pt','j2Pt','DeltaEta_em_j1','DeltaPhi_em_j1','DeltaEta_j1_j2', 'DeltaPhi_j1_j2', 'DeltaEta_em_j2','DeltaPhi_em_j2','m_met_mT','e_met_mT','DeltaPhi_e_met','DeltaPhi_m_met','DeltaEta_e_met','DeltaEta_m_met','MetEt','e_m_PZeta']
-xml_name_gg = os.path.join(os.getcwd(), "dataset/weights/TMVAClassification_BDT_ggV_full.weights.xml")
+var_d_star_gg = ["mPt_Per_e_m_Mass","ePt_Per_e_m_Mass","emEta","DeltaR_e_m","m_met_mT_per_M","e_met_mT_per_M","MetEt","j1Pt","j1Eta","DeltaR_em_j1","j2Pt","j2Eta","DeltaR_em_j2","R_pT"]
+
+xml_name_gg = os.path.join(os.getcwd(), "dataset/weights/TMVAClassification_BDT_gg_opt.weights.xml")
 functor_gg = FunctorFromMVA('BDT method', xml_name_gg, *var_d_star_gg)
+def var_d_gg_0(myEle, myMuon, myMET, myJet1, myJet2, e_m_PZeta, mjj):
+  return {"mPt_Per_e_m_Mass":myMuon.Pt()/visibleMass(myEle, myMuon),"ePt_Per_e_m_Mass":myEle.Pt()/visibleMass(myEle, myMuon),"emEta":(myEle + myMuon).Eta(),"DeltaR_e_m":deltaR(myEle.Phi(), myMuon.Phi(), myEle.Eta(), myMuon.Eta()),"m_met_mT_per_M":transverseMass(myMuon, myMET)/visibleMass(myEle, myMuon),"e_met_mT_per_M":transverseMass(myEle, myMET)/visibleMass(myEle, myMuon),"MetEt":myMET.Et(),"j1Pt":-1,"j1Eta":-10,"DeltaR_em_j1":-1,"j2Pt":-1,"j2Eta":-10,"DeltaR_em_j2":-1,"R_pT":0}
 
-#var_d_star_vbf = ['mPt_Per_e_m_Mass','ePt_Per_e_m_Mass','emEta','j1Pt','DeltaEta_em_j1','DeltaPhi_em_j1','DeltaEta_em_j2','DeltaPhi_em_j2','DeltaEta_j1_j2','DeltaPhi_j1_j2','Zeppenfeld','DeltaPhi_e_met','DeltaPhi_m_met','DeltaEta_e_met','DeltaEta_m_met','MetEt','R_pT']
-#xml_name_vbf = os.path.join(os.getcwd(), "dataset/weights/TMVAClassification_BDTG_vbf.weights.xml")
-#functor_vbf = FunctorFromMVA('BDT method', xml_name_vbf, *var_d_star_vbf)
+def var_d_gg_1(myEle, myMuon, myMET, myJet1, myJet2, e_m_PZeta, mjj):
+  return {"mPt_Per_e_m_Mass":myMuon.Pt()/visibleMass(myEle, myMuon),"ePt_Per_e_m_Mass":myEle.Pt()/visibleMass(myEle, myMuon),"emEta":(myEle + myMuon).Eta(),"DeltaR_e_m":deltaR(myEle.Phi(), myMuon.Phi(), myEle.Eta(), myMuon.Eta()),"m_met_mT_per_M":transverseMass(myMuon, myMET)/visibleMass(myEle, myMuon),"e_met_mT_per_M":transverseMass(myEle, myMET)/visibleMass(myEle, myMuon),"MetEt":myMET.Et(),"j1Pt":myJet1.Pt(),"j1Eta":myJet1.Eta(),"DeltaR_em_j1":deltaR((myEle + myMuon).Phi(), myJet1.Phi(), (myEle + myMuon).Eta(), myJet1.Eta()),"j2Pt":-1,"j2Eta":-10,"DeltaR_em_j2":-1,"R_pT":0}
 
-def var_d_gg_0(myEle, myMuon, myMET, myJet1, myJet2, e_m_PZeta):
-  return {'emEta' : (myEle + myMuon).Eta(), 'DeltaEta_m_met' : deltaEta(myMuon.Eta(), myMET.Eta()), 'DeltaEta_e_met' : deltaEta(myEle.Eta(), myMET.Eta()), 'MetEt' : myMET.Et(), 'DeltaPhi_e_met' : deltaPhi(myEle.Phi(), myMET.Phi()), 'emPt' : (myEle + myMuon).Pt(), 'DeltaPhi_em_j1' : -1, 'ePt_Per_e_m_Mass' :myEle.Pt()/visibleMass(myEle, myMuon) , 'e_met_mT' : transverseMass(myEle, myMET),'mPt_Per_e_m_Mass' :myMuon.Pt()/visibleMass(myEle, myMuon) ,'m_met_mT' :transverseMass(myMuon, myMET) ,'j1Pt' : -1,'DeltaEta_em_j1' : -1,'e_m_PZeta' :e_m_PZeta ,'DeltaPhi_m_met': deltaPhi(myMuon.Phi(), myMET.Phi())} 
-
-def var_d_gg_1(myEle, myMuon, myMET, myJet1, myJet2, e_m_PZeta):
-  return {'emEta' : (myEle + myMuon).Eta(), 'DeltaEta_m_met' : deltaEta(myMuon.Eta(), myMET.Eta()), 'DeltaEta_e_met' : deltaEta(myEle.Eta(), myMET.Eta()), 'MetEt' : myMET.Et(), 'DeltaPhi_e_met' : deltaPhi(myEle.Phi(), myMET.Phi()), 'emPt' : (myEle + myMuon).Pt(), 'DeltaPhi_em_j1' : deltaPhi((myEle + myMuon).Phi(), myJet1.Phi()), 'ePt_Per_e_m_Mass' :myEle.Pt()/visibleMass(myEle, myMuon) , 'e_met_mT' : transverseMass(myEle, myMET),'mPt_Per_e_m_Mass' :myMuon.Pt()/visibleMass(myEle, myMuon) ,'m_met_mT' :transverseMass(myMuon, myMET) ,'j1Pt' : myJet1.Pt(),'DeltaEta_em_j1' : deltaEta((myEle + myMuon).Eta(), myJet1.Eta()),'e_m_PZeta' :e_m_PZeta ,'DeltaPhi_m_met' : deltaPhi(myMuon.Phi(), myMET.Phi())} 
-
-def var_d_gg_2(myEle, myMuon, myMET, myJet1, myJet2, e_m_PZeta):
-  return {'emEta' : (myEle + myMuon).Eta(), 'DeltaEta_m_met' : deltaEta(myMuon.Eta(), myMET.Eta()), 'DeltaEta_e_met' : deltaEta(myEle.Eta(), myMET.Eta()), 'MetEt' : myMET.Et(), 'DeltaPhi_e_met' : deltaPhi(myEle.Phi(), myMET.Phi()), 'emPt' : (myEle + myMuon).Pt(), 'DeltaPhi_em_j1' : deltaPhi((myEle + myMuon).Phi(), myJet1.Phi()), 'ePt_Per_e_m_Mass' :myEle.Pt()/visibleMass(myEle, myMuon) , 'e_met_mT' : transverseMass(myEle, myMET),'mPt_Per_e_m_Mass' :myMuon.Pt()/visibleMass(myEle, myMuon) ,'m_met_mT' :transverseMass(myMuon, myMET) ,'j1Pt' : myJet1.Pt(),'DeltaEta_em_j1' : deltaEta((myEle + myMuon).Eta(), myJet1.Eta()),'e_m_PZeta' :e_m_PZeta ,'DeltaPhi_m_met' : deltaPhi(myMuon.Phi(), myMET.Phi())} 
-
-#def var_d_vbf(myEle, myMuon, myMET, myJet1, myJet2): 
-#  return {'emEta' : (myEle + myMuon).Eta(), 'R_pT': abs((myMuon+myEle+myJet1+myJet2).Pt())/(myMuon.Pt()+myEle.Pt()+myJet1.Pt()+myJet2.Pt()),'j1Pt' : myJet1.Pt(), 'MetEt' : myMET.Et(),'Zeppenfeld': Zeppenfeld(myEle, myMuon, myJet1, myJet2),  'DeltaPhi_j1_j2': deltaPhi(myJet1.Phi(), myJet2.Phi()), 'ePt_Per_e_m_Mass' :myEle.Pt()/visibleMass(myEle, myMuon) , 'DeltaEta_j1_j2': deltaEta(myJet1.Eta(), myJet2.Eta()), 'DeltaEta_m_met': deltaPhi(myMuon.Phi(), myMET.Phi()), 'DeltaEta_e_met': deltaPhi(myEle.Phi(), myMET.Phi()),'mPt_Per_e_m_Mass' :myMuon.Pt()/visibleMass(myEle, myMuon) , 'DeltaPhi_e_met': deltaPhi(myEle.Phi(), myMET.Phi()), 'DeltaPhi_em_j1': deltaPhi((myEle + myMuon).Phi(), myJet1.Phi()), 'DeltaEta_em_j1': deltaEta((myEle + myMuon).Eta(), myJet1.Eta()), 'DeltaEta_em_j2': deltaEta((myEle + myMuon).Eta(), myJet2.Eta()), 'DeltaPhi_m_met': deltaPhi(myMuon.Phi(), myMET.Phi()), 'DeltaPhi_em_j2': deltaPhi((myEle + myMuon).Phi(), myJet2.Phi())} 
+def var_d_gg_2(myEle, myMuon, myMET, myJet1, myJet2, e_m_PZeta,mjj):
+  return {"mPt_Per_e_m_Mass":myMuon.Pt()/visibleMass(myEle, myMuon),"ePt_Per_e_m_Mass":myEle.Pt()/visibleMass(myEle, myMuon),"emEta":(myEle + myMuon).Eta(),"DeltaR_e_m":deltaR(myEle.Phi(), myMuon.Phi(), myEle.Eta(), myMuon.Eta()),"m_met_mT_per_M":transverseMass(myMuon, myMET)/visibleMass(myEle, myMuon),"e_met_mT_per_M":transverseMass(myEle, myMET)/visibleMass(myEle, myMuon),"MetEt":myMET.Et(),"j1Pt":myJet1.Pt(),"j1Eta":myJet1.Eta(),"DeltaR_em_j1":deltaR((myEle + myMuon).Phi(), myJet1.Phi(), (myEle + myMuon).Eta(), myJet1.Eta()),"j2Pt":myJet2.Pt(),"j2Eta":myJet2.Eta(),"DeltaR_em_j2":deltaR((myEle + myMuon).Phi(), myJet2.Phi(),(myEle + myMuon).Eta(), myJet2.Eta()),"R_pT":abs((myMuon+myEle+myJet1+myJet2).Pt())/(myMuon.Pt()+myEle.Pt()+myJet1.Pt()+myJet2.Pt())}
 
 def invert_case(letter):
   if letter.upper() == letter:
@@ -76,75 +68,20 @@ def topPtreweight(pt1, pt2):
 
 plotnames = ['TightOSgg', 'TightOSvbf', 'TightSSgg', 'TightSSvbf']
 
-#plotnames = ['TightOS', 'TightOSEB-MB', 'TightOSEB-ME', 'TightOSEE', 'TightOS0Jet', 'TightOS0JetEB-MB', 'TightOS0JetEB-ME', 'TightOS0JetEE', 'TightOS1Jet', 'TightOS1JetEB-MB', 'TightOS1JetEB-ME', 'TightOS1JetEE', 'TightOS2Jet','TightOS2JetGG', 'TightOS2JetGGEB-MB', 'TightOS2JetGGEB-ME', 'TightOS2JetGGEE', 'TightOS2JetVBF']
+#catnames = ['TightOS', 'TightOSvbf','TightOSggcat0', 'TightOSggcat1', 'TightOSggcat2', 'TightOSggcat1_EC', 'TightOSggcat2_EC', 'TightOSggcat1_B', 'TightOSggcat2_B', 'TightOSggcat3','TightOSgg']
+catnames = ['TightOS', 'TightOSvbf','TightOSggcat0', 'TightOSggcat1', 'TightOSggcat2', 'TightOSggcat3', 'TightOSggcat4', 'TightOSgg']
 
-bdtnames = ['TightOSgg', 'TightOSvbf', 'TightSSgg', 'TightSSvbf']
-#plotnames = ['TightOS', 'TightOSEB-MB', 'TightOSEB-ME', 'TightOSEE-MB', 'TightOSEE-ME', 'TightOS0Jet', 'TightOS0JetEB-MB', 'TightOS0JetEB-ME', 'TightOS0JetEE-MB', 'TightOS0JetEE-ME', 'TightOS1Jet', 'TightOS1JetEB-MB', 'TightOS1JetEB-ME', 'TightOS1JetEE-MB', 'TightOS1JetEE-ME', 'TightOS2Jet', 'TightOS2JetEB-MB', 'TightOS2JetEB-ME', 'TightOS2JetEE-MB', 'TightOS2JetEE-ME', 'TightOS2JetVBF', 'TightOS2JetVBFEB-MB', 'TightOS2JetVBFEB-ME', 'TightOS2JetVBFEE-MB', 'TightOS2JetVBFEE-ME']
+#catnames = ['TightOS', 'TightOSvbf','TightOSggcat0', 'TightOSggcat1_EB', 'TightOSggcat2_EB', 'TightOSggcat1_EE', 'TightOSggcat2_EE', 'TightOSggcat3','TightOSgg']
 
-def SensitivityParser():
-  cutparms = {}
-  for cat in range(10):
-    catname = str(cat)
-    cutparms[catname] = {}
-    if (catname == '0'):
-      cutparms[catname]['geo'] = 'EB-MB'
-      cutparms[catname]['cuts'] = {}
-      cutparms[catname]['cuts']['ept_min'] = 36 
-      cutparms[catname]['cuts']['mpt_min'] = 30
-      cutparms[catname]['cuts']['met_max'] = 62
-    elif (catname == '1'):
-      cutparms[catname]['geo'] = 'EB-ME'
-      cutparms[catname]['cuts'] = {}
-      cutparms[catname]['cuts']['ept_min'] = 25
-      cutparms[catname]['cuts']['mpt_min'] = 27
-      cutparms[catname]['cuts']['met_max'] = 61
-    elif (catname == '2'):
-      cutparms[catname]['geo'] = 'EE'
-      cutparms[catname]['cuts'] = {}
-      cutparms[catname]['cuts']['ept_min'] = 25
-      cutparms[catname]['cuts']['mpt_min'] = 30
-      cutparms[catname]['cuts']['met_max'] = 65
-    elif (catname == '3'):
-      cutparms[catname]['geo'] = 'EB-MB'
-      cutparms[catname]['cuts'] = {}
-      cutparms[catname]['cuts']['ept_min'] = 18
-      cutparms[catname]['cuts']['mpt_min'] = 21
-      cutparms[catname]['cuts']['met_max'] = 64
-    elif (catname == '4'):
-      cutparms[catname]['geo'] = 'EB-ME'
-      cutparms[catname]['cuts'] = {}
-      cutparms[catname]['cuts']['ept_min'] = 25
-      cutparms[catname]['cuts']['mpt_min'] = 22
-      cutparms[catname]['cuts']['met_max'] = 65
-    elif (catname == '5'):
-      cutparms[catname]['geo'] = 'EE'
-      cutparms[catname]['cuts'] = {}
-      cutparms[catname]['cuts']['ept_min'] = 20
-      cutparms[catname]['cuts']['mpt_min'] = 24
-      cutparms[catname]['cuts']['met_max'] = 64
-    elif (catname == '6'):
-      cutparms[catname]['geo'] = 'EB-MB'
-      cutparms[catname]['cuts'] = {}
-      cutparms[catname]['cuts']['ept_min'] = 20
-      cutparms[catname]['cuts']['mpt_min'] = 21
-      cutparms[catname]['cuts']['met_max'] = 68
-    elif (catname == '7'):
-      cutparms[catname]['geo'] = 'EB-ME'
-      cutparms[catname]['cuts'] = {}
-      cutparms[catname]['cuts']['ept_min'] = 20
-      cutparms[catname]['cuts']['mpt_min'] = 18
-      cutparms[catname]['cuts']['met_max'] = 68
-    elif (catname == '8'):
-      cutparms[catname]['geo'] = 'EE'
-      cutparms[catname]['cuts'] = {}
-      cutparms[catname]['cuts']['ept_min'] = 20
-      cutparms[catname]['cuts']['mpt_min'] = 23
-      cutparms[catname]['cuts']['met_max'] = 69
-    elif (catname == '9'):
-      cutparms[catname]['geo'] = None
-      cutparms[catname]['cuts'] = {}
-      cutparms[catname]['cuts']['ept_min'] = 21
-      cutparms[catname]['cuts']['mpt_min'] = 22
-      cutparms[catname]['cuts']['met_max'] = 69
-  
-  return cutparms
+vbfnames = ['TightOSvbf', 'TightOSvbf500a', 'TightOSvbf500b', 'TightOSvbf510a', 'TightOSvbf510b', 'TightOSvbf520a', 'TightOSvbf520b', 'TightOSvbf530a', 'TightOSvbf530b', 'TightOSvbf540a', 'TightOSvbf540b', 'TightOSvbf550a', 'TightOSvbf550b', 'TightOSvbf560a', 'TightOSvbf560b', 'TightOSvbf570a', 'TightOSvbf570b', 'TightOSvbf580a', 'TightOSvbf580b', 'TightOSvbf590a', 'TightOSvbf590b', 'TightOSvbf600a', 'TightOSvbf600b', 'TightOSvbf610a', 'TightOSvbf610b', 'TightOSvbf620a', 'TightOSvbf620b', 'TightOSvbf630a', 'TightOSvbf630b', 'TightOSvbf640a', 'TightOSvbf640b', 'TightOSvbf650a', 'TightOSvbf650b', 'TightOSvbf660a', 'TightOSvbf660b', 'TightOSvbf670a', 'TightOSvbf670b', 'TightOSvbf680a', 'TightOSvbf680b', 'TightOSvbf690a', 'TightOSvbf690b', 'TightOSvbf700a', 'TightOSvbf700b']
+
+sys = ['', 'bTagUp2016', 'bTagDown2016', 'bTagUp2017', 'bTagDown2017', 'bTagUp2018', 'bTagDown2018', 'puUp2016', 'puDown2016', 'puUp2017', 'puDown2017', 'puUp2018', 'puDown2018', 'pfUp2016', 'pfDown2016',  'pfUp2017', 'pfDown2017', 'eesUp', 'eesDown', 'eerUp', 'eerDown', 'meUp', 'meDown']
+
+jes = ['JetAbsoluteUp', 'JetAbsoluteDown', 'JetAbsoluteyearUp', 'JetAbsoluteyearDown', 'JetBBEC1Up', 'JetBBEC1Down', 'JetBBEC1yearUp', 'JetBBEC1yearDown', 'JetFlavorQCDUp', 'JetFlavorQCDDown', 'JetEC2Up', 'JetEC2Down', 'JetEC2yearUp', 'JetEC2yearDown', 'JetHFUp', 'JetHFDown', 'JetHFyearUp', 'JetHFyearDown', 'JetRelativeBalUp', 'JetRelativeBalDown', 'JetRelativeSampleUp', 'JetRelativeSampleDown', 'JERUp', 'JERDown']
+
+ues = ['UnclusteredEnUp', 'UnclusteredEnDown', 'UesCHARGEDUp', 'UesCHARGEDDown', 'UesECALUp', 'UesECALDown', 'UesHCALUp', 'UesHCALDown', 'UesHFUp', 'UesHFDown']
+
+bdtnames = ['TightOS', 'TightOSgg', 'TightOSvbf', 'TightSSgg', 'TightSSvbf']
+mesSys = ['/mes1p2Up', '/mes1p2Down', '/mes2p1Up', '/mes2p1Down', '/mes2p4Up', '/mes2p4Down']
+
+lhe = ['lhe0', 'lhe1', 'lhe2', 'lhe3', 'lhe4', 'lhe5', 'lhe6', 'lhe7', 'lhe8', 'lhe9', 'lhe10', 'lhe11', 'lhe12', 'lhe13', 'lhe14', 'lhe15', 'lhe16', 'lhe17', 'lhe18', 'lhe19', 'lhe20', 'lhe21', 'lhe22', 'lhe23', 'lhe24', 'lhe25', 'lhe26', 'lhe27', 'lhe28', 'lhe29', 'lhe30', 'lhe31', 'lhe32', 'lhe33', 'lhe34', 'lhe35', 'lhe36', 'lhe37', 'lhe38', 'lhe39', 'lhe40', 'lhe41', 'lhe42', 'lhe43', 'lhe44', 'lhe45', 'lhe46', 'lhe47', 'lhe48', 'lhe49', 'lhe50', 'lhe51', 'lhe52', 'lhe53', 'lhe54', 'lhe55', 'lhe56', 'lhe57', 'lhe58', 'lhe59', 'lhe60', 'lhe61', 'lhe62', 'lhe63', 'lhe64', 'lhe65', 'lhe66', 'lhe67', 'lhe68', 'lhe69', 'lhe70', 'lhe71', 'lhe72', 'lhe73', 'lhe74', 'lhe75', 'lhe76', 'lhe77', 'lhe78', 'lhe79', 'lhe80', 'lhe81', 'lhe82', 'lhe83', 'lhe84', 'lhe85', 'lhe86', 'lhe87', 'lhe88', 'lhe89', 'lhe90', 'lhe91', 'lhe92', 'lhe93', 'lhe94', 'lhe95', 'lhe96', 'lhe97', 'lhe98', 'lhe99', 'lhe100', 'lhe101', 'lhe102', 'lhe103', 'lhe104', 'lhe105', 'lhe106', 'lhe107', 'lhe108', 'lhe109', 'lhe110', 'lhe111', 'lhe112', 'lhe113', 'lhe114', 'lhe115', 'lhe116', 'lhe117', 'lhe118', 'lhe119']

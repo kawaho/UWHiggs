@@ -7,6 +7,7 @@ class mcWeights:
         self.is_DY = bool('DY' in target) and not self.is_DYlow
         self.is_GluGlu = bool('GluGlu_LFV' in target)
         self.is_VBF = bool('VBF_LFV' in target)
+        self.is_Signal = bool(self.is_GluGlu or self.is_VBF)
         self.is_W = bool('JetsToLNu' in target)
         self.is_WG = bool('WGToLNuG' in target)
         self.is_WW = bool('WW_' in target)
@@ -34,17 +35,17 @@ class mcWeights:
         self.is_GluGluH = bool('GluGluHToTauTau' in target)
         self.is_VBFHWW = bool('VBFHToWW' in target)
         self.is_GluGluHWW = bool('GluGluHToWW' in target)
-        self.is_recoilC = bool(self.is_DYlow or self.is_DY or self.is_GluGlu or self.is_VBF or self.is_EWK or self.is_VBFH or self.is_GluGluH or self.is_VBFHWW or self.is_GluGluHWW or self.is_W)
+        self.is_recoilC = bool(self.is_DYlow or self.is_DY or self.is_EWK or self.is_VBFH or self.is_GluGluH or self.is_VBFHWW or self.is_GluGluHWW or self.is_W)
         self.MetCorrection = True
         self.DYweight = {
             0 : 2.584573321,
             1 : 0.711046583,
             2 : 0.922662197,
             3 : 1.653763083,
-            4 : 0.406245799
+            4 : 0.406323560
         }
         self.Wweight = {
-            0 : 0.0,
+            0 : 85.28193795,
             1 : 6.574209210,
             2 : 3.986663076,
             3 : 3.369765210,
@@ -102,4 +103,4 @@ class mcWeights:
             weight = weight*0.00191
         if self.is_GluGluHWW:
             weight = weight*0.00167
-        return weight
+        return weight*41525/41557 #41526/41557 #41525/41557

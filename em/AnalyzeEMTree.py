@@ -39,22 +39,14 @@ class AnalyzeEMTree(MegaBase, EMBase):
       self.tree1.Branch(varname, holder, name)
 
 
-  def filltree(self, myEle, myMET, myMuon, itype, cat, weight):
+  def filltree(self, myEle, myMuon, myMET, myJet1, myJet2, njets, mjj, e_m_PZeta, weight, cat):
     for varname, holder in self.holders:
-      if varname=="mPt":
-        holder[0] = myMuon.Pt()
-      elif varname=="ePt":
-        holder[0] = myEle.Pt()
-      elif varname=="e_m_Mass":
+      if varname=="e_m_Mass":
         holder[0] = self.visibleMass(myEle, myMuon)
-      elif varname=="type1_pfMetEt":
-        holder[0] = myMET.Et()
-      elif varname=="itype":
-        holder[0] = itype
-      elif varname=="cat":
-        holder[0] = cat
       elif varname=="weight":
         holder[0] = weight
+      elif varname=="cat":
+        holder[0] = cat
     self.tree1.Fill()
 
   def process(self):
@@ -65,81 +57,49 @@ class AnalyzeEMTree(MegaBase, EMBase):
         continue
 
       myEle, myMET, myMuon = self.lepVec(row)[0], self.lepVec(row)[1], self.lepVec(row)[2]
+      myJet1, myJet2 = self.jetVec(row)[0], self.jetVec(row)[1]
       njets = row.jetVeto30WoNoisyJets
       mjj = row.vbfMassWoNoisyJets
 
-      weight = self.corrFact(row, myEle, myMuon)
+      weight = self.corrFact(row, myEle, myMuon)[0]
 
-      if math.isnan(row.vbfMassWoNoisyJets):
+      if math.isnan(row.vbfMass):
         continue
      
       if self.visibleMass(myEle, myMuon) > 160 or self.visibleMass(myEle, myMuon) < 110:
-       continue
+        continue
 
       if self.oppositesign(row):
-        if njets==0:
-          if self.cuts(row, '0'):
-            if self.is_data:
-              self.filltree(myEle, myMET, myMuon, 0, 1, weight)
-            else:
-              self.filltree(myEle, myMET, myMuon, -1, 1, weight)
+        if not (njets==2 and mjj>400 and self.deltaEta(myJet1.Eta(), myJet2.Eta())>2):
+          continue
 
-          elif self.cuts(row, '1'):
-            if self.is_data:
-              self.filltree(myEle, myMET, myMuon, 0, 2, weight)
-            else:
-              self.filltree(myEle, myMET, myMuon, -1, 2, weight)
-
-          elif self.cuts(row, '2'):
-            if self.is_data:
-              self.filltree(myEle, myMET, myMuon, 0, 3, weight)
-            else:
-              self.filltree(myEle, myMET, myMuon, -1, 3, weight)
-
-        elif njets==1:
-          if self.cuts(row, '3'):
-            if self.is_data:
-              self.filltree(myEle, myMET, myMuon, 0, 4, weight)
-            else:
-              self.filltree(myEle, myMET, myMuon, -1, 4, weight)
-
-          if self.cuts(row, '4'):
-            if self.is_data:
-              self.filltree(myEle, myMET, myMuon, 0, 5, weight)
-            else:
-              self.filltree(myEle, myMET, myMuon, -1, 5, weight)
-
-          elif self.cuts(row, '5'):
-            if self.is_data:
-              self.filltree(myEle, myMET, myMuon, 0, 6, weight)
-            else:
-              self.filltree(myEle, myMET, myMuon, -1, 6, weight)
-
-        elif njets==2 and mjj < 500:
-          if self.cuts(row, '6'):
-            if self.is_data:
-              self.filltree(myEle, myMET, myMuon, 0, 7, weight)
-            else:
-              self.filltree(myEle, myMET, myMuon, -1, 7, weight)
-
-          if self.cuts(row, '7'):
-            if self.is_data:
-              self.filltree(myEle, myMET, myMuon, 0, 8, weight)
-            else:
-              self.filltree(myEle, myMET, myMuon, -1, 8, weight)
-
-          elif self.cuts(row, '8'):
-            if self.is_data:
-              self.filltree(myEle, myMET, myMuon, 0, 9, weight)
-            else:
-              self.filltree(myEle, myMET, myMuon, -1, 9, weight)
-
-
-        elif njets==2 and mjj > 500 and self.cuts(row, '9'): 
-          if self.is_data:
-            self.filltree(myEle, myMET, myMuon, 0, 10, weight)
+        self.filltree(myEle, myMuon, myMET, myJet1, myJet2, njets, mjj, row.e_m_PZeta, weight, 42)
+        for i in range(500,710,10):
+          if mjj>i:        
+            self.filltree(myEle, myMuon, myMET, myJet1, myJet2, njets, mjj, row.e_m_PZeta, weight, (i-500)*2/10)
           else:
-            self.filltree(myEle, myMET, myMuon, -1, 10, weight)
+            self.filltree(myEle, myMuon, myMET, myJet1, myJet2, njets, mjj, row.e_m_PZeta, weight, (i-500)*2/10+1)
+#        self.filltree(myEle, myMuon, myMET, myJet1, myJet2, njets, mjj, row.e_m_PZeta, weight, 6)
+#        if njets==2 and mjj>400 and self.deltaEta(myJet1.Eta(), myJet2.Eta())>2.5:
+#          self.filltree(myEle, myMuon, myMET, myJet1, myJet2, njets, mjj, row.e_m_PZeta, weight, 5)
+#        else:
+#          if njets == 0:
+#            mva = self.functor_gg(**self.var_d_gg_0(myEle, myMuon, myMET, myJet1, myJet2, row.e_m_PZeta, mjj))
+#          elif njets == 1:
+#            mva = self.functor_gg(**self.var_d_gg_1(myEle, myMuon, myMET, myJet1, myJet2, row.e_m_PZeta, mjj))
+#          else:
+#            mva = self.functor_gg(**self.var_d_gg_2(myEle, myMuon, myMET, myJet1, myJet2, row.e_m_PZeta, mjj))
+#          if mva < 0.0175:
+#            self.filltree(myEle, myMuon, myMET, myJet1, myJet2, njets, mjj, row.e_m_PZeta, weight, 0)
+#          elif mva < 0.0975:
+#            self.filltree(myEle, myMuon, myMET, myJet1, myJet2, njets, mjj, row.e_m_PZeta, weight, 1)
+#          elif mva < 0.1305:
+#            self.filltree(myEle, myMuon, myMET, myJet1, myJet2, njets, mjj, row.e_m_PZeta, weight, 2)
+#          elif mva < 0.1635:
+#            self.filltree(myEle, myMuon, myMET, myJet1, myJet2, njets, mjj, row.e_m_PZeta, weight, 3)
+#          else:
+#            self.filltree(myEle, myMuon, myMET, myJet1, myJet2, njets, mjj, row.e_m_PZeta, weight, 4)
+
 
   def finish(self):
      self.tree1.Write()

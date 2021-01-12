@@ -1,0 +1,42 @@
+Warning in <TInterpreter::ReadRootmapFile>: class  edm::RefProd<vector<pat::Tau> > found in libFinalStateAnalysisDataFormats.so  is already in libDataFormatsPatCandidates.so 
+Scanning Lower Limit at MVA =  1.0
+Upper MVA =  1
+Traceback (most recent call last):
+  File "treebrowser.py", line 47, in <module>
+    totalSgg += fTreeS.weight
+KeyboardInterrupt
+Warning in <TInterpreter::ReadRootmapFile>: class  edm::RefProd<vector<pat::Tau> > found in libFinalStateAnalysisDataFormats.so  is already in libDataFormatsPatCandidates.so 
+TClassTable::Add:0: RuntimeWarning: class edm::RefProd<vector<pat::Tau> > already in TClassTable
+TClassTable::Add:0: RuntimeWarning: class RooDataHistEffBuilder already in TClassTable
+TClassTable::Add:0: RuntimeWarning: class RooCruijff already in TClassTable
+Passing Signal Rate:  0
+Traceback (most recent call last):
+  File "Treetrim.py", line 54, in <module>
+    hmvaW.Fill(mva[0], oldtree2.weight)
+NameError: name 'hmvaW' is not defined
+  File "Treetrim.py", line 71
+    while run
+            ^
+SyntaxError: invalid syntax
+Warning in <TInterpreter::ReadRootmapFile>: class  edm::RefProd<vector<pat::Tau> > found in libFinalStateAnalysisDataFormats.so  is already in libDataFormatsPatCandidates.so 
+TClassTable::Add:0: RuntimeWarning: class edm::RefProd<vector<pat::Tau> > already in TClassTable
+TClassTable::Add:0: RuntimeWarning: class RooDataHistEffBuilder already in TClassTable
+TClassTable::Add:0: RuntimeWarning: class RooCruijff already in TClassTable
+Traceback (most recent call last):
+  File "Treetrim.py", line 41, in <module>
+    mva[0] = functor_gg(**var_d_gg(oldtree1)) 
+  File "Treetrim.py", line 14, in var_d_gg
+    return {'emEta': tree.emEta, 'DeltaEta_m_met': tree.DeltaEta_m_met, 'DeltaEta_e_met': tree.DeltaEta_e_met, 'MetEt': tree.MetEt, 'DeltaPhi_e_met': tree.DeltaPhi_e_met, 'emPt': tree.emPt, 'DeltaPhi_em_j1': tree.DeltaPhi_em_j1, 'ePt_Per_e_m_Mass': tree.ePt_Per_e_m_Mass , 'e_met_mT': tree.e_met_mT, 'mPt_Per_e_m_Mass': tree.mPt_Per_e_m_Mass, 'm_met_mT': tree.m_met_mT, 'j1Pt': tree.j1Pt, 'DeltaEta_em_j1': tree.DeltaEta_em_j1, 'e_m_PZeta': tree.e_m_PZeta, 'DeltaEta_em_j2': tree.DeltaEta_em_j2, 'DeltaPhi_m_met': tree.DeltaPhi_m_met, 'DeltaPhi_em_j2': tree.DeltaPhi_em_j2} 
+KeyboardInterrupt
+Warning in <TInterpreter::ReadRootmapFile>: class  edm::RefProd<vector<pat::Tau> > found in libFinalStateAnalysisDataFormats.so  is already in libDataFormatsPatCandidates.so 
+TClassTable::Add:0: RuntimeWarning: class edm::RefProd<vector<pat::Tau> > already in TClassTable
+TClassTable::Add:0: RuntimeWarning: class RooDataHistEffBuilder already in TClassTable
+TClassTable::Add:0: RuntimeWarning: class RooCruijff already in TClassTable
+Passing Signal Rate:  0
+Passing Background Rate:  0
+Warning in <TInterpreter::ReadRootmapFile>: class  edm::RefProd<vector<pat::Tau> > found in libFinalStateAnalysisDataFormats.so  is already in libDataFormatsPatCandidates.so 
+TClassTable::Add:0: RuntimeWarning: class edm::RefProd<vector<pat::Tau> > already in TClassTable
+TClassTable::Add:0: RuntimeWarning: class RooDataHistEffBuilder already in TClassTable
+TClassTable::Add:0: RuntimeWarning: class RooCruijff already in TClassTable
+Passing Signal Rate:  0
+Passing Background Rate:  0
