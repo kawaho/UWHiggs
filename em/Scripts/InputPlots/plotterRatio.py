@@ -47,7 +47,7 @@ parser.add_argument(
     type=float,
     action="store",
     dest="higgsSF",
-    default=0.5,
+    default=20,
     help="Provide the Scale Factor for the SM-Higgs signals.  10x is default")
 parser.add_argument(
     "--higgsSFSM",
@@ -72,10 +72,23 @@ args = parser.parse_args()
 
 
 varnames={}
-varnames['emPt'] = 'p^{e#mu}_{T} [GeV]'
+varnames['ePt_Per_e_m_Mass'] = 'p^{e}_{T}/m_{e#mu}'
+varnames['mPt_Per_e_m_Mass'] = 'p^{#mu}_{T}/m_{e#mu}'
 varnames['emEta'] = '#eta^{e#mu}'
+varnames['DeltaR_e_m'] = '#Delta R[e, #mu]'
 varnames['j1Pt'] = 'p^{j_{1}}_{T} [GeV]'
 varnames['j2Pt'] = 'p^{j_{2}}_{T} [GeV]'
+varnames['j1Eta'] = '#eta^{j_{1}}'
+varnames['j2Eta'] = '#eta^{j_{2}}'
+varnames['DeltaR_em_j1'] = '#Delta R[e#mu, j_{1}]'
+varnames['DeltaR_em_j2'] = '#Delta R[e#mu, j_{2}]'
+varnames['MetEt'] = 'E_{T}^{miss} [GeV]'
+varnames['R_pT']='R_{p_{T}}'
+varnames['m_met_mT_Per_e_m_Mass'] = 'm_{T}[#mu, MET]/m_{e#mu}'
+varnames['e_met_mT_Per_e_m_Mass'] = 'm_{T}[e, MET]/m_{e#mu}'
+
+
+varnames['emPt'] = 'p^{e#mu}_{T} [GeV]'
 varnames['DeltaEta_em_j1'] = '#Delta#eta[e#mu, j_{1}]'
 varnames['DeltaPhi_em_j1'] = '#Delta#phi[e#mu, j_{1}]'
 varnames['DeltaEta_em_j2'] = '#Delta#eta[e#mu, j_{2}]'
@@ -86,13 +99,10 @@ varnames['DeltaPhi_e_m'] = '#Delta#phi[e, #mu]'
 varnames['DeltaEta_j1_j2'] = '#Delta#eta[j_{1}, j_{2}]'
 varnames['DeltaPhi_j1_j2'] = '#Delta#phi[j_{1}, j_{2}]'
 varnames['Mjj'] = 'm_{jj} [GeV]'
-varnames['m_met_mT_Per_e_m_Mass'] = 'M_{T}[#mu, MET]/M_{e#mu}'
-varnames['e_met_mT_Per_e_m_Mass'] = 'M_{T}[e, MET]/M_{e#mu}'
 varnames['DeltaPhi_e_met'] = '#Delta#phi[e, MET]'
 varnames['DeltaPhi_m_met'] = '#Delta#phi[#mu, MET]'
-varnames['DeltaEta_e_met'] = '#Delta#eta[e, MET]'
-varnames['DeltaEta_m_met'] = '#Delta#phi[#mu, MET]'
-varnames['MetEt'] = 'E_{T}^{miss} [GeV]'
+varnames['DeltaEta_e_met'] = '|#eta^{e}|'
+varnames['DeltaEta_m_met'] = '|#eta^{#mu}|'
 varnames['e_m_PZeta'] = 'P_{#zeta} [GeV]'
 varnames['bdtDiscriminator']='BDT Discriminator'
 
@@ -366,6 +376,35 @@ elif variable == 'j1Pt':
  hists["data_obs"].GetXaxis().SetRangeUser(30, 350)
 elif variable == 'e_m_PZeta':
  hists["data_obs"].GetXaxis().SetRangeUser(-150, 200)
+elif variable == 'DeltaEta_e_met':
+ hists["data_obs"].GetXaxis().SetRangeUser(0, 2.5)
+elif variable == 'DeltaEta_m_met':
+ hists["data_obs"].GetXaxis().SetRangeUser(0, 2.4)
+elif variable == 'DeltaR_e_m':
+ hists["data_obs"].GetXaxis().SetRangeUser(0.5, 4.5)
+elif variable == 'DeltaR_em_j1':
+ hists["data_obs"].GetXaxis().SetRangeUser(0, 6)
+elif variable == 'DeltaR_em_j2':
+ hists["data_obs"].GetXaxis().SetRangeUser(0, 6)
+elif variable == 'e_met_mT_Per_e_m_Mass':
+ hists["data_obs"].GetXaxis().SetRangeUser(0, 2)
+elif variable == 'm_met_mT_Per_e_m_Mass':
+ hists["data_obs"].GetXaxis().SetRangeUser(0, 2)
+elif variable == 'emEta':
+ hists["data_obs"].GetXaxis().SetRangeUser(-5, 5)
+elif variable == 'ePt_Per_e_m_Mass':
+ hists["data_obs"].GetXaxis().SetRangeUser(0.1, 1.2)
+elif variable == 'mPt_Per_e_m_Mass':
+ hists["data_obs"].GetXaxis().SetRangeUser(0.1, 1.2)
+elif variable == 'j1Eta':
+ hists["data_obs"].GetXaxis().SetRangeUser(-4.7, 4.7)
+elif variable == 'j1Pt':
+ hists["data_obs"].GetXaxis().SetRangeUser(0, 200)
+elif variable == 'j2Eta':
+ hists["data_obs"].GetXaxis().SetRangeUser(-4.7, 4.7)
+elif variable == 'j2Pt':
+ hists["data_obs"].GetXaxis().SetRangeUser(0, 120)
+
   
 hists["data_obs"].SetMaximum(2*max(stack.GetMaximum(),hists["data_obs"].GetMaximum()))
 print stack.GetMaximum()

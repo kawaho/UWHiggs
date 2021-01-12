@@ -196,7 +196,7 @@ while run:
       gr = TGraph(len(Sigx), Sigx, Sigy)
       gr.GetXaxis().SetRangeUser(0, 1)
       gr.GetXaxis().SetTitle("Signal Efficiency")
-      gr.GetYaxis().SetTitle("Sensitivity")
+      gr.GetYaxis().SetTitle("Combined Sensitivity")
       gr.GetXaxis().SetTitleFont(42)
       gr.GetYaxis().SetTitleFont(42)
       gr.GetXaxis().SetTitleSize(0.05)

@@ -1,11 +1,11 @@
 #!/bin/bash
 
 # Get the data
-export datasrc=/hdfs/store/user/kaho
+export datasrc=/hdfs/store/user/kaho #psiddire
 export MEGAPATH=/hdfs/store/user/kaho #psiddire
 
-#export jobidem='Data2016JEC'
-export jobidem='MC2016_em_LHE' #MC2016_em_LHE'
+export jobidem='Data2016_em_single'
+#export jobidem='MC2016_em_LHE' #MC2016_em_LHE'
 export jobid=$jobidem
 
 export afile=`find $datasrc/$jobid | grep root | head -n 1`

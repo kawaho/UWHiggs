@@ -16,9 +16,12 @@ pdfmap = {'ggcat0': 'bern3',
 'ggcat4': 'bern1',
 'vbf': 'bern3'}
 
+cats = ['TightOSvbf', 'TightOSvbf500a', 'TightOSvbf500b', 'TightOSvbf510a', 'TightOSvbf510b', 'TightOSvbf520a', 'TightOSvbf520b', 'TightOSvbf530a', 'TightOSvbf530b', 'TightOSvbf540a', 'TightOSvbf540b', 'TightOSvbf550a', 'TightOSvbf550b', 'TightOSvbf560a', 'TightOSvbf560b', 'TightOSvbf570a', 'TightOSvbf570b', 'TightOSvbf580a', 'TightOSvbf580b', 'TightOSvbf590a', 'TightOSvbf590b', 'TightOSvbf600a', 'TightOSvbf600b', 'TightOSvbf610a', 'TightOSvbf610b', 'TightOSvbf620a', 'TightOSvbf620b', 'TightOSvbf630a', 'TightOSvbf630b', 'TightOSvbf640a', 'TightOSvbf640b', 'TightOSvbf650a', 'TightOSvbf650b', 'TightOSvbf660a', 'TightOSvbf660b', 'TightOSvbf670a', 'TightOSvbf670b', 'TightOSvbf680a', 'TightOSvbf680b', 'TightOSvbf690a', 'TightOSvbf690b', 'TightOSvbf700a', 'TightOSvbf700b']
+
 #cats = ['TightOSvbf00','TightOSgg00','TightOSvbf01','TightOSgg01','TightOSvbf02','TightOSgg02','TightOSvbf03','TightOSgg03','TightOSvbf04','TightOSgg04','TightOSvbf10','TightOSgg10','TightOSvbf11','TightOSgg11','TightOSvbf12','TightOSgg12','TightOSvbf13','TightOSgg13','TightOSvbf14','TightOSgg14','TightOSvbf20','TightOSgg20','TightOSvbf21','TightOSgg21','TightOSvbf22','TightOSgg22','TightOSvbf23','TightOSgg23','TightOSvbf24','TightOSgg24','TightOSvbf30','TightOSgg30','TightOSvbf31','TightOSgg31','TightOSvbf32','TightOSgg32','TightOSvbf33','TightOSgg33','TightOSvbf34','TightOSgg34']
 #cats = ['ggcat0', 'ggcat1', 'ggcat2', 'ggcat3', 'vbf']
-cats = ['ggcat0', 'ggcat1', 'ggcat2', 'ggcat3', 'ggcat4','vbf']
+
+#cats = ['ggcat0', 'ggcat1', 'ggcat2', 'ggcat3', 'ggcat4','vbf']
 
 def stupidnames(cat):
   if cat == 'ggcat1EC':
@@ -76,14 +79,14 @@ CMSnames = {
 'UnclusteredEn2018': 'CMS_scale_met_2018',
 }
 
-QCDscale_ggH = theory.QCD_scale("GG", cats) 
-QCDscale_qqH = theory.QCD_scale("VBF", cats)
-
-acceptance_scale_gg = theory.acceptance_scale("GG", cats)
-acceptance_scale_vbf = theory.acceptance_scale("VBF", cats)
-
-acceptance_pdf_gg = theory.acceptance_pdf("GG", cats)
-acceptance_pdf_vbf = theory.acceptance_pdf("VBF", cats)
+#QCDscale_ggH = theory.QCD_scale("GG", cats) 
+#QCDscale_qqH = theory.QCD_scale("VBF", cats)
+#
+#acceptance_scale_gg = theory.acceptance_scale("GG", cats)
+#acceptance_scale_vbf = theory.acceptance_scale("VBF", cats)
+#
+#acceptance_pdf_gg = theory.acceptance_pdf("GG", cats)
+#acceptance_pdf_vbf = theory.acceptance_pdf("VBF", cats)
   
 def addSyst(l,v):
   if len(v) == 2:
@@ -131,8 +134,8 @@ for cat in cats:
       ws = 'CMS_Hemu_13TeV_multipdf.root'
       if proc == 'bkg':
         if nosys:
-          #f.write("shapes      %-10s %-10s %-20s %s\n"%(proc,cat,ws,'multipdf:env_pdf_'+cat+'_'+'bern3'))
-          f.write("shapes      %-10s %-10s %-20s %s\n"%(proc,cat,ws,'multipdf:CMS_hemu_'+cat+'_13TeV_bkgshape'))
+          f.write("shapes      %-10s %-10s %-20s %s\n"%(proc,cat,ws,'multipdf:env_pdf_'+cat+'_'+'bern3'))
+          #f.write("shapes      %-10s %-10s %-20s %s\n"%(proc,cat,ws,'multipdf:CMS_hemu_'+cat+'_13TeV_bkgshape'))
         else:
           f.write("shapes      %-10s %-10s %-20s %s\n"%(proc,cat,ws,'multipdf:env_pdf_'+cat+'_'+pdfmap[cat]))
           #f.write("shapes      %-10s %-10s %-20s %s\n"%(proc,cat,ws,'multipdf:env_pdf_'+cat+'_'+'bern3'))

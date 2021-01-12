@@ -42,7 +42,7 @@ int TMVAClassification( TString myMethodList = "" )
     }
   }
   // --------------------------------------------------------------------------------------------------
-  TString fname = "BDT/BDT2.root";
+  TString fname = "BDT/BDT_single.root";
   if (gSystem->AccessPathName( fname ))  // file does not exist in local directory
     gSystem->Exec("curl -O http://root.cern.ch/files/tmva_class_example.root");
   TFile *input = TFile::Open( fname );
@@ -51,92 +51,101 @@ int TMVAClassification( TString myMethodList = "" )
   TTree *signalTree     = (TTree*)input->Get("TreeS");
   TTree *background     = (TTree*)input->Get("TreeB");
   // Create a ROOT output file where TMVA will store ntuples, histograms, etc.
-  TString outfileName( "TMVA_gg_M.root" );
+  TString outfileName( "TMVA_gg_opt.root" );
   TFile* outputFile = TFile::Open( outfileName, "RECREATE" );
 
   TMVA::Factory *factory = new TMVA::Factory( "TMVAClassification", outputFile,
 					      "!V:!Silent:Color:DrawProgressBar:Transformations=I;D;P;G,D:AnalysisType=Classification" );
   TMVA::DataLoader *dataloader=new TMVA::DataLoader("dataset");
 /*
-  dataloader->AddVariable("mPt_Per_e_m_Mass", 'F');
-  dataloader->AddVariable("ePt_Per_e_m_Mass", 'F');
-  dataloader->AddVariable("emPt", 'F');
-//  dataloader->AddVariable("emEta", 'F');
-  dataloader->AddVariable("mEta", 'F');
-  dataloader->AddVariable("eEta", 'F');
-  dataloader->AddVariable("j1Pt", 'F');
-//  dataloader->AddVariable("j2Pt", 'F');
-//  dataloader->AddVariable("j1Eta", 'F');
-//  dataloader->AddVariable("j2Eta", 'F');
-  dataloader->AddVariable("DeltaEta_em_j1", 'F');
-  dataloader->AddVariable("DeltaPhi_em_j1", 'F');
-//  dataloader->AddVariable("DeltaEta_em_j2", 'F');
-//  dataloader->AddVariable("DeltaPhi_em_j2", 'F');
-//  dataloader->AddVariable("DeltaEta_j1_j2", 'F');
-//  dataloader->AddVariable("DeltaPhi_j1_j2", 'F');
-//  dataloader->AddVariable("Zeppenfeld", 'F');
-//  dataloader->AddVariable("j1_j2_mass", 'F');
-//  dataloader->AddVariable("minDeltaPhi_em_j1j2", 'F');
-//  dataloader->AddVariable("minDeltaEta_em_j1j2", 'F');
-//  dataloader->AddVariable("Nj", 'F');
-  dataloader->AddVariable("m_met_mT", 'F');
-  dataloader->AddVariable("e_met_mT", 'F');
-  dataloader->AddVariable("DeltaPhi_e_met", 'F');
-  dataloader->AddVariable("DeltaPhi_m_met", 'F');
-//  dataloader->AddVariable("DeltaEta_e_met", 'F');
-//  dataloader->AddVariable("DeltaEta_m_met", 'F');
-  dataloader->AddVariable("MetEt", 'F');
-  dataloader->AddVariable("e_m_PZeta", 'F');
-//  dataloader->AddVariable("R_pT", 'F');
-//  dataloader->AddVariable("pT_cen", 'F');  
-*/
-  dataloader->AddVariable("e_m_Mass", 'F');
-//  dataloader->AddVariable("mPt_Per_e_m_Mass", 'F');
-//  dataloader->AddVariable("ePt_Per_e_m_Mass", 'F');
   dataloader->AddVariable("emPt", 'F');
   dataloader->AddVariable("emEta", 'F');
-//  dataloader->AddVariable("mEta", 'F');
-//  dataloader->AddVariable("eEta", 'F');
-  dataloader->AddVariable("j1Pt", 'F');
-  dataloader->AddVariable("j2Pt", 'F');
-//  dataloader->AddVariable("j1Eta", 'F');
-//  dataloader->AddVariable("j2Eta", 'F');
-  dataloader->AddVariable("DeltaEta_em_j1", 'F');
-  dataloader->AddVariable("DeltaPhi_em_j1", 'F');
-  dataloader->AddVariable("DeltaEta_em_j2", 'F');
-  dataloader->AddVariable("DeltaPhi_em_j2", 'F');
-  
   dataloader->AddVariable("DeltaEta_e_m", 'F');
   dataloader->AddVariable("DeltaPhi_e_m", 'F');
-  
-//  dataloader->AddVariable("DeltaEta_m_j1", 'F');
-//  dataloader->AddVariable("DeltaPhi_m_j1", 'F');
-//  dataloader->AddVariable("DeltaEta_m_j2", 'F');
-//  dataloader->AddVariable("DeltaPhi_m_j2", 'F');
-//  dataloader->AddVariable("DeltaEta_e_j1", 'F');
-//  dataloader->AddVariable("DeltaPhi_e_j1", 'F');
-//  dataloader->AddVariable("DeltaEta_e_j2", 'F');
-//  dataloader->AddVariable("DeltaPhi_e_j2", 'F');
-
-  dataloader->AddVariable("DeltaEta_j1_j2", 'F');
-  dataloader->AddVariable("DeltaPhi_j1_j2", 'F');
-//  dataloader->AddVariable("Zeppenfeld", 'F');
-  dataloader->AddVariable("j1_j2_mass", 'F');
-//  dataloader->AddVariable("minDeltaPhi_em_j1j2", 'F');
-//  dataloader->AddVariable("minDeltaEta_em_j1j2", 'F');
-//  dataloader->AddVariable("Nj", 'I');
-//  dataloader->AddVariable("m_met_mT", 'F');
-//  dataloader->AddVariable("e_met_mT", 'F');
+  dataloader->AddVariable("absEta_e", 'F');
+  dataloader->AddVariable("absEta_m", 'F');
   dataloader->AddVariable("m_met_mT_per_M", 'F');
   dataloader->AddVariable("e_met_mT_per_M", 'F');
   dataloader->AddVariable("DeltaPhi_e_met", 'F');
   dataloader->AddVariable("DeltaPhi_m_met", 'F');
-  dataloader->AddVariable("DeltaEta_e_met", 'F');
-  dataloader->AddVariable("DeltaEta_m_met", 'F');
   dataloader->AddVariable("MetEt", 'F');
   dataloader->AddVariable("e_m_PZeta", 'F');
-//  dataloader->AddVariable("R_pT", 'F');
+  dataloader->AddVariable("j1Pt", 'F');
+  dataloader->AddVariable("DeltaEta_em_j1", 'F');
+  dataloader->AddVariable("DeltaPhi_em_j1", 'F');
+  dataloader->AddVariable("j2Pt", 'F');
+  dataloader->AddVariable("DeltaEta_em_j2", 'F');
+  dataloader->AddVariable("DeltaPhi_em_j2", 'F');
+  dataloader->AddVariable("DeltaEta_j1_j2", 'F');
+  dataloader->AddVariable("DeltaPhi_j1_j2", 'F');
+  dataloader->AddVariable("j1_j2_mass", 'F');
+*/
+
+//  dataloader->AddVariable("e_m_Mass", 'F');
+  dataloader->AddVariable("mPt_Per_e_m_Mass", 'F');//
+  dataloader->AddVariable("ePt_Per_e_m_Mass", 'F');//
+//  dataloader->AddVariable("ePt_Per_mPt", 'F');
+//  dataloader->AddVariable("emRapidity", 'F');
+//  dataloader->AddVariable("emPt", 'F');
+  dataloader->AddVariable("emEta", 'F');//
+//  dataloader->AddVariable("mEta", 'F');
+//  dataloader->AddVariable("eEta", 'F');
+  dataloader->AddVariable("DeltaR_e_m", 'F');//
+//  dataloader->AddVariable("DeltaEta_e_m", 'F');
+//  dataloader->AddVariable("DeltaPhi_e_m", 'F');
+//  dataloader->AddVariable("absEta_e", 'F');
+//  dataloader->AddVariable("absEta_m", 'F');
+
+//  dataloader->AddVariable("m_met_mT", 'F');
+//  dataloader->AddVariable("e_met_mT", 'F');
+  dataloader->AddVariable("m_met_mT_per_M", 'F');//
+  dataloader->AddVariable("e_met_mT_per_M", 'F');//
+//  dataloader->AddVariable("DeltaPhi_e_met", 'F');
+//  dataloader->AddVariable("DeltaPhi_m_met", 'F');
+  dataloader->AddVariable("MetEt", 'F');//
+//  dataloader->AddVariable("e_m_PZeta", 'F');
+
+  dataloader->AddVariable("j1Pt", 'F');//
+  dataloader->AddVariable("j1Eta", 'F');//
+
+//  dataloader->AddVariable("DeltaEta_em_j1", 'F');
+//  dataloader->AddVariable("DeltaPhi_em_j1", 'F');
+//  dataloader->AddVariable("DeltaEta_m_j1", 'F');
+//  dataloader->AddVariable("DeltaPhi_m_j1", 'F');
+//  dataloader->AddVariable("DeltaEta_e_j1", 'F');
+//  dataloader->AddVariable("DeltaPhi_e_j1", 'F');
+
+  dataloader->AddVariable("DeltaR_em_j1", 'F');//
+//  dataloader->AddVariable("DeltaR_e_j1", 'F');
+//  dataloader->AddVariable("DeltaR_m_j1", 'F');
+
+  dataloader->AddVariable("j2Pt", 'F');//
+  dataloader->AddVariable("j2Eta", 'F');//
+//  dataloader->AddVariable("DeltaEta_em_j2", 'F');
+//  dataloader->AddVariable("DeltaPhi_em_j2", 'F');
+//  dataloader->AddVariable("DeltaEta_m_j2", 'F');
+//  dataloader->AddVariable("DeltaPhi_m_j2", 'F');
+//  dataloader->AddVariable("DeltaEta_e_j2", 'F');
+//  dataloader->AddVariable("DeltaPhi_e_j2", 'F');
+  dataloader->AddVariable("DeltaR_em_j2", 'F');//
+//  dataloader->AddVariable("DeltaR_e_j2", 'F');
+//  dataloader->AddVariable("DeltaR_m_j2", 'F');
+
+//  dataloader->AddVariable("DeltaEta_j1_j2", 'F');
+//  dataloader->AddVariable("DeltaPhi_j1_j2", 'F');
+//  dataloader->AddVariable("DeltaR_j1_j2", 'F');
+
+//  dataloader->AddVariable("DeltaR_em_j1j2", 'F');
+//  dataloader->AddVariable("Zeppenfeld", 'F');
+//  dataloader->AddVariable("j1_j2_mass", 'F');
+//  dataloader->AddVariable("minDeltaPhi_em_j1j2", 'F');
+//  dataloader->AddVariable("minDeltaEta_em_j1j2", 'F');
+//  dataloader->AddVariable("Nj", 'I');
+
+  dataloader->AddVariable("R_pT", 'F');//
 //  dataloader->AddVariable("pT_cen", 'F');  
+//  dataloader->AddVariable("cen", 'F');  
+//  dataloader->AddVariable("Ht", 'F');  
 
   Double_t signalWeight     = 1.0;
   Double_t backgroundWeight = 1.0;
@@ -167,7 +176,7 @@ int TMVAClassification( TString myMethodList = "" )
    // factory->BookMethod( dataloader, TMVA::Types::kBDT, "BDTG_vbf",
 //			 "!H:!V:NTrees=850:MinNodeSize=3%:BoostType=Grad:Shrinkage=0.1:UseBaggedBoost:BaggedSampleFraction=0.5:nCuts=30:MaxDepth=3:NegWeightTreatment=IgnoreNegWeightsInTraining");
   if (Use["BDT"])  // Adaptive Boost
-    factory->BookMethod( dataloader, TMVA::Types::kBDT, "BDT_gg_M",
+    factory->BookMethod( dataloader, TMVA::Types::kBDT, "BDT_gg_opt",
 			 "!H:!V:NTrees=850:MinNodeSize=2.5%:MaxDepth=3:BoostType=AdaBoost:AdaBoostBeta=0.5:UseBaggedBoost:BaggedSampleFraction=0.5:SeparationType=GiniIndex:nCuts=20:PruneMethod=NoPruning" );
   if (Use["BDTB"]) // Bagging
     factory->BookMethod( dataloader, TMVA::Types::kBDT, "BDTB",

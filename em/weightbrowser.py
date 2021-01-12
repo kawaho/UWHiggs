@@ -26,7 +26,7 @@ def whichproc(f):
 gROOT.SetBatch(True)
 files = []
 files.extend(glob.glob('results/Data2016JEC/AnalyzeEMBDT/*root')) 
-fFile = TFile('BDT/BDT.root')
+fFile = TFile('BDT/BDT_single.root')
 fTreeS = fFile.Get("TreeB")
 nEntriesS = fTreeS.GetEntries()
 totalweight = 0

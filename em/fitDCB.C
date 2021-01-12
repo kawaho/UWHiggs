@@ -566,13 +566,16 @@ void fitDCB(bool dosys = 0, int buildcbpg = 1, int whichcat = -1, std::string wh
   mass->setRange("higgsRange",110.,140.);
 //  RooRealVar lumi("IntLumi", "Integrated luminosity", 35.87, "fb^{-1}");
 //  w->import(lumi);
-  const int numberofcat = 6;
+  const int numberofcat = 43; //6;
   std::string procs[2] = {"ggH", "qqH"};
 
+std::string catname[numberofcat] = {"TightOSvbf/", "TightOSvbf500a/", "TightOSvbf500b/", "TightOSvbf510a/", "TightOSvbf510b/", "TightOSvbf520a/", "TightOSvbf520b/", "TightOSvbf530a/", "TightOSvbf530b/", "TightOSvbf540a/", "TightOSvbf540b/", "TightOSvbf550a/", "TightOSvbf550b/", "TightOSvbf560a/", "TightOSvbf560b/", "TightOSvbf570a/", "TightOSvbf570b/", "TightOSvbf580a/", "TightOSvbf580b/", "TightOSvbf590a/", "TightOSvbf590b/", "TightOSvbf600a/", "TightOSvbf600b/", "TightOSvbf610a/", "TightOSvbf610b/", "TightOSvbf620a/", "TightOSvbf620b/", "TightOSvbf630a/", "TightOSvbf630b/", "TightOSvbf640a/", "TightOSvbf640b/", "TightOSvbf650a/", "TightOSvbf650b/", "TightOSvbf660a/", "TightOSvbf660b/", "TightOSvbf670a/", "TightOSvbf670b/", "TightOSvbf680a/", "TightOSvbf680b/", "TightOSvbf690a/", "TightOSvbf690b/", "TightOSvbf700a/", "TightOSvbf700b/"};
+
+std::string cat[numberofcat] = {"vbf", "vbf500a", "vbf500b", "vbf510a", "vbf510b", "vbf520a", "vbf520b", "vbf530a", "vbf530b", "vbf540a", "vbf540b", "vbf550a", "vbf550b", "vbf560a", "vbf560b", "vbf570a", "vbf570b", "vbf580a", "vbf580b", "vbf590a", "vbf590b", "vbf600a", "vbf600b", "vbf610a", "vbf610b", "vbf620a", "vbf620b", "vbf630a", "vbf630b", "vbf640a", "vbf640b", "vbf650a", "vbf650b", "vbf660a", "vbf660b", "vbf670a", "vbf670b", "vbf680a", "vbf680b", "vbf690a", "vbf690b", "vbf700a", "vbf700b"};
 //std::string catname[numberofcat] = {"TightOSvbf00/", "TightOSgg00/", "TightOSvbf01/", "TightOSgg01/", "TightOSvbf02/", "TightOSgg02/", "TightOSvbf03/", "TightOSgg03/", "TightOSvbf04/", "TightOSgg04/", "TightOSvbf10/", "TightOSgg10/", "TightOSvbf11/", "TightOSgg11/", "TightOSvbf12/", "TightOSgg12/", "TightOSvbf13/", "TightOSgg13/", "TightOSvbf14/", "TightOSgg14/", "TightOSvbf20/", "TightOSgg20/", "TightOSvbf21/", "TightOSgg21/", "TightOSvbf22/", "TightOSgg22/", "TightOSvbf23/", "TightOSgg23/", "TightOSvbf24/", "TightOSgg24/", "TightOSvbf30/", "TightOSgg30/", "TightOSvbf31/", "TightOSgg31/", "TightOSvbf32/", "TightOSgg32/", "TightOSvbf33/", "TightOSgg33/", "TightOSvbf34/", "TightOSgg34/"};
-  std::string catname[numberofcat] = {"TightOSggcat0/", "TightOSggcat1/", "TightOSggcat2/", "TightOSggcat3/", "TightOSggcat4/", "TightOSvbf/"};
+//  std::string catname[numberofcat] = {"TightOSggcat0/", "TightOSggcat1/", "TightOSggcat2/", "TightOSggcat3/", "TightOSggcat4/", "TightOSvbf/"};
 // std::string cat[numberofcat] =  {"TightOSvbf00", "TightOSgg00", "TightOSvbf01", "TightOSgg01", "TightOSvbf02", "TightOSgg02", "TightOSvbf03", "TightOSgg03", "TightOSvbf04", "TightOSgg04", "TightOSvbf10", "TightOSgg10", "TightOSvbf11", "TightOSgg11", "TightOSvbf12", "TightOSgg12", "TightOSvbf13", "TightOSgg13", "TightOSvbf14", "TightOSgg14", "TightOSvbf20", "TightOSgg20", "TightOSvbf21", "TightOSgg21", "TightOSvbf22", "TightOSgg22", "TightOSvbf23", "TightOSgg23", "TightOSvbf24", "TightOSgg24", "TightOSvbf30", "TightOSgg30", "TightOSvbf31", "TightOSgg31", "TightOSvbf32", "TightOSgg32", "TightOSvbf33", "TightOSgg33", "TightOSvbf34", "TightOSgg34"};
-  std::string cat[numberofcat] = {"ggcat0", "ggcat1", "ggcat2", "ggcat3", "ggcat4", "vbf"};
+//  std::string cat[numberofcat] = {"ggcat0", "ggcat1", "ggcat2", "ggcat3", "ggcat4", "vbf"};
 //  std::string sysname[6] = {"ees", "me", "eer"};
   std::string sysname[] = {"bTagUp2016", "bTagDown2016", "bTagUp2017", "bTagDown2017", "bTagUp2018", "bTagDown2018", "puUp2016", "puDown2016", "puUp2017", "puDown2017", "puUp2018", "puDown2018", "pfUp2016", "pfDown2016", "pfUp2017", "pfDown2017", "eesUp", "eesDown", "eerUp", "eerDown", "meUp", "meDown", "JetAbsoluteUp", "JetAbsoluteDown", "JetAbsoluteyearUp2016", "JetAbsoluteyearUp2017", "JetAbsoluteyearUp2018", "JetAbsoluteyearDown2016", "JetAbsoluteyearDown2017", "JetAbsoluteyearDown2018", "JetBBEC1Up", "JetBBEC1Down", "JetBBEC1yearUp2016", "JetBBEC1yearUp2017", "JetBBEC1yearUp2018", "JetBBEC1yearDown2016", "JetBBEC1yearDown2017", "JetBBEC1yearDown2018", "JetFlavorQCDUp", "JetFlavorQCDDown", "JetEC2Up", "JetEC2Down", "JetEC2yearUp2016", "JetEC2yearUp2017", "JetEC2yearUp2018", "JetEC2yearDown2016", "JetEC2yearDown2017", "JetEC2yearDown2018", "JetHFUp", "JetHFDown", "JetHFyearUp2016", "JetHFyearUp2017", "JetHFyearUp2018", "JetHFyearDown2016", "JetHFyearDown2017", "JetHFyearDown2018", "JetRelativeBalUp", "JetRelativeBalDown", "JetRelativeSampleUp2016", "JetRelativeSampleUp2017", "JetRelativeSampleUp2018", "JetRelativeSampleDown2016", "JetRelativeSampleDown2017", "JetRelativeSampleDown2018", "JERUp2016", "JERUp2017", "JERUp2018", "JERDown2016", "JERDown2017", "JERDown2018", "UnclusteredEnUp2016", "UnclusteredEnUp2017", "UnclusteredEnUp2018", "UnclusteredEnDown2016", "UnclusteredEnDown2017", "UnclusteredEnDown2018", "UesCHARGEDUp2016", "UesCHARGEDUp2017", "UesCHARGEDUp2018", "UesCHARGEDDown2016", "UesCHARGEDDown2017", "UesCHARGEDDown2018", "UesECALUp2016", "UesECALUp2017", "UesECALUp2018", "UesECALDown2016", "UesECALDown2017", "UesECALDown2018", "UesHCALUp2016", "UesHCALUp2017", "UesHCALUp2018", "UesHCALDown2016", "UesHCALDown2017", "UesHCALDown2018", "UesHFUp2016", "UesHFUp2017", "UesHFUp2018", "UesHFDown2016", "UesHFDown2017", "UesHFDown2018"};
   std::string emstr1 = "e_m_Mass";
@@ -587,11 +590,11 @@ void fitDCB(bool dosys = 0, int buildcbpg = 1, int whichcat = -1, std::string wh
   for (int p = 0; p < 2; p++) {
     TFile *file = new TFile();
     if (p == 0) {
-      file = new TFile("SignalGG.root");
+      file = new TFile("SignalGG_single_vbf.root");
       cout << "Hellogg" << endl;
     }
     else {
-      file = new TFile("SignalVBF.root");
+      file = new TFile("SignalVBF_single_vbf.root");
       cout << "Hellovbf" << endl;
     }
     for (int i = 0; i < numberofcat; i++) {

@@ -65,6 +65,8 @@ elif var == 'e_m_PZeta' or var == 'Mjj' or var == 'MetEt' or var == 'j2Pt' or va
   data = data.Rebin(10)
 elif var == 'emPt':
   data = data.Rebin(10)
+elif var == 'bdtDiscriminator':
+  data = data.Rebin(10)
 data.SetName('data_obs')
 data.Write()
 
@@ -82,6 +84,8 @@ elif var == 'e_m_PZeta' or var == 'Mjj' or var == 'MetEt' or var == 'j2Pt' or va
   qcd = qcd.Rebin(10)
 elif var == 'emPt':
   qcd = qcd.Rebin(10)
+elif var == 'bdtDiscriminator':
+  qcd = qcd.Rebin(10)
 qcd.SetName('QCD')
 qcd.Write()
 
@@ -94,6 +98,8 @@ for i, sam in enumerate(Lists.samp):
     elif var == 'e_m_PZeta' or var == 'Mjj' or var == 'MetEt' or var == 'j2Pt' or var == 'j1Pt' or var == 'emPt':
       dy = dy.Rebin(10)
     elif var == 'emPt':
+      dy = dy.Rebin(10)
+    elif var == 'bdtDiscriminator':
       dy = dy.Rebin(10)
 #    dy = dy.Rebin(len(binning)-1, sam, binning)
     dy.SetName(sam)

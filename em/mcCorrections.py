@@ -10,10 +10,13 @@ import FinalStateAnalysis.TagAndProbe.RoccoR as RoccoR
 import ROOT
 
 year = '2016'
+#pu_distributions = glob.glob(os.path.join( 'inputs', os.environ['jobid'], 'data_MuonEG*pu.root'))
+#pu_distributionsUp = glob.glob(os.path.join( 'inputs', os.environ['jobid'], 'data_MuonEG*pu_up.root'))
+#pu_distributionsDown = glob.glob(os.path.join( 'inputs', os.environ['jobid'], 'data_MuonEG*pu_down.root'))
 
-pu_distributions = glob.glob(os.path.join( 'inputs', os.environ['jobid'], 'data_MuonEG*pu.root'))
-pu_distributionsUp = glob.glob(os.path.join( 'inputs', os.environ['jobid'], 'data_MuonEG*pu_up.root'))
-pu_distributionsDown = glob.glob(os.path.join( 'inputs', os.environ['jobid'], 'data_MuonEG*pu_down.root'))
+pu_distributions = glob.glob(os.path.join( 'inputs', os.environ['jobid'], 'data_SingleMuon*pu.root'))
+pu_distributionsUp = glob.glob(os.path.join( 'inputs', os.environ['jobid'], 'data_SingleMuon*pu_up.root'))
+pu_distributionsDown = glob.glob(os.path.join( 'inputs', os.environ['jobid'], 'data_SingleMuon*pu_down.root'))
 
 def make_puCorrector(puname=''):
     return PileupWeight.PileupWeight(puname, year, *pu_distributions)
@@ -41,8 +44,8 @@ muonIso_tight_mediumid = MuonPOGCorrections.make_muon_pog_TightIso_2016('Medium'
 muonIso_loose_looseid = MuonPOGCorrections.make_muon_pog_LooseIso_2016('Loose')
 muonIso_loose_mediumid = MuonPOGCorrections.make_muon_pog_LooseIso_2016('Medium')
 muonIso_loose_tightid = MuonPOGCorrections.make_muon_pog_LooseIso_2016('Tight')
-#muonTrigger24 = MuonPOGCorrections.mu_IsoMu24_2016
-#muonTrigger22 = MuonPOGCorrections.mu_IsoMu22_2016
+muonTrigger24 = MuonPOGCorrections.mu_IsoMu24_2016
+muonTrigger22 = MuonPOGCorrections.mu_IsoMu22_2016
 muonTracking = MuonPOGCorrections.mu_trackingEta_2016
 eID80 = EGammaPOGCorrections.make_egamma_pog_electronID80_2016()
 eIDnoiso80 = EGammaPOGCorrections.make_egamma_pog_electronID80noiso_2016()

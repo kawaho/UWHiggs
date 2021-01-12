@@ -7,20 +7,22 @@
 #include<string>
 
 void makeWSfromtree2() {
-  const int ncats = 6;
+  const int ncats = 43;
   RooRealVar mass("CMS_emu_Mass", "m_{e#mu}", 125, 110, 160, "GeV");
   RooRealVar lumi("IntLumi", "Integrated luminosity", 35.87, "fb^{-1}");
   RooRealVar sqrts("SqrtS","Center of Mass Energy", 13, "TeV");
   RooDataSet * dataset[ncats] = {};
+
+  string catname[ncats] = {"vbf500a", "vbf500b", "vbf510a", "vbf510b", "vbf520a", "vbf520b", "vbf530a", "vbf530b", "vbf540a", "vbf540b", "vbf550a", "vbf550b", "vbf560a", "vbf560b", "vbf570a", "vbf570b", "vbf580a", "vbf580b", "vbf590a", "vbf590b", "vbf600a", "vbf600b", "vbf610a", "vbf610b", "vbf620a", "vbf620b", "vbf630a", "vbf630b", "vbf640a", "vbf640b", "vbf650a", "vbf650b", "vbf660a", "vbf660b", "vbf670a", "vbf670b", "vbf680a", "vbf680b", "vbf690a", "vbf690b", "vbf700a", "vbf700b", "vbf"};
 //string catname[ncats] =  {"TightOSvbf00", "TightOSgg00", "TightOSvbf10", "TightOSgg10", "TightOSvbf20", "TightOSgg20", "TightOSvbf30", "TightOSgg30", "TightOSvbf01", "TightOSgg01", "TightOSvbf11", "TightOSgg11", "TightOSvbf21", "TightOSgg21", "TightOSvbf31", "TightOSgg31", "TightOSvbf02", "TightOSgg02", "TightOSvbf12", "TightOSgg12", "TightOSvbf22", "TightOSgg22", "TightOSvbf32", "TightOSgg32", "TightOSvbf03", "TightOSgg03", "TightOSvbf13", "TightOSgg13", "TightOSvbf23", "TightOSgg23", "TightOSvbf33", "TightOSgg33", "TightOSvbf04", "TightOSgg04", "TightOSvbf14", "TightOSgg14", "TightOSvbf24", "TightOSgg24", "TightOSvbf34", "TightOSgg34"};
-  string catname[ncats] = {"ggcat0","ggcat1","ggcat2","ggcat3","ggcat4","vbf"};//, "0JetEE", "1JetEB-MB", "1JetEB-ME", "1JetEE", "2JetEB-MB", "2JetEB-ME", "2JetEE", "2JetVBF"};
+//  string catname[ncats] = {"ggcat0","ggcat1","ggcat2","ggcat3","ggcat4","vbf"};//, "0JetEE", "1JetEB-MB", "1JetEB-ME", "1JetEE", "2JetEB-MB", "2JetEB-ME", "2JetEE", "2JetVBF"};
   for (int i = 0; i < ncats; i++){
     string temp = "Data_13TeV_" + catname[i]; //std::to_string(i);
     char * histname = new char [temp.length()+1];
     strcpy (histname, temp.c_str());
     dataset[i] =  new RooDataSet(histname, histname,  RooArgList(mass));
   }
-  TFile *file = new TFile("data.root");
+  TFile *file = new TFile("data_single_vbf.root");
   TTree *tree = (TTree*)file->Get("opttree");
   float e_m_Mass;
   int cat;
@@ -43,6 +45,6 @@ void makeWSfromtree2() {
   for (int i = 0; i < ncats; i++){
     w->import(*dataset[i]);
   }
-  w->writeToFile("dataws.root");
+  w->writeToFile("dataws_single_vbf.root");
   w->Print();
 }

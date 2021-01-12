@@ -11,14 +11,15 @@ gROOT.SetBatch(True)
 mva = array.array('f', [0])
 
 def var_d_gg(tree):
-  return {'e_m_Mass': tree.e_m_Mass, 'DeltaPhi_e_m': tree.DeltaPhi_e_m, 'DeltaEta_e_m': tree.DeltaEta_e_m,'emEta': tree.emEta, 'DeltaEta_m_met': tree.DeltaEta_m_met, 'DeltaEta_e_met': tree.DeltaEta_e_met, 'MetEt': tree.MetEt, 'DeltaPhi_e_met': tree.DeltaPhi_e_met, 'emEta': tree.emEta, 'DeltaPhi_em_j1': tree.DeltaPhi_em_j1, 'j1Pt': tree.j1Pt, 'DeltaEta_em_j1': tree.DeltaEta_em_j1, 'DeltaPhi_m_met': tree.DeltaPhi_m_met, 'e_met_mT_per_M' : tree.e_met_mT_per_M,'m_met_mT_per_M' :tree.m_met_mT_per_M, 'emPt' : tree.emPt, 'j2Pt': tree.j2Pt,'DeltaEta_em_j2': tree.DeltaEta_em_j2,'DeltaPhi_em_j2': tree.DeltaPhi_em_j2,'DeltaEta_j1_j2':tree.DeltaEta_j1_j2,'DeltaPhi_j1_j2': tree.DeltaPhi_j1_j2,'j1_j2_mass':tree.j1_j2_mass ,'e_m_PZeta':tree.e_m_PZeta} 
+  return {"mPt_Per_e_m_Mass":tree.mPt_Per_e_m_Mass,"ePt_Per_e_m_Mass":tree.ePt_Per_e_m_Mass,"emEta":tree.emEta,"DeltaR_e_m":tree.DeltaR_e_m,"m_met_mT_per_M":tree.m_met_mT_per_M,"e_met_mT_per_M":tree.e_met_mT_per_M,"MetEt":tree.MetEt,"j1Pt":tree.j1Pt,"j1Eta":tree.j1Eta,"DeltaR_em_j1":tree.DeltaR_em_j1,"j2Pt":tree.j2Pt,"j2Eta":tree.j2Eta,"DeltaR_em_j2":tree.DeltaR_em_j2,"R_pT":tree.R_pT}
+#  return {'e_m_Mass': tree.e_m_Mass, 'DeltaPhi_e_m': tree.DeltaPhi_e_m, 'DeltaEta_e_m': tree.DeltaEta_e_m,'emEta': tree.emEta, 'DeltaEta_m_met': tree.DeltaEta_m_met, 'DeltaEta_e_met': tree.DeltaEta_e_met, 'MetEt': tree.MetEt, 'DeltaPhi_e_met': tree.DeltaPhi_e_met, 'emEta': tree.emEta, 'DeltaPhi_em_j1': tree.DeltaPhi_em_j1, 'j1Pt': tree.j1Pt, 'DeltaEta_em_j1': tree.DeltaEta_em_j1, 'DeltaPhi_m_met': tree.DeltaPhi_m_met, 'e_met_mT_per_M' : tree.e_met_mT_per_M,'m_met_mT_per_M' :tree.m_met_mT_per_M, 'emPt' : tree.emPt, 'j2Pt': tree.j2Pt,'DeltaEta_em_j2': tree.DeltaEta_em_j2,'DeltaPhi_em_j2': tree.DeltaPhi_em_j2,'DeltaEta_j1_j2':tree.DeltaEta_j1_j2,'DeltaPhi_j1_j2': tree.DeltaPhi_j1_j2,'j1_j2_mass':tree.j1_j2_mass ,'e_m_PZeta':tree.e_m_PZeta} 
 
-fFileold = TFile("BDT/BDT2.root")
+fFileold = TFile("BDT/BDT_single.root")
 oldtree1 = fFileold.Get("TreeS")
 oldtree2 = fFileold.Get("TreeB")
 
 #fFilenew = TFile("BDT_narrow.root","recreate")
-fFilenew = TFile("BDT_plot_M.root","recreate")
+fFilenew = TFile("BDT_plot.root","recreate")
 
 newtree1 = oldtree1.CloneTree(0)
 newtree1.SetName("TreeSgg_120-130GeV") 

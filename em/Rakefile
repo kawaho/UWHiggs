@@ -28,6 +28,14 @@ end
 #
 
 samples = Hash[
+		"eraB_m_v1" => get_sample_names('data_SingleMuon_Run2016B_v1'),
+		"eraB_m" => get_sample_names('data_SingleMuon_Run2016B'),
+                "eraC_m" => get_sample_names('data_SingleMuon_Run2016C'),
+                "eraD_m" => get_sample_names('data_SingleMuon_Run2016D'),
+                "eraE_m" => get_sample_names('data_SingleMuon_Run2016E'),
+                "eraF_m" => get_sample_names('data_SingleMuon_Run2016F'),
+                "eraG_m" => get_sample_names('data_SingleMuon_Run2016G'),
+                "eraH_m" => get_sample_names('data_SingleMuon_Run2016H'),
                 "eraB" => get_sample_names('data_MuonEG_Run2016B'),
                 "eraC" => get_sample_names('data_MuonEG_Run2016C'),
                 "eraD" => get_sample_names('data_MuonEG_Run2016D'),
@@ -91,13 +99,25 @@ def get_plotter_results(analyzer)
 end
 
 #task :EMBDT => get_analyzer_results("AnalyzeEMBDT.py",  samples['ggHEM120'] + samples['vbfHEM120'] + samples['ggHEM130'] + samples['vbfHEM130']) 
-task :EMBDT => get_analyzer_results("AnalyzeEMBDT.py", samples['ggHEM'] + samples['vbfHEM'] + samples['TT2l'] + samples['TT2s'] + samples['TT2h'] + samples['STtantitop'] + samples['STttop'] + samples['STtWantitop'] + samples['STtWtop'] + samples['vbfHTT'] + samples['ggHTT'] + samples['vbfHWW'] + samples['ggHWW'] + samples['WW'] + samples['WZ'] + samples['ZZ'] + samples['Wminus'] + samples['Wplus'] + samples['ZH'] + samples['EWKWminus'] + samples['EWKWplus'] + samples['EWKZll'] + samples['EWKZnunu'] + samples['DY'] + samples['DY1'] + samples['DY2'] + samples['DY3'] + samples['DY4'] + samples['DY10'] + samples['W'] + samples['W1'] + samples['W2'] + samples['W3'] + samples['W4'] + samples['WG'] + samples['eraB'] + samples['eraC'] + samples['eraD'] + samples['eraE'] + samples['eraF'] + samples['eraG'] + samples['eraH'])
+
+#task :EMBDT => get_analyzer_results("AnalyzeEMBDT.py", samples['eraD_m'])
+task :EMBDT => get_analyzer_results("AnalyzeEMBDT.py", samples['ggHEM'] + samples['vbfHEM'] + samples['TT2l'] + samples['TT2s'] + samples['TT2h'] + samples['STtantitop'] + samples['STttop'] + samples['STtWantitop'] + samples['STtWtop'] + samples['vbfHTT'] + samples['ggHTT'] + samples['vbfHWW'] + samples['ggHWW'] + samples['WW'] + samples['WZ'] + samples['ZZ'] + samples['Wminus'] + samples['Wplus'] + samples['ZH'] + samples['EWKWminus'] + samples['EWKWplus'] + samples['EWKZll'] + samples['EWKZnunu'] + samples['DY'] + samples['DY1'] + samples['DY2'] + samples['DY3'] + samples['DY4'] + samples['DY10'] + samples['W'] + samples['W1'] + samples['W2'] + samples['W3'] + samples['W4'] + samples['WG'] + samples['eraB_m'] + samples['eraC_m'] + samples['eraD_m'] + samples['eraE_m'] + samples['eraF_m'] + samples['eraG_m'] + samples['eraH_m'])
+
+#task :EMBDT => get_analyzer_results("AnalyzeEMBDT.py", samples['ggHEM'] + samples['vbfHEM'] + samples['TT2l'] + samples['TT2s'] + samples['TT2h'] + samples['STtantitop'] + samples['STttop'] + samples['STtWantitop'] + samples['STtWtop'] + samples['vbfHTT'] + samples['ggHTT'] + samples['vbfHWW'] + samples['ggHWW'] + samples['WW'] + samples['WZ'] + samples['ZZ'] + samples['Wminus'] + samples['Wplus'] + samples['ZH'] + samples['EWKWminus'] + samples['EWKWplus'] + samples['EWKZll'] + samples['EWKZnunu'] + samples['DY'] + samples['DY1'] + samples['DY2'] + samples['DY3'] + samples['DY4'] + samples['DY10'] + samples['W'] + samples['W1'] + samples['W2'] + samples['W3'] + samples['W4'] + samples['WG'] + samples['eraB'] + samples['eraC'] + samples['eraD'] + samples['eraE'] + samples['eraF'] + samples['eraG'] + samples['eraH'])
 
 #task :EMV => get_analyzer_results("AnalyzeEMValid.py",  samples['ggHEM'] + samples['vbfHEM'] + samples['ggHEM120'] + samples['vbfHEM120'] + samples['ggHEM130'] + samples['vbfHEM130']) 
 
-task :EMV => get_analyzer_results("AnalyzeEMValid.py", samples['eraB'] + samples['eraC'] + samples['eraD'] + samples['eraE'] + samples['eraF'] + samples['eraG'] + samples['eraH'] + samples['ggHEM120'] + samples['vbfHEM120'] + samples['ggHEM130'] + samples['vbfHEM130']  + samples['ggHEM'] + samples['vbfHEM'] + samples['TT2l'] + samples['TT2s'] + samples['TT2h'] + samples['STtantitop'] + samples['STttop'] + samples['STtWantitop'] + samples['STtWtop'] + samples['vbfHTT'] + samples['ggHTT'] + samples['vbfHWW'] + samples['ggHWW'] + samples['WW'] + samples['WZ'] + samples['ZZ'] + samples['Wminus'] + samples['Wplus'] + samples['ZH'] + samples['EWKWminus'] + samples['EWKWplus'] + samples['EWKZll'] + samples['EWKZnunu'] + samples['DY'] + samples['DY1'] + samples['DY2'] + samples['DY3'] + samples['DY4'] + samples['DY10'] + samples['W'] + samples['W1'] + samples['W2'] + samples['W3'] + samples['W4'] + samples['WG'])
+#task :EMV => get_analyzer_results("AnalyzeEMValid.py",  samples['TT2h']) 
 
-task :EMV2 => get_analyzer_results("AnalyzeEMValid2.py", samples['eraB'] + samples['eraC'] + samples['eraD'] + samples['eraE'] + samples['eraF'] + samples['eraG'] + samples['eraH'] + samples['ggHEM'] + samples['vbfHEM'] + samples['TT2l'] + samples['TT2s'] + samples['TT2h'] + samples['STtantitop'] + samples['STttop'] + samples['STtWantitop'] + samples['STtWtop'] + samples['vbfHTT'] + samples['ggHTT'] + samples['vbfHWW'] + samples['ggHWW'] + samples['WW'] + samples['WZ'] + samples['ZZ'] + samples['Wminus'] + samples['Wplus'] + samples['ZH'] + samples['EWKWminus'] + samples['EWKWplus'] + samples['EWKZll'] + samples['EWKZnunu'] + samples['DY'] + samples['DY1'] + samples['DY2'] + samples['DY3'] + samples['DY4'] + samples['DY10'] + samples['W'] + samples['W1'] + samples['W2'] + samples['W3'] + samples['W4'] + samples['WG'])
+task :EMV => get_analyzer_results("AnalyzeEMValid.py", samples['eraB_m'] + samples['eraC_m'] + samples['eraD_m'] + samples['eraE_m'] + samples['eraF_m'] + samples['eraG_m'] + samples['eraH_m'] + samples['ggHEM120'] + samples['vbfHEM120'] + samples['ggHEM130'] + samples['vbfHEM130']  + samples['ggHEM'] + samples['vbfHEM'] + samples['TT2l'] + samples['TT2s'] + samples['TT2h'] + samples['STtantitop'] + samples['STttop'] + samples['STtWantitop'] + samples['STtWtop'] + samples['vbfHTT'] + samples['ggHTT'] + samples['vbfHWW'] + samples['ggHWW'] + samples['WW'] + samples['WZ'] + samples['ZZ'] + samples['Wminus'] + samples['Wplus'] + samples['ZH'] + samples['EWKWminus'] + samples['EWKWplus'] + samples['EWKZll'] + samples['EWKZnunu'] + samples['DY'] + samples['DY1'] + samples['DY2'] + samples['DY3'] + samples['DY4'] + samples['DY10'] + samples['W'] + samples['W1'] + samples['W2'] + samples['W3'] + samples['W4'] + samples['WG'])
+
+#task :EMY => get_analyzer_results("AnalyzeEMYield.py", samples['eraB_m'] + samples['eraC_m'] + samples['eraD_m'] + samples['eraE_m'] + samples['eraF_m'] + samples['eraG_m'] + samples['eraH_m'] + samples['ggHEM'] + samples['vbfHEM'])
+
+#task :EMY => get_analyzer_results("AnalyzeEMYield.py", samples['ggHEM'] + samples['vbfHEM'])
+
+task :EMY => get_analyzer_results("AnalyzeEMYield.py", samples['eraB_m'] + samples['eraC_m'] + samples['eraD_m'] + samples['eraE_m'] + samples['eraF_m'] + samples['eraG_m'] + samples['eraH_m'] + samples['ggHEM'] + samples['vbfHEM'])
+
+task :EMV2 => get_analyzer_results("AnalyzeEMValid2.py", samples['eraB_m'] + samples['eraC_m'] + samples['eraD_m'] + samples['eraE_m'] + samples['eraF_m'] + samples['eraG_m'] + samples['eraH_m'] + samples['ggHEM'] + samples['vbfHEM'] + samples['TT2l'] + samples['TT2s'] + samples['TT2h'] + samples['STtantitop'] + samples['STttop'] + samples['STtWantitop'] + samples['STtWtop'] + samples['vbfHTT'] + samples['ggHTT'] + samples['vbfHWW'] + samples['ggHWW'] + samples['WW'] + samples['WZ'] + samples['ZZ'] + samples['Wminus'] + samples['Wplus'] + samples['ZH'] + samples['EWKWminus'] + samples['EWKWplus'] + samples['EWKZll'] + samples['EWKZnunu'] + samples['DY'] + samples['DY1'] + samples['DY2'] + samples['DY3'] + samples['DY4'] + samples['DY10'] + samples['W'] + samples['W1'] + samples['W2'] + samples['W3'] + samples['W4'] + samples['WG'])
 
 task :EMS => get_analyzer_results("AnalyzeEMSys.py",  samples['ggHEM'] + samples['vbfHEM']) 
 
@@ -107,8 +127,9 @@ task :EMS2 => get_analyzer_results("AnalyzeEMSys2.py",  samples['ggHEM'] + sampl
 
 task :EMC => get_analyzer_results("AnalyzeEMBDTCat.py",  samples['ggHEM'] + samples['vbfHEM']) 
 
-task :EMT => get_analyzer_results("AnalyzeEMTree.py",  samples['eraB'] + samples['eraC'] + samples['eraD'] + samples['eraE'] + samples['eraF'] + samples['eraG'] + samples['eraH']) 
-#task :EMT => get_analyzer_results("AnalyzeEMTree.py",  samples['eraF'] + samples['eraG'] ) 
+#task :EMT => get_analyzer_results("AnalyzeEMTree.py",  samples['eraB'] + samples['eraC'] + samples['eraD'] + samples['eraE'] + samples['eraF'] + samples['eraG'] + samples['eraH']) 
+
+task :EMT => get_analyzer_results("AnalyzeEMTree.py", samples['eraB_m'] + samples['eraC_m'] + samples['eraD_m'] + samples['eraE_m'] + samples['eraF_m'] + samples['eraG_m'] + samples['eraH_m'] ) 
 
 $etdir = "plots/#{$jobid}/AnalyzerMuTau/mt_now/"
 directory $etdir

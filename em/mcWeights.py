@@ -116,4 +116,4 @@ class mcWeights:
             weight = weight*0.00169
         if self.is_GluGluHWW:
             weight = weight*0.0792
-        return weight
+        return weight*33361/35866 #35876/35866 # 33361/35866
