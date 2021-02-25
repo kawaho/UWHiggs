@@ -50,6 +50,10 @@ class AnalyzeEMBDT(MegaBase, EMBase):
         holder[0] = myMuon.Pt()/self.visibleMass(myEle, myMuon)
       elif varname=="ePt_Per_e_m_Mass":
         holder[0] = myEle.Pt()/self.visibleMass(myEle, myMuon)
+      elif varname=="mPt":
+        holder[0] = myMuon.Pt()
+      elif varname=="ePt":
+        holder[0] = myEle.Pt()
       elif varname=="ePt_Per_mPt":
         holder[0] = myEle.Pt()/myMuon.Pt()
       elif varname=="e_m_Mass":
@@ -73,7 +77,7 @@ class AnalyzeEMBDT(MegaBase, EMBase):
         else:
           holder[0] = myJet1.Pt()
       elif varname=="j2Pt":
-        if njets == 2:
+        if njets >= 2:
           holder[0] = myJet2.Pt()
         else:
           holder[0] = -1
@@ -83,7 +87,7 @@ class AnalyzeEMBDT(MegaBase, EMBase):
         else:
           holder[0] = myJet1.Eta()
       elif varname=="j2Eta":
-        if njets == 2:
+        if njets >= 2:
           holder[0] = myJet2.Eta()
         else:
           holder[0] = -10
@@ -104,12 +108,12 @@ class AnalyzeEMBDT(MegaBase, EMBase):
         else:
           holder[0] = self.deltaPhi((myEle + myMuon).Phi(), myJet1.Phi())
       elif varname=="DeltaEta_em_j2":
-        if njets == 2:
+        if njets >= 2:
           holder[0] = self.deltaEta((myEle + myMuon).Eta(), myJet2.Eta())
         else:
           holder[0] = -1
       elif varname=="DeltaPhi_em_j2":
-        if njets == 2:
+        if njets >= 2:
           holder[0] = self.deltaPhi((myEle + myMuon).Phi(), myJet2.Phi())
         else:
           holder[0] = -1
@@ -119,57 +123,67 @@ class AnalyzeEMBDT(MegaBase, EMBase):
         else:
           holder[0] = self.deltaR((myEle + myMuon).Phi(), myJet1.Phi(), (myEle + myMuon).Eta(), myJet1.Eta())
       elif varname=="DeltaR_em_j2":
-        if njets == 2:
+        if njets >= 2:
           holder[0] = self.deltaR((myEle + myMuon).Phi(), myJet2.Phi(), (myEle + myMuon).Eta(), myJet2.Eta())
         else:
           holder[0] = -1
       elif varname=="DeltaEta_j1_j2":
-        if njets == 2: 
+        if njets >= 2: 
           holder[0] = self.deltaEta(myJet1.Eta(), myJet2.Eta())
         else:
           holder[0] = -1
       elif varname=="DeltaPhi_j1_j2":
-        if njets == 2:
+        if njets >= 2:
           holder[0] = self.deltaPhi(myJet1.Phi(), myJet2.Phi())
         else:
           holder[0] = -1
       elif varname=="DeltaR_j1_j2":
-        if njets == 2:
+        if njets >= 2:
           holder[0] = self.deltaR(myJet1.Phi(), myJet2.Phi(), myJet1.Eta(), myJet2.Eta())
         else:
           holder[0] = -1
       elif varname=="Zeppenfeld":
-        if njets == 2:
+        if njets >= 2:
           holder[0] = self.Zeppenfeld(myEle, myMuon, myJet1, myJet2)
         else:
           holder[0] = -10
+      elif varname=="Zeppenfeld_ver2":
+        if njets >= 2:
+          holder[0] = self.Zeppenfeld(myEle, myMuon, myJet1, myJet2)/self.deltaEta(myJet1.Eta(), myJet2.Eta())
+        else:
+          holder[0] = -10
+      elif varname=="Zeppenfeld_ver3":
+        if njets >= 2:
+          holder[0] = abs(self.Zeppenfeld(myEle, myMuon, myJet1, myJet2))/self.deltaEta(myJet1.Eta(), myJet2.Eta())
+        else:
+          holder[0] = -10
       elif varname=="j1_j2_mass":
-        if njets == 2:
+        if njets >= 2:
           holder[0] = mjj
         else:
           holder[0] = 0
       elif varname=="minDeltaPhi_em_j1j2":
-        if njets == 2:
+        if njets >= 2:
           holder[0] = min(self.deltaPhi((myEle + myMuon).Phi(), myJet1.Phi()), self.deltaPhi((myEle + myMuon).Phi(), myJet2.Phi()))
         else: 
           holder[0] = -1
       elif varname=="minDeltaEta_em_j1j2":
-        if njets == 2: 
+        if njets >= 2: 
           holder[0] =  min(self.deltaEta((myEle + myMuon).Eta(), myJet1.Eta()), self.deltaEta((myEle + myMuon).Eta(), myJet2.Eta()))
         else:
           holder[0] = -1
       elif varname=="DeltaPhi_em_j1j2":
-        if njets == 2:
+        if njets >= 2:
           holder[0] = self.deltaPhi((myEle + myMuon).Phi(), (myJet1 + myJet2).Phi())
         else: 
           holder[0] = -1
       elif varname=="DeltaEta_em_j1j2":
-        if njets == 2: 
+        if njets >= 2: 
           holder[0] =  self.deltaEta((myEle + myMuon).Eta(), (myJet1 + myJet2).Eta())
         else:
           holder[0] = -1
       elif varname=="DeltaR_em_j1j2":
-        if njets == 2:
+        if njets >= 2:
           holder[0] = self.deltaR((myEle + myMuon).Phi(), (myJet1 + myJet2).Phi(), (myEle + myMuon).Eta(), (myJet1 + myJet2).Eta())
         else:
           holder[0] = -1
@@ -212,32 +226,32 @@ class AnalyzeEMBDT(MegaBase, EMBase):
         else:
           holder[0] = -1
       elif varname=="DeltaPhi_e_j2":
-        if njets == 2:
+        if njets >= 2:
           holder[0] = self.deltaPhi(myEle.Phi(), myJet2.Phi())
         else:
           holder[0] = -1
       elif varname=="DeltaPhi_m_j2":
-        if njets == 2:
+        if njets >= 2:
           holder[0] = self.deltaPhi(myMuon.Phi(), myJet2.Phi())
         else:
           holder[0] = -1
       elif varname=="DeltaEta_e_j2":
-        if njets == 2:
+        if njets >= 2:
           holder[0] = self.deltaEta(myEle.Eta(), myJet2.Eta())
         else:
           holder[0] = -1
       elif varname=="DeltaEta_m_j2":
-        if njets == 2:
+        if njets >= 2:
           holder[0] = self.deltaEta(myMuon.Eta(), myJet2.Eta())
         else:
           holder[0] = -1
       elif varname=="DeltaR_e_j2":
-        if njets == 2:
+        if njets >= 2:
           holder[0] = self.deltaR(myEle.Phi(), myJet2.Phi(), myEle.Eta(), myJet2.Eta())
         else:
           holder[0] = -1
       elif varname=="DeltaR_m_j2":
-        if njets == 2:
+        if njets >= 2:
           holder[0] = self.deltaR(myMuon.Phi(), myJet2.Phi(), myMuon.Eta(), myJet2.Eta())
         else:
           holder[0] = -1
@@ -256,18 +270,30 @@ class AnalyzeEMBDT(MegaBase, EMBase):
       elif varname=="e_m_PZeta":
         holder[0] = e_m_PZeta
       elif varname=="R_pT":
-        if njets == 2:
+        if njets >= 2:
           holder[0] = abs((myMuon+myEle+myJet1+myJet2).Pt())/(myMuon.Pt()+myEle.Pt()+myJet1.Pt()+myJet2.Pt())
+        elif njets == 1:
+          holder[0] = abs((myMuon+myEle+myJet1).Pt())/(myMuon.Pt()+myEle.Pt()+myJet1.Pt())
         else:
           holder[0] = 0
-      elif varname=="pT_cen":
-        if njets == 2: 
+      elif varname=="pT_cen_ver2":
+        if njets >= 2: 
           holder[0] = ((myMuon+myEle).Pt() - abs((myJet1+myJet2).Pt())/2)/abs((myJet1-myJet2).Pt())
         else:
           holder[0] = -50
+      elif varname=="pT_cen_ver3":
+        if njets >= 2: 
+          holder[0] = abs(((myMuon+myEle).Pt() - abs((myJet1+myJet2).Pt())/2)/(myJet1-myJet2).Pt())
+        else:
+          holder[0] = -50
+      elif varname=="pT_cen":
+        if njets >= 2: 
+          holder[0] = ((myMuon+myEle).Pt() - abs((myJet1+myJet2).Pt())/2)
+        else:
+          holder[0] = -50
       elif varname=="cen":
-        if njets == 2: 
-          holder[0] = math.exp(self.Zeppenfeld(myEle, myMuon, myJet1, myJet2)**2*-4/((myJet1.Eta()-myJet2.Eta())**2))
+        if njets >= 2: 
+          holder[0] = math.exp(self.Zeppenfeld(myEle, myMuon, myJet1, myJet2)**2*-4/(self.deltaEta(myJet1.Eta(), myJet2.Eta())**2))
         else:
           holder[0] = -1
       elif varname=="Ht":

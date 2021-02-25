@@ -42,7 +42,7 @@ int TMVAClassification( TString myMethodList = "" )
     }
   }
   // --------------------------------------------------------------------------------------------------
-  TString fname = "BDT/BDT_single.root";
+  TString fname = "BDT/BDT_or2_jets.root";
   if (gSystem->AccessPathName( fname ))  // file does not exist in local directory
     gSystem->Exec("curl -O http://root.cern.ch/files/tmva_class_example.root");
   TFile *input = TFile::Open( fname );
@@ -119,7 +119,7 @@ int TMVAClassification( TString myMethodList = "" )
 //  dataloader->AddVariable("DeltaR_e_j1", 'F');
 //  dataloader->AddVariable("DeltaR_m_j1", 'F');
 
-  dataloader->AddVariable("j2Pt", 'F');//
+//  dataloader->AddVariable("j2Pt", 'F');//
   dataloader->AddVariable("j2Eta", 'F');//
 //  dataloader->AddVariable("DeltaEta_em_j2", 'F');
 //  dataloader->AddVariable("DeltaPhi_em_j2", 'F');
@@ -131,20 +131,20 @@ int TMVAClassification( TString myMethodList = "" )
 //  dataloader->AddVariable("DeltaR_e_j2", 'F');
 //  dataloader->AddVariable("DeltaR_m_j2", 'F');
 
-//  dataloader->AddVariable("DeltaEta_j1_j2", 'F');
+  dataloader->AddVariable("DeltaEta_j1_j2", 'F');
 //  dataloader->AddVariable("DeltaPhi_j1_j2", 'F');
 //  dataloader->AddVariable("DeltaR_j1_j2", 'F');
 
 //  dataloader->AddVariable("DeltaR_em_j1j2", 'F');
-//  dataloader->AddVariable("Zeppenfeld", 'F');
+//  dataloader->AddVariable("Zeppenfeld_ver2", 'F');
 //  dataloader->AddVariable("j1_j2_mass", 'F');
 //  dataloader->AddVariable("minDeltaPhi_em_j1j2", 'F');
 //  dataloader->AddVariable("minDeltaEta_em_j1j2", 'F');
-//  dataloader->AddVariable("Nj", 'I');
+  dataloader->AddSpectator("Nj", 'I');
 
   dataloader->AddVariable("R_pT", 'F');//
-//  dataloader->AddVariable("pT_cen", 'F');  
-//  dataloader->AddVariable("cen", 'F');  
+//  dataloader->AddVariable("pT_cen_ver2", 'F'); // 
+//  dataloader->AddVariable("cen", 'F');         //
 //  dataloader->AddVariable("Ht", 'F');  
 
   Double_t signalWeight     = 1.0;
@@ -157,15 +157,17 @@ int TMVAClassification( TString myMethodList = "" )
   dataloader->SetBackgroundWeightExpression( "weight" );
 
   // Apply additional cuts on the signal and background samples (can be different)
-  TCut mycuts = "e_m_Mass<135 & e_m_Mass>115 & !(Nj==2. & j1_j2_mass>400 & DeltaEta_j1_j2 > 2.5)";
-  TCut mycutb = "e_m_Mass<135 & e_m_Mass>115 & !(Nj==2. & j1_j2_mass>400 & DeltaEta_j1_j2 > 2.5)";
+  TCut mycuts = "e_m_Mass<135 & e_m_Mass>115 & !(Nj==2 & j1_j2_mass>400 & DeltaEta_j1_j2>2.5) & Nj<=2";
+  TCut mycutb = "e_m_Mass<135 & e_m_Mass>115 & !(Nj==2 & j1_j2_mass>400 & DeltaEta_j1_j2>2.5) & Nj<=2";
 //  TCut mycuts = "e_m_Mass<135 & e_m_Mass>115 & (Nj==2 & j1_j2_mass>400)";
 //  TCut mycutb = "e_m_Mass<135 & e_m_Mass>115 & (Nj==2 & j1_j2_mass>400)";
 //  TCut mycuts = "e_m_Mass<135 & e_m_Mass>115 & Nj==2";
 //  TCut mycutb = "e_m_Mass<135 & e_m_Mass>115 & Nj==2";
-
-
-
+TMVA::MethodCategory* mcat = 0;
+TString ZjetsVars = "mPt_Per_e_m_Mass:ePt_Per_e_m_Mass:emEta:DeltaR_e_m:m_met_mT_per_M:e_met_mT_per_M:MetEt";
+TString OjetsVars = "mPt_Per_e_m_Mass:ePt_Per_e_m_Mass:emEta:DeltaR_e_m:m_met_mT_per_M:e_met_mT_per_M:j1Eta:DeltaR_em_j1:j1Pt:MetEt";
+TString TjetsVars = "mPt_Per_e_m_Mass:ePt_Per_e_m_Mass:emEta:DeltaR_e_m:m_met_mT_per_M:e_met_mT_per_M:j1Eta:DeltaR_em_j1:j2Eta:DeltaR_em_j2:R_pT:j1Pt:DeltaEta_j1_j2:MetEt";
+TString BDToptions = "!H:!V:NTrees=850:MinNodeSize=2.5%:MaxDepth=3:BoostType=AdaBoost:AdaBoostBeta=0.5:UseBaggedBoost:BaggedSampleFraction=0.5:SeparationType=GiniIndex:nCuts=20:PruneMethod=NoPruning";
   dataloader->PrepareTrainingAndTestTree( mycuts, mycutb,
 					  "SplitMode=Random:NormMode=NumEvents:!V"); //::nTrain_Signal=825171=:nTrain_Background=209339" ); //nTrain_Signal=166977:nTrain_Background=8767");//:nTrain_Signal=872122:nTrain_Background=224141" ); 
 
@@ -176,8 +178,14 @@ int TMVAClassification( TString myMethodList = "" )
    // factory->BookMethod( dataloader, TMVA::Types::kBDT, "BDTG_vbf",
 //			 "!H:!V:NTrees=850:MinNodeSize=3%:BoostType=Grad:Shrinkage=0.1:UseBaggedBoost:BaggedSampleFraction=0.5:nCuts=30:MaxDepth=3:NegWeightTreatment=IgnoreNegWeightsInTraining");
   if (Use["BDT"])  // Adaptive Boost
-    factory->BookMethod( dataloader, TMVA::Types::kBDT, "BDT_gg_opt",
-			 "!H:!V:NTrees=850:MinNodeSize=2.5%:MaxDepth=3:BoostType=AdaBoost:AdaBoostBeta=0.5:UseBaggedBoost:BaggedSampleFraction=0.5:SeparationType=GiniIndex:nCuts=20:PruneMethod=NoPruning" );
+    factory->BookMethod( dataloader, TMVA::Types::kBDT, "BDT_gg_opt",BDToptions);
+    TMVA::MethodBase* fiCat = factory->BookMethod( dataloader, TMVA::Types::kCategory, "BDTCat","" );
+    mcat = dynamic_cast<TMVA::MethodCategory*>(fiCat);
+    mcat->AddMethod( "Nj==0", ZjetsVars, TMVA::Types::kBDT, "0Jets_BDT", BDToptions);
+    mcat->AddMethod( "Nj==1", OjetsVars, TMVA::Types::kBDT, "1Jets_BDT", BDToptions);
+    mcat->AddMethod( "Nj==2", TjetsVars, TMVA::Types::kBDT, "2Jets_BDT", BDToptions);
+
+
   if (Use["BDTB"]) // Bagging
     factory->BookMethod( dataloader, TMVA::Types::kBDT, "BDTB",
 			 "!H:!V:NTrees=400:BoostType=Bagging:SeparationType=GiniIndex:nCuts=20" );

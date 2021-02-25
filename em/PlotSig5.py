@@ -1,5 +1,5 @@
 import os
-from ROOT import TLatex, gROOT, TFile, TH1F, TGraph, TCanvas, TLine, gPad, TMultiGraph, TPaveText
+from ROOT import TLatex, gROOT, TFile, TH1F, TH2F, TGraph, TCanvas, TLine, gPad, TMultiGraph, TPaveText
 import sys
 import glob
 import math
@@ -47,7 +47,7 @@ def add_Preliminary():
     lumi.SetTextColor(    1 )
     lumi.AddText("Preliminary")
     return lumi
-fFileold = [TFile("BDT_sig_NoMet.root"), TFile("../../UWHiggs2017/em/BDT_sig_NoMet.root"), TFile("../../UWHiggs/em/BDT_sig_NoMet.root")]
+fFileold = [TFile("BDT_sig_wide.root"), TFile("../../UWHiggs2017/em/BDT_sig_wide.root"), TFile("../../UWHiggs/em/BDT_sig_wide.root")]
 #fFileold = [TFile("BDT_sig_allyear.root"), TFile("../../UWHiggs2017/em/BDT_sig_allyear.root"), TFile("../../UWHiggs/em/BDT_sig_allyear.root")]
 #fFileold = [TFile("BDThj.root"), TFile("../../UWHiggs2017/em/BDThj.root"), TFile("../../UWHiggs/em/BDThj.root")]
 fFileoldmc = [TFile("BDT_MC.root"), TFile("../../UWHiggs2017/em/BDT_MC.root"), TFile("../../UWHiggs/em/BDT_MC.root")]
@@ -57,22 +57,25 @@ n = 100
 nyear = 3
 xq = np.empty(n)
 yq = np.empty(n)
-for i in range(0, n):
+for i in range(n):
   xq[i] = (i+1)/float(n)
 
 hmvaS = []
+hmvaS2D = []
 hmvaSmc = []
 hmvaB = []
+hmvaB2D = []
 hmvaCuts = []
 for fFile in fFileold:
   hmvaS.append(fFile.Get("mvaS_gg"))
   hmvaB.append(fFile.Get("mvaB_gg"))
+  hmvaS2D.append(fFile.Get("mvaS_gg2D"))
+  hmvaB2D.append(fFile.Get("mvaB_gg2D"))
 SigStep = [[1], [1], [1]]
-for i in range(0, nyear):
+for i in range(nyear):
   hmvaS[i].GetQuantiles(n,yq,xq)
   print 'year ',i
-  print yq
-  for j in range(0, n):
+  for j in range(n):
     SigStep[i].append(hmvaS[i].FindBin(yq[j]))
 
 for fFile in fFileoldmc:
@@ -92,9 +95,12 @@ catdiff = []
 
 S = [0, 0]
 B = [0, 0]
+S2D = [[0]*hmvaS2D[0].GetNbinsY(), [0]*hmvaS2D[0].GetNbinsY()]
+B2D = [[0]*hmvaB2D[0].GetNbinsY(), [0]*hmvaB2D[0].GetNbinsY()]
 Bprev = []
 Bprev2 = []
 Sig = [0, 0]
+Sigbin = [0, 0]
 maxCombprev = 0.01
 maxComb = 0
 maxCombpen = 0
@@ -103,15 +109,21 @@ maxI = [-1,-1,-1]
 maxSigI = -1
 
 def BoundaryScan(screen, cats):
-  for i in range(0, len(cats)-1):
+  for i in range(len(cats)-1):
     if screen > cats[i] and screen < cats[i+1]:
       return cats[i], cats[i+1], i, i+1
     elif screen == cats[i]:
       return cats[i], cats[i] + 1, -1, -1
 
 def Initialize(lis_):
-  for  i in range(0, len(lis_)):
+  for  i in range(len(lis_)):
     lis_[i] = 0
+
+def checkBkg(lis_):
+  pass_ = True
+  for i in lis_:
+    if i < 10*hmvaS2D[0].GetNbinsY(): pass_ = False
+  return pass_
 
 while run:    
   ncats = len(catdiff) + 1
@@ -119,14 +131,17 @@ while run:
   for i in range(1,n-1):
     Initialize(S)
     Initialize(B)
+    for ln in range(len(S2D)):
+      Initialize(S2D[ln])
+      Initialize(B2D[ln])
     Initialize(Sig)
+    Initialize(Sigbin)
     Comb = 0
     pl = 0
     pr = 0
     pl2 = 0
     pr2 = 0
     for yr in range(nyear):
-
 #      print "Scanning at ", 2016+yr
       Boundl, Boundr, Il, Ir = BoundaryScan(SigStep[yr][i], cats[yr])[0], BoundaryScan(SigStep[yr][i], cats[yr])[1], BoundaryScan(SigStep[yr][i], cats[yr])[2], BoundaryScan(SigStep[yr][i], cats[yr])[3]
 
@@ -138,41 +153,56 @@ while run:
 
       for s_b in range(len(S)):
         if (s_b == Il):
-#          print "Boud of ", s_b
-#          print Boundl, SigStep[yr][i]
+      #    print "Boud of ", s_b
+      #    print Boundl, SigStep[yr][i], Sigbin[s_b]
           for j in range(Boundl, SigStep[yr][i]): 
             if j > hmvaCuts[yr] or not runCut:
+              for k in range(1,hmvaS2D[yr].GetNbinsY()+1):
+                S2D[s_b][k-1]+=hmvaS2D[yr].GetBinContent(j,k)
+                B2D[s_b][k-1]+=hmvaB2D[yr].GetBinContent(j,k)
               S[s_b]+=hmvaS[yr].GetBinContent(j)
               B[s_b]+=hmvaB[yr].GetBinContent(j)
           pl = B[s_b]/(hmvaB[0].Integral()+hmvaB[1].Integral()+hmvaB[2].Integral())
           pl2 = S[s_b]/(hmvaS[0].Integral()+hmvaS[1].Integral()+hmvaS[2].Integral())
         elif (s_b == Ir):
-#          print "Boud of ", s_b
-#          print SigStep[yr][i], Boundr
+       #   print "Boud of ", s_b
+       #   print SigStep[yr][i], Boundr, Sigbin[s_b]
           for j in range(SigStep[yr][i], Boundr): 
             if j > hmvaCuts[yr] or not runCut:
+              for k in range(1,hmvaS2D[yr].GetNbinsY()+1):
+                S2D[s_b][k-1]+=hmvaS2D[yr].GetBinContent(j,k)
+                B2D[s_b][k-1]+=hmvaB2D[yr].GetBinContent(j,k)
               S[s_b]+=hmvaS[yr].GetBinContent(j)
               B[s_b]+=hmvaB[yr].GetBinContent(j)
           pr = B[s_b]/(hmvaB[0].Integral()+hmvaB[1].Integral()+hmvaB[2].Integral())
           pr2 = S[s_b]/(hmvaS[0].Integral()+hmvaS[1].Integral()+hmvaS[2].Integral())
         elif (s_b < Il):
-#          print "Boud of ", s_b
-#          print cats[yr][s_b], cats[yr][s_b+1]
+        #  print "Boud of ", s_b
+        #  print cats[yr][s_b], cats[yr][s_b+1], Sigbin[s_b]
           for j in range(cats[yr][s_b], cats[yr][s_b+1]):
             if j > hmvaCuts[yr] or not runCut:
+              for k in range(1,hmvaS2D[yr].GetNbinsY()+1):
+                S2D[s_b][k-1]+=hmvaS2D[yr].GetBinContent(j,k)
+                B2D[s_b][k-1]+=hmvaB2D[yr].GetBinContent(j,k)
               S[s_b]+=hmvaS[yr].GetBinContent(j) 
               B[s_b]+=hmvaB[yr].GetBinContent(j)
         elif (s_b > Ir):
-#          print "Boud of ", s_b
-#          print cats[yr][s_b-1], cats[yr][s_b]
+        #  print "Boud of ", s_b
+        #  print cats[yr][s_b-1], cats[yr][s_b], Sigbin[s_b]
           for j in range(cats[yr][s_b-1], cats[yr][s_b]):
             if j > hmvaCuts[yr] or not runCut:
+              for k in range(1,hmvaS2D[yr].GetNbinsY()+1):
+                S2D[s_b][k-1]+=hmvaS2D[yr].GetBinContent(j,k)
+                B2D[s_b][k-1]+=hmvaB2D[yr].GetBinContent(j,k)
               S[s_b]+=hmvaS[yr].GetBinContent(j)
               B[s_b]+=hmvaB[yr].GetBinContent(j)
-    for s_b in range(len(Sig)):
-      if B[s_b]!=0:
-        Sig[s_b] = S[s_b]*S[s_b]/B[s_b]
-        Comb += Sig[s_b]
+    for s_b in range(len(Sigbin)):
+      for k in range(hmvaS2D[yr].GetNbinsY()):
+        if B2D[s_b][k]!=0:
+          Sigbin[s_b] += S2D[s_b][k]*S2D[s_b][k]/B2D[s_b][k]
+      Comb += Sigbin[s_b]        
+      #print "Comb", Comb
+      #print Sigbin
 #        print "Sig at ", s_b
 #        print Sig[s_b]
 
@@ -192,7 +222,7 @@ while run:
   #    Combpen = Comb*(1+pl*pr/((pl+pr)**2)+pl2*pr2/((pl2+pr2)**2))
   #  else:
   #    Combpen = Comb
-    if Combpen > maxCombpen: # i==51: #Combpen > maxCombpen: 
+    if Combpen > maxCombpen and checkBkg(B): # i==51: #Combpen > maxCombpen: 
       maxCombpen = Combpen
       maxComb = Comb
       Bprev = B[:]
@@ -220,6 +250,7 @@ while run:
       gPad.SetFrameBorderSize(10)
       Multigr = TMultiGraph()
       gr = TGraph(len(Sigx), Sigx, Sigy)
+      print Sigy
       gr.GetXaxis().SetRangeUser(0, 1)
       gr.GetXaxis().SetTitle("Signal Efficiency")
       gr.GetYaxis().SetTitle("Combined Sensitivity")
@@ -256,10 +287,13 @@ while run:
     Bprev2 = Bprev[:]
     S.append(0)
     B.append(0)
+    S2D.append([0]*hmvaS2D[0].GetNbinsY())
+    B2D.append([0]*hmvaB2D[0].GetNbinsY())
     Sig.append(0)
+    Sigbin.append(0)
     catdiff.append(diff)
     catsSig.append(1-maxSigI)
-    for yr in range(0, nyear):
+    for yr in range(nyear):
 #      print "hello", yr
 #      print cats[yr]
 #      print maxI[yr]
@@ -303,5 +337,6 @@ for yr in range(0, nyear):
     cats_mva[yr].append(round(cat*0.001-0.0005-1,4))
     #cats_mva[yr].append(cat*0.01-0.005-1)
   print cats_mva[yr]
+catsSig.sort()
 print "Signal Efficiency: ", catsSig
 print "BBB: ", Bprev2

@@ -1,49 +1,49 @@
-mkdir -p `dirname results/Data2016JEC/AnalyzeEMTree/data_SingleMuon_Run2016B_v2.root`
-mkdir -p `dirname results/Data2016JEC/AnalyzeEMTree/data_SingleMuon_Run2016C.root`
+mkdir -p `dirname results/Data2016JEC/AnalyzeEMBDTCat/data_SingleMuon_Run2016B_v2.root`
+mkdir -p `dirname results/Data2016JEC/AnalyzeEMBDTCat/data_SingleMuon_Run2016C.root`
 #using farmout:1
 #dry run:1
-export megatarget=results/Data2016JEC/AnalyzeEMTree/data_SingleMuon_Run2016B_v2.root
+export megatarget=results/Data2016JEC/AnalyzeEMBDTCat/data_SingleMuon_Run2016B_v2.root
 mkdir -p batch_logs
-mega-farmout AnalyzeEMTree.py inputs/Data2016JEC/data_SingleMuon_Run2016B_v2.txt results/Data2016JEC/AnalyzeEMTree/data_SingleMuon_Run2016B_v2.root --verbose >& batch_logs/results_Data2016JEC_AnalyzeEMTree_data_SingleMuon_Run2016B_v2.log &
+mega-farmout AnalyzeEMBDTCat.py inputs/Data2016JEC/data_SingleMuon_Run2016B_v2.txt results/Data2016JEC/AnalyzeEMBDTCat/data_SingleMuon_Run2016B_v2.root --verbose >& batch_logs/results_Data2016JEC_AnalyzeEMBDTCat_data_SingleMuon_Run2016B_v2.log &
 sleep 10s
-mkdir -p `dirname results/Data2016JEC/AnalyzeEMTree/data_SingleMuon_Run2016D.root`
+mkdir -p `dirname results/Data2016JEC/AnalyzeEMBDTCat/data_SingleMuon_Run2016D.root`
 #using farmout:1
 #dry run:1
-export megatarget=results/Data2016JEC/AnalyzeEMTree/data_SingleMuon_Run2016C.root
+export megatarget=results/Data2016JEC/AnalyzeEMBDTCat/data_SingleMuon_Run2016C.root
 mkdir -p batch_logs
-mega-farmout AnalyzeEMTree.py inputs/Data2016JEC/data_SingleMuon_Run2016C.txt results/Data2016JEC/AnalyzeEMTree/data_SingleMuon_Run2016C.root --verbose >& batch_logs/results_Data2016JEC_AnalyzeEMTree_data_SingleMuon_Run2016C.log &
+mega-farmout AnalyzeEMBDTCat.py inputs/Data2016JEC/data_SingleMuon_Run2016C.txt results/Data2016JEC/AnalyzeEMBDTCat/data_SingleMuon_Run2016C.root --verbose >& batch_logs/results_Data2016JEC_AnalyzeEMBDTCat_data_SingleMuon_Run2016C.log &
 sleep 10s
-mkdir -p `dirname results/Data2016JEC/AnalyzeEMTree/data_SingleMuon_Run2016E.root`
+mkdir -p `dirname results/Data2016JEC/AnalyzeEMBDTCat/data_SingleMuon_Run2016E.root`
 #using farmout:1
 #dry run:1
-export megatarget=results/Data2016JEC/AnalyzeEMTree/data_SingleMuon_Run2016D.root
+export megatarget=results/Data2016JEC/AnalyzeEMBDTCat/data_SingleMuon_Run2016D.root
 mkdir -p batch_logs
-mega-farmout AnalyzeEMTree.py inputs/Data2016JEC/data_SingleMuon_Run2016D.txt results/Data2016JEC/AnalyzeEMTree/data_SingleMuon_Run2016D.root --verbose >& batch_logs/results_Data2016JEC_AnalyzeEMTree_data_SingleMuon_Run2016D.log &
+mega-farmout AnalyzeEMBDTCat.py inputs/Data2016JEC/data_SingleMuon_Run2016D.txt results/Data2016JEC/AnalyzeEMBDTCat/data_SingleMuon_Run2016D.root --verbose >& batch_logs/results_Data2016JEC_AnalyzeEMBDTCat_data_SingleMuon_Run2016D.log &
 sleep 10s
-mkdir -p `dirname results/Data2016JEC/AnalyzeEMTree/data_SingleMuon_Run2016F.root`
+mkdir -p `dirname results/Data2016JEC/AnalyzeEMBDTCat/data_SingleMuon_Run2016F.root`
 #using farmout:1
 #dry run:1
-export megatarget=results/Data2016JEC/AnalyzeEMTree/data_SingleMuon_Run2016E.root
+export megatarget=results/Data2016JEC/AnalyzeEMBDTCat/data_SingleMuon_Run2016E.root
 mkdir -p batch_logs
-mega-farmout AnalyzeEMTree.py inputs/Data2016JEC/data_SingleMuon_Run2016E.txt results/Data2016JEC/AnalyzeEMTree/data_SingleMuon_Run2016E.root --verbose >& batch_logs/results_Data2016JEC_AnalyzeEMTree_data_SingleMuon_Run2016E.log &
+mega-farmout AnalyzeEMBDTCat.py inputs/Data2016JEC/data_SingleMuon_Run2016E.txt results/Data2016JEC/AnalyzeEMBDTCat/data_SingleMuon_Run2016E.root --verbose >& batch_logs/results_Data2016JEC_AnalyzeEMBDTCat_data_SingleMuon_Run2016E.log &
 sleep 10s
-mkdir -p `dirname results/Data2016JEC/AnalyzeEMTree/data_SingleMuon_Run2016G.root`
+mkdir -p `dirname results/Data2016JEC/AnalyzeEMBDTCat/data_SingleMuon_Run2016G.root`
 #using farmout:1
 #dry run:1
-export megatarget=results/Data2016JEC/AnalyzeEMTree/data_SingleMuon_Run2016F.root
+export megatarget=results/Data2016JEC/AnalyzeEMBDTCat/data_SingleMuon_Run2016F.root
 mkdir -p batch_logs
-mega-farmout AnalyzeEMTree.py inputs/Data2016JEC/data_SingleMuon_Run2016F.txt results/Data2016JEC/AnalyzeEMTree/data_SingleMuon_Run2016F.root --verbose >& batch_logs/results_Data2016JEC_AnalyzeEMTree_data_SingleMuon_Run2016F.log &
+mega-farmout AnalyzeEMBDTCat.py inputs/Data2016JEC/data_SingleMuon_Run2016F.txt results/Data2016JEC/AnalyzeEMBDTCat/data_SingleMuon_Run2016F.root --verbose >& batch_logs/results_Data2016JEC_AnalyzeEMBDTCat_data_SingleMuon_Run2016F.log &
 sleep 10s
-mkdir -p `dirname results/Data2016JEC/AnalyzeEMTree/data_SingleMuon_Run2016H.root`
+mkdir -p `dirname results/Data2016JEC/AnalyzeEMBDTCat/data_SingleMuon_Run2016H.root`
 #using farmout:1
 #dry run:1
-export megatarget=results/Data2016JEC/AnalyzeEMTree/data_SingleMuon_Run2016G.root
+export megatarget=results/Data2016JEC/AnalyzeEMBDTCat/data_SingleMuon_Run2016G.root
 mkdir -p batch_logs
-mega-farmout AnalyzeEMTree.py inputs/Data2016JEC/data_SingleMuon_Run2016G.txt results/Data2016JEC/AnalyzeEMTree/data_SingleMuon_Run2016G.root --verbose >& batch_logs/results_Data2016JEC_AnalyzeEMTree_data_SingleMuon_Run2016G.log &
+mega-farmout AnalyzeEMBDTCat.py inputs/Data2016JEC/data_SingleMuon_Run2016G.txt results/Data2016JEC/AnalyzeEMBDTCat/data_SingleMuon_Run2016G.root --verbose >& batch_logs/results_Data2016JEC_AnalyzeEMBDTCat_data_SingleMuon_Run2016G.log &
 sleep 10s
 #using farmout:1
 #dry run:1
-export megatarget=results/Data2016JEC/AnalyzeEMTree/data_SingleMuon_Run2016H.root
+export megatarget=results/Data2016JEC/AnalyzeEMBDTCat/data_SingleMuon_Run2016H.root
 mkdir -p batch_logs
-mega-farmout AnalyzeEMTree.py inputs/Data2016JEC/data_SingleMuon_Run2016H.txt results/Data2016JEC/AnalyzeEMTree/data_SingleMuon_Run2016H.root --verbose >& batch_logs/results_Data2016JEC_AnalyzeEMTree_data_SingleMuon_Run2016H.log &
+mega-farmout AnalyzeEMBDTCat.py inputs/Data2016JEC/data_SingleMuon_Run2016H.txt results/Data2016JEC/AnalyzeEMBDTCat/data_SingleMuon_Run2016H.root --verbose >& batch_logs/results_Data2016JEC_AnalyzeEMBDTCat_data_SingleMuon_Run2016H.log &
 sleep 10s

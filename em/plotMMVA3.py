@@ -58,15 +58,15 @@ gPad.SetFrameLineWidth(3)
 gPad.SetFrameBorderMode(0)
 gPad.SetFrameBorderSize(10)
 MMVA1.SetLineColor(1)
-MMVA1.SetLineWidth(3);
+MMVA1.SetLineWidth(3)
 MMVA2.SetLineColor(4)
-MMVA2.SetLineWidth(3);
+MMVA2.SetLineWidth(3)
 MMVA3.SetLineColor(2)
-MMVA3.SetLineWidth(3);
+MMVA3.SetLineWidth(3)
 MMVA4.SetLineColor(42)
-MMVA4.SetLineWidth(3);
+MMVA4.SetLineWidth(3)
 MMVA5.SetLineColor(8)
-MMVA5.SetLineWidth(3);
+MMVA5.SetLineWidth(3)
 MMVA1.Scale( 1./MMVA1.Integral())
 MMVA2.Scale( 1./MMVA2.Integral())
 MMVA3.Scale( 1./MMVA3.Integral())

@@ -43,18 +43,25 @@ parser.add_argument(
     default="m_t_CollinearMass",
     help="Which variable")
 parser.add_argument(
+    "--cat",
+    type=str,
+    action="store",
+    dest="cat",
+    default="gg",
+    help="Which category")
+parser.add_argument(
     "--higgsSF",
     type=float,
     action="store",
     dest="higgsSF",
-    default=20,
+    default=10,
     help="Provide the Scale Factor for the SM-Higgs signals.  10x is default")
 parser.add_argument(
     "--higgsSFSM",
     type=float,
     action="store",
     dest="higgsSFSM",
-    default=0.5,
+    default=10,
     help="Provide the Scale Factor for the SM-Higgs signals.  10x is default")
 parser.add_argument(
     "--inputFile",
@@ -84,6 +91,7 @@ varnames['DeltaR_em_j1'] = '#Delta R[e#mu, j_{1}]'
 varnames['DeltaR_em_j2'] = '#Delta R[e#mu, j_{2}]'
 varnames['MetEt'] = 'E_{T}^{miss} [GeV]'
 varnames['R_pT']='R_{p_{T}}'
+varnames['Ht']='H_{T} [GeV]'
 varnames['m_met_mT_Per_e_m_Mass'] = 'm_{T}[#mu, MET]/m_{e#mu}'
 varnames['e_met_mT_Per_e_m_Mass'] = 'm_{T}[e, MET]/m_{e#mu}'
 
@@ -121,7 +129,7 @@ higgsSF = args.higgsSF
 isLog = args.isLog
 prefix = args.prefix
 categories = varCfgPlotter.getCategories( channel, prefix )
-fileName = args.variable + '.root'
+fileName = args.cat+'_'+args.variable + '.root'
 forceBlinding = args.blind
 
 if fileName == None :
@@ -364,16 +372,18 @@ if isLog:
     pad1.SetLogy()
 
 hists["data_obs"].GetXaxis().SetLabelSize(0)
-if variable == 'bdtDiscriminator':
+if variable == 'bdtDiscriminator' and 'gg' in args.cat:
  hists["data_obs"].GetXaxis().SetRangeUser(-0.4, 0.25)
+elif variable == 'bdtDiscriminator':
+ hists["data_obs"].GetXaxis().SetRangeUser(-0.4, 0.3)
 elif variable == 'Mjj':
  hists["data_obs"].GetXaxis().SetRangeUser(0, 450)
 elif variable == 'MetEt':
- hists["data_obs"].GetXaxis().SetRangeUser(0, 200)
+ hists["data_obs"].GetXaxis().SetRangeUser(0, 250)
 elif variable == 'j2Pt':
- hists["data_obs"].GetXaxis().SetRangeUser(30, 200)
+ hists["data_obs"].GetXaxis().SetRangeUser(30, 120)
 elif variable == 'j1Pt':
- hists["data_obs"].GetXaxis().SetRangeUser(30, 350)
+ hists["data_obs"].GetXaxis().SetRangeUser(30, 250)
 elif variable == 'e_m_PZeta':
  hists["data_obs"].GetXaxis().SetRangeUser(-150, 200)
 elif variable == 'DeltaEta_e_met':
@@ -383,13 +393,13 @@ elif variable == 'DeltaEta_m_met':
 elif variable == 'DeltaR_e_m':
  hists["data_obs"].GetXaxis().SetRangeUser(0.5, 4.5)
 elif variable == 'DeltaR_em_j1':
- hists["data_obs"].GetXaxis().SetRangeUser(0, 6)
+ hists["data_obs"].GetXaxis().SetRangeUser(0, 7)
 elif variable == 'DeltaR_em_j2':
  hists["data_obs"].GetXaxis().SetRangeUser(0, 6)
 elif variable == 'e_met_mT_Per_e_m_Mass':
- hists["data_obs"].GetXaxis().SetRangeUser(0, 2)
+ hists["data_obs"].GetXaxis().SetRangeUser(0, 2.5)
 elif variable == 'm_met_mT_Per_e_m_Mass':
- hists["data_obs"].GetXaxis().SetRangeUser(0, 2)
+ hists["data_obs"].GetXaxis().SetRangeUser(0, 2.5)
 elif variable == 'emEta':
  hists["data_obs"].GetXaxis().SetRangeUser(-5, 5)
 elif variable == 'ePt_Per_e_m_Mass':
@@ -518,8 +528,8 @@ if isLog:
     c.SaveAs("plots/log_"+cat+".pdf")
     c.SaveAs("plots/log_"+cat+".png")
 else:
-    c.SaveAs("plots/"+variable+".pdf")
-    c.SaveAs("plots/"+variable+".png")
+    c.SaveAs("plots/"+args.cat+"_"+variable+".pdf")
+    c.SaveAs("plots/"+args.cat+"_"+variable+".png")
 
 
 for bkg in bkgs:

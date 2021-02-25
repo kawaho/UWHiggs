@@ -1,4 +1,4 @@
-from ROOT import TH1F, gROOT, TLatex, TFile, TCanvas, gStyle, TLegend, TLine, gPad, TPaveText
+from ROOT import TH1F, gROOT, TLatex, TFile, TCanvas, gStyle, TLegend, TLine, gPad, TPaveText, TBox
 import array
 import numpy as np
 gStyle.SetOptStat(False)
@@ -43,25 +43,26 @@ def add_Preliminary():
     lumi.AddText("Preliminary")
     return lumi
 n = 4
-xq = np.array([1-0.96, 1-0.53, 1-0.32, 1-0.11])
+xq = np.array([0.16, 1-0.41, 1-0.12, 1-0.6])
+#n = 2
+#xq = np.array([0.01, 1-0.48])
 yq = np.empty(n)
 lines = []
 for i in range(n):
   lines.append(TLine())
+
+
 fFilenew = TFile("BDT_plot.root")
-hmvaS = fFilenew.Get("mvaS")
-hmvaB = fFilenew.Get("mvaB")
-hmvaSEff = fFilenew.Get("mvaEff")
+hmvaS = fFilenew.Get("mvaS_gg")
+hmvaB = fFilenew.Get("mvaB_gg")
 
 fFilenew2017 = TFile("../../UWHiggs2017/em/BDT_plot.root")
-hmvaS2017 = fFilenew2017.Get("mvaS")
-hmvaB2017 = fFilenew2017.Get("mvaB")
-hmvaSEff2017 = fFilenew2017.Get("mvaEff")
+hmvaS2017 = fFilenew2017.Get("mvaS_gg")
+hmvaB2017 = fFilenew2017.Get("mvaB_gg")
 
 fFilenew2018 = TFile("../../UWHiggs/em/BDT_plot.root")
-hmvaS2018 = fFilenew2018.Get("mvaS")
-hmvaB2018 = fFilenew2018.Get("mvaB")
-hmvaSEff2018 = fFilenew2018.Get("mvaEff")
+hmvaS2018 = fFilenew2018.Get("mvaS_gg")
+hmvaB2018 = fFilenew2018.Get("mvaB_gg")
 
 gPad.SetFillColor(0)
 gPad.SetBorderMode(0)
@@ -81,13 +82,13 @@ hmvaB.Add(hmvaB2018)
 hmvaS.Rebin(10)
 hmvaB.Rebin(10)
 hmvaS.GetQuantiles(n,yq,xq)
-#print yq
+print yq
 
-hmvaS.GetXaxis().SetRangeUser(-0.4, 0.3)
-hmvaB.GetXaxis().SetRangeUser(-0.4, 0.3)
+hmvaS.GetXaxis().SetRangeUser(-0.5, 0.6) #-0.5, 0.4
+hmvaB.GetXaxis().SetRangeUser(-0.5, 0.6)
 #hmvaS.SetMarkerStyle(0)
 hmvaS.SetLineColor(2)
-hmvaS.SetFillColor(10)
+hmvaB.SetFillColor(10)
 hmvaS.SetMinimum(0.001)
 #hmvaS.SetFillStyle(3002)
 #hmvaS.SetFillColor(1)
@@ -96,30 +97,30 @@ hmvaB.SetLineColor(4)
 hmvaB.SetMinimum(0.001)
 #hmvaB.SetFillStyle(3002)
 #hmvaB.SetFillColor(1)
-hmvaS.SetTitle(" ")
-hmvaS.SetXTitle("BDT Discriminator")
-hmvaS.SetYTitle("Events/bin")
-hmvaS.GetXaxis().SetTitleFont(42)
-hmvaS.GetYaxis().SetTitleFont(42)
-hmvaS.GetXaxis().SetTitleSize(0.05)
-hmvaS.GetYaxis().SetTitleSize(0.05)
-hmvaS.GetXaxis().SetLabelSize(0.045)
-hmvaS.GetYaxis().SetLabelSize(0.045)
-hmvaS.GetYaxis().SetTitleOffset(1.60)
-hmvaS.SetLineWidth(3);
+hmvaB.SetTitle(" ")
+hmvaB.SetXTitle("BDT Discriminator")
+hmvaB.SetYTitle("Events/bin")
+hmvaB.GetXaxis().SetTitleFont(42)
+hmvaB.GetYaxis().SetTitleFont(42)
+hmvaB.GetXaxis().SetTitleSize(0.05)
+hmvaB.GetYaxis().SetTitleSize(0.05)
+hmvaB.GetXaxis().SetLabelSize(0.045)
+hmvaB.GetYaxis().SetLabelSize(0.045)
+hmvaB.GetYaxis().SetTitleOffset(1.60)
 hmvaB.SetLineWidth(3);
+hmvaS.SetLineWidth(3);
 canvas.SetLeftMargin(0.16)
 canvas.SetRightMargin(0.05)
 canvas.SetBottomMargin(0.13)
-hmvaS.Draw('HIST')
-hmvaB.Draw("HIST,same")
-legend = TLegend(0.18, 0.7, .38, .89)
+hmvaB.Draw("HIST")
+hmvaS.Draw('HIST,same')
+#legend = TLegend(0.18, 0.7, .5, .89)
+legend = TLegend(0.65, 0.7, .86, .89)
 legend.SetBorderSize(0)
 legend.AddEntry(hmvaS,"Signal")
 legend.AddEntry(hmvaB,"Background")
-legend.SetTextFont(62)
+legend.SetTextFont(60)
 legend.SetTextSize(0.045)
-legend.Draw()
 l1 = add_lumi()
 l1.Draw("same")
 l2 = add_CMS()
@@ -128,8 +129,21 @@ l3 = add_Preliminary()
 l3.Draw("same")
 #print canvas.GetUymax()
 #print canvas.GetUymin()
+
+
 gPad.Modified()
 gPad.Update()
+box = TBox(-.5, gPad.GetUymin(), yq[0], (999. * gPad.GetUymax() + gPad.GetUymin()) / 1000.)
+box.SetFillColor(1)
+box.SetFillStyle(3003)
+
+box.Draw()
+legend.Draw()
+gPad.RedrawAxis() 
+gPad.RedrawAxis("G")
+gPad.Modified() 
+gPad.Update()
+
 for i in range(n):
   #print i
   lines[i] = TLine(yq[i],canvas.GetUymin(),yq[i],canvas.GetUymax())

@@ -12,7 +12,7 @@ import EMTree
 import ROOT
 import math
 import array
-
+import numpy as np
 class AnalyzeEMTree(MegaBase, EMBase):
   tree = 'em/final/Ntuple'
 
@@ -59,7 +59,6 @@ class AnalyzeEMTree(MegaBase, EMBase):
       myJet1, myJet2 = self.jetVec(row)[0], self.jetVec(row)[1]
       njets = row.jetVeto30
       mjj = row.vbfMass
-
       weight = self.corrFact(row, myEle, myMuon)[0]
 
       if math.isnan(row.vbfMass):
@@ -69,36 +68,31 @@ class AnalyzeEMTree(MegaBase, EMBase):
         continue
 
       if self.oppositesign(row):
-        if not (njets==2 and mjj>400 and self.deltaEta(myJet1.Eta(), myJet2.Eta())>2):
-          continue
-
-        self.filltree(myEle, myMuon, myMET, myJet1, myJet2, njets, mjj, row.e_m_PZeta, weight, 42)
-        for i in range(500,710,10):
-          if mjj>i:        
-            self.filltree(myEle, myMuon, myMET, myJet1, myJet2, njets, mjj, row.e_m_PZeta, weight, (i-500)*2/10)
+        if njets==2 and mjj>400 and self.deltaEta(myJet1.Eta(), myJet2.Eta())>2.5:
+          self.filltree(myEle, myMuon, myMET, myJet1, myJet2, njets, mjj, row.e_m_PZeta, weight, 7)
+          RpT = self.RpT(myEle, myMuon, myJet1, myJet2)
+          if RpT>.2:        
+            self.filltree(myEle, myMuon, myMET, myJet1, myJet2, njets, mjj, row.e_m_PZeta, weight, 5)
           else:
-            self.filltree(myEle, myMuon, myMET, myJet1, myJet2, njets, mjj, row.e_m_PZeta, weight, (i-500)*2/10+1)
+            self.filltree(myEle, myMuon, myMET, myJet1, myJet2, njets, mjj, row.e_m_PZeta, weight, 6)
 
-#        self.filltree(myEle, myMuon, myMET, myJet1, myJet2, njets, mjj, row.e_m_PZeta, weight, 6)
-#        if njets==2 and mjj>400 and self.deltaEta(myJet1.Eta(), myJet2.Eta())>2.5:
-#          self.filltree(myEle, myMuon, myMET, myJet1, myJet2, njets, mjj, row.e_m_PZeta, weight, 5)
-#        else:
-#          if njets == 0:
-#            mva = self.functor_gg(**self.var_d_gg_0(myEle, myMuon, myMET, myJet1, myJet2, row.e_m_PZeta, mjj))
-#          elif njets == 1:
-#            mva = self.functor_gg(**self.var_d_gg_1(myEle, myMuon, myMET, myJet1, myJet2, row.e_m_PZeta, mjj))
-#          else:
-#            mva = self.functor_gg(**self.var_d_gg_2(myEle, myMuon, myMET, myJet1, myJet2, row.e_m_PZeta, mjj))
-#          if mva < 0.0255:
-#            self.filltree(myEle, myMuon, myMET, myJet1, myJet2, njets, mjj, row.e_m_PZeta, weight, 0)
-#          elif mva < 0.0975:
-#            self.filltree(myEle, myMuon, myMET, myJet1, myJet2, njets, mjj, row.e_m_PZeta, weight, 1)
-#          elif mva < 0.1245:
-#            self.filltree(myEle, myMuon, myMET, myJet1, myJet2, njets, mjj, row.e_m_PZeta, weight, 2)
-#          elif mva < 0.1545:
-#            self.filltree(myEle, myMuon, myMET, myJet1, myJet2, njets, mjj, row.e_m_PZeta, weight, 3)
-#          else:
-#            self.filltree(myEle, myMuon, myMET, myJet1, myJet2, njets, mjj, row.e_m_PZeta, weight, 4)
+        elif njets<=2:
+          if njets == 0:
+            mva = self.functor_gg(**self.var_d_gg_0(myEle, myMuon, myMET, myJet1, myJet2, row.Ht, mjj, njets))
+          elif njets == 1:
+            mva = self.functor_gg(**self.var_d_gg_1(myEle, myMuon, myMET, myJet1, myJet2, row.Ht, mjj, njets))
+          else:
+            mva = self.functor_gg(**self.var_d_gg_2(myEle, myMuon, myMET, myJet1, myJet2, row.Ht, mjj, njets))
+          if mva < self.bdtcuts[0]:
+            self.filltree(myEle, myMuon, myMET, myJet1, myJet2, njets, mjj, row.e_m_PZeta, weight, 0)
+          elif mva < self.bdtcuts[1]:
+            self.filltree(myEle, myMuon, myMET, myJet1, myJet2, njets, mjj, row.e_m_PZeta, weight, 1)
+          elif mva < self.bdtcuts[2]:
+            self.filltree(myEle, myMuon, myMET, myJet1, myJet2, njets, mjj, row.e_m_PZeta, weight, 2)
+          elif mva < self.bdtcuts[3]:
+            self.filltree(myEle, myMuon, myMET, myJet1, myJet2, njets, mjj, row.e_m_PZeta, weight, 3)
+          else:
+            self.filltree(myEle, myMuon, myMET, myJet1, myJet2, njets, mjj, row.e_m_PZeta, weight, 4)
 
 
   def finish(self):

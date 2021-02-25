@@ -47,16 +47,28 @@ class AnalyzeEMValid2(MegaBase, EMBase):
        continue
 
       if self.oppositesign(row):
-        self.fill_histos(myEle, myMuon, myMET, myJet1, myJet2, njets, mjj, row.e_m_PZeta, weight, 'TightOS')
-        if njets==2 and mjj>400 and self.deltaEta(myJet1.Eta(), myJet2.Eta())>2.5:
-          self.fill_histos(myEle, myMuon, myMET, myJet1, myJet2, njets, mjj, row.e_m_PZeta, weight, 'TightOSvbf')
-        else:
-          self.fill_histos(myEle, myMuon, myMET, myJet1, myJet2, njets, mjj, row.e_m_PZeta, weight, 'TightOSgg')
+        if njets<=2 and not (njets==2 and mjj>400 and self.deltaEta(myJet1.Eta(), myJet2.Eta())>2.5):
+          if njets == 0:
+            mva = self.functor_gg(**self.var_d_gg_0(myEle, myMuon, myMET, myJet1, myJet2, row.Ht, mjj, njets))
+          elif njets == 1:
+            mva = self.functor_gg(**self.var_d_gg_1(myEle, myMuon, myMET, myJet1, myJet2, row.Ht, mjj, njets))
+          else:
+            mva = self.functor_gg(**self.var_d_gg_2(myEle, myMuon, myMET, myJet1, myJet2, row.Ht, mjj, njets))
+          self.fill_histos(myEle, myMuon, myMET, myJet1, myJet2, njets, mva, row.Ht, weight, 'TightOSgg')
+        elif njets>2:
+          mva = self.functor_vbf(**self.var_d_vbf_2(myEle, myMuon, myMET, myJet1, myJet2, row.Ht, mjj, njets))
+          self.fill_histos(myEle, myMuon, myMET, myJet1, myJet2, njets, mva, row.Ht, weight, 'TightOShj')
       else:
-        self.fill_histos(myEle, myMuon, myMET, myJet1, myJet2, njets, mjj, row.e_m_PZeta, weight*osss, 'TightSS')
-        if njets==2 and mjj>400 and self.deltaEta(myJet1.Eta(), myJet2.Eta())>2.5:
-          self.fill_histos(myEle, myMuon, myMET, myJet1, myJet2, njets, mjj, row.e_m_PZeta, weight*osss, 'TightSSvbf')
-        else:
-          self.fill_histos(myEle, myMuon, myMET, myJet1, myJet2, njets, mjj, row.e_m_PZeta, weight*osss, 'TightSSgg')
+        if njets<=2 and not (njets==2 and mjj>400 and self.deltaEta(myJet1.Eta(), myJet2.Eta())>2.5):
+          if njets == 0:
+            mva = self.functor_gg(**self.var_d_gg_0(myEle, myMuon, myMET, myJet1, myJet2, row.Ht, mjj, njets))
+          elif njets == 1:
+            mva = self.functor_gg(**self.var_d_gg_1(myEle, myMuon, myMET, myJet1, myJet2, row.Ht, mjj, njets))
+          else:
+            mva = self.functor_gg(**self.var_d_gg_2(myEle, myMuon, myMET, myJet1, myJet2, row.Ht, mjj, njets))
+          self.fill_histos(myEle, myMuon, myMET, myJet1, myJet2, njets, mva, row.Ht, weight*osss, 'TightSSgg')
+        elif njets>2:
+          mva = self.functor_vbf(**self.var_d_vbf_2(myEle, myMuon, myMET, myJet1, myJet2, row.Ht, mjj, njets))
+          self.fill_histos(myEle, myMuon, myMET, myJet1, myJet2, njets, mva, row.Ht, weight*osss, 'TightSShj')
   def finish(self):
      self.write_histos()  

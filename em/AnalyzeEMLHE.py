@@ -12,6 +12,7 @@ import EMTree
 import itertools
 import os
 import ROOT
+import numpy as np
 
 class AnalyzeEMLHE(MegaBase, EMBase):
   tree = 'em/final/Ntuple'
@@ -25,10 +26,10 @@ class AnalyzeEMLHE(MegaBase, EMBase):
 
   def begin(self):
     folder = []
-    for tuple_path in itertools.product(self.catnames, self.lhe):
+    for tuple_path in itertools.product(self.bdtnames, self.lhe):
       folder.append(os.path.join(*tuple_path))
     for f in folder:
-      self.book(f, "e_m_VisibleMass", "Ele + Muon Visible Mass", 50, 110, 160)
+      self.book(f, "e_m_Mass", "Ele + Muon Visible Mass", 5000, 110, 160)
 #      self.book(f, "e_m_GenVisibleMass", "Ele + Muon Gen Visible Mass", 50, 110, 160)
 
 
@@ -36,7 +37,7 @@ class AnalyzeEMLHE(MegaBase, EMBase):
     histos = self.histograms
     for i in range(120):
       lheweight = getattr(row, 'lheweight' + str(i))
-      histos[name+'/lhe'+str(i)+'/e_m_VisibleMass'].Fill((myEle+myMuon).M(), weight*lheweight)
+      histos[name+'/lhe'+str(i)+'/e_m_Mass'].Fill((myEle+myMuon).M(), weight*lheweight)
 #      genMuon = ROOT.TLorentzVector()
 #      genMuon.SetPtEtaPhiM(row.mGenPt, row.mGenEta, row.mGenPhi, row.mMass)
 #      genEle = ROOT.TLorentzVector()
@@ -56,31 +57,37 @@ class AnalyzeEMLHE(MegaBase, EMBase):
       myEle, myMET, myMuon = self.lepVec(row)[0], self.lepVec(row)[1], self.lepVec(row)[2]
       myJet1, myJet2 = self.jetVec(row)[0], self.jetVec(row)[1]
 
-      weight = self.corrFact(row, myMuon, myEle)[0]
+      weight = self.corrFact(row, myEle, myMuon)[0]
 
       njets, mjj = row.jetVeto30, row.vbfMass
 
+      if self.visibleMass(myEle, myMuon) > 160 or self.visibleMass(myEle, myMuon) < 110:
+        continue
+
+      if njets>2:
+        continue
+
       if self.oppositesign(row):
         self.fill_histos(row, myEle, myMuon, weight, 'TightOS')
-        if njets==2 and mjj>400 and self.deltaEta(myJet1.Eta(), myJet2.Eta())>2.5:
-          self.fill_histos(row, myEle, myMuon, weight, 'TightOSvbf')
-        else:
-          if njets == 0:
-            mva = self.functor_gg(**self.var_d_gg_0(myEle, myMuon, myMET, myJet1, myJet2, row.e_m_PZeta, mjj))
-          elif njets == 1:
-            mva = self.functor_gg(**self.var_d_gg_1(myEle, myMuon, myMET, myJet1, myJet2, row.e_m_PZeta, mjj))
-          else:
-            mva = self.functor_gg(**self.var_d_gg_2(myEle, myMuon, myMET, myJet1, myJet2, row.e_m_PZeta, mjj))
-          if mva < 0.0255:
-            self.fill_histos(row, myEle, myMuon, weight, 'TightOSggcat0')
-          elif mva < 0.0975:
-            self.fill_histos(row, myEle, myMuon, weight, 'TightOSggcat1')
-          elif mva < 0.1245:
-            self.fill_histos(row, myEle, myMuon, weight, 'TightOSggcat2')
-          elif mva < 0.1545:
-            self.fill_histos(row, myEle, myMuon, weight, 'TightOSggcat3')
-          else:
-            self.fill_histos(row, myEle, myMuon, weight, 'TightOSggcat4')
+#        if njets==2 and mjj>400 and self.deltaEta(myJet1.Eta(), myJet2.Eta())>2.5:
+#          self.fill_histos(row, myEle, myMuon, weight, 'TightOSvbf')
+#        else:
+#          if njets == 0:
+#            mva = self.functor_gg(**self.var_d_gg_0(myEle, myMuon, myMET, myJet1, myJet2, row.e_m_PZeta, mjj))
+#          elif njets == 1:
+#            mva = self.functor_gg(**self.var_d_gg_1(myEle, myMuon, myMET, myJet1, myJet2, row.e_m_PZeta, mjj))
+#          else:
+#            mva = self.functor_gg(**self.var_d_gg_2(myEle, myMuon, myMET, myJet1, myJet2, row.e_m_PZeta, mjj))
+#          if mva < 0.0255:
+#            self.fill_histos(row, myEle, myMuon, weight, 'TightOSggcat0')
+#          elif mva < 0.0975:
+#            self.fill_histos(row, myEle, myMuon, weight, 'TightOSggcat1')
+#          elif mva < 0.1245:
+#            self.fill_histos(row, myEle, myMuon, weight, 'TightOSggcat2')
+#          elif mva < 0.1545:
+#            self.fill_histos(row, myEle, myMuon, weight, 'TightOSggcat3')
+#          else:
+#            self.fill_histos(row, myEle, myMuon, weight, 'TightOSggcat4')
 
   def finish(self):
     self.write_histos()

@@ -9,31 +9,51 @@ parser = argparse.ArgumentParser()
 parser.add_argument('--NoSys', default=False, action='store_true', help='write datacard with no systematics')
 args = parser.parse_args()
 nosys = args.NoSys
-pdfmap = {'ggcat0': 'bern3', 
-'ggcat1': 'bern3', 
-'ggcat2': 'bern3', 
-'ggcat3': 'bern1',
-'ggcat4': 'bern1',
-'vbf': 'bern3'}
+pdfmap = {
+'ggcat0': 'bern3', 
+'ggcat1': 'bern2', 
+'ggcat2': 'exp1', 
+'ggcat3': 'exp1', 
+'ggcat4': 'exp1', 
+'vbfcat0': 'exp1',
+'vbfcat1': 'bern1', 
+}
+#pdfmap = {
+#'vbfcat0': 'exp1', 
+#'vbfcat1': 'bern1', 
+#'ggcat0': 'bern3', 
+#'ggcat1': 'bern3', 
+#'ggcat2': 'bern2', 
+#'ggcat3': 'exp1', 
+#'ggcat4': 'exp1',
+#'ggcat5': 'exp1',
+#'ggcat6': 'bern1'
+#}
+#pdfmap = {
+#'vbfcat0': 'exp1', 
+#'vbfcat1': 'bern3', 
+#'vbfcat2': 'exp1', 
+#'vbfcat3': 'bern2', 
+#'vbfcat4': 'exp1', 
+#'vbfcat5': 'exp1', 
+#'vbfcat6': 'bern1',
+#'vbfcat7': 'exp1', 
+#'vbfcat8': 'bern1', 
+#'vbfcat9': 'bern3', 
+#'vbfcat10': 'bern2', 
+#'vbfcat11': 'exp1', 
+#'vbfcat12': 'exp1', 
+#'vbfcat13': 'bern1',
+#'vbfcat14': 'bern1',
+#'vbfcat15': 'bern1',
+#'vbf': 'bern1'
+#}
 
-cats = ['TightOSvbf', 'TightOSvbf500a', 'TightOSvbf500b', 'TightOSvbf510a', 'TightOSvbf510b', 'TightOSvbf520a', 'TightOSvbf520b', 'TightOSvbf530a', 'TightOSvbf530b', 'TightOSvbf540a', 'TightOSvbf540b', 'TightOSvbf550a', 'TightOSvbf550b', 'TightOSvbf560a', 'TightOSvbf560b', 'TightOSvbf570a', 'TightOSvbf570b', 'TightOSvbf580a', 'TightOSvbf580b', 'TightOSvbf590a', 'TightOSvbf590b', 'TightOSvbf600a', 'TightOSvbf600b', 'TightOSvbf610a', 'TightOSvbf610b', 'TightOSvbf620a', 'TightOSvbf620b', 'TightOSvbf630a', 'TightOSvbf630b', 'TightOSvbf640a', 'TightOSvbf640b', 'TightOSvbf650a', 'TightOSvbf650b', 'TightOSvbf660a', 'TightOSvbf660b', 'TightOSvbf670a', 'TightOSvbf670b', 'TightOSvbf680a', 'TightOSvbf680b', 'TightOSvbf690a', 'TightOSvbf690b', 'TightOSvbf700a', 'TightOSvbf700b']
+cats = ['ggcat0', 'ggcat1', 'ggcat2', 'ggcat3', 'vbfcat0', 'vbfcat1']
+#cats = ['vbfcat0', 'vbfcat1', 'ggcat0', 'ggcat1', 'ggcat2', 'ggcat3', 'ggcat4', 'ggcat5', 'ggcat6']
+#cats = ['vbfcat6', 'vbfcat7', 'vbfcat8', 'vbfcat9']
+#cats = ['vbfcat0', 'vbfcat1', 'vbfcat2', 'vbfcat3', 'vbfcat4', 'vbfcat5', 'vbfcat6', 'vbfcat7', 'vbfcat8', 'vbfcat9', 'vbfcat10', 'vbfcat11', 'vbfcat12', 'vbfcat13', 'vbfcat14', 'vbfcat15', 'vbf']
 
-#cats = ['TightOSvbf00','TightOSgg00','TightOSvbf01','TightOSgg01','TightOSvbf02','TightOSgg02','TightOSvbf03','TightOSgg03','TightOSvbf04','TightOSgg04','TightOSvbf10','TightOSgg10','TightOSvbf11','TightOSgg11','TightOSvbf12','TightOSgg12','TightOSvbf13','TightOSgg13','TightOSvbf14','TightOSgg14','TightOSvbf20','TightOSgg20','TightOSvbf21','TightOSgg21','TightOSvbf22','TightOSgg22','TightOSvbf23','TightOSgg23','TightOSvbf24','TightOSgg24','TightOSvbf30','TightOSgg30','TightOSvbf31','TightOSgg31','TightOSvbf32','TightOSgg32','TightOSvbf33','TightOSgg33','TightOSvbf34','TightOSgg34']
-#cats = ['ggcat0', 'ggcat1', 'ggcat2', 'ggcat3', 'vbf']
-
-#cats = ['ggcat0', 'ggcat1', 'ggcat2', 'ggcat3', 'ggcat4','vbf']
-
-def stupidnames(cat):
-  if cat == 'ggcat1EC':
-    return 'ggcat1_EC'
-  elif cat == 'ggcat1B':
-    return 'ggcat1_B'
-  elif cat == 'ggcat2B':
-    return 'ggcat2_B'
-  elif cat == 'ggcat2EC':
-    return 'ggcat2_EC'
-  else:
-    return cat 
 
 procs = ['GGLFV', 'VBFLFV', 'bkg', 'data_obs']
 datacard = []
@@ -78,15 +98,15 @@ CMSnames = {
 'UnclusteredEn2017': 'CMS_scale_met_2017',
 'UnclusteredEn2018': 'CMS_scale_met_2018',
 }
-
-#QCDscale_ggH = theory.QCD_scale("GG", cats) 
-#QCDscale_qqH = theory.QCD_scale("VBF", cats)
-#
-#acceptance_scale_gg = theory.acceptance_scale("GG", cats)
-#acceptance_scale_vbf = theory.acceptance_scale("VBF", cats)
-#
-#acceptance_pdf_gg = theory.acceptance_pdf("GG", cats)
-#acceptance_pdf_vbf = theory.acceptance_pdf("VBF", cats)
+if not nosys:
+  QCDscale_ggH = theory.QCD_scale("GG", cats) 
+  QCDscale_qqH = theory.QCD_scale("VBF", cats)
+  
+  acceptance_scale_gg = theory.acceptance_scale("GG", cats)
+  acceptance_scale_vbf = theory.acceptance_scale("VBF", cats)
+  
+  acceptance_pdf_gg = theory.acceptance_pdf("GG", cats)
+  acceptance_pdf_vbf = theory.acceptance_pdf("VBF", cats)
   
 def addSyst(l,v):
   if len(v) == 2:
@@ -97,11 +117,11 @@ def addSyst(l,v):
   return l
 
 def calyratio(cat):
-  f_gg = ROOT.TFile('SignalGG.root')
+  f_gg = ROOT.TFile('SignalGG_or2_bin.root')
   f2016_gg = ROOT.TFile('results/Data2016JEC/AnalyzeEMSys/GluGlu_LFV_HToEMu_M125_13TeV_powheg_pythia8_v3-PUMoriond17_94X_mcRun2_asymptotic_v3-v2.root')
   f2017_gg = ROOT.TFile('../../UWHiggs2017/em/results/Data2017JEC/AnalyzeEMSys/GluGlu_LFV_HToEMu_M125_13TeV_powheg_pythia8_v2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1.root')
   f2018_gg = ROOT.TFile('../../UWHiggs/em/results/Data2018_em/AnalyzeEMSys/GluGlu_LFV_HToEMu_M125_TuneCP5_PSweights_13TeV_powheg_pythia8_-102X_upgrade2018_realistic_v15-v2.root')
-  f_vbf = ROOT.TFile('SignalVBF.root')
+  f_vbf = ROOT.TFile('SignalVBF_or2_bin.root')
   f2016_vbf = ROOT.TFile('results/Data2016JEC/AnalyzeEMSys/VBF_LFV_HToEMu_M125_13TeV_powheg_pythia8_v3-PUMoriond17_94X_mcRun2_asymptotic_v3-v2.root')
   f2017_vbf = ROOT.TFile('../../UWHiggs2017/em/results/Data2017JEC/AnalyzeEMSys/VBF_LFV_HToEMu_M125_13TeV_powheg_pythia8_v2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1.root')
   f2018_vbf = ROOT.TFile('../../UWHiggs/em/results/Data2018_em/AnalyzeEMSys/VBF_LFV_HToEMu_M125_TuneCP5_PSweights_13TeV_powheg_pythia8_-102X_upgrade2018_realistic_v15-v1.root')
@@ -134,11 +154,10 @@ for cat in cats:
       ws = 'CMS_Hemu_13TeV_multipdf.root'
       if proc == 'bkg':
         if nosys:
-          f.write("shapes      %-10s %-10s %-20s %s\n"%(proc,cat,ws,'multipdf:env_pdf_'+cat+'_'+'bern3'))
-          #f.write("shapes      %-10s %-10s %-20s %s\n"%(proc,cat,ws,'multipdf:CMS_hemu_'+cat+'_13TeV_bkgshape'))
+          #f.write("shapes      %-10s %-10s %-20s %s\n"%(proc,cat,ws,'multipdf:env_pdf_'+cat+'_'+'bern3'))
+          f.write("shapes      %-10s %-10s %-20s %s\n"%(proc,cat,ws,'multipdf:CMS_hemu_'+cat+'_13TeV_bkgshape'))
         else:
           f.write("shapes      %-10s %-10s %-20s %s\n"%(proc,cat,ws,'multipdf:env_pdf_'+cat+'_'+pdfmap[cat]))
-          #f.write("shapes      %-10s %-10s %-20s %s\n"%(proc,cat,ws,'multipdf:env_pdf_'+cat+'_'+'bern3'))
       else:
         f.write("shapes      %-10s %-10s %-20s %s\n"%(proc,cat,ws,'multipdf:roohist_data_mass_'+cat))
     else:
@@ -177,7 +196,7 @@ for cat in cats:
     f.write('%-35s  %-20s    %-25s %-25s %-25s\n'%('CMS_Trigger_emu_13TeV','lnN','1.02','1.02','-'))
     f.write('%-35s  %-20s    %-25s %-25s %-25s\n'%('CMS_eff_e','lnN','1.02','1.02','-'))
     f.write('%-35s  %-20s    %-25s %-25s %-25s\n'%('CMS_eff_m','lnN','1.02','1.02','-'))
-    yrratio = calyratio(stupidnames(cat))
+    yrratio = calyratio(cat)
     f.write('%-35s  %-20s    %-25s %-25s %-25s\n'%('CMS_lumi_2016_13TeV','lnN', str(round(1+.025*yrratio[0][0],4)), str(round(1+.025*yrratio[0][1],3)),'-'))
     f.write('%-35s  %-20s    %-25s %-25s %-25s\n'%('CMS_lumi_2017_13TeV','lnN', str(round(1+.023*yrratio[1][0],4)), str(round(1+.023*yrratio[1][1],3)),'-'))
     f.write('%-35s  %-20s    %-25s %-25s %-25s\n'%('CMS_lumi_2018_13TeV','lnN', str(round(1+.025*yrratio[2][0],4)), str(round(1+.025*yrratio[2][1],3)),'-'))
@@ -190,8 +209,8 @@ for cat in cats:
     f.write('%-35s  %-20s    %-25s %-25s %-25s\n'%('acceptance_scale_vbf','lnN','-',str(round(1+acceptance_scale_vbf[cat],4)),'-'))
   
     sys = {'GGLFV':{}, 'VBLFV':{}}
-    sys['GGLFV'] = collections.OrderedDict(sorted(calmigration('SignalGG.root').items()))
-    sys['VBLFV'] = calmigration('SignalVBF.root')
+    sys['GGLFV'] = collections.OrderedDict(sorted(calmigration('SignalGG_or2_bin.root').items()))
+    sys['VBLFV'] = calmigration('SignalVBF_or2_bin.root')
     for key, value in sys['GGLFV'].items():
       if key == '' or 'Ues' in key: continue
       lsyst = '%-35s  %-20s    '%(CMSnames[key],'lnN')
