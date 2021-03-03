@@ -33,11 +33,11 @@ def calmigration(filename, bins, cats):
   numberofcats = len(cats)
   sysname = {}
   for s in sys:
-   sysname[s.replace('Up', '').replace('Down', '')] = numberofcats*[{'Up':-1, 'Down':-1}]
+   sysname[s.replace('Up', '').replace('Down', '')] = [{'Up':-1, 'Down':-1} for _ in range(numberofcats)]
   for u in jues_yr:
-   sysname[u.replace('Up', '').replace('Down', '')+'2016'] = numberofcats*[{'Up':-1, 'Down':-1}]
-   sysname[u.replace('Up', '').replace('Down', '')+'2017'] = numberofcats*[{'Up':-1, 'Down':-1}]
-   sysname[u.replace('Up', '').replace('Down', '')+'2018'] = numberofcats*[{'Up':-1, 'Down':-1}]
+   sysname[u.replace('Up', '').replace('Down', '')+'2016'] = [{'Up':-1, 'Down':-1} for _ in range(numberofcats)]
+   sysname[u.replace('Up', '').replace('Down', '')+'2017'] = [{'Up':-1, 'Down':-1} for _ in range(numberofcats)]
+   sysname[u.replace('Up', '').replace('Down', '')+'2018'] = [{'Up':-1, 'Down':-1} for _ in range(numberofcats)]
 
   for s in sys:
     if s == '': continue  

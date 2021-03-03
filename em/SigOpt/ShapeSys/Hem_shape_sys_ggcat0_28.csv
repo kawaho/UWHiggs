@@ -1,0 +1,17 @@
+Proc,Cat,Sys,Param,Value
+ggH,ggcat0_28,eesUp,dm,0.000289714534148
+ggH,ggcat0_28,eesDown,dm,-0.000290247587624
+ggH,ggcat0_28,eerUp,sigma,0.00129477435073
+ggH,ggcat0_28,eerDown,sigma,-0.00178617956553
+ggH,ggcat0_28,meUp,dm,0.000275949688068
+ggH,ggcat0_28,meUp,sigma,0.00138125771415
+ggH,ggcat0_28,meDown,dm,-0.000289332496479
+ggH,ggcat0_28,meDown,sigma,-0.0018115312354
+qqH,ggcat0_28,eesUp,dm,0.000307049781155
+qqH,ggcat0_28,eesDown,dm,-0.000307124664042
+qqH,ggcat0_28,eerUp,sigma,0.00063957819804
+qqH,ggcat0_28,eerDown,sigma,-0.003113694625
+qqH,ggcat0_28,meUp,dm,0.000306510262439
+qqH,ggcat0_28,meUp,sigma,0.00143247749923
+qqH,ggcat0_28,meDown,dm,-0.000297081208259
+qqH,ggcat0_28,meDown,sigma,-0.00308834596402

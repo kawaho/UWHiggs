@@ -90,17 +90,17 @@ def writedatacard(cats, bins):
 
   for cat in cats:
     catnum = cats.index(cat)
-    f = open('datacard_'+cat+'.txt','w')
+    f = open('Datacards/datacard_'+cat+'.txt','w')
     f.write("imax *\n")
     f.write("jmax *\n")
     f.write("kmax *\n")
     f.write("---------------------------------------------\n")
-    ws = 'workspace_sig_'+cat+'.root'
+    ws = '../Workspaces/workspace_sig_'+cat+'.root'
     for proc in procs:
       if proc == 'bkg':
-        f.write("shapes      %-10s %-10s %-20s %s\n"%(proc,cat,ws,'multipdf:env_pdf_'+cat+'_exp1'))
+        f.write("shapes      %-10s %-10s %-20s %s\n"%(proc,cat,ws,'w_13TeV:pdf_'+cat+'_exp1'))
       elif proc == 'data_obs':
-        f.write("shapes      %-10s %-10s %-20s %s\n"%(proc,cat,ws,'multipdf:roohist_data_mass_'+cat))
+        f.write("shapes      %-10s %-10s %-20s %s\n"%(proc,cat,ws,'w_13TeV:roohist_data_mass_'+cat))
       else:
         if proc == 'GGLFV':
           proc2 = 'ggH'  
@@ -161,7 +161,7 @@ def writedatacard(cats, bins):
   
     import csv
     shapeSys = {}
-    with open('Hem_shape_sys.csv', mode='r') as csv_file:
+    with open('ShapeSys/Hem_shape_sys_%s.csv'%cat, mode='r') as csv_file:
       csv_reader = csv.DictReader(csv_file)
       line_count = 0
       for row in csv_reader:
@@ -183,7 +183,7 @@ def writedatacard(cats, bins):
           proccatEER = 'qqH_'+cat+'_sigma_eer'
           proccatEES = 'qqH_'+cat+'_dm_ees'
           proc2 = 'qqH'
-      f.write('CMS_hem_nuisance_scale_e_%s    param  0  %.4f\n'%(proc2, max(abs(float(shapeSys[proccatEES+'Up'])), abs(float(shapeSys[proccatEES+'Down'])))))
-      f.write('CMS_hem_nuisance_scale_m_%s    param  0  %.4f\n'%(proc2, max(abs(float(shapeSys[proccatMES+'Up'])), abs(float(shapeSys[proccatMES+'Down'])))))
-      f.write('CMS_hem_nuisance_res_e_%s      param  0  %.4f\n'%(proc2, max(abs(float(shapeSys[proccatEER+'Up'])), abs(float(shapeSys[proccatEER+'Down'])))))
-      f.write('CMS_hem_nuisance_res_m_%s      param  0  %.4f\n'%(proc2, max(abs(float(shapeSys[proccatMER+'Up'])), abs(float(shapeSys[proccatMER+'Down'])))))
+      f.write('CMS_hem_nuisance_scale_e_%s_%s    param  0  %.4f\n'%(cat, proc2, max(abs(float(shapeSys[proccatEES+'Up'])), abs(float(shapeSys[proccatEES+'Down'])))))
+      f.write('CMS_hem_nuisance_scale_m_%s_%s    param  0  %.4f\n'%(cat, proc2, max(abs(float(shapeSys[proccatMES+'Up'])), abs(float(shapeSys[proccatMES+'Down'])))))
+      f.write('CMS_hem_nuisance_res_e_%s_%s      param  0  %.4f\n'%(cat, proc2, max(abs(float(shapeSys[proccatEER+'Up'])), abs(float(shapeSys[proccatEER+'Down'])))))
+      f.write('CMS_hem_nuisance_res_m_%s_%s      param  0  %.4f\n'%(cat, proc2, max(abs(float(shapeSys[proccatMER+'Up'])), abs(float(shapeSys[proccatMER+'Down'])))))

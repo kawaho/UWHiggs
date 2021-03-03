@@ -3,15 +3,59 @@ import math
 import os.path
 from os import path
 ROOT.gSystem.Load("/afs/cern.ch/work/k/kaho/CMSSW_10_2_13/lib/slc7_amd64_gcc700/libHiggsAnalysisCombinedLimit.so");
+ROOT.gROOT.SetBatch(True)
 #bins_proj = [effl, effh]
 def fit(bins, cat):
   effl, effh = bins[0], bins[1]
   allvars = []
   fitstatus = 0
   w = ROOT.RooWorkspace("w_13TeV","w_13TeV") 
-  mass = ROOT.RooRealVar("CMS_emu_Mass", "m_{e#mu}", 110, 160, "GeV")
-  mass.setRange("higgsRange",110.,140.)
+
+  #Fit data
+  rfile = ROOT.TFile('dataws.root')
+  inWS = rfile.Get("CMS_emu_workspace")
+  mass = inWS.var("CMS_emu_Mass")
+  mass.setBins(50)
+  mass.setRange("higgsRange",110.,160.)
   mass.setRange("higgsRange2",110.,160.)
+  db = inWS.data("Data_13TeV_range%i"%effl)
+  for i in range(effl+1, effh):
+    db.append(inWS.data("Data_13TeV_range%i"%i))
+  db.SetName("roohist_data_mass_{}".format(cat))
+  numofeventb = db.sumEntries()
+  neventb = ROOT.RooRealVar("pdf_{}_exp1_norm".format(cat), "pdf_{}_exp1_norm".format(cat), numofeventb, 0, 10*numofeventb)
+  p0_exp1 = ROOT.RooRealVar("pdf_{}_exp1_p1".format(cat), "pdf_{}_exp1_p1".format(cat), -0.04, -5., 0.)
+  pdfb = ROOT.RooExponential("pdf_{}_exp1".format(cat), "pdf_{}_exp1".format(cat), mass, p0_exp1)
+#  coeffList = ROOT.RooArgList()
+#  for i in range(3):
+#    param = ROOT.RooRealVar("env_pdf_{}_bern3_p{}".format(cat,i), "env_pdf_{}_bern3_p{}".format(cat,i), 0.1*(i+1), -10., 10.)
+#    form = ROOT.RooFormulaVar("env_pdf_{}_bern3_sq{}".format(cat,i), "env_pdf_{}_bern3_sq{}".format(cat,i), "@0*@0", ROOT.RooArgList(param))
+#    coeffList.add(form)
+#    allvars.append([param,form])  
+#
+#  pdfb = ROOT.RooBernstein("env_pdf_{}_exp1".format(cat), "env_pdf_{}_exp1".format(cat), mass, coeffList)
+
+  fitResultb = pdfb.fitTo(db, ROOT.RooFit.Minimizer("Minuit2","minimize"), ROOT.RooFit.Save(1), ROOT.RooFit.SumW2Error(ROOT.kTRUE))
+  dataBinned = ROOT.RooDataHist("roohist_data_mass_{}".format(cat), "roohist_data_mass_{}".format(cat), ROOT.RooArgSet(mass), db) 
+  
+#  allvars.append([db,neventb,pdfb])  
+  allvars.append([db,p0_exp1,neventb,pdfb])  
+#  fitstatus += fitResult.status()
+#  neventb.setConstant(ROOT.kTRUE)
+  fitstatus = fitstatus/math.sqrt(numofeventb)
+  canvas = ROOT.TCanvas("canvas","",0,0,800,800)
+#  frame = mass.frame(ROOT.RooFit.Range("higgsRange2"))
+#  db.plotOn(frame, ROOT.RooFit.CutRange("higgsRange2"), ROOT.RooFit.DataError(ROOT.RooAbsData.SumW2))
+#  pdfb.plotOn(frame, ROOT.RooFit.Normalization(db.sumEntries("1", "higgsRange2"), ROOT.RooAbsReal.NumEvent), ROOT.RooFit.NormRange("higgsRange2"), ROOT.RooFit.Range("higgsRange2"))
+#  frame.Draw()
+#  canvas.SaveAs(cat + '_' + "_"+str(effl) +"_"+str(effh)+"_bkg.png")
+#  fitstatus += fitResult.status()
+  
+  getattr(w, 'import')(pdfb)
+  getattr(w, 'import')(neventb)
+  getattr(w, 'import')(db)
+  getattr(w, 'import')(dataBinned)
+
   f = open('ShapeSys/Hem_shape_sys_%s.csv'%cat, 'w')
   f.write("Proc,Cat,Sys,Param,Value\n")
 #  f = open('Hem_shape_sys.csv', 'a')
@@ -51,12 +95,12 @@ def fit(bins, cat):
     nevent = ROOT.RooRealVar("{}_{}_pdf_norm".format(cat,proc), "{}_{}_pdf_norm".format(cat,proc), numofevent, 0, 10*numofevent)
     
     fitResult = pdf.fitTo(dh, ROOT.RooFit.Minimizer("Minuit2","minimize"), ROOT.RooFit.Save(1), ROOT.RooFit.Range("higgsRange"), ROOT.RooFit.SumW2Error(ROOT.kTRUE))
-    canvas = ROOT.TCanvas("canvas","",0,0,800,800)
-    frame = mass.frame(ROOT.RooFit.Range("higgsRange"))
-    dh.plotOn(frame, ROOT.RooFit.CutRange("higgsRange"), ROOT.RooFit.DataError(ROOT.RooAbsData.SumW2))
-    pdf.plotOn(frame, ROOT.RooFit.Normalization(dh.sumEntries("1", "higgsRange"), ROOT.RooAbsReal.NumEvent), ROOT.RooFit.NormRange("higgsRange"), ROOT.RooFit.Range("higgsRange"))
-    frame.Draw()
-    canvas.SaveAs(cat + '_' + proc +"_"+str(effl) +"_"+str(effh)+"_DCB.png")
+#    canvas = ROOT.TCanvas("canvas","",0,0,800,800)
+#    frame = mass.frame(ROOT.RooFit.Range("higgsRange"))
+#    dh.plotOn(frame, ROOT.RooFit.CutRange("higgsRange"), ROOT.RooFit.DataError(ROOT.RooAbsData.SumW2))
+#    pdf.plotOn(frame, ROOT.RooFit.Normalization(dh.sumEntries("1", "higgsRange"), ROOT.RooAbsReal.NumEvent), ROOT.RooFit.NormRange("higgsRange"), ROOT.RooFit.Range("higgsRange"))
+#    frame.Draw()
+#    canvas.SaveAs(cat + '_' + proc +"_"+str(effl) +"_"+str(effh)+"_DCB.png")
     fitstatus += fitResult.status()
     fitstatus += numofevent
     
@@ -139,45 +183,6 @@ def fit(bins, cat):
       else:
         f.write("{},{},{},dm,{}\n".format(proc,cat,sys,changeindm))
         f.write("{},{},{},sigma,{}\n".format(proc,cat,sys,changeinsigma))
-
-  #Fit data
-  rfile = ROOT.TFile('data_proj.root')
-  hb = ROOT.TH1D("%s"%cat,"%s"%cat,200,110,160) 
-  for i in range(effl, effh):
-    hb.Add(rfile.Get("range%i"%i))
-  db = ROOT.RooDataHist("roohist_data_mass_{}".format(cat), "roohist_data_mass_{}".format(cat), ROOT.RooArgList(mass), ROOT.RooFit.Import(hb))
-  numofeventb = db.sumEntries()
-  neventb = ROOT.RooRealVar("roohist_data_mass_{}_norm".format(cat), "roohist_data_mass_{}_norm".format(cat), numofeventb, 0, 10*numofeventb)
-  
-  p0_exp1 = ROOT.RooRealVar("env_pdf_{}_exp1_p1".format(cat), "env_pdf_{}_exp1_p1".format(cat), -0.04, -5., 0.)
-  pdfb = ROOT.RooExponential("env_pdf_{}_exp1".format(cat), "env_pdf_{}_exp1".format(cat), mass, p0_exp1)
-#  coeffList = ROOT.RooArgList()
-#  for i in range(3):
-#    param = ROOT.RooRealVar("env_pdf_{}_bern3_p{}".format(cat,i), "env_pdf_{}_bern3_p{}".format(cat,i), 0.1*(i+1), -10., 10.)
-#    form = ROOT.RooFormulaVar("env_pdf_{}_bern3_sq{}".format(cat,i), "env_pdf_{}_bern3_sq{}".format(cat,i), "@0*@0", ROOT.RooArgList(param))
-#    coeffList.add(form)
-#    allvars.append([param,form])  
-#
-#  pdfb = ROOT.RooBernstein("env_pdf_{}_exp1".format(cat), "env_pdf_{}_exp1".format(cat), mass, coeffList)
-
-  fitResultb = pdfb.fitTo(db, ROOT.RooFit.Minimizer("Minuit2","minimize"), ROOT.RooFit.Save(1), ROOT.RooFit.SumW2Error(ROOT.kTRUE))
-  
-#  allvars.append([db,neventb,pdfb])  
-  allvars.append([db,p0_exp1,neventb,pdfb])  
-#  fitstatus += fitResult.status()
-#  neventb.setConstant(ROOT.kTRUE)
-  fitstatus = fitstatus/math.sqrt(numofeventb)
-  canvas = ROOT.TCanvas("canvas","",0,0,800,800)
-  frame = mass.frame(ROOT.RooFit.Range("higgsRange2"))
-  db.plotOn(frame, ROOT.RooFit.CutRange("higgsRange2"), ROOT.RooFit.DataError(ROOT.RooAbsData.SumW2))
-  pdfb.plotOn(frame, ROOT.RooFit.Normalization(db.sumEntries("1", "higgsRange2"), ROOT.RooAbsReal.NumEvent), ROOT.RooFit.NormRange("higgsRange2"), ROOT.RooFit.Range("higgsRange2"))
-  frame.Draw()
-  canvas.SaveAs(cat + '_' + "_"+str(effl) +"_"+str(effh)+"_bkg.png")
-#  fitstatus += fitResult.status()
-  
-  getattr(w, 'import')(pdfb)
-  getattr(w, 'import')(neventb)
-  getattr(w, 'import')(db)
   
   filename = "Workspaces/workspace_sig_"+cat+".root"
 #  ROOT.gDirectory.Add(w)

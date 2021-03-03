@@ -31,22 +31,22 @@ for i in range(n):
   xq[i] = (i+1)/float(n)
 
 hmvaS = fFileS.Get("TightOSgg/MVA")
-SigStep = [1]
+SigStep = [0]
 hmvaS.GetQuantiles(n,yq,xq)
 for j in range(n):
   SigStep.append(hmvaS.FindBin(yq[j]))
 file_proj = TFile("%s/%s_proj.root"%(year_,type_),"recreate")
 for i in range(len(SigStep)-1):
   print "Scanning for year %s and range %i"%(year_,i)
-  h = fFileProj.Get("TightOSgg/MVA_e_m_Mass").ProjectionY("range%i"%i, SigStep[i], SigStep[i+1])
+  h = fFileProj.Get("TightOSgg/MVA_e_m_Mass").ProjectionY("range%i"%i, SigStep[i]+1, SigStep[i+1])
   if type_ == "data":
-    h.Rebin(100)
+    h.Rebin(25)
   else:
     h.Rebin(25)
   h.Write()
   if type_ == "data": continue
   for sys in sysname:
-    h = fFileProj.Get("TightOSgg/"+sys+"/MVA_e_m_Mass").ProjectionY("%s_range%i"%(sys,i), SigStep[i], SigStep[i+1])
+    h = fFileProj.Get("TightOSgg/"+sys+"/MVA_e_m_Mass").ProjectionY("%s_range%i"%(sys,i), SigStep[i]+1, SigStep[i+1])
     h.Rebin(25)
     h.Write()
 file_proj.Close()
