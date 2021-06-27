@@ -43,6 +43,8 @@ class EMBase():
     self.Zeppenfeld = Kinematics.Zeppenfeld
     self.RpT = Kinematics.RpT
     self.plotnames = Kinematics.plotnames
+    self.ptbinning = Kinematics.ptbinning
+    self.mbinning = Kinematics.mbinning
 
   # Requirement on the charge of the leptons
   def oppositesign(self, row):
@@ -64,7 +66,7 @@ class EMBase():
     return True
 
   def filters(self, row):
-    if row.Flag_goodVertices or row.Flag_globalSuperTightHalo2016Filter or row.Flag_HBHENoiseFilter or row.Flag_HBHENoiseIsoFilter or row.Flag_EcalDeadCellTriggerPrimitiveFilter or row.Flag_BadPFMuonFilter or bool(self.is_data and row.Flag_eeBadScFilter):#row.Flag_ecalBadCalibFilter -> row.Flag_ecalBadCalibReducedMINIAODFilter
+    if row.Flag_goodVertices or row.Flag_globalSuperTightHalo2016Filter or row.Flag_HBHENoiseFilter or row.Flag_HBHENoiseIsoFilter or row.Flag_EcalDeadCellTriggerPrimitiveFilter or row.Flag_BadPFMuonFilter or Flag_BadPFMuonDzFilter or bool(self.is_data and row.Flag_eeBadScFilter) or row.Flag_ecalBadCalibFilter:
       return True
     return False
 
@@ -82,18 +84,20 @@ class EMBase():
 
   # Book histograms
   def begin(self):
-    for n in Kinematics.bdtnames:
-      self.book(n, 'bdtDiscriminator', 'BDT Discriminator', 2000, -1.0, 1.0)
-      self.book(n,'MVA_emEta', 'Electron + Muon Eta', 200, -1, 1, 140, -7, 7, type=ROOT.TH2F)
+    for n in self.plotnames:
+      self.book(n, 'pt', 'pt', len(self.ptbinning)-1, self.ptbinning)
+      self.book(n, 'M', 'M', len(self.mbinning)-1, self.mbinning)
+      self.book(n, 'M_pt', 'M_pt', len(self.mbinning)-1, self.mbinning, len(self.ptbinning)-1, self.ptbinning, type=ROOT.TH2F)
 
-  def fill_histos(self, myEle, myMuon, myMET, myJet1, myJet2, njets, mva, PU, weight, name=''):
+  def fill_histos(self, myMuon1, myMuon2, weight, name=''):
     histos = self.histograms
-    histos[name+'/bdtDiscriminator'].Fill(mva, weight)
-    histos[name+'/DeltaR_em_j1'].Fill(self.deltaR((myEle + myMuon).Phi(), myJet1.Phi(), (myEle + myMuon).Eta(), myJet1.Eta()), weight)
+    histos[name+'/pt'].Fill((myMuon1+myMuon2).Pt(), weight)
+    histos[name+'/M'].Fill((myMuon1+myMuon2).M(), weight)
+    histos[name+'/M_pt'].Fill((myMuon1+myMuon2).M(), (myMuon1+myMuon2).Pt(), weight)
    
   # Selections
   def eventSel(self, row):
-    njets = row.jetVeto30WoNoisyJets
+    njets = row.jetVeto30
     if self.filters(row):
       return False
     elif not self.trigger(row):
@@ -115,9 +119,9 @@ class EMBase():
 
   def jetVec(self,row):
     myJet1 = ROOT.TLorentzVector()
-    myJet1.SetPtEtaPhiM(row.j1ptWoNoisyJets, row.j1etaWoNoisyJets, row.j1phiWoNoisyJets, 0)
+    myJet1.SetPtEtaPhiM(row.j1pt, row.j1eta, row.j1phi, 0)
     myJet2 = ROOT.TLorentzVector()
-    myJet2.SetPtEtaPhiM(row.j2ptWoNoisyJets, row.j2etaWoNoisyJets, row.j2phiWoNoisyJets, 0)
+    myJet2.SetPtEtaPhiM(row.j2pt, row.j2eta, row.j2phi, 0)
     return [myJet1, myJet2]
     
   # TVector
@@ -148,12 +152,14 @@ class EMBase():
     # Apply all the various corrections to the MC samples
     weight = 1.0
     if self.is_mc:
-      mID = self.muonTightID(myMuon.Pt(), abs(myMuon.Eta()))
-      mIso = self.muonTightIsoTightID(myMuon.Pt(), abs(myMuon.Eta()))
-      weight = weight*row.GenWeight*pucorrector[''](row.nTruePU)*eID*eReco*mID*mIso*mTrk*row.prefiring_weight
+      m1ID = self.muonTightID(myMuon1.Pt(), abs(myMuon1.Eta()))
+      m1Iso = self.muonTightIsoTightID(myMuon1.Pt(), abs(myMuon1.Eta()))
+      m2ID = self.muonTightID(myMuon2.Pt(), abs(myMuon2.Eta()))
+      m2Iso = self.muonTightIsoTightID(myMuon2.Pt(), abs(myMuon2.Eta()))
+      weight = weight*row.GenWeight*pucorrector[''](row.nTruePU)*m1ID*m1Iso*m2ID*m2Iso*row.prefiring_weight
 #      if self.is_DY:
 #        # DY pT reweighting
-#        dyweight = self.DYreweight(row.genMass, row.genpT)
+#        dyweight = self.DYreweight(row.genM, row.genpT)
 #        weight = weight * dyweight
       weight = self.mcWeight.lumiWeight(weight)
 
