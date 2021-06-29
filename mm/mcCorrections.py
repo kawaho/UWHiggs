@@ -26,7 +26,7 @@ def puCorrector(target=''):
     pucorrector = {'' : make_puCorrector(), 'puUp': make_puCorrectorUp(), 'puDown': make_puCorrectorDown()}
     return pucorrector
 
-rc = RoccoR.RoccoR('2017/RoccoR/RoccoR2017.txt')
+rc = RoccoR.RoccoR('2017/RoccoR2017UL.txt')
 
 DYreweight = DYCorrection.make_DYreweight_2017()
 

@@ -260,7 +260,7 @@ for name, val in infoMap.iteritems() :
     for toAdd in val[0] :
         print toAdd
         if not toAdd in initHists :
-            print toAdd," not in your file: %s, directory, %s" % (file, cat)
+            print toAdd," not in your file: %s" % (file)
             continue
         hists[ name ].Add( initHists[ toAdd ] )
         
@@ -322,6 +322,7 @@ pad1.SetFrameBorderMode(0)
 pad1.SetFrameBorderSize(10)
 if isLog:
     pad1.SetLogy()
+    pad1.SetLogx()
 
 hists["data_obs"].GetXaxis().SetLabelSize(0)
 if variable == 'bdtDiscriminator' and 'gg' in args.cat:
@@ -331,7 +332,7 @@ hists["data_obs"].SetMaximum(2*max(stack.GetMaximum(),hists["data_obs"].GetMaxim
 print stack.GetMaximum()
 hists["data_obs"].SetMinimum(0.0)
 if isLog:
-    hists["data_obs"].SetMaximum(hists["data_obs"].GetMaximum()*5.35)
+    hists["data_obs"].SetMaximum(hists["data_obs"].GetMaximum()*10**2)
     hists["data_obs"].SetMinimum(0.01)
 for k in range(1,hists["data_obs"].GetSize()-1):
     s = 0.0
@@ -416,6 +417,8 @@ h1.GetYaxis().SetTitle("Obs./Exp.")
 h1.GetXaxis().SetNdivisions(505)
 h1.GetYaxis().SetNdivisions(5)
 pad2.SetBottomMargin(0.4)
+if isLog:
+  pad2.SetLogx()
 h1.GetXaxis().SetTitleSize(0.16)
 h1.GetYaxis().SetTitleSize(0.15)
 h1.GetYaxis().SetTitleOffset(0.40)
@@ -435,16 +438,8 @@ ROOT.gPad.RedrawAxis()
 
 c.Modified()
 if not os.path.exists( 'plots' ) : os.makedirs( 'plots' )
-if isLog:
-    c.SaveAs("plots/log_"+cat+".pdf")
-    c.SaveAs("plots/log_"+cat+".png")
-else:
-    c.SaveAs("plots/"+args.cat+"_"+variable+".pdf")
-    c.SaveAs("plots/"+args.cat+"_"+variable+".png")
-
+c.SaveAs("plots/"+args.cat+"_"+variable+".pdf")
+c.SaveAs("plots/"+args.cat+"_"+variable+".png")
 
 for bkg in bkgs:
     print bkg,hists[bkg].Integral()
-
-for sig in signals:
-    print sig,hists[sig].Integral()

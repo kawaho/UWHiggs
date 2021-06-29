@@ -1,0 +1,154 @@
+mkdir -p `dirname results/HEM_2017_MC/AnalyzeEMYield/data_SingleMuon_Run2017B-09Aug2019.root`
+mkdir -p `dirname results/HEM_2017_MC/AnalyzeEMYield/data_SingleMuon_Run2017C-09Aug2019.root`
+#using farmout:1
+#dry run:1
+export megatarget=results/HEM_2017_MC/AnalyzeEMYield/data_SingleMuon_Run2017B-09Aug2019.root
+mkdir -p batch_logs
+mega-farmout AnalyzeEMYield.py inputs/HEM_2017_MC/data_SingleMuon_Run2017B-09Aug2019.txt results/HEM_2017_MC/AnalyzeEMYield/data_SingleMuon_Run2017B-09Aug2019.root --verbose >& batch_logs/results_HEM_2017_MC_AnalyzeEMYield_data_SingleMuon_Run2017B-09Aug2019.log &
+sleep 10s
+mkdir -p `dirname results/HEM_2017_MC/AnalyzeEMYield/data_SingleMuon_Run2017D-09Aug2019.root`
+#using farmout:1
+#dry run:1
+export megatarget=results/HEM_2017_MC/AnalyzeEMYield/data_SingleMuon_Run2017C-09Aug2019.root
+mkdir -p batch_logs
+mega-farmout AnalyzeEMYield.py inputs/HEM_2017_MC/data_SingleMuon_Run2017C-09Aug2019.txt results/HEM_2017_MC/AnalyzeEMYield/data_SingleMuon_Run2017C-09Aug2019.root --verbose >& batch_logs/results_HEM_2017_MC_AnalyzeEMYield_data_SingleMuon_Run2017C-09Aug2019.log &
+sleep 10s
+mkdir -p `dirname results/HEM_2017_MC/AnalyzeEMYield/data_SingleMuon_Run2017E-09Aug2019.root`
+#using farmout:1
+#dry run:1
+export megatarget=results/HEM_2017_MC/AnalyzeEMYield/data_SingleMuon_Run2017D-09Aug2019.root
+mkdir -p batch_logs
+mega-farmout AnalyzeEMYield.py inputs/HEM_2017_MC/data_SingleMuon_Run2017D-09Aug2019.txt results/HEM_2017_MC/AnalyzeEMYield/data_SingleMuon_Run2017D-09Aug2019.root --verbose >& batch_logs/results_HEM_2017_MC_AnalyzeEMYield_data_SingleMuon_Run2017D-09Aug2019.log &
+sleep 10s
+mkdir -p `dirname results/HEM_2017_MC/AnalyzeEMYield/data_SingleMuon_Run2017F-09Aug2019.root`
+#using farmout:1
+#dry run:1
+export megatarget=results/HEM_2017_MC/AnalyzeEMYield/data_SingleMuon_Run2017E-09Aug2019.root
+mkdir -p batch_logs
+mega-farmout AnalyzeEMYield.py inputs/HEM_2017_MC/data_SingleMuon_Run2017E-09Aug2019.txt results/HEM_2017_MC/AnalyzeEMYield/data_SingleMuon_Run2017E-09Aug2019.root --verbose >& batch_logs/results_HEM_2017_MC_AnalyzeEMYield_data_SingleMuon_Run2017E-09Aug2019.log &
+sleep 10s
+mkdir -p `dirname results/HEM_2017_MC/AnalyzeEMYield/TTTo2L2Nu_TuneCP5_13TeV-powheg-pythia8_-106X_mc2017_realistic_v6-v2.root`
+#using farmout:1
+#dry run:1
+export megatarget=results/HEM_2017_MC/AnalyzeEMYield/data_SingleMuon_Run2017F-09Aug2019.root
+mkdir -p batch_logs
+mega-farmout AnalyzeEMYield.py inputs/HEM_2017_MC/data_SingleMuon_Run2017F-09Aug2019.txt results/HEM_2017_MC/AnalyzeEMYield/data_SingleMuon_Run2017F-09Aug2019.root --verbose >& batch_logs/results_HEM_2017_MC_AnalyzeEMYield_data_SingleMuon_Run2017F-09Aug2019.log &
+sleep 10s
+mkdir -p `dirname results/HEM_2017_MC/AnalyzeEMYield/TTToHadronic_TuneCP5_13TeV-powheg-pythia8_-106X_mc2017_realistic_v6-v2.root`
+#using farmout:1
+#dry run:1
+export megatarget=results/HEM_2017_MC/AnalyzeEMYield/TTTo2L2Nu_TuneCP5_13TeV-powheg-pythia8_-106X_mc2017_realistic_v6-v2.root
+mkdir -p batch_logs
+mega-farmout AnalyzeEMYield.py inputs/HEM_2017_MC/TTTo2L2Nu_TuneCP5_13TeV-powheg-pythia8_-106X_mc2017_realistic_v6-v2.txt results/HEM_2017_MC/AnalyzeEMYield/TTTo2L2Nu_TuneCP5_13TeV-powheg-pythia8_-106X_mc2017_realistic_v6-v2.root --verbose >& batch_logs/results_HEM_2017_MC_AnalyzeEMYield_TTTo2L2Nu_TuneCP5_13TeV-powheg-pythia8_-106X_mc2017_realistic_v6-v2.log &
+sleep 10s
+mkdir -p `dirname results/HEM_2017_MC/AnalyzeEMYield/TTToSemiLeptonic_TuneCP5_13TeV-powheg-pythia8_-106X_mc2017_realistic_v6-v2.root`
+#using farmout:1
+#dry run:1
+export megatarget=results/HEM_2017_MC/AnalyzeEMYield/TTToHadronic_TuneCP5_13TeV-powheg-pythia8_-106X_mc2017_realistic_v6-v2.root
+mkdir -p batch_logs
+mega-farmout AnalyzeEMYield.py inputs/HEM_2017_MC/TTToHadronic_TuneCP5_13TeV-powheg-pythia8_-106X_mc2017_realistic_v6-v2.txt results/HEM_2017_MC/AnalyzeEMYield/TTToHadronic_TuneCP5_13TeV-powheg-pythia8_-106X_mc2017_realistic_v6-v2.root --verbose >& batch_logs/results_HEM_2017_MC_AnalyzeEMYield_TTToHadronic_TuneCP5_13TeV-powheg-pythia8_-106X_mc2017_realistic_v6-v2.log &
+sleep 10s
+mkdir -p `dirname results/HEM_2017_MC/AnalyzeEMYield/WW_TuneCP5_13TeV-pythia8_-106X_mc2017_realistic_v6-v2.root`
+#using farmout:1
+#dry run:1
+export megatarget=results/HEM_2017_MC/AnalyzeEMYield/TTToSemiLeptonic_TuneCP5_13TeV-powheg-pythia8_-106X_mc2017_realistic_v6-v2.root
+mkdir -p batch_logs
+mega-farmout AnalyzeEMYield.py inputs/HEM_2017_MC/TTToSemiLeptonic_TuneCP5_13TeV-powheg-pythia8_-106X_mc2017_realistic_v6-v2.txt results/HEM_2017_MC/AnalyzeEMYield/TTToSemiLeptonic_TuneCP5_13TeV-powheg-pythia8_-106X_mc2017_realistic_v6-v2.root --verbose >& batch_logs/results_HEM_2017_MC_AnalyzeEMYield_TTToSemiLeptonic_TuneCP5_13TeV-powheg-pythia8_-106X_mc2017_realistic_v6-v2.log &
+sleep 10s
+mkdir -p `dirname results/HEM_2017_MC/AnalyzeEMYield/WZ_TuneCP5_13TeV-pythia8_-106X_mc2017_realistic_v6-v2.root`
+#using farmout:1
+#dry run:1
+export megatarget=results/HEM_2017_MC/AnalyzeEMYield/WW_TuneCP5_13TeV-pythia8_-106X_mc2017_realistic_v6-v2.root
+mkdir -p batch_logs
+mega-farmout AnalyzeEMYield.py inputs/HEM_2017_MC/WW_TuneCP5_13TeV-pythia8_-106X_mc2017_realistic_v6-v2.txt results/HEM_2017_MC/AnalyzeEMYield/WW_TuneCP5_13TeV-pythia8_-106X_mc2017_realistic_v6-v2.root --verbose >& batch_logs/results_HEM_2017_MC_AnalyzeEMYield_WW_TuneCP5_13TeV-pythia8_-106X_mc2017_realistic_v6-v2.log &
+sleep 10s
+mkdir -p `dirname results/HEM_2017_MC/AnalyzeEMYield/ZZ_TuneCP5_13TeV-pythia8_-106X_mc2017_realistic_v6-v2.root`
+#using farmout:1
+#dry run:1
+export megatarget=results/HEM_2017_MC/AnalyzeEMYield/WZ_TuneCP5_13TeV-pythia8_-106X_mc2017_realistic_v6-v2.root
+mkdir -p batch_logs
+mega-farmout AnalyzeEMYield.py inputs/HEM_2017_MC/WZ_TuneCP5_13TeV-pythia8_-106X_mc2017_realistic_v6-v2.txt results/HEM_2017_MC/AnalyzeEMYield/WZ_TuneCP5_13TeV-pythia8_-106X_mc2017_realistic_v6-v2.root --verbose >& batch_logs/results_HEM_2017_MC_AnalyzeEMYield_WZ_TuneCP5_13TeV-pythia8_-106X_mc2017_realistic_v6-v2.log &
+sleep 10s
+mkdir -p `dirname results/HEM_2017_MC/AnalyzeEMYield/DYJetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8_-106X_mc2017_realistic_v6-v1.root`
+#using farmout:1
+#dry run:1
+export megatarget=results/HEM_2017_MC/AnalyzeEMYield/ZZ_TuneCP5_13TeV-pythia8_-106X_mc2017_realistic_v6-v2.root
+mkdir -p batch_logs
+mega-farmout AnalyzeEMYield.py inputs/HEM_2017_MC/ZZ_TuneCP5_13TeV-pythia8_-106X_mc2017_realistic_v6-v2.txt results/HEM_2017_MC/AnalyzeEMYield/ZZ_TuneCP5_13TeV-pythia8_-106X_mc2017_realistic_v6-v2.root --verbose >& batch_logs/results_HEM_2017_MC_AnalyzeEMYield_ZZ_TuneCP5_13TeV-pythia8_-106X_mc2017_realistic_v6-v2.log &
+sleep 10s
+mkdir -p `dirname results/HEM_2017_MC/AnalyzeEMYield/DY1JetsToLL_M-50_MatchEWPDG20_TuneCP5_13TeV-madgraphMLM-pythia8_-106X_mc2017_realistic_v6-v1.root`
+#using farmout:1
+#dry run:1
+export megatarget=results/HEM_2017_MC/AnalyzeEMYield/DYJetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8_-106X_mc2017_realistic_v6-v1.root
+mkdir -p batch_logs
+mega-farmout AnalyzeEMYield.py inputs/HEM_2017_MC/DYJetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8_-106X_mc2017_realistic_v6-v1.txt results/HEM_2017_MC/AnalyzeEMYield/DYJetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8_-106X_mc2017_realistic_v6-v1.root --verbose >& batch_logs/results_HEM_2017_MC_AnalyzeEMYield_DYJetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8_-106X_mc2017_realistic_v6-v1.log &
+sleep 10s
+mkdir -p `dirname results/HEM_2017_MC/AnalyzeEMYield/DY2JetsToLL_M-50_MatchEWPDG20_TuneCP5_13TeV-madgraphMLM-pythia8_-106X_mc2017_realistic_v6-v1.root`
+#using farmout:1
+#dry run:1
+export megatarget=results/HEM_2017_MC/AnalyzeEMYield/DY1JetsToLL_M-50_MatchEWPDG20_TuneCP5_13TeV-madgraphMLM-pythia8_-106X_mc2017_realistic_v6-v1.root
+mkdir -p batch_logs
+mega-farmout AnalyzeEMYield.py inputs/HEM_2017_MC/DY1JetsToLL_M-50_MatchEWPDG20_TuneCP5_13TeV-madgraphMLM-pythia8_-106X_mc2017_realistic_v6-v1.txt results/HEM_2017_MC/AnalyzeEMYield/DY1JetsToLL_M-50_MatchEWPDG20_TuneCP5_13TeV-madgraphMLM-pythia8_-106X_mc2017_realistic_v6-v1.root --verbose >& batch_logs/results_HEM_2017_MC_AnalyzeEMYield_DY1JetsToLL_M-50_MatchEWPDG20_TuneCP5_13TeV-madgraphMLM-pythia8_-106X_mc2017_realistic_v6-v1.log &
+sleep 10s
+mkdir -p `dirname results/HEM_2017_MC/AnalyzeEMYield/DY3JetsToLL_M-50_MatchEWPDG20_TuneCP5_13TeV-madgraphMLM-pythia8_-106X_mc2017_realistic_v6-v1.root`
+#using farmout:1
+#dry run:1
+export megatarget=results/HEM_2017_MC/AnalyzeEMYield/DY2JetsToLL_M-50_MatchEWPDG20_TuneCP5_13TeV-madgraphMLM-pythia8_-106X_mc2017_realistic_v6-v1.root
+mkdir -p batch_logs
+mega-farmout AnalyzeEMYield.py inputs/HEM_2017_MC/DY2JetsToLL_M-50_MatchEWPDG20_TuneCP5_13TeV-madgraphMLM-pythia8_-106X_mc2017_realistic_v6-v1.txt results/HEM_2017_MC/AnalyzeEMYield/DY2JetsToLL_M-50_MatchEWPDG20_TuneCP5_13TeV-madgraphMLM-pythia8_-106X_mc2017_realistic_v6-v1.root --verbose >& batch_logs/results_HEM_2017_MC_AnalyzeEMYield_DY2JetsToLL_M-50_MatchEWPDG20_TuneCP5_13TeV-madgraphMLM-pythia8_-106X_mc2017_realistic_v6-v1.log &
+sleep 10s
+mkdir -p `dirname results/HEM_2017_MC/AnalyzeEMYield/DY4JetsToLL_M-50_MatchEWPDG20_TuneCP5_13TeV-madgraphMLM-pythia8_-106X_mc2017_realistic_v6-v1.root`
+#using farmout:1
+#dry run:1
+export megatarget=results/HEM_2017_MC/AnalyzeEMYield/DY3JetsToLL_M-50_MatchEWPDG20_TuneCP5_13TeV-madgraphMLM-pythia8_-106X_mc2017_realistic_v6-v1.root
+mkdir -p batch_logs
+mega-farmout AnalyzeEMYield.py inputs/HEM_2017_MC/DY3JetsToLL_M-50_MatchEWPDG20_TuneCP5_13TeV-madgraphMLM-pythia8_-106X_mc2017_realistic_v6-v1.txt results/HEM_2017_MC/AnalyzeEMYield/DY3JetsToLL_M-50_MatchEWPDG20_TuneCP5_13TeV-madgraphMLM-pythia8_-106X_mc2017_realistic_v6-v1.root --verbose >& batch_logs/results_HEM_2017_MC_AnalyzeEMYield_DY3JetsToLL_M-50_MatchEWPDG20_TuneCP5_13TeV-madgraphMLM-pythia8_-106X_mc2017_realistic_v6-v1.log &
+sleep 10s
+mkdir -p `dirname results/HEM_2017_MC/AnalyzeEMYield/DYJetsToLL_M-10to50_TuneCP5_13TeV-madgraphMLM-pythia8_-106X_mc2017_realistic_v6-v2.root`
+#using farmout:1
+#dry run:1
+export megatarget=results/HEM_2017_MC/AnalyzeEMYield/DY4JetsToLL_M-50_MatchEWPDG20_TuneCP5_13TeV-madgraphMLM-pythia8_-106X_mc2017_realistic_v6-v1.root
+mkdir -p batch_logs
+mega-farmout AnalyzeEMYield.py inputs/HEM_2017_MC/DY4JetsToLL_M-50_MatchEWPDG20_TuneCP5_13TeV-madgraphMLM-pythia8_-106X_mc2017_realistic_v6-v1.txt results/HEM_2017_MC/AnalyzeEMYield/DY4JetsToLL_M-50_MatchEWPDG20_TuneCP5_13TeV-madgraphMLM-pythia8_-106X_mc2017_realistic_v6-v1.root --verbose >& batch_logs/results_HEM_2017_MC_AnalyzeEMYield_DY4JetsToLL_M-50_MatchEWPDG20_TuneCP5_13TeV-madgraphMLM-pythia8_-106X_mc2017_realistic_v6-v1.log &
+sleep 10s
+mkdir -p `dirname results/HEM_2017_MC/AnalyzeEMYield/WJetsToLNu_TuneCP5_13TeV-madgraphMLM-pythia8_-106X_mc2017_realistic_v6-v1.root`
+#using farmout:1
+#dry run:1
+export megatarget=results/HEM_2017_MC/AnalyzeEMYield/DYJetsToLL_M-10to50_TuneCP5_13TeV-madgraphMLM-pythia8_-106X_mc2017_realistic_v6-v2.root
+mkdir -p batch_logs
+mega-farmout AnalyzeEMYield.py inputs/HEM_2017_MC/DYJetsToLL_M-10to50_TuneCP5_13TeV-madgraphMLM-pythia8_-106X_mc2017_realistic_v6-v2.txt results/HEM_2017_MC/AnalyzeEMYield/DYJetsToLL_M-10to50_TuneCP5_13TeV-madgraphMLM-pythia8_-106X_mc2017_realistic_v6-v2.root --verbose >& batch_logs/results_HEM_2017_MC_AnalyzeEMYield_DYJetsToLL_M-10to50_TuneCP5_13TeV-madgraphMLM-pythia8_-106X_mc2017_realistic_v6-v2.log &
+sleep 10s
+mkdir -p `dirname results/HEM_2017_MC/AnalyzeEMYield/W1JetsToLNu_TuneCP5_13TeV-madgraphMLM-pythia8_-106X_mc2017_realistic_v6-v1.root`
+#using farmout:1
+#dry run:1
+export megatarget=results/HEM_2017_MC/AnalyzeEMYield/WJetsToLNu_TuneCP5_13TeV-madgraphMLM-pythia8_-106X_mc2017_realistic_v6-v1.root
+mkdir -p batch_logs
+mega-farmout AnalyzeEMYield.py inputs/HEM_2017_MC/WJetsToLNu_TuneCP5_13TeV-madgraphMLM-pythia8_-106X_mc2017_realistic_v6-v1.txt results/HEM_2017_MC/AnalyzeEMYield/WJetsToLNu_TuneCP5_13TeV-madgraphMLM-pythia8_-106X_mc2017_realistic_v6-v1.root --verbose >& batch_logs/results_HEM_2017_MC_AnalyzeEMYield_WJetsToLNu_TuneCP5_13TeV-madgraphMLM-pythia8_-106X_mc2017_realistic_v6-v1.log &
+sleep 10s
+mkdir -p `dirname results/HEM_2017_MC/AnalyzeEMYield/W2JetsToLNu_TuneCP5_13TeV-madgraphMLM-pythia8_-106X_mc2017_realistic_v6-v1.root`
+#using farmout:1
+#dry run:1
+export megatarget=results/HEM_2017_MC/AnalyzeEMYield/W1JetsToLNu_TuneCP5_13TeV-madgraphMLM-pythia8_-106X_mc2017_realistic_v6-v1.root
+mkdir -p batch_logs
+mega-farmout AnalyzeEMYield.py inputs/HEM_2017_MC/W1JetsToLNu_TuneCP5_13TeV-madgraphMLM-pythia8_-106X_mc2017_realistic_v6-v1.txt results/HEM_2017_MC/AnalyzeEMYield/W1JetsToLNu_TuneCP5_13TeV-madgraphMLM-pythia8_-106X_mc2017_realistic_v6-v1.root --verbose >& batch_logs/results_HEM_2017_MC_AnalyzeEMYield_W1JetsToLNu_TuneCP5_13TeV-madgraphMLM-pythia8_-106X_mc2017_realistic_v6-v1.log &
+sleep 10s
+mkdir -p `dirname results/HEM_2017_MC/AnalyzeEMYield/W3JetsToLNu_TuneCP5_13TeV-madgraphMLM-pythia8_-106X_mc2017_realistic_v6-v1.root`
+#using farmout:1
+#dry run:1
+export megatarget=results/HEM_2017_MC/AnalyzeEMYield/W2JetsToLNu_TuneCP5_13TeV-madgraphMLM-pythia8_-106X_mc2017_realistic_v6-v1.root
+mkdir -p batch_logs
+mega-farmout AnalyzeEMYield.py inputs/HEM_2017_MC/W2JetsToLNu_TuneCP5_13TeV-madgraphMLM-pythia8_-106X_mc2017_realistic_v6-v1.txt results/HEM_2017_MC/AnalyzeEMYield/W2JetsToLNu_TuneCP5_13TeV-madgraphMLM-pythia8_-106X_mc2017_realistic_v6-v1.root --verbose >& batch_logs/results_HEM_2017_MC_AnalyzeEMYield_W2JetsToLNu_TuneCP5_13TeV-madgraphMLM-pythia8_-106X_mc2017_realistic_v6-v1.log &
+sleep 10s
+mkdir -p `dirname results/HEM_2017_MC/AnalyzeEMYield/W4JetsToLNu_TuneCP5_13TeV-madgraphMLM-pythia8_-106X_mc2017_realistic_v6-v1.root`
+#using farmout:1
+#dry run:1
+export megatarget=results/HEM_2017_MC/AnalyzeEMYield/W3JetsToLNu_TuneCP5_13TeV-madgraphMLM-pythia8_-106X_mc2017_realistic_v6-v1.root
+mkdir -p batch_logs
+mega-farmout AnalyzeEMYield.py inputs/HEM_2017_MC/W3JetsToLNu_TuneCP5_13TeV-madgraphMLM-pythia8_-106X_mc2017_realistic_v6-v1.txt results/HEM_2017_MC/AnalyzeEMYield/W3JetsToLNu_TuneCP5_13TeV-madgraphMLM-pythia8_-106X_mc2017_realistic_v6-v1.root --verbose >& batch_logs/results_HEM_2017_MC_AnalyzeEMYield_W3JetsToLNu_TuneCP5_13TeV-madgraphMLM-pythia8_-106X_mc2017_realistic_v6-v1.log &
+sleep 10s
+#using farmout:1
+#dry run:1
+export megatarget=results/HEM_2017_MC/AnalyzeEMYield/W4JetsToLNu_TuneCP5_13TeV-madgraphMLM-pythia8_-106X_mc2017_realistic_v6-v1.root
+mkdir -p batch_logs
+mega-farmout AnalyzeEMYield.py inputs/HEM_2017_MC/W4JetsToLNu_TuneCP5_13TeV-madgraphMLM-pythia8_-106X_mc2017_realistic_v6-v1.txt results/HEM_2017_MC/AnalyzeEMYield/W4JetsToLNu_TuneCP5_13TeV-madgraphMLM-pythia8_-106X_mc2017_realistic_v6-v1.root --verbose >& batch_logs/results_HEM_2017_MC_AnalyzeEMYield_W4JetsToLNu_TuneCP5_13TeV-madgraphMLM-pythia8_-106X_mc2017_realistic_v6-v1.log &
+sleep 10s

@@ -9,8 +9,8 @@ WWeights = {"MuonEG":{},"SingleMu":{}}
 DYNNLO = 6077.22/5343
 WNNLO = 61526.7/50206
 
-DYXS = {"DYJ":5343, "DY1":877.8, "DY2":304.4, "DY3":111.5, "DY4":44.04}
-WXS = {"WJ":50206, "W1":9644.5, "W2":3144.5, "W3":954.8, "W4":485.6}
+DYXS = {"DYJ":5343., "DY1":877.8, "DY2":304.4, "DY3":111.5, "DY4":44.04}
+WXS = {"WJ":50206., "W1":9644.5, "W2":3144.5, "W3":954.8, "W4":485.6}
 
 mcfiles = glob.glob("inputs/"+os.environ["jobid"]+"/*.lumicalc.sum")
 dyfiles = glob.glob("inputs/"+os.environ["jobid"]+"/DY*M-50*.meta.json")
@@ -23,6 +23,7 @@ for dataset in ["MuonEG","SingleMu"]:
     f = open(datafile, "r")
     datalumi+=float(f.readlines()[0]) 
   print "Lumi for dataset "+dataset+" is "+str(datalumi)
+  datalumi*=1000.
   for mcfile in mcfiles:
     if "data" in mcfile: continue
     f = open(mcfile, "r")
@@ -30,7 +31,6 @@ for dataset in ["MuonEG","SingleMu"]:
   #DY weights
   for dyfile in dyfiles:
     f = open(dyfile, "r")
-    print dyfile
     mcWeights[dataset][os.path.basename(dyfile).replace(".meta.json","")] = json.load(f)['n_evts']/DYXS[os.path.basename(dyfile)[:3]]
     if "DYJ" in dyfile: dyLumi = mcWeights[dataset][os.path.basename(dyfile).replace(".meta.json","")]
   #W weights

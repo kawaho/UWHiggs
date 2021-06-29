@@ -29,7 +29,6 @@ class EMBase():
     self.muonTightID = mcCorrections.muonID_tight
     self.triggerEff27 = mcCorrections.muonTrigger27
     self.muonTightIsoTightID = mcCorrections.muonIso_tight_tightid
-    self.eIDnoiso80 = mcCorrections.eIDnoiso80
 
     self.DYreweight = mcCorrections.DYreweight
     self.rc = mcCorrections.rc
@@ -59,14 +58,14 @@ class EMBase():
 
   # Kinematics requirements on both the leptons
   def kinematics(self, row):
-    if row.m1Pt < 24 or abs(row.m1Eta) >= 2.4:
+    if row.m1Pt < 15 or row.m1Pt > 120 or abs(row.m1Eta) >= 2.4:
       return False
-    if row.m2Pt < 24 or abs(row.m2Eta) >= 2.4:
+    if row.m2Pt < 15 or row.m2Pt > 120 or abs(row.m2Eta) >= 2.4:
       return False
     return True
 
   def filters(self, row):
-    if row.Flag_goodVertices or row.Flag_globalSuperTightHalo2016Filter or row.Flag_HBHENoiseFilter or row.Flag_HBHENoiseIsoFilter or row.Flag_EcalDeadCellTriggerPrimitiveFilter or row.Flag_BadPFMuonFilter or Flag_BadPFMuonDzFilter or bool(self.is_data and row.Flag_eeBadScFilter) or row.Flag_ecalBadCalibFilter:
+    if row.Flag_goodVertices or row.Flag_globalSuperTightHalo2016Filter or row.Flag_HBHENoiseFilter or row.Flag_HBHENoiseIsoFilter or row.Flag_EcalDeadCellTriggerPrimitiveFilter or row.Flag_BadPFMuonFilter or row.Flag_BadPFMuonDzFilter or bool(self.is_data and row.Flag_eeBadScFilter) or row.Flag_ecalBadCalibFilter:
       return True
     return False
 
@@ -106,9 +105,9 @@ class EMBase():
       return False
     elif self.deltaR(row.m1Phi, row.m2Phi, row.m1Eta, row.m2Eta) < 0.3:
       return False
-    elif njets > 2:
-      return False
-    elif not self.obj_iso(row):
+#    elif njets > 2:
+#      return False
+    elif not self.obj_id(row):
       return False
     elif not self.obj_iso(row):
       return False
@@ -133,7 +132,6 @@ class EMBase():
     myMuon2 = ROOT.TLorentzVector()
     myMuon2.SetPtEtaPhiM(row.m2Pt, row.m2Eta, row.m2Phi, row.m2Mass)
 
-    # Electron Scale Correction
     if self.is_data:
       myMuon1 = myMuon1 * self.rc.kScaleDT(row.m1Charge, myMuon1.Pt(), myMuon1.Eta(), myMuon1.Phi(), 0, 0)
       myMuon2 = myMuon2 * self.rc.kScaleDT(row.m2Charge, myMuon2.Pt(), myMuon2.Eta(), myMuon2.Phi(), 0, 0)
@@ -156,11 +154,12 @@ class EMBase():
       m1Iso = self.muonTightIsoTightID(myMuon1.Pt(), abs(myMuon1.Eta()))
       m2ID = self.muonTightID(myMuon2.Pt(), abs(myMuon2.Eta()))
       m2Iso = self.muonTightIsoTightID(myMuon2.Pt(), abs(myMuon2.Eta()))
-      weight = weight*row.GenWeight*pucorrector[''](row.nTruePU)*m1ID*m1Iso*m2ID*m2Iso*row.prefiring_weight
-#      if self.is_DY:
-#        # DY pT reweighting
-#        dyweight = self.DYreweight(row.genM, row.genpT)
-#        weight = weight * dyweight
+      tEff = 1
+      if (row.m1MatchesIsoMu27Filter and row.m1MatchesIsoMu27Path):
+        tEff *= self.triggerEff27(myMuon1.Pt(), abs(myMuon1.Eta()))[0]
+      if (row.m2MatchesIsoMu27Filter and row.m2MatchesIsoMu27Path):
+        tEff *= self.triggerEff27(myMuon2.Pt(), abs(myMuon2.Eta()))[0]
+      weight = weight*row.GenWeight*pucorrector[''](row.nTruePU)*m1ID*m1Iso*m2ID*m2Iso*tEff*row.prefiring_weight
       weight = self.mcWeight.lumiWeight(weight)
 
       if weight > 10:

@@ -44,6 +44,6 @@ def transverseMass(vobj, vmet):
   mt2 = totalEt*totalEt - totalPt*totalPt;
   return sqrt(abs(mt2))
 
-plotnames = ['ZOS','ZSS']
-ptbinning = array('f', [0,10,20,30,40,50,100,150,200,300,400,1000])
+plotnames = ['ZOS','ZSS','ZOSC']
+ptbinning = array('f', [1,10,20,30,40,50,100,150,200,300,400,1000])
 mbinning = array('f', [50,100,200,500,1000])

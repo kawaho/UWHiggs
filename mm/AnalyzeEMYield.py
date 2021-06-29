@@ -37,9 +37,9 @@ class AnalyzeEMYield(MegaBase, EMBase):
       if math.isnan(row.vbfMass):
         continue
 
-      myMuon1, myMET, myMuon1 = self.lepVec(row)[0], self.lepVec(row)[1], self.lepVec(row)[2]
+      myMuon1, myMET, myMuon2 = self.lepVec(row)[0], self.lepVec(row)[1], self.lepVec(row)[2]
 
-      weight = self.corrFact(row, myMuon1, myMuon2)[0]
+      weight = self.corrFact(row, myMuon1, myMuon2)
 
       if self.visibleMass(myMuon1, myMuon2) > self.mbinning[-1] or self.visibleMass(myMuon1, myMuon2) < self.mbinning[0]:
        continue
@@ -49,6 +49,14 @@ class AnalyzeEMYield(MegaBase, EMBase):
 
       if self.oppositesign(row):
         self.fill_histos(myMuon1, myMuon2, weight, 'ZOS')
+        if self.is_DY:
+          # DY pT reweighting
+          dyweight = self.DYreweight(row.genM, row.genpT)
+          weight = weight * dyweight
+          self.fill_histos(myMuon1, myMuon2, weight, 'ZOSC')
+        else:
+          self.fill_histos(myMuon1, myMuon2, weight, 'ZOSC')
+
       else:
         self.fill_histos(myMuon2, myMuon2, weight, 'ZSS')
 

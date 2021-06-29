@@ -33,7 +33,7 @@ parser.add_argument(
 args = parser.parse_args()
 
 for x in Lists.mc_samples:
-    Lists.files.extend(glob.glob('../results/%s/AnalyzeEMYield/%s.root' % (jobid, x)))
+    Lists.files.extend(glob.glob('../results/%s/AnalyzeEMYield_Old/%s.root' % (jobid, x)))
     Lists.lumifiles.extend(glob.glob('../inputs/%s/%s.lumicalc.sum' % (jobid, x)))
 
 outputdir = 'InputPlots/'
@@ -70,7 +70,7 @@ QCDData = views.SubdirectoryView(data_view, 'ZSS')
 QCDMC = views.SubdirectoryView(mc_view, 'ZSS')
 QCD = SubtractionView(QCDData, QCDMC, restrict_positive=True)
 qcd = Lists.positivize(QCD.Get(var))
-qcd.Scale(_some_factor_)
+qcd.Scale(0)
 #qcd = qcd.Rebin(len(binning)-1, 'QCD', binning)
 if var == 'emEta' or var == 'ePt_Per_e_m_Mass' or var == 'mPt_Per_e_m_Mass' or var == 'j1Eta' or var == 'j2Eta':
   qcd = qcd.Rebin(2)

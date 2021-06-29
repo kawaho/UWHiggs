@@ -34,7 +34,7 @@ def getInfoMap( higgsSF, channel, shift="" ) :
     infoMap["data_obs"] = [["data_obs",], "Observed", "elp", 1]
 #    infoMap["ZTT"] = [["ZTauTau"+shift],"Z#rightarrow#tau#tau", "f", "#ffcc66"]
     infoMap["ZJ"] = [["Zothers"+shift],"Z#rightarrowee/#mu#mu/#tau#tau", "f", "#4496c8"]
-    infoMap["TT"] = [["TT"+shift, "T"+shift], "t#bar{t},t+jets", "f", "#9999cc"]
+    infoMap["TT"] = [["TT"+shift, "T"+shift], "t#bar{t}", "f", "#9999cc"]
     infoMap["Diboson"] = [["Diboson"+shift], "Diboson", "f", "#12cadd"]
     if channel=="et" or channel=="mt":
        infoMap["QCD"] = [["Fakes",], "W+Jets/QCD", "f", "#ffccff"]
@@ -52,7 +52,8 @@ def getBackgrounds(channel) :
        bkgs=["QCD", "SMH", "EWK", "Diboson", "TT", "ZJ"]
        return bkgs
     if channel=="mm":
-       bkgs=["QCD", "W", "Diboson", "TT", "ZJ"]
+       bkgs=["TT", "ZJ"]
+       #bkgs=["QCD", "W", "Diboson", "TT", "ZJ"]
        return bkgs
 
 def getSignals() :
