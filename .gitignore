@@ -22,3 +22,5 @@ docs/build/*
 callgrind.out.*
 *.orig
 *.rej
+*/inputs
+EMTree.*
